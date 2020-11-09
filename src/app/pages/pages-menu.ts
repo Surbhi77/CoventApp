@@ -2,89 +2,64 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'E-commerce',
-    icon: 'shopping-cart-outline',
+    title: 'Massachusetts',
+    icon: 'home',
     link: '/pages/dashboard',
     home: true,
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
+    title: 'Edit Profile',
+    icon: 'edit-2-outline',
     link: '/pages/iot-dashboard',
   },
+  // {
+  //   title: 'FEATURES',
+  //   group: true,
+  // },
   {
-    title: 'FEATURES',
-    group: true,
-  },
-  {
-    title: 'Layout',
+    title: 'Master Settings',
     icon: 'layout-outline',
     children: [
       {
-        title: 'Stepper',
+        title: 'CMS',
         link: '/pages/layout/stepper',
       },
       {
-        title: 'List',
+        title: 'Slider Management',
         link: '/pages/layout/list',
       },
       {
-        title: 'Infinite List',
+        title: 'Other Settings',
         link: '/pages/layout/infinite-list',
-      },
-      {
-        title: 'Accordion',
-        link: '/pages/layout/accordion',
-      },
-      {
-        title: 'Tabs',
-        pathMatch: 'prefix',
-        link: '/pages/layout/tabs',
       },
     ],
   },
   {
-    title: 'Forms',
+    title: 'Device Manageent',
     icon: 'edit-2-outline',
     children: [
       {
-        title: 'Form Inputs',
+        title: 'Device Innovators Listing',
         link: '/pages/forms/inputs',
       },
       {
-        title: 'Form Layouts',
+        title: 'Device Data Listing',
         link: '/pages/forms/layouts',
-      },
-      {
-        title: 'Buttons',
-        link: '/pages/forms/buttons',
-      },
-      {
-        title: 'Datepicker',
-        link: '/pages/forms/datepicker',
       },
     ],
   },
   {
-    title: 'UI Features',
+    title: 'Review Management',
     icon: 'keypad-outline',
     link: '/pages/ui-features',
     children: [
       {
-        title: 'Grid',
+        title: 'Reviewer Listing',
         link: '/pages/ui-features/grid',
       },
       {
-        title: 'Icons',
+        title: 'Reviews Listing',
         link: '/pages/ui-features/icons',
-      },
-      {
-        title: 'Typography',
-        link: '/pages/ui-features/typography',
-      },
-      {
-        title: 'Animated Searches',
-        link: '/pages/ui-features/search-fields',
       },
     ],
   },
