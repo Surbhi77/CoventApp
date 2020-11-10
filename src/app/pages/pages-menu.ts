@@ -2,7 +2,7 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Massachusetts',
+    title: 'Dashboard',
     icon: 'home',
     link: '/pages/dashboard',
     home: true,
@@ -10,7 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Edit Profile',
     icon: 'edit-2-outline',
-    link: '/pages/iot-dashboard',
+    link: '/pages/forms/inputs',
   },
   // {
   //   title: 'FEATURES',
@@ -22,11 +22,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'CMS',
-        link: '/pages/layout/stepper',
+        link: '/pages/cms',
       },
       {
         title: 'Slider Management',
-        link: '/pages/layout/list',
+        link: '/pages/slider-management',
       },
       {
         title: 'Other Settings',
@@ -40,7 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Device Innovators Listing',
-        link: '/pages/forms/inputs',
+        link: '/pages/device-innovators-listing',
       },
       {
         title: 'Device Data Listing',
@@ -55,7 +55,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Reviewer Listing',
-        link: '/pages/ui-features/grid',
+        link: '/pages/reviewer-listing',
       },
       {
         title: 'Reviews Listing',
@@ -66,7 +66,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title:'Website User Listing',
     icon: 'keypad-outline',
-    link: '#'
+    link: '/pages/website-user-listing'
   },
   {
     title:"Reporting",
@@ -76,7 +76,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title:"Newsletter",
     icon: 'keypad-outline',
-    link: '#'
+    link: '/pages/newsletter'
   },
   {
     title:"Settings",

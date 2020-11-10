@@ -3,6 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeviceInnovatorsListingComponent } from './device-innovators-listing/device-innovators-listing.component';
+import { CmsComponent } from './cms/cms.component';
+import { SliderManagementComponent } from './slider-management/slider-management.component';
+import { AddCmsComponent } from './add-cms/add-cms.component';
+import { AddSlidersComponent } from './add-sliders/add-sliders.component';
+import { WebsiteUserListingComponent } from './website-user-listing/website-user-listing.component';
+import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
@@ -13,6 +21,38 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: ECommerceComponent,
+    },
+    {
+      path: 'newsletter',
+      component: NewsletterComponent,
+    },
+    {
+      path: 'reviewer-listing',
+      component: ReviewerListingComponent,
+    },
+    {
+      path: 'website-user-listing',
+      component: WebsiteUserListingComponent,
+    },
+    {
+      path: 'add-cms',
+      component: AddCmsComponent,
+    },
+    {
+      path: 'add-sliders',
+      component: AddSlidersComponent,
+    },
+    {
+      path: 'slider-management',
+      component: SliderManagementComponent,
+    },
+    {
+      path: 'device-innovators-listing',
+      component: DeviceInnovatorsListingComponent,
+    },
+    {
+      path: 'cms',
+      component: CmsComponent,
     },
     {
       path: 'iot-dashboard',

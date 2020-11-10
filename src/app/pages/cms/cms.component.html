@@ -1,0 +1,13 @@
+<nb-card>
+    <nb-card-header>
+      CMS Listing
+
+      <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/add-cms"> Add CMS</button>
+    </nb-card-header>
+  
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table> 
+    </nb-card-body>
+  </nb-card>
+  
