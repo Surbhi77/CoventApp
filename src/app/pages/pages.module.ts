@@ -32,6 +32,8 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbUserModule,
+  NbStepperModule,
+  NbTabsetModule,
 } from '@nebular/theme';
 import { SliderManagementComponent } from './slider-management/slider-management.component';
 import { AddCmsComponent } from './add-cms/add-cms.component';
@@ -71,6 +73,8 @@ const materialModules = [
     NbSelectModule,
     NbUserModule,
     ngFormsModule,
+    NbStepperModule,
+    NbTabsetModule,
     ...materialModules,
   ],
   declarations: [

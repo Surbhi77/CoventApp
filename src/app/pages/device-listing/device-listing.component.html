@@ -1,1 +1,430 @@
-<p>device-listing works!</p>
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-5">
+    <nb-card-body>
+      <nb-stepper orientation="horizontal">
+        <nb-step [label]="labelOne">
+          <ng-template #labelOne>First step</ng-template>
+          <div class="row">
+            <div class="col-lg-6">
+                <nb-card>
+                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                  <nb-card-body>
+                    <input type="text" nbInput fullWidth placeholder="Device name">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Device category</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill" class="mt-0 pb-0">
+                        <mat-label>Device type</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </nb-card-body>
+                </nb-card>
+              </div>
+              <div class="col-lg-6">
+                <nb-card>
+                    <nb-card-body>
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Reusable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Autoclavable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">AC-Powered</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        
+
+
+                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                      <input type="text" nbInput fullWidth placeholder="Mobile">
+                      <input type="file" nbInput fullWidth> -->
+                      
+                    </nb-card-body>
+                  </nb-card>
+              </div>
+          </div>
+          <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
+        </nb-step>
+        <nb-step [label]="labelTwo">
+          <ng-template #labelTwo>Second step</ng-template>
+          <div class="row">
+            <div class="col-lg-6">
+                <nb-card>
+                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                  <nb-card-body>
+
+                    <div class="in_radios">
+                        <label id="Reusable" class="block_lab">Battery-Powered</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1">Yes</mat-radio-button>
+                            <mat-radio-button value="2">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Power Consumption (watts)</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill" class="mt-0 pb-0">
+                        <mat-label>Unit cost (USD)</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </nb-card-body>
+                </nb-card>
+              </div>
+              <div class="col-lg-6">
+                <nb-card>
+                    <nb-card-body>
+                        <mat-form-field appearance="fill" class="pb-0">
+                            <mat-label>Required investment (USD)</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill" class="mt-0 pb-0">
+                            <mat-label>Development stage</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill" class="mt-0 pb-0">
+                            <mat-label>Clinical stage</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                        <!-- <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Reusable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Autoclavable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">AC-Powered</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div> -->
+                        
+
+
+                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                      <input type="text" nbInput fullWidth placeholder="Mobile">
+                      <input type="file" nbInput fullWidth> -->
+                      
+                    </nb-card-body>
+                  </nb-card>
+              </div>
+          </div>
+          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
+        </nb-step>
+        <nb-step label="Third step">
+            <div class="row">
+                <div class="col-lg-6">
+                    <nb-card>
+                      <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                      <nb-card-body>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Regulatory stage</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                        <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+    
+                        <mat-form-field appearance="fill" class="mt-0 pb-0">
+                            <mat-label>Regulatory approvals</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+    
+                          <mat-form-field appearance="fill" class="mt-0 pb-0">
+                            <mat-label>Where deployed?</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </nb-card-body>
+                    </nb-card>
+                  </div>
+                  <div class="col-lg-6">
+                    <nb-card>
+                        <nb-card-body>
+
+                            <input type="text" nbInput fullWidth placeholder="Website Project Link">
+                            
+                            <input type="file" nbInput fullWidth> 
+
+                            <input type="text" nbInput fullWidth placeholder="Manufacturers">
+
+                              
+    
+                            <!-- <div class="in_radios">
+                                <label id="Reusable" class="block_lab">Reusable</label>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1">Yes</mat-radio-button>
+                                    <mat-radio-button value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+    
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab">Autoclavable</label>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1">Yes</mat-radio-button>
+                                    <mat-radio-button value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+    
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab">AC-Powered</label>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1">Yes</mat-radio-button>
+                                    <mat-radio-button value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div> -->
+                            
+    
+    
+                          <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                          <input type="text" nbInput fullWidth placeholder="Mobile">
+                          <input type="file" nbInput fullWidth> -->
+                          
+                        </nb-card-body>
+                      </nb-card>
+                  </div>
+              </div>
+          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
+        </nb-step>
+        <nb-step [label]="labelFour">
+          <ng-template #labelFour>Fourth step</ng-template>
+          <div class="row">
+            <div class="col-lg-6">
+                <nb-card>
+                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                  <nb-card-body>
+
+                    <label>Design files</label>
+                    <input type="file" nbInput fullWidth> 
+
+                    <label>Training documents</label>
+                    <input type="file" nbInput fullWidth> 
+
+                    <input type="text" nbInput fullWidth placeholder="Related publications">
+
+                    <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+
+                  </nb-card-body>
+                </nb-card>
+              </div>
+              <div class="col-lg-6">
+                <nb-card>
+                    <nb-card-body>
+
+                        <label>Device images</label>
+                        <input type="file" nbInput fullWidth> 
+
+                        <label class="w-100">Device videos</label>
+                        <textarea rows="3" nbInput fullwidth class="w-100"></textarea>
+
+                        <input type="text" nbInput fullWidth placeholder="Device characteristics">
+
+                          
+
+                        <!-- <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Reusable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">Autoclavable</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="in_radios">
+                            <label id="Reusable" class="block_lab">AC-Powered</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Yes</mat-radio-button>
+                                <mat-radio-button value="2">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div> -->
+                        
+
+
+                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                      <input type="text" nbInput fullWidth placeholder="Mobile">
+                      <input type="file" nbInput fullWidth> -->
+                      
+                    </nb-card-body>
+                  </nb-card>
+              </div>
+          </div>
+          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
+        </nb-step>
+
+        <nb-step [label]="labelFifth">
+            <ng-template #labelFifth>Fifth step</ng-template>
+            <div class="row">
+              <div class="col-lg-6">
+                  <nb-card>
+                    <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                    <nb-card-body>
+
+                    <label>Standards Compliance</label>   
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin">Checked</mat-checkbox>
+                        <mat-checkbox class="example-margin">Indeterminate</mat-checkbox>
+                    </section>
+
+                    <h4>Instructions For Use</h4>
+
+                      <label>Unaffiliated Individual</label>
+                      <input type="file" nbInput fullWidth> 
+  
+                      <label>Unaffiliated Group</label>
+                      <input type="file" nbInput fullWidth> 
+
+                      <label>For-profit company</label>
+                      <input type="file" nbInput fullWidth> 
+
+                      <label>Non-profit organization (not academic)</label>
+                      <input type="file" nbInput fullWidth> 
+
+                      <label>University</label>
+                      <input type="file" nbInput fullWidth> 
+
+                      <label>Government agency</label>
+                      <input type="file" nbInput fullWidth> 
+  
+  
+                      <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+  
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+                <div class="col-lg-6">
+                  <nb-card>
+                      <nb-card-body>
+
+                        <h4>Innovator Type</h4>
+
+                          <label class="add_tens">Team <span><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
+                          <input type="text" nbInput fullWidth placeholder="Add multiple innovator team members">
+  
+                        
+  
+                            
+  
+                          <!-- <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Reusable</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+  
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Autoclavable</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+  
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">AC-Powered</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div> -->
+                          
+  
+  
+                        <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                        <input type="text" nbInput fullWidth placeholder="Mobile">
+                        <input type="file" nbInput fullWidth> -->
+                        
+                      </nb-card-body>
+                    </nb-card>
+                </div>
+            </div>
+            <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
+            <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary">next</button>
+          </nb-step>
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>

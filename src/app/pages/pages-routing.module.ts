@@ -11,6 +11,7 @@ import { AddSlidersComponent } from './add-sliders/add-sliders.component';
 import { WebsiteUserListingComponent } from './website-user-listing/website-user-listing.component';
 import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { DeviceListingComponent } from './device-listing/device-listing.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
@@ -23,7 +24,11 @@ const routes: Routes = [{
       component: ECommerceComponent,
     },
     {
-      path: 'newsletter',
+      path: 'device-listing', 
+      component: DeviceListingComponent,
+    },
+    {
+      path: 'newsletter', 
       component: NewsletterComponent,
     },
     {

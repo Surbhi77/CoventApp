@@ -44,7 +44,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Device Data Listing',
-        link: '/pages/forms/layouts',
+        link: '/pages/device-listing',
       },
     ],
   },
