@@ -82,11 +82,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title:"Settings",
     icon: 'lock-outline',
     link: '#'
-  },
-  {
-    title:"Logout",
-    icon: 'lock-outline',
-    link: '#'
   }
   // {
   //   title: 'Modal & Overlays',
