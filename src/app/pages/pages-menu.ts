@@ -12,72 +12,82 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     link: '/pages/forms/inputs',
   },
+  {
+    title: 'Survey',
+    icon: 'edit-2-outline',
+    link: '/pages/forms/inputs',
+  },
+  {
+    title: 'Data Listing',
+    icon: 'edit-2-outline',
+    link: '/pages/cms',
+  },
   // {
   //   title: 'FEATURES',
   //   group: true,
   // },
-  {
-    title: 'Master Settings',
-    icon: 'layout-outline',
-    children: [
-      {
-        title: 'CMS',
-        link: '/pages/cms',
-      },
-      {
-        title: 'Slider Management',
-        link: '/pages/slider-management',
-      },
-      {
-        title: 'Other Settings',
-        link: '/pages/layout/infinite-list',
-      },
-    ],
-  },
-  {
-    title: 'Device Management',
-    icon: 'edit-2-outline',
-    children: [
-      {
-        title: 'Device Innovators Listing',
-        link: '/pages/device-innovators-listing',
-      },
-      {
-        title: 'Device Data Listing',
-        link: '/pages/device-listing',
-      },
-    ],
-  },
-  {
-    title: 'Review Management',
-    icon: 'keypad-outline',
-    link: '/pages/ui-features',
-    children: [
-      {
-        title: 'Reviewer Listing',
-        link: '/pages/reviewer-listing',
-      },
-      {
-        title: 'Reviews Listing',
-        link: '/pages/ui-features/icons',
-      },
-    ],
-  },
-  {
-    title:'Website User Listing',
-    icon: 'keypad-outline',
-    link: '/pages/website-user-listing'
-  },
+  // {
+  //   title: 'Master Settings',
+  //   icon: 'layout-outline',
+  //   children: [
+  //     {
+  //       title: 'CMS',
+  //       link: '/pages/cms',
+  //     },
+  //     {
+  //       title: 'Slider Management',
+  //       link: '/pages/slider-management',
+  //     },
+  //     {
+  //       title: 'Other Settings',
+  //       link: '/pages/layout/infinite-list',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'Device Management',
+  //   icon: 'edit-2-outline',
+  //   children: [
+  //     {
+  //       title: 'Device Innovators Listing',
+  //       link: '/pages/device-innovators-listing',
+  //     },
+  //     {
+  //       title: 'Device Data Listing',
+  //       link: '/pages/device-listing',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'Review Management',
+  //   icon: 'keypad-outline',
+  //   link: '/pages/ui-features',
+  //   children: [
+  //     {
+  //       title: 'Reviewer Listing',
+  //       link: '/pages/reviewer-listing',
+  //     },
+  //     {
+  //       title: 'Reviews Listing',
+  //       link: '/pages/ui-features/icons',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title:'Website User Listing',
+  //   icon: 'keypad-outline',
+  //   link: '/pages/website-user-listing'
+  // },
   {
     title:"Reporting",
     icon: 'keypad-outline',
     link: '#'
   },
-  {
-    title:"Newsletter",
-    icon: 'keypad-outline',
-    link: '/pages/newsletter'
-  },
+  // {
+  //   title:"Newsletter",
+  //   icon: 'keypad-outline',
+  //   link: '/pages/newsletter'
+  // },
   {
     title:"Settings",
     icon: 'lock-outline',

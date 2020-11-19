@@ -32,13 +32,28 @@ export class CmsComponent {
         filter: false
       },
       firstName: {
-        title: 'Title',
+        title: 'Device Name',
+        type: 'string',
+        filter: false
+      },
+      lastname: {
+        title: 'Device type',
         type: 'string',
         filter: false
       },
       email: {
-        title: 'Created Date',
+        title: 'Created On',
         type: 'string',
+        filter: false
+      },
+      username: {
+        title: 'Status',
+        type: 'string',
+        filter: false
+      },
+      age: {
+        title: 'Reviews',
+        type: 'number',
         filter: false
       },
       // username: {
