@@ -8,11 +8,11 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () => import('./auth/auth.module')
     .then(m => m.AuthModule), 
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
   { path: '**', redirectTo: 'pages' },
 ];
 

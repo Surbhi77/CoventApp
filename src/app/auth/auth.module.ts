@@ -7,9 +7,10 @@ import { NbMenuModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 import { ThemeModule } from '../@theme/theme.module';
 import { RegisterComponent } from './register/register.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, AuthComponent],
   imports: [
     ThemeModule,
     CommonModule,
