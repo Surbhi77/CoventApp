@@ -21,12 +21,14 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-
+import { ToastrModule } from 'ngx-toastr';
+ 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

@@ -12,8 +12,8 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.module')
     .then(m => m.AuthModule), 
   },
-
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth' },
 ];
 
 const config: ExtraOptions = {

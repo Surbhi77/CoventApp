@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
-
+import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
+import { NbMediaBreakpointsService,NB_WINDOW, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { Router, NavigationEnd } from '@angular/router';
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
 
@@ -51,11 +51,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
   public constructor(
+    private router: Router,
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
     private themeService: NbThemeService,
     private userService: UserData,
     private layoutService: LayoutService,
+    @Inject(NB_WINDOW) private window,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
   ) {
@@ -72,6 +74,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
       .subscribe((users: any) => this.user = users.nick);
+    
+      this.menuService.onItemClick()
+      .pipe(
+        filter(({ tag }) => tag === 'my-context-menu'),
+        map(({ item: { title } }) => title),
+      )
+      .subscribe(title =>{
+        console.log(title);
+        if(title == 'Log out'){
+          localStorage.clear();
+          this.router.navigateByUrl('/auth/login');
+        }
+      });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()

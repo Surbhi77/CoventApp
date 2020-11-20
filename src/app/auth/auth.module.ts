@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { NbMenuModule } from '@nebular/theme';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ThemeModule } from '../@theme/theme.module';
 import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth/auth.component';
@@ -15,6 +15,7 @@ import { AuthComponent } from './auth/auth.component';
     ThemeModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     NbMenuModule,
     AuthRoutingModule
   ]
