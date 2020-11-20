@@ -7,7 +7,7 @@ import { map, startWith, delay } from 'rxjs/operators';
 })
 export class ApiService {
 
-  public baseAPi = "http://134.209.68.96:9700/frontend/";
+  public baseAPi = "http://localhost:9700/frontend/";
 
   constructor(private http:HttpClient) {
 
