@@ -22,12 +22,14 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { ReqInterceptor } from './req.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

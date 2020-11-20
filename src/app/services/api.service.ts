@@ -7,7 +7,7 @@ import { map, startWith, delay } from 'rxjs/operators';
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9000/api/";
+  public baseAPi = "http://localhost:9700/api/";
 
   constructor(private http:HttpClient) {
 
@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   public getUsers(){
-    return this.http.get('http://localhost:9000/secureApi/user'); 
+    return this.http.get('http://localhost:9700/secureApi/user'); 
   }
 
 
