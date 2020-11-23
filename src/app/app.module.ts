@@ -22,9 +22,15 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { LibraryFilterComponent } from './common/library-filter/library-filter.component';
+import { LibraryDetailsComponent } from './library-details/library-details.component';
+import { LibraryComponent } from './library/library.component';
  
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

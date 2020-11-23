@@ -1,0 +1,45 @@
+.feature_description {
+    font-size: 20px !important;
+    color: #ffffff;
+    margin-bottom: 17px !important;
+}
+.feature_title {
+    font-size: 31px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+.details p {
+    font-size: 19px;
+}
+.cates_bars {
+    background: #0d3272;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a.categotes {
+    font-size: 16px;
+    display: inline-block;
+    align-items: center;
+    padding: 5px 10px;
+    background: #007ad9;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 13px;
+    text-decoration: none;
+}
+a.categotes img {
+    width: 15px;
+    height: auto;
+    filter: invert(1);
+    margin-left: 5px;
+}
+.rattings {
+    margin-right: 25px;
+    color: #f66e0b;
+}
+.rattings i {
+    margin-right: 4px;
+}
