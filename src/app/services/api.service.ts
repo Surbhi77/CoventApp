@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, startWith, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +18,21 @@ export class ApiService {
   
   public register(obj){
     return this.http.post(this.baseAPi+'signup',obj);
+  }
+
+  public getDeviceListing(){
+    return this.http.get(this.baseAPi+'device-category')
+  }
+
+  public getSubcategoryListing(id){
+    return this.http.get(this.baseAPi+'device-sub-category/'+id);
+  }
+
+  public getCountryListing(){
+    return this.http.get(this.baseAPi+'country-list')
+  }
+
+  public addInnovatorData(obj){
+    return this.http.post(this.baseAPi+'add-innovator-data',obj);
   }
 }

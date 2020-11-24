@@ -18,6 +18,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/forms/inputs',
   },
   {
+    title: 'Add Device Innovation',
+    icon: 'edit-2-outline',
+    link: '/pages/device-listing'
+  },
+  {
     title: 'Data Listing',
     icon: 'edit-2-outline',
     link: '/pages/cms',

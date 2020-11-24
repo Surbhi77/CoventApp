@@ -1,182 +1,261 @@
 <nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-5">
     <nb-card-body>
-      <nb-stepper orientation="horizontal">
-        <nb-step [label]="labelOne">
+      <nb-stepper [linear]="linearMode" orientation="horizontal">
+        <nb-step [stepControl]="firstForm" [label]="labelOne">
           <ng-template #labelOne>First step</ng-template>
-          <div class="row">
-            <div class="col-lg-6">
-                <nb-card>
-                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
-                  <nb-card-body>
-                    <input type="text" nbInput fullWidth placeholder="Device name">
-
-                    <mat-form-field appearance="fill">
-                        <mat-label>Device category</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field appearance="fill" class="mt-0 pb-0">
-                        <mat-label>Device type</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  </nb-card-body>
-                </nb-card>
-              </div>
-              <div class="col-lg-6">
-                <nb-card>
-                    <nb-card-body>
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Reusable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Autoclavable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">AC-Powered</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                        
-
-
-                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
-                      <input type="text" nbInput fullWidth placeholder="Mobile">
-                      <input type="file" nbInput fullWidth> -->
-                      
-                    </nb-card-body>
-                  </nb-card>
-              </div>
-          </div>
-          <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary">prev</button>
-          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
-        </nb-step>
-        <nb-step [label]="labelTwo">
-          <ng-template #labelTwo>Second step</ng-template>
-          <div class="row">
-            <div class="col-lg-6">
-                <nb-card>
-                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
-                  <nb-card-body>
-
-                    <div class="in_radios">
-                        <label id="Reusable" class="block_lab">Battery-Powered</label>
-                        <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button value="1">Yes</mat-radio-button>
-                            <mat-radio-button value="2">No</mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-
-                    <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
-
-                    <mat-form-field appearance="fill">
-                        <mat-label>Power Consumption (watts)</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field appearance="fill" class="mt-0 pb-0">
-                        <mat-label>Unit cost (USD)</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  </nb-card-body>
-                </nb-card>
-              </div>
-              <div class="col-lg-6">
-                <nb-card>
-                    <nb-card-body>
-                        <mat-form-field appearance="fill" class="pb-0">
-                            <mat-label>Required investment (USD)</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
-                          <mat-form-field appearance="fill" class="mt-0 pb-0">
-                            <mat-label>Development stage</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
-                          <mat-form-field appearance="fill" class="mt-0 pb-0">
-                            <mat-label>Clinical stage</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
-                        <!-- <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Reusable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Autoclavable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">AC-Powered</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div> -->
-                        
-
-
-                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
-                      <input type="text" nbInput fullWidth placeholder="Mobile">
-                      <input type="file" nbInput fullWidth> -->
-                      
-                    </nb-card-body>
-                  </nb-card>
-              </div>
-          </div>
-          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
-          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
-        </nb-step>
-        <nb-step label="Third step">
+          <form [formGroup]="firstForm">
             <div class="row">
+              <div class="col-lg-6">
+                  <nb-card>
+                    <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                    <nb-card-body>
+                      <input formControlName="device_name" type="text" nbInput fullWidth placeholder="Device name">
+                      <div *ngIf="f.device_name.touched && f.device_name.invalid" class="alert alert-danger">
+                        <div *ngIf="f.device_name.errors.required">Device Name is required.</div>
+                       
+                      </div>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Device category</mat-label>
+                          <mat-select formControlName="device_cat" (selectionChange)="deviceChange($event.value)">
+                            <mat-option *ngFor="let device of devices"  [value]="device.category_id">
+                              {{device.category_name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="f.device_cat.touched && f.device_cat.invalid" class="alert alert-danger">
+                          <div *ngIf="f.device_cat.errors.required">Device Category is required.</div>
+                        </div>
+  
+                        <mat-form-field appearance="fill" class="mt-0 pb-0">
+                          <mat-label>Device type</mat-label>
+                          <mat-select formControlName="device_type">
+                            <mat-option value="">Select Device Type</mat-option>
+                            <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
+                              {{sub.subcategory_name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="f.device_type.touched && f.device_type.invalid" class="alert alert-danger">
+                          <div *ngIf="f.device_type.errors.required">Device Type is required.</div>
+                        </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+                <div class="col-lg-6">
+                  <nb-card>
+                      <nb-card-body>
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Reusable</label>
+                              <mat-radio-group formControlName="reusable" aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+                          <div *ngIf="f.reusable.touched && f.reusable.invalid" class="alert alert-danger">
+                            <div *ngIf="f.reusable.errors.required">Please select yes/no</div>
+                          </div>
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Autoclavable</label>
+                              <mat-radio-group formControlName="autoclavable" aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+                          <div *ngIf="f.autoclavable.touched && f.autoclavable.invalid" class="alert alert-danger">
+                            <div *ngIf="f.autoclavable.errors.required">Please select yes/no</div>
+                          </div>
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">AC-Powered</label>
+                              <mat-radio-group formControlName="ac_powered" aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+                          <div *ngIf="f.ac_powered.touched && f.ac_powered.invalid" class="alert alert-danger">
+                            <div *ngIf="f.ac_powered.errors.required">Please select yes/no</div>
+                          </div>
+                          
+  
+  
+                        <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                        <input type="text" nbInput fullWidth placeholder="Mobile">
+                        <input type="file" nbInput fullWidth> -->
+                        
+                      </nb-card-body>
+                    </nb-card>
+                </div>
+            </div>
+          </form>
+          
+          <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary">prev</button>
+          <button nbButton matRipple (click)="onFirstSubmit()" nbStepperNext class="size-medium status-primary">next</button>
+        </nb-step>
+        <nb-step [stepControl]="secondForm" [label]="labelTwo">
+          <ng-template #labelTwo>Second step</ng-template>
+          <form [formGroup]="secondForm">
+            <div class="row">
+              <div class="col-lg-6">
+                  <nb-card>
+                    <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                    <nb-card-body>
+  
+                      <div class="in_radios">
+                          <label id="Reusable" class="block_lab">Battery-Powered</label>
+                          <mat-radio-group formControlName="battery_powered" aria-label="Select an option">
+                              <mat-radio-button value="1">Yes</mat-radio-button>
+                              <mat-radio-button value="2">No</mat-radio-button>
+                          </mat-radio-group>
+                      </div>
+
+                      <div *ngIf="g.battery_powered.touched && g.battery_powered.invalid" class="alert alert-danger">
+                        <div *ngIf="g.battery_powered.errors.required">Please select yes/no</div>
+                      </div>
+  
+                      <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+  
+                      <!-- <mat-form-field appearance="fill">
+                          <mat-label>Power Consumption (watts)</mat-label> -->
+                          
+                          <input type="text" formControlName="power_consumption" nbInput fullWidth placeholder="Power Consumption (watts)">
+                          <div *ngIf="g.power_consumption.touched && g.power_consumption.invalid" class="alert alert-danger">
+                            <div *ngIf="g.power_consumption.errors.required">Please enter power consumption</div>
+                          </div>
+                          <!-- <mat-select>
+                            <mat-option *ngFor="let food of foods" [value]="food.value">
+                              {{food.viewValue}}
+                            </mat-option>
+                          </mat-select> -->
+                        <!-- </mat-form-field> -->
+                        <input type="text" formControlName="unit_cost" nbInput fullWidth placeholder="Unit cost (USD)">
+                        <div *ngIf="g.unit_cost.touched && g.unit_cost.invalid" class="alert alert-danger">
+                          <div *ngIf="g.unit_cost.errors.required">Please enter unit cost</div>
+                        </div>
+
+                        <input type="text" formControlName="required_investment" nbInput fullWidth placeholder="Required investment (USD)">
+                        <div *ngIf="g.required_investment.touched && g.required_investment.invalid" class="alert alert-danger">
+                          <div *ngIf="g.required_investment.errors.required">Please enter required investment</div>
+                        </div>
+                        <!-- <mat-form-field appearance="fill" class="mt-0 pb-0">
+                          <mat-label>Unit cost (USD)</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let food of foods" [value]="food.value">
+                              {{food.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field> -->
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+                <div class="col-lg-6">
+                  <nb-card>
+                      <nb-card-body>
+                          <!-- <mat-form-field appearance="fill" class="pb-0">
+                              <mat-label>Required investment (USD)</mat-label>
+                              <mat-select>
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                  {{food.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field> -->
+  
+                            <mat-form-field appearance="fill" class="mt-0 pb-0">
+                              <mat-label>Development stage</mat-label>
+                              <mat-select formControlName="dev_stage">
+                                <mat-option value="Stage 1: Ideation">
+                                  Stage 1: Ideation
+                                </mat-option>
+                                <mat-option value="Stage 2: Research & Development">
+                                  Stage 2: Research & Development
+                                </mat-option>
+                                <mat-option value="Stage 3: Proof of Concept">
+                                  Stage 3: Proof of Concept
+                                </mat-option>
+                                <mat-option value="Stage 4: Design for Manufacturing">
+                                  Stage 4: Design for Manufacturing
+                                </mat-option>
+                                <mat-option value="Stage 5: Verification & Validation">
+                                  Stage 5: Verification & Validation
+                                </mat-option>
+                                <mat-option value="Stage 6: Early Production">
+                                  Stage 6: Early Production
+                                </mat-option>
+                                <mat-option value="Stage 7: Scaling">
+                                  Stage 7: Scaling
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                            <div *ngIf="g.dev_stage.touched && g.dev_stage.invalid" class="alert alert-danger">
+                              <div *ngIf="g.dev_stage.errors.required">Please select development stage</div>
+                            </div>
+  
+                            <mat-form-field appearance="fill" class="mt-0 pb-0">
+                              <mat-label>Clinical stage</mat-label>
+                              <mat-select formControlName="clinical_stage">
+                                <mat-option value="Stage 1: No clinical use">
+                                  Stage 1: No clinical use
+                                </mat-option>
+                                <mat-option value="Stage 2: First in-human use">
+                                  Stage 2: First in-human use
+                                </mat-option>
+                                <mat-option value="Stage 3: Clinical trials">
+                                  Stage 3: Clinical trials
+                                </mat-option>
+                                <mat-option value="Stage 4: Limited clinical use">
+                                  Stage 4: Limited clinical use
+                                </mat-option>
+                                <mat-option value="Stage 5: Scaling clinical use">
+                                  Stage 5: Scaling clinical use
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                            <div *ngIf="g.clinical_stage.touched && g.clinical_stage.invalid" class="alert alert-danger">
+                              <div *ngIf="g.clinical_stage.errors.required">Please select clinical stage</div>
+                            </div>
+  
+                          <!-- <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Reusable</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+  
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">Autoclavable</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div>
+  
+                          <div class="in_radios">
+                              <label id="Reusable" class="block_lab">AC-Powered</label>
+                              <mat-radio-group aria-label="Select an option">
+                                  <mat-radio-button value="1">Yes</mat-radio-button>
+                                  <mat-radio-button value="2">No</mat-radio-button>
+                              </mat-radio-group>
+                          </div> -->
+                          
+  
+  
+                        <!-- <input type="email" nbInput fullWidth placeholder="Email">
+                        <input type="text" nbInput fullWidth placeholder="Mobile">
+                        <input type="file" nbInput fullWidth> -->
+                        
+                      </nb-card-body>
+                    </nb-card>
+                </div>
+            </div>
+          </form>
+          
+          <button nbButton matRipple nbStepperPrevious  class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext (click)="onSecondSubmit()" class="size-medium status-primary">next</button>
+        </nb-step>
+        <nb-step [stepControl]="thirdForm" label="Third step">
+            <form [formGroup]="thirdForm">
+              <div class="row">
                 <div class="col-lg-6">
                     <nb-card>
                       <!-- <nb-card-header>Edit Profile</nb-card-header> -->
@@ -184,32 +263,66 @@
 
                         <mat-form-field appearance="fill">
                             <mat-label>Regulatory stage</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
+                            <mat-select formControlName="regulatory_stage">
+                              <mat-option value="Stage 1: No regulatory submission">
+                                Stage 1: No regulatory submission
                               </mat-option>
+                              <mat-option value="Stage 2: Pending regulatory approval">
+                                Stage 2: Pending regulatory approval
+                              </mat-option>
+                              <mat-option value="Stage 3: Emergency use authorization">
+                                Stage 3: Emergency use authorization
+                              </mat-option>
+                              <mat-option value="Stage 4: Full regulatory approval">
+                                Stage 4: Full regulatory approval
+                              </mat-option>
+                              <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option> -->
                             </mat-select>
-                          </mat-form-field>
+                        </mat-form-field>
+                        <div *ngIf="h.regulatory_stage.touched && h.regulatory_stage.invalid" class="alert alert-danger">
+                          <div *ngIf="h.regulatory_stage.errors.required">Please select a value</div>
+                        </div>
 
                         <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
     
                         <mat-form-field appearance="fill" class="mt-0 pb-0">
                             <mat-label>Regulatory approvals</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
+                            <mat-select formControlName="regulatory_approvals">
+                              <mat-option value="US FDA">
+                                US FDA
                               </mat-option>
+                              <mat-option value="CE">
+                                CE
+                              </mat-option>
+                              <mat-option value="Health Canada">
+                                Health Canada
+                              </mat-option>
+                              <mat-option value="CFDA">
+                                CFDA
+                              </mat-option>
+                              <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option> -->
                             </mat-select>
-                          </mat-form-field>
+                        </mat-form-field>
+                        <div *ngIf="h.regulatory_approvals.touched && h.regulatory_approvals.invalid" class="alert alert-danger">
+                          <div *ngIf="h.regulatory_approvals.errors.required">Please select a value</div>
+                        </div>
+
     
                           <mat-form-field appearance="fill" class="mt-0 pb-0">
                             <mat-label>Where deployed?</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
+                            <mat-select formControlName="country">
+                              <mat-option *ngFor="let country of countries" [value]="country.id">
+                                {{country.name}}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
+                          <div *ngIf="h.country.touched && h.country.invalid" class="alert alert-danger">
+                            <div *ngIf="h.country.errors.required">Please select a value</div>
+                          </div>
                       </nb-card-body>
                     </nb-card>
                   </div>
@@ -217,11 +330,12 @@
                     <nb-card>
                         <nb-card-body>
 
-                            <input type="text" nbInput fullWidth placeholder="Website Project Link">
+                            <input type="text" formControlName="website_link" nbInput fullWidth placeholder="Website Project Link">
                             
-                            <input type="file" nbInput fullWidth> 
+                            <mat-label>Materials</mat-label>
+                            <input type="file" (change)="onMaterialFileChange($event)" formControlName="materials" nbInput fullWidth> 
 
-                            <input type="text" nbInput fullWidth placeholder="Manufacturers">
+                            <input type="text" formControlName="manufacturers" nbInput fullWidth placeholder="Manufacturers">
 
                               
     
@@ -258,118 +372,35 @@
                         </nb-card-body>
                       </nb-card>
                   </div>
-              </div>
+            </div>
+            </form>
+            
           <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
-          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
+          <button nbButton matRipple nbStepperNext (click)="onThirdSubmit()" class="size-medium status-primary">next</button>
         </nb-step>
-        <nb-step [label]="labelFour">
+        <nb-step [stepControl]="fourthForm" [label]="labelFour">
           <ng-template #labelFour>Fourth step</ng-template>
-          <div class="row">
-            <div class="col-lg-6">
-                <nb-card>
-                  <!-- <nb-card-header>Edit Profile</nb-card-header> -->
-                  <nb-card-body>
-
-                    <label>Design files</label>
-                    <input type="file" nbInput fullWidth> 
-
-                    <label>Training documents</label>
-                    <input type="file" nbInput fullWidth> 
-
-                    <input type="text" nbInput fullWidth placeholder="Related publications">
-
-                    <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
-
-                  </nb-card-body>
-                </nb-card>
-              </div>
-              <div class="col-lg-6">
-                <nb-card>
-                    <nb-card-body>
-
-                        <label>Device images</label>
-                        <input type="file" nbInput fullWidth> 
-
-                        <label class="w-100">Device videos</label>
-                        <textarea rows="3" nbInput fullwidth class="w-100"></textarea>
-
-                        <input type="text" nbInput fullWidth placeholder="Device characteristics">
-
-                          
-
-                        <!-- <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Reusable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">Autoclavable</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-
-                        <div class="in_radios">
-                            <label id="Reusable" class="block_lab">AC-Powered</label>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div> -->
-                        
-
-
-                      <!-- <input type="email" nbInput fullWidth placeholder="Email">
-                      <input type="text" nbInput fullWidth placeholder="Mobile">
-                      <input type="file" nbInput fullWidth> -->
-                      
-                    </nb-card-body>
-                  </nb-card>
-              </div>
-          </div>
-          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
-          <button nbButton matRipple nbStepperNext class="size-medium status-primary">next</button>
-        </nb-step>
-
-        <nb-step [label]="labelFifth">
-            <ng-template #labelFifth>Fifth step</ng-template>
+          <form [formGroup]="fourthForm">
             <div class="row">
               <div class="col-lg-6">
                   <nb-card>
                     <!-- <nb-card-header>Edit Profile</nb-card-header> -->
                     <nb-card-body>
-
-                    <label>Standards Compliance</label>   
-                    <section class="example-section">
-                        <mat-checkbox class="example-margin">Checked</mat-checkbox>
-                        <mat-checkbox class="example-margin">Indeterminate</mat-checkbox>
-                    </section>
-
-                    <h4>Instructions For Use</h4>
-
-                      <label>Unaffiliated Individual</label>
-                      <input type="file" nbInput fullWidth> 
   
-                      <label>Unaffiliated Group</label>
-                      <input type="file" nbInput fullWidth> 
-
-                      <label>For-profit company</label>
-                      <input type="file" nbInput fullWidth> 
-
-                      <label>Non-profit organization (not academic)</label>
-                      <input type="file" nbInput fullWidth> 
-
-                      <label>University</label>
-                      <input type="file" nbInput fullWidth> 
-
-                      <label>Government agency</label>
-                      <input type="file" nbInput fullWidth> 
-  
-  
+                      <!-- <label>Design files</label> -->
+                      <input type="text" formControlName="design_files" nbInput fullWidth placeholder="Design Files">
+                      <div *ngIf="i.design_files.touched && i.design_files.invalid" class="alert alert-danger">
+                        <div *ngIf="i.design_files.errors.required">Please select a value</div>
+                      </div>
+                      <!-- <label>Training documents</label> -->
+                      <input type="text" formControlName="training_documents" nbInput fullWidth placeholder="Training Documents">
+                      <div *ngIf="i.training_documents.touched && i.training_documents.invalid" class="alert alert-danger">
+                        <div *ngIf="i.training_documents.errors.required">Please enter link to training documents</div>
+                      </div>
+                      <input type="text" formControlName="related_publications" nbInput fullWidth placeholder="Related publications">
+                      <div *ngIf="i.related_publications.touched && i.related_publications.invalid" class="alert alert-danger">
+                        <div *ngIf="i.related_publications.errors.required">Please enter link to related publications</div>
+                      </div>
                       <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
   
                     </nb-card-body>
@@ -378,52 +409,103 @@
                 <div class="col-lg-6">
                   <nb-card>
                       <nb-card-body>
-
-                        <h4>Innovator Type</h4>
-
-                          <label class="add_tens">Team <span><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
-                          <input type="text" nbInput fullWidth placeholder="Add multiple innovator team members">
   
-                        
-  
-                            
-  
-                          <!-- <div class="in_radios">
-                              <label id="Reusable" class="block_lab">Reusable</label>
-                              <mat-radio-group aria-label="Select an option">
-                                  <mat-radio-button value="1">Yes</mat-radio-button>
-                                  <mat-radio-button value="2">No</mat-radio-button>
-                              </mat-radio-group>
+                          <label>Device images</label>
+                          <input formControlName="device_image" (change)="onDeviceFileChange($event)" multiple type="file" nbInput fullWidth> 
+                          <div *ngIf="i.device_image.touched && i.device_image.invalid" class="alert alert-danger">
+                            <div *ngIf="i.device_image.errors.required">Please upload device images</div>
                           </div>
-  
-                          <div class="in_radios">
-                              <label id="Reusable" class="block_lab">Autoclavable</label>
-                              <mat-radio-group aria-label="Select an option">
-                                  <mat-radio-button value="1">Yes</mat-radio-button>
-                                  <mat-radio-button value="2">No</mat-radio-button>
-                              </mat-radio-group>
+                          <label class="w-100">Device videos</label>
+                          <textarea formControlName="device_videos" rows="3" nbInput fullwidth class="w-100"></textarea>
+                          <div *ngIf="i.device_videos.touched && i.device_videos.invalid" class="alert alert-danger">
+                            <div *ngIf="i.device_videos.errors.required">Please enter link to device videos</div>
                           </div>
-  
-                          <div class="in_radios">
-                              <label id="Reusable" class="block_lab">AC-Powered</label>
-                              <mat-radio-group aria-label="Select an option">
-                                  <mat-radio-button value="1">Yes</mat-radio-button>
-                                  <mat-radio-button value="2">No</mat-radio-button>
-                              </mat-radio-group>
-                          </div> -->
-                          
-  
-  
-                        <!-- <input type="email" nbInput fullWidth placeholder="Email">
-                        <input type="text" nbInput fullWidth placeholder="Mobile">
-                        <input type="file" nbInput fullWidth> -->
-                        
+                          <input type="text" formControlName="device_characteristics" nbInput fullWidth placeholder="Device characteristics">
+                          <div *ngIf="i.device_characteristics.touched && i.device_characteristics.invalid" class="alert alert-danger">
+                            <div *ngIf="i.device_characteristics.errors.required">Please enter device characteristics</div>
+                          </div>
                       </nb-card-body>
                     </nb-card>
                 </div>
             </div>
+          </form>
+          
+          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
+          <button nbButton matRipple nbStepperNext (click)="onFourthSubmit()" class="size-medium status-primary">next</button>
+        </nb-step>
+
+        <nb-step [stepControl]="fifthForm" [label]="labelFifth">
+            <ng-template #labelFifth>Fifth step</ng-template>
+            <form [formGroup]="fifthForm">
+              <div class="row">
+                <div class="col-lg-6">
+                    <nb-card>
+                      <!-- <nb-card-header>Edit Profile</nb-card-header> -->
+                      <nb-card-body>
+  
+                      <label>Standards Compliance</label>   
+                      <section class="example-section">
+                          <mat-checkbox (change)="onChangeCompliance($event)" value="checked" class="example-margin">Checked</mat-checkbox>
+                          <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox>
+                      </section>
+                      <div *ngIf="j.standard_compliances.touched && j.standard_compliances.invalid" class="alert alert-danger">
+                        <div *ngIf="j.standard_compliances.errors.required">Please select a value</div>
+                      </div>
+  
+                      <h4>Instructions For Use</h4>
+                      <input type="file" (change)="onInstructionFileChange($event)" formControlName="use_instructions" nbInput fullWidth>
+                      <div *ngIf="j.use_instructions.touched && j.use_instructions.invalid" class="alert alert-danger">
+                        <div *ngIf="j.use_instructions.errors.required">Please upload a file</div>
+                      </div>
+    
+                      </nb-card-body>
+                    </nb-card>
+                  </div>
+                  <div class="col-lg-6">
+                    <nb-card>
+                        <nb-card-body>
+  
+                          <h4>Innovator Type</h4>
+                          <mat-form-field appearance="fill" class="mt-0 pb-0">
+                            <mat-label>Innovator Type</mat-label>
+                            <mat-select formControlName="innovator_type">
+                              <mat-option value="Unaffiliated Individual">
+                                Unaffiliated Individual
+                              </mat-option>
+                              <mat-option value="Unaffiliated Group">
+                                Unaffiliated Group
+                              </mat-option>
+                              <mat-option value="For-profit company">
+                                For-profit company
+                              </mat-option>
+                              <mat-option value="Non-profit organization (not academic)">
+                                Non-profit organization (not academic)
+                              </mat-option>
+                              <mat-option value="University">
+                                University
+                              </mat-option>
+                              <mat-option value="Government agency">
+                                Government agency
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <div *ngIf="j.innovator_type.touched && j.innovator_type.invalid" class="alert alert-danger">
+                            <div *ngIf="j.innovator_type.errors.required">Please select a value</div>
+                          </div>
+  
+                            <label class="add_tens">Team <span><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
+                            <input type="text" nbInput fullWidth placeholder="Add multiple innovator team members">
+    
+                          
+    
+                        </nb-card-body>
+                      </nb-card>
+                  </div>
+              </div>
+            </form>
+            
             <button nbButton matRipple nbStepperPrevious class="size-medium status-primary">prev</button>
-            <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary">next</button>
+            <button nbButton matRipple (click)="onFifthSubmit()" class="size-medium status-primary">submit</button>
           </nb-step>
       </nb-stepper>
     </nb-card-body>

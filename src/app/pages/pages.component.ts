@@ -14,5 +14,10 @@ import { MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent {
 
-  menu = MENU_ITEMS;
+  menu = MENU_ITEMS;  
+
+  constructor(){
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add("nb-theme-material-light");
+  }
 }

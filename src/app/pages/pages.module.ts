@@ -10,7 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { DeviceListingComponent } from './device-listing/device-listing.component';
 import { DeviceInnovatorsListingComponent } from './device-innovators-listing/device-innovators-listing.component';
 import { CmsComponent } from './cms/cms.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule as ngFormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -73,6 +73,7 @@ const materialModules = [
     NbSelectModule,
     NbUserModule,
     ngFormsModule,
+    ReactiveFormsModule,
     NbStepperModule,
     NbTabsetModule,
     ...materialModules,
