@@ -28,7 +28,7 @@
   
                         <mat-form-field appearance="fill" class="mt-0 pb-0">
                           <mat-label>Device type</mat-label>
-                          <mat-select formControlName="device_type">
+                          <mat-select (selectionChange)="deviceCatChange($event.value)" formControlName="device_type">
                             <mat-option value="">Select Device Type</mat-option>
                             <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
                               {{sub.subcategory_name}}
@@ -420,7 +420,12 @@
                           <div *ngIf="i.device_videos.touched && i.device_videos.invalid" class="alert alert-danger">
                             <div *ngIf="i.device_videos.errors.required">Please enter link to device videos</div>
                           </div>
-                          <input type="text" formControlName="device_characteristics" nbInput fullWidth placeholder="Device characteristics">
+                          <label>Device Characteristics</label>   
+                      <section class="example-section">
+                          <mat-checkbox *ngFor="let compliance of deviceCharacteristics" (change)="onDeviceCharacteristics($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                          <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
+                      </section>
+                          <!-- <input type="text" formControlName="device_characteristics" nbInput fullWidth placeholder="Device characteristics"> -->
                           <div *ngIf="i.device_characteristics.touched && i.device_characteristics.invalid" class="alert alert-danger">
                             <div *ngIf="i.device_characteristics.errors.required">Please enter device characteristics</div>
                           </div>
@@ -445,8 +450,8 @@
   
                       <label>Standards Compliance</label>   
                       <section class="example-section">
-                          <mat-checkbox (change)="onChangeCompliance($event)" value="checked" class="example-margin">Checked</mat-checkbox>
-                          <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox>
+                          <mat-checkbox *ngFor="let compliance of deviceCompliance" (change)="onChangeCompliance($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                          <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
                       </section>
                       <div *ngIf="j.standard_compliances.touched && j.standard_compliances.invalid" class="alert alert-danger">
                         <div *ngIf="j.standard_compliances.errors.required">Please select a value</div>

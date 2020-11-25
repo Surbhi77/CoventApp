@@ -29,13 +29,16 @@ export class DeviceListingComponent implements OnInit {
   secondForm: FormGroup;
   thirdForm: FormGroup;
   countries: any;
-  linearMode:boolean=false;
+  linearMode:boolean=true;
   fourthForm: FormGroup;
   fifthForm: FormGroup;
   instructionFile: any=[];
   materialFile: any=[];
   deviceFile: any=[];
   complianceArray: any=[];
+  deviceCompliance: any=[];
+  deviceCharacteristics: any=[];
+  characteristicsArray: any=[];
 
   constructor(private toastr: ToastrService,private fb:FormBuilder,
               private router: Router,private apiService:ApiService) 
@@ -135,6 +138,46 @@ export class DeviceListingComponent implements OnInit {
 
     }
     
+  }
+
+  deviceCatChange(id){
+    this.apiService.getCompliance(id).subscribe(res=>{
+      this.deviceCompliance = res['data'][0]['compliance_data'].split(',');
+      console.log(this.deviceCompliance)
+    });
+    this.apiService.getCharacteristics(id).subscribe(res=>{
+      this.deviceCharacteristics = res['data'][0]['characteristics_data'].split(',');
+      console.log(this.deviceCharacteristics)
+    })
+  }
+
+  onDeviceCharacteristics($event){
+    if($event.checked) {
+      this.characteristicsArray.push($event.source.value);
+      this.fourthForm.patchValue({
+        'device_characteristics':this.characteristicsArray.toString()
+      });
+      this.fourthForm.updateValueAndValidity();
+      console.log(this.fourthForm.value.standard_compliances)
+    } else {
+      let index = this.characteristicsArray.indexOf($event.source.value);
+      this.characteristicsArray.splice(index,1);
+      if(this.characteristicsArray.length == 0){
+        this.fourthForm.patchValue({
+          'device_characteristics':''
+        });
+        this.fourthForm.updateValueAndValidity();
+        console.log(this.fourthForm.value.standard_compliances)
+      }else{
+        this.fourthForm.patchValue({
+          'device_characteristics':this.characteristicsArray.toString()
+        });
+        this.fourthForm.updateValueAndValidity();
+        console.log(this.fourthForm.value.device_characteristics)
+      }
+    }
+
+
   }
 
   onChangeCompliance($event){
