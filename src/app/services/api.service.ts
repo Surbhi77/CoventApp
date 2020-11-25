@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, startWith, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  public baseAPi = "http://134.209.68.96:9700/api/";
+  public baseAPi = "http://localhost:9700/frontend/";
 
   constructor(private http:HttpClient) {
 
@@ -16,12 +15,36 @@ export class ApiService {
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
-
-  public getUsers(){
-    return this.http.get('http://134.209.68.96:9700/secureApi/user'); 
+  
+  public register(obj){
+    return this.http.post(this.baseAPi+'signup',obj);
   }
 
+  public getDeviceListing(){
+    return this.http.get(this.baseAPi+'device-category')
+  }
 
+  public getSubcategoryListing(id){
+    return this.http.get(this.baseAPi+'device-sub-category/'+id);
+  }
 
-  
+  public getCountryListing(){
+    return this.http.get(this.baseAPi+'country-list')
+  }
+
+  public addInnovatorData(obj){
+    return this.http.post(this.baseAPi+'add-innovator-data',obj);
+  }
+
+  public getListing(obj){
+    return this.http.post(this.baseAPi+'innovator-list',obj)
+  }
+
+  public getCompliance(id){
+    return this.http.get(this.baseAPi+'covent_compliance/'+id);
+  }
+
+  public getCharacteristics(id){
+    return this.http.get(this.baseAPi+'covent_characteristics/'+id)
+  }
 }
