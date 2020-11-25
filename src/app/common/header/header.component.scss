@@ -1,5 +1,5 @@
 .top_centions{
-    background-color: #0d3272;
+    background-color: #13bfb3;
     height: 46px;
     align-items: center;
     justify-content: center;
@@ -14,12 +14,12 @@ p.support-top {
 }
 #header-suppot {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .size-normal {
     padding: 4px 8px;
-    background-color: #f66e0b;
+    background-color: #13bfb3;
     color: #fff;
     text-decoration: none;
     font-size: 14px;
@@ -31,14 +31,14 @@ p.support-top {
     font-weight: 700;
 }
 header.main_heraders {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #ccc;
 }
 #had_navs a{
     font-size: 1.1em;
     font-weight: 500;
-    color: #012d74;
+    color: #444;
 }
 ul#had_navs li {
     padding-left: 15px;
@@ -46,4 +46,30 @@ ul#had_navs li {
 }
 ul#had_navs li:last-child {
     padding-right: 0;
+}
+ul.footer-links li a {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+ul.footer-social {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    margin: 0;
+}
+
+ul.footer-social li {
+    margin-right: 18px;
+    line-height: 1em;
+    list-style: none;
+}
+
+ul.footer-social li a {
+    color: #fff;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+    font-size: 20px;
+    text-decoration: none;
 }
