@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Data Listing',
     icon: 'edit-2-outline',
-    link: '/pages/cms',
+    link: '/pages/data-listing',
   },
   // {
   //   title: 'FEATURES',

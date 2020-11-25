@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../@core/data/smart-table';
+import {ApiService} from  './../../services/api.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ngx-cms',
@@ -31,31 +34,27 @@ export class CmsComponent {
         type: 'number',
         filter: false
       },
-      firstName: {
+      device_name: {
         title: 'Device Name',
         type: 'string',
         filter: false
       },
-      lastname: {
-        title: 'Device type',
+      category_name: {
+        title: 'Device Category',
         type: 'string',
         filter: false
       },
-      email: {
-        title: 'Created On',
+      subcategory_name: {
+        title: 'Device Type',
         type: 'string',
         filter: false
       },
-      username: {
-        title: 'Status',
-        type: 'string',
+      device_created_date: {
+        title: 'Create Date',
+        type: 'date',
         filter: false
       },
-      age: {
-        title: 'Reviews',
-        type: 'number',
-        filter: false
-      },
+
       // username: {
       //   title: 'Status',
       //   type: 'string',
@@ -75,11 +74,30 @@ export class CmsComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
+  deviceListing: any;
 
-  constructor(private service: SmartTableData) {
+  constructor(private apiService:ApiService,private service: SmartTableData) {
     const data = this.service.getData();
    // console.log(data)
     this.source.load(data);
+  }
+
+  ngOnInit(){
+    let userDetails = JSON.parse(localStorage.getItem("userData"));
+    let obj={
+      "user_id":userDetails.id
+    }
+    this.apiService.getListing(obj).subscribe(res=>{
+      if(res["success"]){
+        this.deviceListing = res['data'];
+        this.deviceListing.forEach((currentValue, index) => {
+          currentValue.id = index+1
+        });
+        this.source.load(this.deviceListing)
+      }else{
+        this.deviceListing = [];
+      }
+    })
   }
 
   onDeleteConfirm(event): void {

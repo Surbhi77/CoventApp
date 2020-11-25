@@ -56,7 +56,7 @@ const routes: Routes = [{
       component: DeviceInnovatorsListingComponent,
     },
     {
-      path: 'cms',
+      path: 'data-listing',
       component: CmsComponent,
     },
     {

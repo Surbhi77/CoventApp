@@ -35,4 +35,16 @@ export class ApiService {
   public addInnovatorData(obj){
     return this.http.post(this.baseAPi+'add-innovator-data',obj);
   }
+
+  public getListing(obj){
+    return this.http.post(this.baseAPi+'innovator-list',obj)
+  }
+
+  public getCompliance(id){
+    return this.http.get(this.baseAPi+'covent_compliance/'+id);
+  }
+
+  public getCharacteristics(id){
+    return this.http.get(this.baseAPi+'covent_characteristics/'+id)
+  }
 }
