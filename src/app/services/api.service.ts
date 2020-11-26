@@ -47,4 +47,8 @@ export class ApiService {
   public getCharacteristics(id){
     return this.http.get(this.baseAPi+'covent_characteristics/'+id)
   }
+
+  public deleteDevice(id){
+    return this.http.get(this.baseAPi+'device_delete/'+id)
+  }
 }
