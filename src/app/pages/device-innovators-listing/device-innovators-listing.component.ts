@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../@core/data/smart-table';
 import {ApiService} from  './../../services/api.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'ngx-device-innovators-listing',
@@ -9,7 +10,7 @@ import {ApiService} from  './../../services/api.service';
   styleUrls: ['./device-innovators-listing.component.scss']
 })
 export class DeviceInnovatorsListingComponent {
-
+   dtOptions:DataTables.Settings = {};
    settings = {
     actions: {
       add: false,
@@ -71,11 +72,14 @@ export class DeviceInnovatorsListingComponent {
       // },
     },
   };
-
+ // dtTrigger:any=Subject;
   source: LocalDataSource = new LocalDataSource();
   deviceListing: any=[];
+  dtTrigger = new Subject();
 
   constructor(private service: SmartTableData,private apiService:ApiService) {
+    
+      
     //const data = this.service.getData();
    // console.log(data)
    // this.source.load(data);
@@ -86,13 +90,20 @@ export class DeviceInnovatorsListingComponent {
     // let obj={
     //   "user_id":userDetails.id
     // }
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+    lengthMenu : [5, 10, 25],
+      processing: true
+    }
     this.apiService.getInnovatorList().subscribe(res=>{
       if(res["success"]){
         this.deviceListing = res['data'];
         this.deviceListing.forEach((currentValue, index) => {
           currentValue.id = index+1
         });
-        this.source.load(this.deviceListing)
+        this.dtTrigger.next();
+      //  this.source.load(this.deviceListing)
       }else{
         this.deviceListing = [];
       }
@@ -105,6 +116,26 @@ export class DeviceInnovatorsListingComponent {
     } else {
       event.confirm.reject();
     }
+  }
+
+  block(item,i){
+   // alert("here");
+   console.log(item,i);
+   this.apiService.blockDevice(item.device_data_id).subscribe(res=>{
+     if(res['success']){
+       this.deviceListing[i].device_status=0
+     }
+   })
+  }
+
+  unblock(item,i){
+    console.log(item,i);
+    this.apiService.unBlockDevice(item.device_data_id).subscribe(res=>{
+      if(res['success']){
+        this.deviceListing[i].device_status=1
+      }
+    })
+    //alert("unblock called")
   }
 
 }

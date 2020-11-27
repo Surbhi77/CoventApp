@@ -23,6 +23,7 @@ import {
 } from '@nebular/theme';
 import { ReqInterceptor } from './req.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
+    DataTablesModule,
     FormsModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9700/frontend/";
+  public baseAPi = "http://localhost:9700/api/";
+  public secureApi="http://localhost:9700/secureApi/"
 
   constructor(private http:HttpClient) {
 
@@ -14,6 +15,10 @@ export class ApiService {
 
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
+  }
+
+  public getInnovatorList() {
+    return this.http.get(this.secureApi+'innovator-list')
   }
   
   public register(obj){
@@ -24,27 +29,37 @@ export class ApiService {
     return this.http.get(this.baseAPi+'device-category')
   }
 
-  public getSubcategoryListing(id){
-    return this.http.get(this.baseAPi+'device-sub-category/'+id);
+  public blockDevice(id){
+    return this.http.get(this.secureApi+'block-device/'+id)
   }
 
-  public getCountryListing(){
-    return this.http.get(this.baseAPi+'country-list')
+  public unBlockDevice(id){
+    return this.http.get(this.secureApi+'unblock-device/'+id)
   }
 
-  public addInnovatorData(obj){
-    return this.http.post(this.baseAPi+'add-innovator-data',obj);
-  }
+  // public getSubcategoryListing(id){
+  //   return this.http.get(this.baseAPi+'device-sub-category/'+id);
+  // }
 
-  public getListing(obj){
-    return this.http.post(this.baseAPi+'innovator-list',obj)
-  }
+  // public getCountryListing(){
+  //   return this.http.get(this.baseAPi+'country-list')
+  // }
 
-  public getCompliance(id){
-    return this.http.get(this.baseAPi+'covent_compliance/'+id);
-  }
+  // public addInnovatorData(obj){
+  //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
+  // }
 
-  public getCharacteristics(id){
-    return this.http.get(this.baseAPi+'covent_characteristics/'+id)
-  }
+  // public getListing(obj){
+  //   return this.http.post(this.baseAPi+'innovator-list',obj)
+  // }
+
+  // public getCompliance(id){
+  //   return this.http.get(this.baseAPi+'covent_compliance/'+id);
+  // }
+
+  // public getCharacteristics(id){
+  //   return this.http.get(this.baseAPi+'covent_characteristics/'+id)
+  // }
+
+
 }

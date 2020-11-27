@@ -39,6 +39,8 @@ import { AddSlidersComponent } from './add-sliders/add-sliders.component';
 import { WebsiteUserListingComponent } from './website-user-listing/website-user-listing.component';
 import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { DataTablesModule } from 'angular-datatables';
+
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -58,6 +60,7 @@ const materialModules = [
     ThemeModule,
     NbMenuModule,
     DashboardModule,
+    DataTablesModule,
     ECommerceModule,
     MiscellaneousModule,
     Ng2SmartTableModule,

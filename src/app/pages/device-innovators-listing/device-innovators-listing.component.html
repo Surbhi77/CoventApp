@@ -4,7 +4,29 @@
   </nb-card-header>
 
   <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table> 
+    <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>  -->
+    <table *ngIf="deviceListing && deviceListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Device Name</th>
+          <th>Device Category</th>
+          <th>Device Type</th>
+          <th>Create Date</th>
+          <th>Action Buttons</th>
+        </tr>
+      </thead>
+      <tbody >
+       <tr *ngFor="let item of deviceListing;let i=index">
+             <td>{{item.id}}</td>
+             <td>{{item.device_name}}</td>
+             <td>{{item.category_name}}</td>
+             <td>{{item.subcategory_name}}</td>
+             <td>{{item.device_created_date}}</td>
+             <td><a *ngIf="item.device_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)">Unblock</a></td>
+         </tr>
+      </tbody>
+    </table>
   </nb-card-body>
 </nb-card>
