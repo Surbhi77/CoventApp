@@ -13,7 +13,8 @@ import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.co
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import {ReviewerListComponent} from './reviewer-list/reviewer-list.component'
+import {ReviewerListComponent} from './reviewer-list/reviewer-list.component';
+import {ComplianceComponent} from './compliance/compliance.component'
 
 const routes: Routes = [{
   path: '',
@@ -42,6 +43,10 @@ const routes: Routes = [{
     {
       path: 'add-cms',
       component: AddCmsComponent,
+    },
+    {
+      path: 'add-compliance',
+      component: ComplianceComponent
     },
     {
       path: 'add-sliders',
