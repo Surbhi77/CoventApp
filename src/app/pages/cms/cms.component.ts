@@ -29,11 +29,11 @@ export class CmsComponent {
       viewButtonContent: '<i class="nb-trash"></i>',
     },
     columns: {
-      id: {
-        title: 'S.no',
-        type: 'number',
-        filter: false
-      },
+      // id: {
+      //   title: 'S.no',
+      //   type: 'number',
+      //   filter: false
+      // },
       device_name: {
         title: 'Device Name',
         type: 'string',
@@ -101,11 +101,26 @@ export class CmsComponent {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
+    console.log(event)
+    if(window.confirm('Are you sure you want to delete')) {
+      this.apiService.deleteDevice(event.data.device_data_id).subscribe(res=>{
+        if(res['success']){
+
+          var newArr = this.deviceListing
+          newArr.forEach((currentValue, index) => {
+            currentValue.id = index+1
+          });
+        // this.source.update(this.deviceListing,newArr)
+          this.source.refresh()
+          event.confirm.resolve();
+        }
+      })
     }
+    // if (window.confirm('Are you sure you want to delete?')) {
+    //   event.confirm.resolve();
+    // } else {
+    //   event.confirm.reject();
+    // }
   }
 
 
