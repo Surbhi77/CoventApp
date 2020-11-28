@@ -40,6 +40,7 @@ import { WebsiteUserListingComponent } from './website-user-listing/website-user
 import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReviewerListComponent } from './reviewer-list/reviewer-list.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -87,6 +88,7 @@ const materialModules = [
     WebsiteUserListingComponent,
     ReviewerListingComponent,
     NewsletterComponent,
+    ReviewerListComponent,
   ],
 })
 export class PagesModule {

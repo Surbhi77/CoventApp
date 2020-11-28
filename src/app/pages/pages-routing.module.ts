@@ -13,6 +13,7 @@ import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.co
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import {ReviewerListComponent} from './reviewer-list/reviewer-list.component'
 
 const routes: Routes = [{
   path: '',
@@ -33,6 +34,10 @@ const routes: Routes = [{
     {
       path: 'website-user-listing',
       component: WebsiteUserListingComponent,
+    },
+    {
+      path: 'reviewer-user-listing',
+      component: ReviewerListComponent,
     },
     {
       path: 'add-cms',

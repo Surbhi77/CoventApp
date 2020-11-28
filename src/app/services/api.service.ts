@@ -37,6 +37,22 @@ export class ApiService {
     return this.http.get(this.secureApi+'unblock-device/'+id)
   }
 
+  public blockUser(id){
+    return this.http.get(this.secureApi+'block-user/'+id)
+  }
+
+  public unBlockUser(id){
+    return this.http.get(this.secureApi+'unblock-user/'+id)
+  }
+
+  public getUserInnovatorList(){
+    return this.http.get(this.secureApi+'user-innovator-list')
+  }
+
+  public getReviewerList(){
+    return this.http.get(this.secureApi+'reviewer-list')
+  }
+
   // public getSubcategoryListing(id){
   //   return this.http.get(this.baseAPi+'device-sub-category/'+id);
   // }

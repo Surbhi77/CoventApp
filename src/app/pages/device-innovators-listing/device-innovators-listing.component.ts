@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableData } from '../../@core/data/smart-table';
 import {ApiService} from  './../../services/api.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'ngx-device-innovators-listing',
@@ -11,73 +8,11 @@ import { Subject } from 'rxjs';
 })
 export class DeviceInnovatorsListingComponent {
    dtOptions:DataTables.Settings = {};
-   settings = {
-    actions: {
-      add: false,
-      position: 'right'
-      },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    view:{
-      viewButtonContent: '<i class="nb-trash"></i>',
-    },
-    columns: {
-      id: {
-        title: 'S.no',
-        type: 'number',
-        filter: false
-      },
-      device_name: {
-        title: 'Device Name',
-        type: 'string',
-        filter: false
-      },
-      category_name: {
-        title: 'Device Category',
-        type: 'string',
-        filter: false
-      },
-      subcategory_name: {
-        title: 'Device Type',
-        type: 'string',
-        filter: false
-      },
-      device_created_date: {
-        title: 'Create Date',
-        type: 'date',
-        filter: false
-      },
 
-      // username: {
-      //   title: 'Status',
-      //   type: 'string',
-      //   filter: false
-      // },
-      // lastname: {
-      //   title: 'Created Date',
-      //   type: 'string',
-      //   filter: false
-      // },
-      // age: {
-      //   title: 'Verification Status',
-      //   type: 'number',
-      //   filter: false
-      // },
-    },
-  };
- // dtTrigger:any=Subject;
-  source: LocalDataSource = new LocalDataSource();
   deviceListing: any=[];
-  dtTrigger = new Subject();
 
-  constructor(private service: SmartTableData,private apiService:ApiService) {
+
+  constructor(private apiService:ApiService) {
     
       
     //const data = this.service.getData();
@@ -102,7 +37,7 @@ export class DeviceInnovatorsListingComponent {
         this.deviceListing.forEach((currentValue, index) => {
           currentValue.id = index+1
         });
-        this.dtTrigger.next();
+       // this.dtTrigger.next();
       //  this.source.load(this.deviceListing)
       }else{
         this.deviceListing = [];
