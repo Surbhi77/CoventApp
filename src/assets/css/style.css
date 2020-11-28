@@ -1,0 +1,28 @@
+nb-stepper.mt-0.vertical .header {
+    width: 200px !important;
+  }
+  .step-content {
+    padding-top: 0 !important;
+  }
+  .in_radios {
+    margin-bottom: 30px;
+  }
+  .mat-form-field{
+    margin-bottom: 30px;
+  }
+  .nb-theme-material-light nb-stepper .header .step.selected .label-index {
+    background-color: #6200ee;
+    border-color: #6200ee;
+    color: #fff;
+  }
+  .step-content {
+    width: 100%;
+}
+.errors {
+    position: absolute;
+    top: 35px;
+    font-size: 12px;
+}
+.tpo{
+    margin-top: 30px;
+}

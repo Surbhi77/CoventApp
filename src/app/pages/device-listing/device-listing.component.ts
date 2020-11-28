@@ -29,7 +29,7 @@ export class DeviceListingComponent implements OnInit {
   secondForm: FormGroup;
   thirdForm: FormGroup;
   countries: any;
-  linearMode:boolean=true;
+  linearMode:boolean=false;
   fourthForm: FormGroup;
   fifthForm: FormGroup;
   instructionFile: any=[];
