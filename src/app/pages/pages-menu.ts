@@ -32,6 +32,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Other Settings',
         link: '/pages/layout/infinite-list',
       },
+      {
+        title: 'Characteristics',
+        link: '/pages/characteristic-listing'
+      },
+      {
+        title:'Compliance',
+        link: '/pages/compliance-listing'  
+      }
     ],
   },
   {

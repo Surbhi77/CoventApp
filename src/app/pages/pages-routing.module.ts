@@ -15,6 +15,9 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import {ReviewerListComponent} from './reviewer-list/reviewer-list.component';
 import {ComplianceComponent} from './compliance/compliance.component'
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
+import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
 
 const routes: Routes = [{
   path: '',
@@ -47,6 +50,26 @@ const routes: Routes = [{
     {
       path: 'add-compliance',
       component: ComplianceComponent
+    },
+    {
+      path:'edit-compliance/:id',
+      component:ComplianceComponent
+    },
+    {
+      path:'add-characteristics',
+      component:CharacteristicsComponent
+    },
+    {
+      path:'edit-characteristics/:id',
+      component:CharacteristicsComponent
+    },
+    {
+      path:'compliance-listing',
+      component:ComplianceListingComponent
+    },
+    {
+      path:'characteristic-listing',
+      component:CharacteristicListingComponent
     },
     {
       path: 'add-sliders',

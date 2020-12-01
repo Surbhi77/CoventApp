@@ -1,5 +1,5 @@
 <nb-card>
-    <nb-card-header>Add Compliance</nb-card-header>
+    <nb-card-header>Add Characteristics</nb-card-header>
     <nb-card-body>
     <form [formGroup]="form">
         <mat-form-field appearance="fill">
@@ -21,9 +21,9 @@
             </mat-select>
           </mat-form-field>
 
-      <input formControlName="compliance_data" type="text" nbInput fullWidth placeholder="Comma Seperated compliances">
+      <input formControlName="characteristics_data" type="text" nbInput fullWidth placeholder="Comma Seperated Characteristics">
       <button (click)="saveComplianceData()" nbButton matRipple hero class="size-medium status-primary">
-       {{isEditScreen?'Update':'Add'}}
+       {{(isEditScreen)?'Update':'Add'}}
       </button>
     </form>
         

@@ -1,26 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
-import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'ngx-compliance',
-  templateUrl: './compliance.component.html',
-  styleUrls: ['./compliance.component.scss']
+  selector: 'ngx-characteristics',
+  templateUrl: './characteristics.component.html',
+  styleUrls: ['./characteristics.component.scss']
 })
-export class ComplianceComponent implements OnInit {
+export class CharacteristicsComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   category:any=[];
   subCatDevices:any=[];
   isEditScreen:boolean=false;
-  complianceId:any;
+  characteristicId:any;
 
   constructor(private toastr: ToastrService,
     private fb:FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private apiService:ApiService) { }
+    private apiService:ApiService) {
+
+   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
@@ -28,7 +30,7 @@ export class ComplianceComponent implements OnInit {
       if(params && params.id){
         this.isEditScreen=true
 
-        this.complianceId= params.id;
+        this.characteristicId= params.id;
         this.getDetails();
       }
       
@@ -40,21 +42,20 @@ export class ComplianceComponent implements OnInit {
         this.category = res['data']
       }
     });
-
     //this.apiService.getSubcategoryListing()
     this.form = this.fb.group({
       category_id: new FormControl('',[Validators.required]),
       sub_category_id: new FormControl('',[Validators.required]),
-      compliance_data: new FormControl('',[Validators.required])
+      characteristics_data: new FormControl('',[Validators.required])
     })
   }
 
   getDetails(){
-    this.apiService.complianceDetail(this.complianceId).subscribe(res=>{
+    this.apiService.characteristicDetail(this.characteristicId).subscribe(res=>{
       console.log(res['data']);
       this.form.patchValue({
         "category_id":res['data'][0].category_id,
-        "compliance_data":res['data'][0].compliance_data
+        "characteristics_data":res['data'][0].characteristics_data
       });
       let data = res['data'][0].sub_category_id
       this.apiService.getSubcategoryListing(res['data'][0].category_id).subscribe(res=>{
@@ -82,13 +83,13 @@ export class ComplianceComponent implements OnInit {
     let obj = {
       "category_id":this.form.value.category_id,
       "sub_category_id":this.form.value.sub_category_id,
-      "compliance_data":this.form.value.compliance_data
+      "characteristics_data":this.form.value.characteristics_data
     };
     if(!this.isEditScreen){
-      this.apiService.createCompliance(obj).subscribe(res=>{
+      this.apiService.createCharacteristics(obj).subscribe(res=>{
         //if()
         if(res['data']['existingId']){
-          let url = '/pages/edit-compliance/'+res['data']['existingId'];
+          let url = '/pages/edit-characteristics/'+res['data']['existingId'];
           console.log(url)
           this.toastr.error("Compliance already created for this category and subcategory consider editing it")
           setTimeout(() => {
@@ -97,22 +98,22 @@ export class ComplianceComponent implements OnInit {
         }
         if(res['data']['insertId']){
           this.toastr.success("Successfully created");
-          this.router.navigateByUrl('/pages/compliance-listing')
+          this.router.navigateByUrl('/pages/characteristic-listing')
         }
         console.log(res['data'])
       })
     }else{
-      obj['compliance_id']=this.complianceId;
-      console.log(obj)
-      this.apiService.updateCompliance(obj).subscribe(res=>{
+      obj['characteristics_id']=this.characteristicId;
+      this.apiService.updateCharacteristics(obj).subscribe(res=>{
         //if()
         if(res['success']){
           this.toastr.success("Successfully updated")
-          this.router.navigateByUrl('/pages/compliance-listing')
+          this.router.navigateByUrl('/pages/characteristic-listing')
         }
       })
     }
     
   }
+
 
 }
