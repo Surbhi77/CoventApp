@@ -26,3 +26,35 @@ nb-stepper.mt-0.vertical .header {
 .tpo{
     margin-top: 30px;
 }
+.banner_bars:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  bottom: 0;
+  z-index: auto;
+}
+.banner_bars {
+  position: relative;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+.btn-custom {
+  background: #13bfb3;
+  color: #fff;
+  padding: 8px 25px;
+}
+body ,html{
+  outline: none;
+}
+ul#had_navs li a:hover {
+  color: #13bfb3 !important;
+}

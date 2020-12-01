@@ -28,9 +28,11 @@ import { FooterComponent } from './common/footer/footer.component';
 import { LibraryFilterComponent } from './common/library-filter/library-filter.component';
 import { LibraryDetailsComponent } from './library-details/library-details.component';
 import { LibraryComponent } from './library/library.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
  
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
