@@ -41,6 +41,8 @@ import { AddSlidersComponent } from './add-sliders/add-sliders.component';
 import { WebsiteUserListingComponent } from './website-user-listing/website-user-listing.component';
 import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { ReviewListingComponent } from './review-listing/review-listing.component';
+import { QuestionListingComponent } from './question-listing/question-listing.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -89,6 +91,8 @@ const materialModules = [
     WebsiteUserListingComponent,
     ReviewerListingComponent,
     NewsletterComponent,
+    ReviewListingComponent,
+    QuestionListingComponent,
   ],
 })
 export class PagesModule {

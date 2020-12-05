@@ -6,8 +6,33 @@
     </nb-card-header>
   
     <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-      </ng2-smart-table> 
+      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>  -->
+      <table *ngIf="deviceListing && deviceListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Device Name</th>
+            <th>Device Categoryy</th>
+            <th>Device Type</th>
+            <th>Create Date</th>
+            <th>Action Buttons</th>
+          </tr>
+        </thead>
+        <tbody >
+         <tr *ngFor="let item of deviceListing;let i=index">
+               <td>{{i+1}}</td>
+               <td>{{item.device_name }}</td>
+               <td>{{item.category_name}}</td>
+               <td>{{item.subcategory_name}}</td>
+               <td>{{item.device_created_date}}</td>
+               <td><a [routerLink]="'/pages/review-listing/'+item.device_data_id">View Reviews</a><br/>
+                <a [routerLink]="'/pages/question-listing/'+item.device_data_id">View Questions</a><br/>
+                <!-- <a [routerLink]="'/pages/review-listing/'+item.innovator_id">Edit</a><br/> -->
+                  <a (click)="deleteCompliance(item,i)">Delete</a></td>
+           </tr>
+        </tbody>
+      </table>
     </nb-card-body>
   </nb-card>
   

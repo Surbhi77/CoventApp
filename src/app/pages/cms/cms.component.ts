@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../@core/data/smart-table';
 import {ApiService} from  './../../services/api.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'ngx-cms',
@@ -77,12 +76,16 @@ export class CmsComponent {
   deviceListing: any;
 
   constructor(private apiService:ApiService,private service: SmartTableData) {
-    const data = this.service.getData();
-   // console.log(data)
-    this.source.load(data);
+ 
   }
 
   ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+      processing: true
+    }
     let userDetails = JSON.parse(localStorage.getItem("userData"));
     let obj={
       "user_id":userDetails.id
@@ -90,10 +93,10 @@ export class CmsComponent {
     this.apiService.getListing(obj).subscribe(res=>{
       if(res["success"]){
         this.deviceListing = res['data'];
-        this.deviceListing.forEach((currentValue, index) => {
+        /*this.deviceListing.forEach((currentValue, index) => {
           currentValue.id = index+1
-        });
-        this.source.load(this.deviceListing)
+        });*/
+        // this.source.load(this.deviceListing)
       }else{
         this.deviceListing = [];
       }
