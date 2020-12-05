@@ -2,7 +2,8 @@
   <nb-card-header>Google Maps</nb-card-header>
   <nb-card-body>
     <google-map [center]="position" [zoom]="8" width="100%" height="36.5625rem">
-      <map-marker [position]="position"></map-marker>
+      <map-marker #markerElem (mapClick)="openInfo(markerElem, 'hello')" [position]="position"></map-marker>
+      <map-info-window><div [innerHtml]="infoContent"></div></map-info-window>
     </google-map>
   </nb-card-body>
 </nb-card>

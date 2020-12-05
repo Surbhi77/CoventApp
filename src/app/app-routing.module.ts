@@ -5,7 +5,9 @@ import {LibraryDetailsComponent} from './library-details/library-details.compone
 import {LibraryComponent} from './library/library.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
-import { ProjectLibraryComponent } from './project-library/project-library.component';
+import {MapComponent} from './map/map.component';
+import {MapDetailsComponent} from './map-details/map-details.component';
+import {InnovatorListingComponent} from './innovator-listing/innovator-listing.component';
 
 export const routes: Routes = [
   {
@@ -17,14 +19,10 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module')
     .then(m => m.AuthModule), 
-  }, 
-  {
-    path:'pro-library',
-    component:ProjectLibraryComponent
   },
   {
     path:'home',
-    component:HomeComponent
+    component:HomeComponent 
   },
   {
     path:'library-details/:id',
@@ -41,6 +39,18 @@ export const routes: Routes = [
   {
     path:'contact-us',
     component:ContactUsComponent
+  },
+  {
+    path:'map',
+    component:MapComponent
+  },
+  {
+    path:'map-details',
+    component:MapDetailsComponent
+  },
+  {
+    path:'innovator-listing',
+    component:InnovatorListingComponent
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'auth' },
