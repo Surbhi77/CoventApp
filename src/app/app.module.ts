@@ -30,9 +30,12 @@ import { LibraryDetailsComponent } from './library-details/library-details.compo
 import { LibraryComponent } from './library/library.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MapComponent } from './map/map.component';
+import { MapDetailsComponent } from './map-details/map-details.component';
+import { InnovatorListingComponent } from './innovator-listing/innovator-listing.component';
  
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
