@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
 }
 p.support-top {
     text-align: center;
@@ -31,9 +35,13 @@ p.support-top {
     font-weight: 700;
 }
 header.main_heraders {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
+    // padding-top: 15px;
+    // padding-bottom: 15px;
+    // border-bottom: 1px solid #ccc;
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    top: 40px;
 }
 #had_navs a{
     font-size: 1.1em;
