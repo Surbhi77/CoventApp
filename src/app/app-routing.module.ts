@@ -5,6 +5,7 @@ import {LibraryDetailsComponent} from './library-details/library-details.compone
 import {LibraryComponent} from './library/library.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import { ProjectLibraryComponent } from './project-library/project-library.component';
 
 export const routes: Routes = [
   {
@@ -18,11 +19,15 @@ export const routes: Routes = [
     .then(m => m.AuthModule), 
   }, 
   {
+    path:'pro-library',
+    component:ProjectLibraryComponent
+  },
+  {
     path:'home',
     component:HomeComponent
   },
   {
-    path:'library-details',
+    path:'library-details/:id',
     component:LibraryDetailsComponent
   },
   {
