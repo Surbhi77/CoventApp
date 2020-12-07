@@ -49,7 +49,7 @@ export const routes: Routes = [
     component:MapDetailsComponent
   },
   {
-    path:'innovator-listing',
+    path:'innovator-listing/:id',
     component:InnovatorListingComponent
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

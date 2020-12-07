@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   //  alert("called");
+   if(localStorage.getItem("isLoggedIn")){
+     this.router.navigateByUrl("/pages/dashboard")
+   }
   }
 
   login(){

@@ -33,7 +33,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MapComponent } from './map/map.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { InnovatorListingComponent } from './innovator-listing/innovator-listing.component';
- 
+import { RatingModule } from 'ng-starrating';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent],
   imports: [
@@ -43,6 +45,7 @@ import { InnovatorListingComponent } from './innovator-listing/innovator-listing
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    RatingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -54,6 +57,7 @@ import { InnovatorListingComponent } from './innovator-listing/innovator-listing
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NgbModule,
   ],
   bootstrap: [AppComponent],
 })
