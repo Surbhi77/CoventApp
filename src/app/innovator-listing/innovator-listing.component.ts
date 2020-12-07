@@ -9,18 +9,21 @@ import {ApiService} from './../services/api.service';
 export class InnovatorListingComponent implements OnInit {
   categoryId: any;
   innovatorListing:any=[];
-  imageBasePath:any='http://localhost:9700/'
+  imageBasePath:any='http://134.209.68.96:9700/'
 
   constructor(private router:Router,
-    private apiService:ApiService,
+    private apiService:ApiService, 
     private activatedRoute:ActivatedRoute) { }
 
     ngOnInit(): void {
       this.categoryId = this.activatedRoute.snapshot.params['id'];
       console.log(this.categoryId);
       this.getCategoryListing()
+
+      let body = document.getElementsByTagName('body')[0];
+      body.classList.add("absolute-header");
     }
-  
+
     getCategoryListing(){
       let obj={
         category_id:this.categoryId
@@ -32,10 +35,15 @@ export class InnovatorListingComponent implements OnInit {
         }
       })
     }
-
+    
     openDetails(item){
       this.router.navigateByUrl('/library-details/'+item.device_data_id);
       return false;
+    }
+
+    ngOnDestroy(){
+      let body = document.getElementsByTagName('body')[0];
+      body.classList.remove("absolute-header");
     }
 
 }

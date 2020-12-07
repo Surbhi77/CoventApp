@@ -1,4 +1,4 @@
-<section class="banner_bars py-5" style="background: url(./assets/images/library-01.jpg); background-repeat: no-repeat;background-size: cover;background-position: initial;">
+<!-- <section class="banner_bars py-5" style="background: url(./assets/images/library-01.jpg); background-repeat: no-repeat;background-size: cover;background-position: initial;">
     <div class="container">
        <div class="row align-items-center">
            <div class="col-md-12 col-12 order-md-1 order-2 text-center">
@@ -6,36 +6,44 @@
            </div>
         </div> 
     </div>
-</section>
-<section class="py-4 cates_bars">
+</section> -->
+<!-- <section class="py-4 cates_bars">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <a *ngIf="deviceDetails&&deviceDetails.category_name"  class="categotes">{{deviceDetails.category_name}} <i class="far fa-folder-open"></i></a>
             </div>
             <div class="col-sm-6 justify-content-end d-flex align-items-center">
-                <div class="rattings">
-                  <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-                </div>
-                <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Review <i class="far fa-edit"></i></a>
-                <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                
+                
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <section class="lib py-5">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid">
+                <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid"> -->
+                <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100">
             </div>
 
             <div class="col-sm-6">
                 <div class="details">
-                    <h3 class="lib_de_tites">Notes</h3>
+                  <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h1 *ngIf="deviceDetails && deviceDetails.device_name" class="feature_title">{{deviceDetails.device_name}}</h1>
+                    <div class="rattings">
+                      <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
+                    </div>
+                  </div>
+                    
+                    <a *ngIf="deviceDetails&&deviceDetails.category_name"  class="categotes">{{deviceDetails.category_name}} <i class="far fa-folder-open"></i></a>
                     <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
+
+                    <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Review <i class="far fa-edit"></i></a>
+                <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
                 </div>
-            </div>
+            </div>  
         </div>
 
         <div class="row py-5">
