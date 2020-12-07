@@ -40,6 +40,14 @@ export class ApiService {
     return this.http.post(this.baseAPi+'innovator-list',obj)
   }
 
+  public getReviewListing(obj){
+    return this.http.get(this.baseAPi+'get-reviewlist/'+obj)
+  }
+
+  public getQuestionList(obj){
+    return this.http.get(this.baseAPi+'innovator-questionlist/'+obj)
+  }
+
   public getCompliance(id){
     return this.http.get(this.baseAPi+'covent_compliance/'+id);
   }

@@ -14,6 +14,8 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { DeviceListingComponent } from './device-listing/device-listing.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { ReviewListingComponent } from './review-listing/review-listing.component';
+import { QuestionListingComponent } from './question-listing/question-listing.component';
 
 const routes: Routes = [{
   path: '',
@@ -26,6 +28,14 @@ const routes: Routes = [{
     {
       path: 'device-listing', 
       component: DeviceListingComponent,
+    },
+    {
+      path: 'review-listing/:innovator_id', 
+      component: ReviewListingComponent,
+    },
+    {
+      path: 'question-listing/:innovator_id', 
+      component: QuestionListingComponent,
     },
     {
       path: 'newsletter', 
