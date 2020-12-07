@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9700/frontend/";
+  
+  public baseAPi = "http://134.209.68.96:9700/frontend/";
 
   constructor(private http:HttpClient) {
 
@@ -46,6 +47,17 @@ export class ApiService {
 
   public getQuestionList(obj){
     return this.http.get(this.baseAPi+'innovator-questionlist/'+obj)
+  }
+
+  public getQuestionDetail(obj){
+    return this.http.get(this.baseAPi+'questiondetail/'+obj)
+  } 
+  public updateQuestionAnswer(obj,body){
+    return this.http.put(this.baseAPi+'innovator-questionupdate/'+obj,body)
+  } 
+  
+  public deleteQuestion(obj){
+    return this.http.get(this.baseAPi+'questiondelete/'+obj)
   }
 
   public getCompliance(id){
