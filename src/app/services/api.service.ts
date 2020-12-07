@@ -67,4 +67,13 @@ export class ApiService {
   public getInnovatorDetail(id){
     return this.http.get(this.baseAPi+'/innovator-detail/'+id)
   }
+
+  public addReview(obj){
+    return this.http.post(this.baseAPi+'/add-review',obj)
+  }
+
+  public addQuestion(obj){
+    return this.http.post(this.baseAPi+'/add-question',obj)
+  }
+
 }
