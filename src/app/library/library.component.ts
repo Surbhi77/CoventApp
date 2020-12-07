@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from './../services/api.service';
 import {Router} from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+
 @Component({
   selector: 'ngx-library',
   templateUrl: './library.component.html',
@@ -13,6 +15,8 @@ export class LibraryComponent implements OnInit {
   constructor(private apiService:ApiService,private router:Router) { }
 
   ngOnInit():void {
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add("absolute-header");
     this.apiService.getDeviceListing().subscribe(res=>{
       if(res['success']){
         this.categories=res['data']
@@ -24,6 +28,11 @@ export class LibraryComponent implements OnInit {
     let url = '/innovator-listing/'+item.category_id;
     this.router.navigate([url]);
     return false;
+  }
+
+  ngOnDestroy(){
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.remove("absolute-header");
   }
 
 }

@@ -71,7 +71,7 @@ export class CmsComponent {
       // },
     },
   };
-
+  dtOptions:any={};
   source: LocalDataSource = new LocalDataSource();
   deviceListing: any;
 

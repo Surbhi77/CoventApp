@@ -11,7 +11,7 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -39,12 +39,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent],
   imports: [
+    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RatingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -57,9 +59,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    NgbModule,
+    
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
