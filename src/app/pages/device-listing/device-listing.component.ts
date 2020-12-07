@@ -45,6 +45,7 @@ export class DeviceListingComponent implements OnInit {
   {
     this.firstForm = fb.group({
       device_name:new FormControl('',[Validators.required]),
+      device_description:new FormControl('',[Validators.required]),
       device_cat:new FormControl('',[Validators.required]),
       device_type:new FormControl('',[Validators.required]),
       reusable:new FormControl('',[Validators.required]),
@@ -266,7 +267,7 @@ export class DeviceListingComponent implements OnInit {
       let formdata = new FormData();
       formdata.append('device_user_id',userDetails.id);
       formdata.append('device_name',this.firstForm.value.device_name);
-      //formdata.append('device_cat',this.firstForm.value.device_cat);
+      formdata.append('device_description',this.firstForm.value.device_description);
       formdata.append('device_category',this.firstForm.value.device_cat);
       formdata.append('device_type',this.firstForm.value.device_type);
       formdata.append('device_reusable',this.firstForm.value.reusable);
