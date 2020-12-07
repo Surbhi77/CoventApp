@@ -21,7 +21,10 @@ export class LibraryDetailsComponent implements OnInit {
   closeResult: string;
   form: FormGroup = new FormGroup({});
   reviewStars:any=0;
-
+  reviewList:any=[];
+  quesList:any=[];
+  quesForm:FormGroup = new FormGroup({});
+  
   constructor(private toastr: ToastrService,
      private fb:FormBuilder,
      private router:Router,
@@ -33,13 +36,28 @@ export class LibraryDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       review: new FormControl('',[Validators.required]),
-      rating: new FormControl('',[Validators.required])
+      title: new FormControl('',[Validators.required])
     });
+    this.quesForm = this.fb.group({
+      question:new FormControl('',[Validators.required])
+    })
     let body = document.getElementsByTagName('body')[0];
     body.classList.add("absolute-header");
     this.categoryId = this.activatedRoute.snapshot.params['id'];
     console.log(this.categoryId);
-    this.getDeviceDetails()
+    this.getDeviceDetails();
+    this.getReviewListing();
+    this.getQuestionListing();
+  }
+
+  getReviewListing(){
+    this.apiService.getReviewListing(this.categoryId).subscribe(res=>{
+      if(res['data'] && res['data'].length){
+        this.reviewList=res['data']
+      }else{
+        this.reviewList=[];
+      }  
+    })
   }
 
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
@@ -77,6 +95,50 @@ export class LibraryDetailsComponent implements OnInit {
       console.log(content)
       this.modalService.open(content).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
+        console.log(result);
+        if(result == 'Save click'){
+          let userDetails = JSON.parse(localStorage.getItem("userData"));
+          
+          let obj={
+            "desccription":this.form.value.review,
+            "ratings":this.reviewStars,
+            "innovator_id":this.categoryId,
+            "title":this.form.value.title,
+            "user_id":userDetails.id
+          }
+          this.apiService.addReview(obj).subscribe(res=>{
+            console.log(res);
+            this.getReviewListing()
+          })
+        }
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }else{
+      this.toastr.error("Please login to continue")
+    }
+    
+  }
+
+  openQuestion(content) {
+    if(localStorage.getItem("userData")){
+      console.log(content)
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+        console.log(result);
+        if(result == 'Save click'){
+          let userDetails = JSON.parse(localStorage.getItem("userData"));
+          
+          let obj={
+            "question":this.form.value.quesForm,
+            "innovator_id":this.categoryId,
+            "user_id":userDetails.id
+          }
+          this.apiService.addQuestion(obj).subscribe(res=>{
+            console.log(res);
+            this.getQuestionListing()
+          })
+        }
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
@@ -94,6 +156,16 @@ export class LibraryDetailsComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  private getQuestionListing(){
+    this.apiService.getQuestionList(this.categoryId).subscribe(res=>{
+      if(res['data'] && res['data'].length){
+        this.quesList=res['data']
+      }else{
+        this.quesList=[];
+      }  
+    })
   }
 
 

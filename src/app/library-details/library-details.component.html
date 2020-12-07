@@ -18,7 +18,7 @@
                   <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
                 </div>
                 <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Review <i class="far fa-edit"></i></a>
-                <a  class="categotes" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img src="./assets/images/artem-podrez.jpg" class="img-fluid">
+                <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid">
             </div>
 
             <div class="col-sm-6">
@@ -169,32 +169,31 @@
                   </form> -->
 
                   <div class="reviews">
-                    <div class="d-flex blockquote review-item">
+                    <div *ngFor="let item of reviewList" class="d-flex blockquote review-item">
+                     
                       <div class="col-md-2 text-center">
                         <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                         <div class="caption">
-                          <small>by <a >Joe</a></small>
+                          <small>by <a >{{item.user_name}}</a></small>
                         </div>
                   
                       </div>
                       <div class="col-md-10">
-                        <h4>My awesome review</h4>
+                        <h4>{{item.title}}</h4>
                         <div class="ratebox">
                             <div class="rattings">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> 
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
+                              <ngb-rating [max]="5" [(rate)]="item.ratings" [readonly]="false"></ngb-rating>
                             </div>
                         </div>
-                        <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
+                        <p class="review-text">
+                          {{item.desccription}}
+                        </p>
                   
-                        <small class="review-date">March 26, 2017</small>
+                        <small class="review-date">{{item.created_at|date}}</small>
                       </div>                          
                     </div>  
 
-                    <div class="d-flex blockquote review-item">
+                    <!-- <div class="d-flex blockquote review-item">
                         <div class="col-md-2 text-center">
                           <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                           <div class="caption">
@@ -217,7 +216,7 @@
                     
                           <small class="review-date">March 26, 2017</small>
                         </div>                          
-                      </div>  
+                      </div>   -->
                   </div>
             </div>
 
@@ -237,63 +236,22 @@
 				</div>
 				<div class="col-12 mx-auto">
 					<div class="accordion" id="accordionExample">
-						<div class="card">
-							<div class="card-header" id="headingOne">
+						<div *ngFor="let item of quesList;let i=index" class="card">
+							<div class="card-header" [id]="'heading'+i">
 								<h5 class="mb-0">
-							<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							  <!--<i class="fa fa-amazon main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>How to pay amazon.
+							<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+							  <!--<i class="fa fa-amazon main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>{{item.question}}
 							</button>
 						  </h5>
 							</div>
 
-							<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+							<div [id]="'collapse'+i" [ngClass]="(i==0)?'collapse show fade':'collapse fade'"  [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
 								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
+									{{(item.answer && item.answer!='')?item.answer:'Awaiting answer from innovator'}}
 								</div>
 							</div>
 						</div>
-						<div class="card">
-							<div class="card-header" id="headingTwo">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							 <!--<i class="fa fa-plus main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>There are many more.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header" id="headingThree">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							  <!--<i class="fa fa-expeditedssl main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>How to enable two factor authentication.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header" id="headingFour">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							  <!--<i class="fa fa-envelope main"></i>--><i class="fa fa-angle-double-right mr-3"></i>How to contact us.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>	
 			</div>
@@ -303,71 +261,27 @@
 
 
 
-<!-- The Modal Review-->
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Add a questions</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body --> 
-        <div class="modal-body">
-          <form>
-              <div class="form-group">
-                <textarea rows="5" class="form-control"></textarea>
-              </div>
 
-              <div class="form-group">
-                <button type="button" class="btn btn-custom">Submit</button>
-              </div>
-          </form>
-        </div>
-  
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-  
-      </div>
+  <ng-template #quesModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Review</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
-  </div>
-  <ng-template #myModalReview let-modal>
-    <div  class="modal" id="myModalReview">
-    
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Add a review</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-    
-          <!-- Modal body --> 
-          <div class="modal-body">
-            <form >
-                <div class="form-group">
-                  <textarea rows="5" class="form-control"></textarea>
-                </div>
-                <div>
-                 
-                </div>
-                <div class="form-group">
-                  <button type="button" class="btn btn-custom">Submit</button>
-                </div>
-            </form>
-          </div>
-    
-          <!-- Modal footer -->
-          <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div> -->
-    
-        </div>
-      </div>
+    <div class="modal-body">
+      <form [formGroup]="quesForm">
+          
+            <p>Question</p>
+           
+            <div class="form-group">
+              <textarea formControlName="question" rows="5" class="form-control"></textarea>
+            </div>
+       
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" [disabled]="!quesForm.valid" (click)="modal.close('Save click')">Add Review</button>
     </div>
   </ng-template>
 
@@ -380,17 +294,23 @@
     </div>
     <div class="modal-body">
       <form [formGroup]="form">
-          <div class="form-group">
-            <textarea formControlName="review" rows="5" class="form-control"></textarea>
-          </div>
-         
+          
+            <p>Ratings</p>
             <div class="rattings">
               <ngb-rating [max]="5" [(rate)]="reviewStars" [readonly]="false"></ngb-rating>
+            </div>
+            <p>Review Title</p>
+            <div class="form-group">
+              <input type="text" formControlName="title" class="form-control">
+            </div>
+            <p>Review Comments</p>
+            <div class="form-group">
+              <textarea formControlName="review" rows="5" class="form-control"></textarea>
             </div>
        
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" [disabled]="!form.valid&&reviewStars==0" (click)="modal.close('Save click')">Add Review</button>
+      <button type="button" class="btn btn-outline-dark" [disabled]="!form.valid||reviewStars==0" (click)="modal.close('Save click')">Add Review</button>
     </div>
   </ng-template>
