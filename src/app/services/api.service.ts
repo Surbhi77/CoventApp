@@ -75,5 +75,5 @@ export class ApiService {
   public addQuestion(obj){
     return this.http.post(this.baseAPi+'/add-question',obj)
   }
-  
+
 }
