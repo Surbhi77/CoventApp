@@ -226,7 +226,7 @@ img.mx-auto.img-fluid {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 20px hsla(0,0%,60%,.2);
-  border-radius: 10px;
+  // border-radius: 10px;
   height: 300px;
   position: relative;
   overflow: hidden;
@@ -283,6 +283,80 @@ img.mx-auto.img-fluid {
   transition: all 0.3s ease-in-out;
   opacity: 0;
 }
+
+
+
+/***********************************************************/
+
+.service-img-box_02 .service-link-box_02 {
+  
+  background-image: linear-gradient(90deg, #13bfb3 0%, #66ffcc 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 20px hsla(0,0%,60%,.2);
+  // border-radius: 10px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.service-img-box_02 .service-link-box_02:hover .service-box-overlay_02 {
+  opacity: 1;
+}
+
+.service-img-box_02 .service-link-box_02:hover h5 {
+  transform: translateY(-40px);
+}
+
+.service-img-box_02 .service-link-box_02:hover .service-box-icon_02 {
+  transform: translateY(40px);
+  opacity: 0.7;
+}
+
+.service-img-box_02 .service-link-box_02:hover .service-img_02 {
+  transform: scale(1.1);
+  opacity: 0.2;
+}
+
+.service-box-overlay_02 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  // background-image: linear-gradient(90deg, #13bfb3 0%, #66ffcc 100%);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.service-img_02 {
+  filter: invert(1);
+  width: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-img-box_02 h5 {
+  font-size: 24px;
+  position: relative;
+  margin: 0;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-box-icon_02 {
+  width: 25px;
+  margin: 15px 0px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+/**************************************************/
+
 .shadow-4 {
     box-shadow: 0 2px 20px hsla(0,0%,60%,.2);
 }
@@ -680,6 +754,17 @@ h3.name {
   background-color: #f7f5ec;
 }
 
+button.btn_all.btn {
+  background: #444;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.view_all_btns {
+  text-align: center;
+}
 
 
 

@@ -1,15 +1,3 @@
-
- <section class="banner_bars py-5" style="background: url(./assets/images/library-01.jpg); background-repeat: no-repeat;background-size: cover;background-position: initial;">
-    <div class="container">
-       <div class="row align-items-center">
-           <div class="col-md-6 col-12 order-md-1 order-2">
-              <h1 class="feature_title">Search Our Open Source Library</h1>
-              <p class="feature_description">We provide links to projects and information about the utility, availability, and manufacturability of personal protective equipment (PPE) and medical supplies, curated by a global team of medical advisers. By using our Library, you have agreed to our <a href="#" class="terms-normal-link">Terms & Conditions.</a></p>
-           </div>
-        </div> 
-    </div>
-</section>
-<!--slide end-->
 <section class="pt-4">
     <div class="container">
         <div class="row magic-row">
@@ -60,268 +48,26 @@
 </section>
 <section class="pb-5">
    <div class="container">
-      <!-- <div class="row magic-row">
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Aerosol Boxes</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Ear Savers & Nose Bridge Supports</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Ear Savers & Nose Bridge Supports</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Ear Savers & Nose Bridge Supports</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Ear Savers & Nose Bridge Supports</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-xl-2 col-lg-3 col-md-3 col-12"> 
-            <div class="LibCard">
-               <img src="./assets/images/library-img01.png">
-               <h5>Ear Savers & Nose Bridge Supports</h5>
-
-               <div class="LibCard-Btn">
-                  <a href="#">Info<img src="./assets/images/view.svg"></a>
-                  <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-               </div>
-            </div>
-         </div>
-      </div> -->
-
 
       <div class="row pt-4">
-        <div class="col-lg-3 col-md-3 col-12">
+        <div *ngFor="let innovator of innovatorListing" class="col-lg-3 col-md-3 col-12 mb-4">
           <div class="service-img-box">
-             <a href="#" class="service-link-box">
+             <a class="service-link-box">
                 <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
+                <!-- <img [src]="imageBasePath+innovator.data_path" class="service-img img-fluid" alt="slide"> -->
+                <img src="./assets/images/anna-shvets.jpg" class="service-img img-fluid" alt="slide">
 
                 <div class="LibCard-Btn service-box-icon">
-                 <a href="/info">Info<img src="./assets/images/view.svg"></a>
-                 <a href="/pro">Projects<img src="./assets/images/filter.svg"></a>
+                 <a (click)="openDetails(innovator)" href="javascript:void(0);">Info<img src="./assets/images/view.svg"></a>
+                
               </div>
                 <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Aerosol Boxes</h5>
+                <h5>{{innovator.device_name}}</h5>
              </a>
           </div>
        </div>
 
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div> 
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
       </div>
 
-      <div class="row pt-4">
-        <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Aerosol Boxes</h5>
-             </a>
-          </div>
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div> 
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
-      </div>
-
-      <div class="row pt-4">
-        <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Aerosol Boxes</h5>
-             </a>
-          </div>
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div> 
-       </div>
-
-       <div class="col-lg-3 col-md-3 col-12">
-          <div class="service-img-box">
-             <a href="#" class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                <div class="LibCard-Btn service-box-icon">
-                 <a href="#">Info<img src="./assets/images/view.svg"></a>
-                 <a href="#">Projects<img src="./assets/images/filter.svg"></a>
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>Ear Savers & Nose Bridge Supports</h5>
-             </a>
-          </div>
-       </div>
-      </div>
    </div>
 </section>

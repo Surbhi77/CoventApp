@@ -19,13 +19,13 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module')
     .then(m => m.AuthModule), 
-  }, 
+  },
   {
     path:'home',
     component:HomeComponent 
   },
   {
-    path:'library-details',
+    path:'library-details/:id',
     component:LibraryDetailsComponent
   },
   {
@@ -49,7 +49,7 @@ export const routes: Routes = [
     component:MapDetailsComponent
   },
   {
-    path:'innovator-listing',
+    path:'innovator-listing/:id',
     component:InnovatorListingComponent
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

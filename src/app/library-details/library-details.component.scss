@@ -1,13 +1,15 @@
 .feature_description {
     font-size: 20px !important;
-    color: #ffffff;
+    color: #444;
     margin-bottom: 17px !important;
 }
 .feature_title {
     font-size: 31px;
-    color: #ffffff;
+    color: #000;
     margin-bottom: 16px;
     font-weight: 700;
+    text-transform: capitalize;
+    margin: 0;
 }
 .details p {
     font-size: 19px;
@@ -164,4 +166,9 @@ button.btn.btn-custom {
 }
 .categotes i {
     color: #f66e0b;
+}
+.rattings span {
+    font-size: 23px;
+    margin-right: 8px;
+    color: #f06815;
 }

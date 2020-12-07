@@ -1,61 +1,152 @@
-<section class="banner_bars py-5" style="background: url(./assets/images/library-01.jpg); background-repeat: no-repeat;background-size: cover;background-position: initial;">
+<!-- <section class="banner_bars py-5" style="background: url(./assets/images/library-01.jpg); background-repeat: no-repeat;background-size: cover;background-position: initial;">
     <div class="container">
        <div class="row align-items-center">
            <div class="col-md-12 col-12 order-md-1 order-2 text-center">
-              <h1 class="feature_title">Hela Disposable Gown </h1>
-              <p class="feature_description">This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health.</p>
+              <h1 *ngIf="deviceDetails && deviceDetails.device_name" class="feature_title">{{deviceDetails.device_name}}</h1>
            </div>
         </div> 
     </div>
-</section>
-<section class="py-4 cates_bars">
+</section> -->
+<!-- <section class="py-4 cates_bars">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <a href="#" class="categotes">Gowns <i class="far fa-folder-open"></i></a>
+                <a *ngIf="deviceDetails&&deviceDetails.category_name"  class="categotes">{{deviceDetails.category_name}} <i class="far fa-folder-open"></i></a>
             </div>
             <div class="col-sm-6 justify-content-end d-flex align-items-center">
-                <div class="rattings">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i> 
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <a href="#review" class="categotes mr-4">Review <i class="far fa-edit"></i></a>
-                <a href="#" class="categotes" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                
+                
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <section class="lib py-5">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img src="./assets/images/artem-podrez.jpg" class="img-fluid">
+                <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid"> -->
+                <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100">
             </div>
 
             <div class="col-sm-6">
                 <div class="details">
-                    <h3 class="lib_de_tites">Notes</h3>
-                    <p>This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health. This design has been specially modified to improve staff wearability by thumbhole adjustment and increasing the underarm fabric area. Use the Folding Guide and Folding Board to prep your gowns correctly for staff, i.e. they must be folded this way so staff insert their hands into the interior sleeve area when opening a gown package. This is a very important step. Use the Instructable to map out a production line for several different fabric widths, equipment and pattern choices, including a slide presentation for a CNC template. Use the gown sticker as inspiration for making your own organization graphic to label packaged gowns for delivery.</p>
+                  <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h1 *ngIf="deviceDetails && deviceDetails.device_name" class="feature_title">{{deviceDetails.device_name}}</h1>
+                    <div class="rattings">
+                      <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
+                    </div>
+                  </div>
+                    
+                    <a *ngIf="deviceDetails&&deviceDetails.category_name"  class="categotes">{{deviceDetails.category_name}} <i class="far fa-folder-open"></i></a>
+                    <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
+
+                    <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Review <i class="far fa-edit"></i></a>
+                <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
                 </div>
-            </div>
+            </div>  
         </div>
 
         <div class="row py-5">
             <div class="col-sm-12">
-                <div class="details">
-                    <h3>Attribution Organization </h3>
-                    <p>This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health. This design has been specially modified to improve staff wearability by thumbhole adjustment and increasing the underarm fabric area. Use the Folding Guide and Folding Board to prep your gowns correctly for staff, i.e. they must be folded this way so staff insert their hands into the interior sleeve area when opening a gown package. This is a very important step. Use the Instructable to map out a production line for several different fabric widths, equipment and pattern choices, including a slide presentation for a CNC template. Use the gown sticker as inspiration for making your own organization graphic to label packaged gowns for delivery.</p>
+                <h1>Device Specifications</h1>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_ac_powered">
+                  <p>Ac Powered : {{(deviceDetails.device_ac_powered == 1)?'Yes':'No'}}</p>
+                </ng-container>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_autoclavable">
+                  <p>Device Autoclavable : {{(deviceDetails.device_autoclavable == 1)?'Yes':'No'}}</p>
+                </ng-container> 
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_battery_powered">
+                  <p>Battery Powered : {{(deviceDetails.device_battery_powered == 1)?'Yes':'No'}}</p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_reusable">
+                  <p>Device Reusable : {{(deviceDetails.device_reusable == 1)?'Yes':'No'}}</p>
+                </ng-container>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_characterstics">
+                  <p>Device Characterstics : {{deviceDetails.device_characterstics}}</p>
+                </ng-container> 
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_standard_compilance">
+                  <p>Device Standard Compliance : {{deviceDetails.device_standard_compilance}}</p>
+                </ng-container> 
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_clinical_stage">
+                  <p>Device Clinical Stage : {{deviceDetails.device_clinical_stage}}</p>
+                </ng-container>
+                
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_design_file">
+                  <p>Device Design File : <a target="_blank" [href]="deviceDetails.device_design_file">{{deviceDetails.device_design_file}}</a></p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_development_stage">
+                  <p>Device Development Stage : {{deviceDetails.device_development_stage}}</p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_innovator_type">
+                  <p>Device Innovator Type : {{deviceDetails.device_innovator_type}}</p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_manufactures">
+                  <p>Device Manufacturers : {{deviceDetails.device_manufactures}}</p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_materials">
+                  <p>Device Manufacturers : <a target="_blank" [href]="assetBaseUrl+deviceDetails.device_materials">View</a></p>
+                </ng-container>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_power_consumption">
+                  <p>Device Power Consumption : {{deviceDetails.device_power_consumption}} Watts</p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_project_link">
+                  <p>Device Project Link : <a target="_blank" [href]="deviceDetails.device_project_link">{{deviceDetails.device_project_link}}</a></p>
+                </ng-container>
 
-                    <p>This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health. This design has been specially modified to improve staff wearability by thumbhole adjustment and increasing the underarm fabric area. Use the Folding Guide and Folding Board to prep your gowns correctly for staff, i.e. they must be folded this way so staff insert their hands into the interior sleeve area when opening a gown package. This is a very important step. Use the Instructable to map out a production line for several different fabric widths, equipment and pattern choices, including a slide presentation for a CNC template. Use the gown sticker as inspiration for making your own organization graphic to label packaged gowns for delivery.</p>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_regulatory_approvals">
+                  <p>Regulatory Approvals : {{deviceDetails.device_regulatory_approvals}}</p>
+                </ng-container>
 
-                    <h3>Attribution Organization </h3>
-                    <p>This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health. This design has been specially modified to improve staff wearability by thumbhole adjustment and increasing the underarm fabric area. Use the Folding Guide and Folding Board to prep your gowns correctly for staff, i.e. they must be folded this way so staff insert their hands into the interior sleeve area when opening a gown package. This is a very important step. Use the Instructable to map out a production line for several different fabric widths, equipment and pattern choices, including a slide presentation for a CNC template. Use the gown sticker as inspiration for making your own organization graphic to label packaged gowns for delivery.</p>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_regulatory_stage">
+                  <p>Regulatory Stage : {{deviceDetails.device_regulatory_stage}}</p>
+                </ng-container>
 
-                    <p>This single-use disposable gown is intended for plastic-based fabric such as 1mil or 2mil plastic sheeting and non-woven polypropylene. It is based on the most commercially accepted isolation gown patterns from Medline, Kimberly Clark, and Cardinal Health. This design has been specially modified to improve staff wearability by thumbhole adjustment and increasing the underarm fabric area. Use the Folding Guide and Folding Board to prep your gowns correctly for staff, i.e. they must be folded this way so staff insert their hands into the interior sleeve area when opening a gown package. This is a very important step. Use the Instructable to map out a production line for several different fabric widths, equipment and pattern choices, including a slide presentation for a CNC template. Use the gown sticker as inspiration for making your own organization graphic to label packaged gowns for delivery.</p>
-                </div>
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_related_publications">
+                  <p>Related Publications : <a target="_blank" [href]="deviceDetails.device_related_publications">{{deviceDetails.device_related_publications}}</a></p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_videos">
+                  <p>Device Videos : </p>
+                  <iframe width="560" height="315" [src]="safeURL" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+                  
+                </ng-container>
+
+                <ng-container *ngIf="deviceDetails && deviceDetails.device_unit_cost">
+                  <p>Unit Cost : {{deviceDetails.device_unit_cost}} $</p>
+                </ng-container>
+
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_required_investment">
+                  <p>Required Investment : {{deviceDetails.device_required_investment}} $</p>
+                </ng-container>
+
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_test_data">
+                  <p>Device Test Data : <a [href]="deviceDetails.device_test_data">{{deviceDetails.device_test_data}}</a>  </p>
+                </ng-container>
+                
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_training_document">
+                  <p>Device Training Document : <a [href]="deviceDetails.device_training_document">{{deviceDetails.device_training_document}}</a>  </p>
+                </ng-container>
+
+                <ng-container *ngIf="deviceDetails&&deviceDetails.device_usage_instruction">
+                  <p>Device Usage Instruction : <a [href]="assetBaseUrl+deviceDetails.device_usage_instruction">View</a>  </p>
+                </ng-container>
+                
+
+                
+
+                
+                
             </div>
         </div>
     </div>
@@ -86,32 +177,31 @@
                   </form> -->
 
                   <div class="reviews">
-                    <div class="d-flex blockquote review-item">
+                    <div *ngFor="let item of reviewList" class="d-flex blockquote review-item">
+                     
                       <div class="col-md-2 text-center">
                         <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                         <div class="caption">
-                          <small>by <a href="#joe">Joe</a></small>
+                          <small>by <a >{{item.user_name}}</a></small>
                         </div>
                   
                       </div>
                       <div class="col-md-10">
-                        <h4>My awesome review</h4>
+                        <h4>{{item.title}}</h4>
                         <div class="ratebox">
                             <div class="rattings">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i> 
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
+                              <ngb-rating [max]="5" [(rate)]="item.ratings" [readonly]="false"></ngb-rating>
                             </div>
                         </div>
-                        <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
+                        <p class="review-text">
+                          {{item.desccription}}
+                        </p>
                   
-                        <small class="review-date">March 26, 2017</small>
+                        <small class="review-date">{{item.created_at|date}}</small>
                       </div>                          
                     </div>  
 
-                    <div class="d-flex blockquote review-item">
+                    <!-- <div class="d-flex blockquote review-item">
                         <div class="col-md-2 text-center">
                           <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                           <div class="caption">
@@ -134,7 +224,7 @@
                     
                           <small class="review-date">March 26, 2017</small>
                         </div>                          
-                      </div>  
+                      </div>   -->
                   </div>
             </div>
 
@@ -154,63 +244,22 @@
 				</div>
 				<div class="col-12 mx-auto">
 					<div class="accordion" id="accordionExample">
-						<div class="card">
-							<div class="card-header" id="headingOne">
+						<div *ngFor="let item of quesList;let i=index" class="card">
+							<div class="card-header" [id]="'heading'+i">
 								<h5 class="mb-0">
-							<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							  <!--<i class="fa fa-amazon main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>How to pay amazon.
+							<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+							  <!--<i class="fa fa-amazon main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>{{item.question}}
 							</button>
 						  </h5>
 							</div>
 
-							<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+							<div [id]="'collapse'+i" [ngClass]="(i==0)?'collapse show fade':'collapse fade'"  [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
 								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
+									{{(item.answer && item.answer!='')?item.answer:'Awaiting answer from innovator'}}
 								</div>
 							</div>
 						</div>
-						<div class="card">
-							<div class="card-header" id="headingTwo">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							 <!--<i class="fa fa-plus main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>There are many more.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header" id="headingThree">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							  <!--<i class="fa fa-expeditedssl main"></i>--> <i class="fa fa-angle-double-right mr-3"></i>How to enable two factor authentication.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header" id="headingFour">
-								<h5 class="mb-0">
-							<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							  <!--<i class="fa fa-envelope main"></i>--><i class="fa fa-angle-double-right mr-3"></i>How to contact us.
-							</button>
-						  </h5>
-							</div>
-							<div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
-								<div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/share/qb8D02" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>	
 			</div>
@@ -220,35 +269,56 @@
 
 
 
-<!-- The Modal Rewiew-->
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Add a questions</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body --> 
-        <div class="modal-body">
-          <form>
-              <div class="form-group">
-                <textarea rows="5" class="form-control"></textarea>
-              </div>
 
-              <div class="form-group">
-                <button type="button" class="btn btn-custom">Submit</button>
-              </div>
-          </form>
-        </div>
-  
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-  
-      </div>
+  <ng-template #quesModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Review</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
-  </div>
+    <div class="modal-body">
+      <form [formGroup]="quesForm">
+          
+            <p>Question</p>
+           
+            <div class="form-group">
+              <textarea formControlName="question" rows="5" class="form-control"></textarea>
+            </div>
+       
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" [disabled]="!quesForm.valid" (click)="modal.close('Save click')">Add Review</button>
+    </div>
+  </ng-template>
+
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Review</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form">
+          
+            <p>Ratings</p>
+            <div class="rattings">
+              <ngb-rating [max]="5" [(rate)]="reviewStars" [readonly]="false"></ngb-rating>
+            </div>
+            <p>Review Title</p>
+            <div class="form-group">
+              <input type="text" formControlName="title" class="form-control">
+            </div>
+            <p>Review Comments</p>
+            <div class="form-group">
+              <textarea formControlName="review" rows="5" class="form-control"></textarea>
+            </div>
+       
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" [disabled]="!form.valid||reviewStars==0" (click)="modal.close('Save click')">Add Review</button>
+    </div>
+  </ng-template>

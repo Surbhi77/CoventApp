@@ -10,6 +10,7 @@ import {ApiService} from  './../../services/api.service';
   styleUrls: ['./cms.component.scss']
 })
 export class CmsComponent {
+  dtOptions: any={}
   settings = {
     actions: {
       add: false,
@@ -71,7 +72,7 @@ export class CmsComponent {
       // },
     },
   };
-
+  // dtOptions:any={};
   source: LocalDataSource = new LocalDataSource();
   deviceListing: any;
   dtOptions:any;

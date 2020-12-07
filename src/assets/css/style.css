@@ -58,3 +58,8 @@ body ,html{
 ul#had_navs li a:hover {
   color: #13bfb3 !important;
 }
+.absolute-header .main_heraders {
+  position: relative !important;
+  top: 0 !important;
+  box-shadow: 0 0 10px #ddd;
+}

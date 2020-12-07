@@ -11,7 +11,7 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -33,16 +33,21 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MapComponent } from './map/map.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { InnovatorListingComponent } from './innovator-listing/innovator-listing.component';
- 
+import { RatingModule } from 'ng-starrating';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent],
   imports: [
+    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    RatingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -54,8 +59,9 @@ import { InnovatorListingComponent } from './innovator-listing/innovator-listing
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
