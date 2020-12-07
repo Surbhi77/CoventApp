@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((val)=>{
       if(this.location.path().indexOf('pages')>-1){
         //alert("in if")
-        this.userLoggedIn=true
+        this.userLoggedIn=true;
+        
       }else{
         this.userLoggedIn=false;
         let body = document.getElementsByTagName('body')[0];

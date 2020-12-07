@@ -59,4 +59,12 @@ export class ApiService {
   public deleteDevice(id){
     return this.http.get(this.baseAPi+'device_delete/'+id)
   }
+
+  public getInnovationListing(obj){
+    return this.http.post(this.baseAPi+'innovator-list',obj)
+  }
+
+  public getInnovatorDetail(id){
+    return this.http.get(this.baseAPi+'/innovator-detail/'+id)
+  }
 }
