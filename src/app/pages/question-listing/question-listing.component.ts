@@ -11,7 +11,7 @@ import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
 })
 export class QuestionListingComponent implements OnInit {
 
-  settings = {
+  /*settings = {
     actions: {
       add: false,
       position: 'right'
@@ -20,6 +20,7 @@ export class QuestionListingComponent implements OnInit {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      editConfirm:true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -30,7 +31,7 @@ export class QuestionListingComponent implements OnInit {
     },
     columns: {
       // id: {
-      //   title: 'S.no',
+      //   title: 'question_id',
       //   type: 'number',
       //   filter: false
       // },
@@ -55,15 +56,22 @@ export class QuestionListingComponent implements OnInit {
         filter: false
       },
     },
-  };
+  };*/
 
   source: LocalDataSource = new LocalDataSource();
-  deviceListing: any;
+  questionListing: any;
   innovator_Id:any;
+  dtOptions:any;
 
   constructor(private apiService:ApiService,private service: SmartTableData,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+      processing: true
+    }
     this.route.params.subscribe(params =>{
       console.log(params);
       if(params && params.innovator_id){
@@ -80,18 +88,55 @@ export class QuestionListingComponent implements OnInit {
     console.log(obj);
     this.apiService.getQuestionList(this.innovator_Id).subscribe(res=>{
       if(res["success"]){
-        this.deviceListing = res['data'];
-        console.log(this.deviceListing);
-        this.deviceListing.forEach((currentValue, index) => {
-          currentValue.id = index+1
+        this.questionListing = res['data'];
+        console.log(this.questionListing);
+        this.questionListing.forEach((currentValue, index) => {
+          currentValue.s_no = index+1
         });
-        this.source.load(this.deviceListing)
+        this.source.load(this.questionListing)
       }else{
-        this.deviceListing = [];
+        this.questionListing = [];
       }
     })
     
     console.log("success")
   }
+
+
+  onDeleteConfirm(event): void {
+    console.log(event)
+    if(window.confirm('Are you sure you want to delete')) {
+      //event.confirm.reject();
+      
+      // console.log(sno);
+      this.apiService.deleteQuestion(event.id).subscribe(res=>{
+        if(res['success']){
+          console.log(res['success']);
+          var newArr = this.questionListing
+          // console.log(newArr);
+          // this.questionListing.forEach((currentValue, index) => {
+          //   currentValue.s_no = index+1
+          // });
+
+          let index = newArr.indexOf(event);
+          newArr.splice(index,1);
+          // console.log(sno);
+          // console.log(newArr);
+          // this.deviceListing
+          //this.source.update(this.deviceListing,newArr)
+          // this.source.refresh()
+          // event.confirm.resolve();
+        }
+      })
+    }
+    // if (window.confirm('Are you sure you want to delete?')) {
+    //   event.confirm.resolve();
+    // } else {
+    //   event.confirm.reject();
+    // }
+  }
+
+  
+  
 
 }

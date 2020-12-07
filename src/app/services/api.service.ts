@@ -48,6 +48,17 @@ export class ApiService {
     return this.http.get(this.baseAPi+'innovator-questionlist/'+obj)
   }
 
+  public getQuestionDetail(obj){
+    return this.http.get(this.baseAPi+'questiondetail/'+obj)
+  } 
+  public updateQuestionAnswer(obj,body){
+    return this.http.put(this.baseAPi+'innovator-questionupdate/'+obj,body)
+  } 
+  
+  public deleteQuestion(obj){
+    return this.http.get(this.baseAPi+'questiondelete/'+obj)
+  }
+
   public getCompliance(id){
     return this.http.get(this.baseAPi+'covent_compliance/'+id);
   }

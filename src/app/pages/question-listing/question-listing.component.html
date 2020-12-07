@@ -6,7 +6,32 @@
     </nb-card-header>
   
     <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="source">
-      </ng2-smart-table> 
+      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onEditConfirm($event)">
+      </ng2-smart-table>  -->
+      <table *ngIf="questionListing && questionListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Username</th>
+            <th>Create Date</th>
+            <th>Action Buttons</th>
+          </tr>
+        </thead>
+        <tbody >
+         <tr *ngFor="let item of questionListing;let i=index" >
+               <td>{{i+1}}</td>
+               <td>{{item.question }}</td>
+               <td>{{item.answer}}</td>
+               <td>{{item.user_name}}</td>
+               <td>{{item.created_at}}</td>
+               <td>
+                <a [routerLink]="'/pages/edit-question/'+item.id">Submit Answer</a><br/>
+                <!-- <a [routerLink]="'/pages/review-listing/'+item.innovator_id">Edit</a><br/> -->
+                  <a (click)="onDeleteConfirm(item)">Delete</a></td>
+           </tr>
+        </tbody>
+      </table>
     </nb-card-body>
   </nb-card>
