@@ -16,6 +16,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ReviewListingComponent } from './review-listing/review-listing.component';
 import { QuestionListingComponent } from './question-listing/question-listing.component';
+import { EditQuestionComponent } from './edit-question/edit-question.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
     {
       path: 'question-listing/:innovator_id', 
       component: QuestionListingComponent,
+    },
+    {
+      path: 'edit-question/:question_id', 
+      component: EditQuestionComponent,
     },
     {
       path: 'newsletter', 

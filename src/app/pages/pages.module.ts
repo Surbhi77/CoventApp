@@ -43,6 +43,7 @@ import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.co
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ReviewListingComponent } from './review-listing/review-listing.component';
 import { QuestionListingComponent } from './question-listing/question-listing.component';
+import { EditQuestionComponent } from './edit-question/edit-question.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -93,6 +94,7 @@ const materialModules = [
     NewsletterComponent,
     ReviewListingComponent,
     QuestionListingComponent,
+    EditQuestionComponent,
   ],
 })
 export class PagesModule {
