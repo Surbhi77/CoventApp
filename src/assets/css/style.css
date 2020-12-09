@@ -1,3 +1,6 @@
+*:focus {
+  outline: none !important;
+}
 nb-stepper.mt-0.vertical .header {
     width: 200px !important;
   }

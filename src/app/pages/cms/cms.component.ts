@@ -75,7 +75,7 @@ export class CmsComponent {
   // dtOptions:any={};
   source: LocalDataSource = new LocalDataSource();
   deviceListing: any;
-  dtOptions:any;
+  //dtOptions:any;
 
   constructor(private apiService:ApiService,private service: SmartTableData) {
  
