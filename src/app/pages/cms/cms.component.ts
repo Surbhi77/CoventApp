@@ -11,71 +11,8 @@ import {ApiService} from  './../../services/api.service';
 })
 export class CmsComponent {
   dtOptions: any={}
-  settings = {
-    actions: {
-      add: false,
-      position: 'right'
-      },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    view:{
-      viewButtonContent: '<i class="nb-trash"></i>',
-    },
-    columns: {
-      // id: {
-      //   title: 'S.no',
-      //   type: 'number',
-      //   filter: false
-      // },
-      device_name: {
-        title: 'Device Name',
-        type: 'string',
-        filter: false
-      },
-      category_name: {
-        title: 'Device Category',
-        type: 'string',
-        filter: false
-      },
-      subcategory_name: {
-        title: 'Device Type',
-        type: 'string',
-        filter: false
-      },
-      device_created_date: {
-        title: 'Create Date',
-        type: 'date',
-        filter: false
-      },
-
-      // username: {
-      //   title: 'Status',
-      //   type: 'string',
-      //   filter: false
-      // },
-      // lastname: {
-      //   title: 'Created Date',
-      //   type: 'string',
-      //   filter: false
-      // },
-      // age: {
-      //   title: 'Verification Status',
-      //   type: 'number',
-      //   filter: false
-      // },
-    },
-  };
-  // dtOptions:any={};
   source: LocalDataSource = new LocalDataSource();
   deviceListing: any;
-  dtOptions:any;
 
   constructor(private apiService:ApiService,private service: SmartTableData) {
  

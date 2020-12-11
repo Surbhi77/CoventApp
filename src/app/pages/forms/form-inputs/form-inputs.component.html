@@ -3,13 +3,17 @@
     <nb-card>
       <nb-card-header>Edit Profile</nb-card-header>
       <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Name">
-        <input type="email" nbInput fullWidth placeholder="Email">
-        <input type="text" nbInput fullWidth placeholder="Mobile">
-        <input type="file" nbInput fullWidth>
-        <button nbButton matRipple hero class="size-medium status-primary">
+        <form [formGroup]="form">
+        <input formControlName="user_name" type="text" nbInput fullWidth placeholder="User Name">
+        <input formControlName="user_email" disabled type="email" nbInput fullWidth placeholder="Email">
+        <input formControlName="mobile" type="text" nbInput fullWidth placeholder="Mobile">
+        <input formControlName="address" type="text" nbInput fullWidth placeholder="Address">
+        <input  type="file" accept="image/*" (change)="onFileChange($event)" nbInput fullWidth>
+        <button (click)="updateProfile()" nbButton matRipple hero class="size-medium status-primary">
          Update
-        </button>
+        </button> 
+        </form>
+        
       </nb-card-body>
     </nb-card>
   </div>
@@ -21,12 +25,24 @@
     <nb-card>
       <nb-card-header>Change Password</nb-card-header>
       <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Old Password">
-        <input type="email" nbInput fullWidth placeholder="New Password">
-        <input type="text" nbInput fullWidth placeholder="Confirm Password">
-        <button nbButton matRipple hero class="size-medium status-primary">
-          Update
-         </button>
+        <form [formGroup]="changePassword">
+          <input type="password" formControlName="old_password" nbInput fullWidth placeholder="Old Password">
+          <div>
+            <p *ngIf="changePassword.controls.old_password.touched &&changePassword.controls.old_password.errors">Old password is a required field</p>
+          </div>
+          <input type="password" formControlName="new_password" nbInput fullWidth placeholder="New Password">
+          <div>
+            <p *ngIf="changePassword.controls.new_password.touched &&changePassword.controls.new_password.errors">New password is a required field</p>
+          </div>
+          <input type="password" formControlName="confirm_password" nbInput fullWidth placeholder="Confirm Password">
+          <div>
+            <p *ngIf="changePassword.controls.confirm_password.touched &&changePassword.controls.confirm_password.errors">Password and Confirm password must match</p>
+          </div>
+          <button (click)="updatePassword()" nbButton matRipple hero class="size-medium status-primary">
+            Update
+          </button>
+        </form>
+        
       </nb-card-body>
     </nb-card>
   </div>

@@ -23,10 +23,17 @@ export class RegisterComponent implements OnInit {
       confirm_password: ['', [Validators.required]]
     }, { 
       validator: ConfirmedValidator('password', 'confirm_password')
-    })
+    });
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add("absolute-header");
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(){
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.remove("absolute-header");
   }
 
   get f(){

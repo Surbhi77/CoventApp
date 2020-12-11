@@ -28,8 +28,8 @@
                <td>{{item.device_created_date}}</td>
                <td><a [routerLink]="'/pages/review-listing/'+item.device_data_id">View Reviews</a><br/>
                 <a [routerLink]="'/pages/question-listing/'+item.device_data_id">View Questions</a><br/>
-                <!-- <a [routerLink]="'/pages/review-listing/'+item.innovator_id">Edit</a><br/> -->
-                  <a (click)="deleteCompliance(item,i)">Delete</a></td>
+                <a [routerLink]="'/pages/device-listing/'+item.device_data_id">Edit</a>
+                <a (click)="deleteCompliance(item,i)">Delete</a></td>
            </tr>
         </tbody>
       </table>

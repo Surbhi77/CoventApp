@@ -54,8 +54,8 @@
                   <div class="in_radios">
                     <label id="Reusable" class="block_lab">Reusable</label>
                     <mat-radio-group formControlName="reusable" aria-label="Select an option" color="primary">
-                        <mat-radio-button value="1">Yes</mat-radio-button>
-                        <mat-radio-button value="2">No</mat-radio-button>
+                        <mat-radio-button [checked]="firstForm.controls.reusable.value === 1" value="1">Yes</mat-radio-button>
+                        <mat-radio-button [checked]="firstForm.controls.reusable.value === 2" value="2">No</mat-radio-button>
                     </mat-radio-group>
                     <div *ngIf="f.reusable.touched && f.reusable.invalid" class="alert alert-danger">
                       <div *ngIf="f.reusable.errors.required" class="errors">Please select yes/no</div>
@@ -64,8 +64,8 @@
                 <div class="in_radios">
                   <label id="Reusable" class="block_lab">Autoclavable</label>
                   <mat-radio-group formControlName="autoclavable" aria-label="Select an option" color="primary">
-                      <mat-radio-button value="1">Yes</mat-radio-button>
-                      <mat-radio-button value="2">No</mat-radio-button>
+                      <mat-radio-button  [checked]="firstForm.controls.autoclavable.value === 1" value="1">Yes</mat-radio-button>
+                      <mat-radio-button [checked]="firstForm.controls.autoclavable.value === 2" value="2">No</mat-radio-button>
                   </mat-radio-group>
                   <div *ngIf="f.autoclavable.touched && f.autoclavable.invalid" class="alert alert-danger">
                     <div *ngIf="f.autoclavable.errors.required" class="errors">Please select yes/no</div>
@@ -75,24 +75,15 @@
               <div class="in_radios">
                 <label id="Reusable" class="block_lab">AC-Powered</label>
                 <mat-radio-group formControlName="ac_powered" aria-label="Select an option" color="primary">
-                    <mat-radio-button value="1">Yes</mat-radio-button>
-                    <mat-radio-button value="2">No</mat-radio-button>
+                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 1" value="1">Yes</mat-radio-button>
+                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 2" value="2">No</mat-radio-button>
                 </mat-radio-group>
                 <div *ngIf="f.ac_powered.touched && f.ac_powered.invalid" class="alert alert-danger">
                   <div *ngIf="f.ac_powered.errors.required" class="errors">Please select yes/no</div>
                 </div>
             </div>
 
-            <div class="in_radios">
-              <label id="Reusable" class="block_lab">Battery-Powered</label>
-              <mat-radio-group formControlName="battery_powered" aria-label="Select an option" color="primary">
-                  <mat-radio-button value="1">Yes</mat-radio-button>
-                  <mat-radio-button value="2">No</mat-radio-button>
-              </mat-radio-group>
-              <div *ngIf="g.battery_powered.touched && g.battery_powered.invalid" class="alert alert-danger">
-                <div *ngIf="g.battery_powered.errors.required" class="errors">Please select yes/no</div>
-              </div>
-          </div>
+           
 
          
             
@@ -109,6 +100,17 @@
           <form [formGroup]="secondForm">
             <div class="row">
               <div class="col-lg-8">
+
+                <div class="in_radios">
+                  <label id="Reusable" class="block_lab">Battery-Powered</label>
+                  <mat-radio-group formControlName="battery_powered" aria-label="Select an option" color="primary">
+                      <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 1" value="1">Yes</mat-radio-button>
+                      <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 2" value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                  <div *ngIf="g.battery_powered.touched && g.battery_powered.invalid" class="alert alert-danger">
+                    <div *ngIf="g.battery_powered.errors.required" class="errors">Please select yes/no</div>
+                  </div>
+                </div>
 
                 <mat-form-field class="example-full-width">
                   <mat-label>Power Consumption (watts)</mat-label>
@@ -297,7 +299,7 @@
 
                           <mat-form-field class="example-full-width">
                             <mat-label>Website link</mat-label>
-                            <input type="email" matInput formControlName="website_link">
+                            <input type="text" matInput formControlName="website_link">
                             <!-- <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
                               <mat-error *ngIf="g.required_investment.errors.required" class="errors">
                                 Please enter required investment
@@ -308,7 +310,12 @@
                           <mat-label class="mb-3 d-block">Materials</mat-label>
                             
                             <input type="file" (change)="onMaterialFileChange($event)" formControlName="materials" nbInput fullWidth> 
-
+                            <ng-container *ngIf="isEditScreen && editDeviceDetails && !isImage(editDeviceDetails.device_materials)">
+                                   <a [href]="assetUrl+editDeviceDetails.device_materials" target="_blank">{{editDeviceDetails.device_materials}}</a>
+                            </ng-container>
+                            <ng-container *ngIf="isEditScreen && editDeviceDetails && isImage(editDeviceDetails.device_materials)">
+                              <img [src]="assetUrl+editDeviceDetails.device_materials">
+                            </ng-container>
                             <mat-form-field class="example-full-width tpo">
                               <mat-label>Manufacturers</mat-label>
                               <input type="email" matInput formControlName="manufacturers">
@@ -345,7 +352,7 @@
 
                 <mat-form-field class="example-full-width tpo">
                   <mat-label>Training Documents</mat-label>
-                  <input type="email" matInput formControlName="training_documents">
+                  <input type="text" matInput formControlName="training_documents">
                   <ng-container *ngIf="i.training_documents.touched && i.training_documents.invalid">
                     <mat-error *ngIf="i.training_documents.errors.required" class="errors">
                       Please enter link to training documents
@@ -365,7 +372,7 @@
 
                 <mat-form-field class="example-full-width tpo">
                   <mat-label>Related publications</mat-label>
-                  <input type="email" matInput formControlName="related_publications">
+                  <input type="text" matInput formControlName="related_publications">
                   <ng-container *ngIf="i.related_publications.touched && i.related_publications.invalid">
                     <mat-error *ngIf="i.related_publications.errors.required" class="errors">
                       Please enter link to Related publications
@@ -377,6 +384,11 @@
                 <label class="mb-3 d-block">Device images</label>
 
                 <input formControlName="device_image" (change)="onDeviceFileChange($event)" multiple type="file" nbInput fullWidth> 
+                
+                <ng-container *ngIf="isEditScreen&&editDeviceDetails">
+
+                  <img height="50px" width="80px" *ngFor="let item of editDeviceDetails.device_image" [src]="assetUrl+item">
+                </ng-container>
                 <ng-container *ngIf="i.device_image.touched && i.device_image.invalid">
                   <mat-error *ngIf="i.device_image.errors.required" class="errors">
                     Please upload device images
@@ -396,7 +408,7 @@
 
                 <label class="mb-3 d-block">Device Characteristics</label>   
                       <section class="example-section mb-4">
-                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCharacteristics" (change)="onDeviceCharacteristics($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCharacteristics" [checked]="checkIfSelectedCharacteristics(compliance)" (change)="onDeviceCharacteristics($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
                           <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
                           <ng-container *ngIf="i.device_characteristics.touched && i.device_characteristics.invalid">
                             <mat-error *ngIf="i.device_characteristics.errors.required" class="errors">
@@ -408,11 +420,11 @@
 
                       <label class="mb-3 d-block">Standards Compliance</label>   
                       <section class="example-section mb-5">
-                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCompliance" (change)="onChangeCompliance($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCompliance" [checked]="checkIfSelected(compliance)" (change)="onChangeCompliance($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
                           <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
 
-                          <ng-container *ngIf="j.standard_compliances.touched && j.standard_compliances.invalid">
-                            <mat-error *ngIf="j.standard_compliances.errors.required" class="errors">
+                          <ng-container *ngIf="i.standard_compliances.touched && i.standard_compliances.invalid">
+                            <mat-error *ngIf="i.standard_compliances.errors.required" class="errors">
                               Please Check device Standards
                             </mat-error>
                           </ng-container>
@@ -450,6 +462,12 @@
                         <mat-error *ngIf="j.use_instructions.errors.required" class="errors">
                           Please upload a file
                         </mat-error>
+                      </ng-container>
+                      <ng-container *ngIf="isEditScreen && editDeviceDetails && !isImage(editDeviceDetails.device_usage_instruction)">
+                        <a [href]="assetUrl+editDeviceDetails.device_usage_instruction" target="_blank">{{editDeviceDetails.device_usage_instruction}}</a>
+                      </ng-container>
+                      <ng-container *ngIf="isEditScreen && editDeviceDetails && isImage(editDeviceDetails.device_usage_instruction)">
+                        <img [src]="assetUrl+editDeviceDetails.device_usage_instruction">
                       </ng-container>
 
                       <mat-form-field class="input-example mt-4">

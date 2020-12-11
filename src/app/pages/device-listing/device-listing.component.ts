@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { V, F } from '@angular/cdk/keycodes';
-import { FooterComponent } from 'app/@theme/components';
 
 interface Food {
   value: string;
@@ -24,6 +22,7 @@ export class DeviceListingComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   devices:any;
+  assetUrl="http://localhost:9700/"
   subCatDevices:any;
   firstForm: FormGroup;
   secondForm: FormGroup;
@@ -39,10 +38,19 @@ export class DeviceListingComponent implements OnInit {
   deviceCompliance: any=[];
   deviceCharacteristics: any=[];
   characteristicsArray: any=[];
+  isEditScreen: boolean=false;
+  deviceId:any;
+  selectedCompliance:any=[];
+  selectedCharacteristics:any=[];
+  editDeviceDetails:any;
 
-  constructor(private toastr: ToastrService,private fb:FormBuilder,
-              private router: Router,private apiService:ApiService) 
+  constructor(private toastr: ToastrService,
+              private fb:FormBuilder,
+              private router: Router,
+              private route: ActivatedRoute,
+              private apiService:ApiService) 
   {
+    
     this.firstForm = fb.group({
       device_name:new FormControl('',[Validators.required]),
       device_description:new FormControl('',[Validators.required]),
@@ -69,7 +77,7 @@ export class DeviceListingComponent implements OnInit {
       website_link:new FormControl('',[Validators.required]),
       materials:new FormControl('',[Validators.required]),
       manufacturers:new FormControl('',[Validators.required])
-    })
+    });
 
     this.fourthForm = fb.group({
       design_files:new FormControl('',[Validators.required]),
@@ -77,16 +85,122 @@ export class DeviceListingComponent implements OnInit {
       related_publications:new FormControl('',[Validators.required]),
       device_image:new FormControl('',[Validators.required]),
       device_videos:new FormControl('',[Validators.required]),
-      device_characteristics:new FormControl('',[Validators.required])
+      device_characteristics:new FormControl('',[Validators.required]),
+      standard_compliances:new FormControl('',[Validators.required])
     });
 
-    this.fifthForm = fb.group({
-      standard_compliances:new FormControl('',[Validators.required]),
+    this.fifthForm = fb.group({ 
       innovator_type:new FormControl('',[Validators.required]),
       use_instructions:new FormControl('',[Validators.required])
+    });
 
+    this.route.params.subscribe(params =>{
+      console.log(params);
+      if(params && params.innovator_id){
+         this.isEditScreen=true
+
+         this.deviceId= params.innovator_id;
+         this.thirdForm.controls["materials"].clearValidators();
+         this.fourthForm.controls["device_image"].clearValidators();
+         this.fifthForm.controls["use_instructions"].clearValidators();
+         this.getDetails();
+      }
+      
+      // this.orderId = params.id;
+      // this.getOrderDetails()
     })
 
+  }
+
+  getDetails(){
+    this.apiService.getDeviceDetail(this.deviceId).subscribe(res=>{
+      console.log(res);
+      let deviceDetails = res['data'][0];
+      this.editDeviceDetails=deviceDetails;
+      
+      this.apiService.getSubcategoryListing(deviceDetails.device_category).subscribe(res=>{
+        this.subCatDevices = res['data'];
+        this.firstForm.patchValue({
+          "device_name":deviceDetails.device_name,
+          "device_description":deviceDetails.device_description,
+          "device_cat":deviceDetails.device_category,
+          "device_type":deviceDetails.device_type,
+          "reusable":deviceDetails.device_reusable,
+          "autoclavable":deviceDetails.device_autoclavable,
+          "ac_powered":deviceDetails.device_ac_powered
+        });
+        this.firstForm.updateValueAndValidity();
+        this.deviceCatChange(deviceDetails.device_category);
+      });
+
+      this.secondForm.patchValue({
+        "battery_powered":deviceDetails.device_battery_powered,
+        "power_consumption":deviceDetails.device_power_consumption,
+        "unit_cost":deviceDetails.device_unit_cost,
+        "required_investment":deviceDetails.device_required_investment,
+        "dev_stage":deviceDetails.device_development_stage,
+        "clinical_stage":deviceDetails.device_clinical_stage
+      });
+      this.secondForm.updateValueAndValidity();
+
+      this.thirdForm.patchValue({
+        "regulatory_stage":deviceDetails.device_regulatory_stage,
+        "regulatory_approvals":deviceDetails.device_regulatory_approvals,
+        "country":deviceDetails.device_country,
+        "website_link":deviceDetails.device_project_link,
+       // "materials":deviceDetails.device_materials,
+        "manufacturers":deviceDetails.device_manufactures
+      });
+      this.thirdForm.updateValueAndValidity();
+      this.selectedCompliance = deviceDetails.device_standard_compilance.split(",");
+      this.selectedCharacteristics=deviceDetails.device_characterstics.split(",");
+      this.fourthForm.patchValue({
+        "design_files":deviceDetails.device_design_file,
+        "training_documents":deviceDetails.device_training_document,
+        "related_publications":deviceDetails.device_related_publications,
+        "device_videos":deviceDetails.device_videos,
+        "device_characteristics":deviceDetails.device_characterstics,
+        "standard_compliances":deviceDetails.device_characterstics
+      });
+      this.fourthForm.updateValueAndValidity();
+      this.fifthForm.patchValue({
+        "innovator_type":deviceDetails.device_innovator_type
+      })
+      this.fifthForm.updateValueAndValidity();
+
+
+    })
+  }
+
+  checkIfSelected(value){
+    var index = this.selectedCompliance.indexOf(value);
+    // console.log(value,this.selectedCompliance)
+    // console.log(index)
+    if(index<0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  isImage(filename){
+    console.log(filename)
+    if (filename.match(/.(jpg|jpeg|png|gif)$/i)){
+      return true
+    }else{
+      return false;
+    }
+  }
+
+  checkIfSelectedCharacteristics(value){
+    var index = this.selectedCharacteristics.indexOf(value);
+    // console.log(value,this.selectedCharacteristics)
+    // console.log(index)
+    if(index<0){
+      return false;
+    }else{
+      return true;
+    }
   }
 
   ngOnInit() {
@@ -259,62 +373,119 @@ export class DeviceListingComponent implements OnInit {
   onFifthSubmit(){
     console.log(localStorage.getItem("userData"));
     let userDetails = JSON.parse(localStorage.getItem("userData"));
-    
-    if(!this.fifthForm.valid){
-      this.fifthForm.markAllAsTouched();
-    }else{
-      
-      let formdata = new FormData();
-      formdata.append('device_user_id',userDetails.id);
-      formdata.append('device_name',this.firstForm.value.device_name);
-      formdata.append('device_description',this.firstForm.value.device_description);
-      formdata.append('device_category',this.firstForm.value.device_cat);
-      formdata.append('device_type',this.firstForm.value.device_type);
-      formdata.append('device_reusable',this.firstForm.value.reusable);
-      formdata.append('device_autoclavable',this.firstForm.value.autoclavable);
-      formdata.append('device_ac_powered',this.firstForm.value.ac_powered);
-      formdata.append('device_battery_powered',this.secondForm.value.battery_powered);
-      formdata.append('device_power_consumption',this.secondForm.value.power_consumption);
-      formdata.append('device_unit_cost',this.secondForm.value.unit_cost);
-      formdata.append('device_required_investment',this.secondForm.value.required_investment);
-      formdata.append('device_development_stage',this.secondForm.value.dev_stage);
-      formdata.append('device_clinical_stage',this.secondForm.value.clinical_stage);
-      formdata.append('device_regulatory_stage',this.thirdForm.value.device_regulatory_stage);
-      formdata.append('device_regulatory_approvals',this.thirdForm.value.regulatory_approvals);
-      formdata.append('device_country',this.thirdForm.value.country);
-      formdata.append('device_project_link',this.thirdForm.value.website_link);
-      formdata.append("device_materials", this.materialFile[0]);
-      formdata.append('device_manufactures',this.thirdForm.value.manufacturers);
-      formdata.append('device_test_data','abc');
-      formdata.append('device_design_file',this.fourthForm.value.design_files);
-      formdata.append('device_training_document',this.fourthForm.value.training_documents);
-      formdata.append('device_related_publications',this.fourthForm.value.related_publications);
-      formdata.append('device_videos',this.fourthForm.value.device_videos);
-      for (var i = 0; i < this.deviceFile.length; i++) { 
-        formdata.append("device_image", this.deviceFile[i]);
+    if(!this.isEditScreen){
+      if(!this.fifthForm.valid){
+        this.fifthForm.markAllAsTouched();
+      }else{
+        
+        let formdata = new FormData();
+        formdata.append('device_user_id',userDetails.id);
+        formdata.append('device_name',this.firstForm.value.device_name);
+        formdata.append('device_description',this.firstForm.value.device_description);
+        formdata.append('device_category',this.firstForm.value.device_cat);
+        formdata.append('device_type',this.firstForm.value.device_type);
+        formdata.append('device_reusable',this.firstForm.value.reusable);
+        formdata.append('device_autoclavable',this.firstForm.value.autoclavable);
+        formdata.append('device_ac_powered',this.firstForm.value.ac_powered);
+        formdata.append('device_battery_powered',this.secondForm.value.battery_powered);
+        formdata.append('device_power_consumption',this.secondForm.value.power_consumption);
+        formdata.append('device_unit_cost',this.secondForm.value.unit_cost);
+        formdata.append('device_required_investment',this.secondForm.value.required_investment);
+        formdata.append('device_development_stage',this.secondForm.value.dev_stage);
+        formdata.append('device_clinical_stage',this.secondForm.value.clinical_stage);
+        formdata.append('device_regulatory_stage',this.thirdForm.value.device_regulatory_stage);
+        formdata.append('device_regulatory_approvals',this.thirdForm.value.regulatory_approvals);
+        formdata.append('device_country',this.thirdForm.value.country);
+        formdata.append('device_project_link',this.thirdForm.value.website_link);
+        formdata.append("device_materials", this.materialFile[0]);
+        formdata.append('device_manufactures',this.thirdForm.value.manufacturers);
+        formdata.append('device_test_data','abc');
+        formdata.append('device_design_file',this.fourthForm.value.design_files);
+        formdata.append('device_training_document',this.fourthForm.value.training_documents);
+        formdata.append('device_related_publications',this.fourthForm.value.related_publications);
+        formdata.append('device_videos',this.fourthForm.value.device_videos);
+        for (var i = 0; i < this.deviceFile.length; i++) { 
+          formdata.append("device_image", this.deviceFile[i]);
+        }
+        formdata.append("device_characterstics",this.fourthForm.value.device_characteristics);
+        formdata.append("device_standard_compilance",this.fifthForm.value.standard_compliances);
+        formdata.append("device_innovator_type",this.fifthForm.value.innovator_type);
+        formdata.append("device_usage_instruction",this.instructionFile[0]);
+  
+        this.apiService.addInnovatorData(formdata).subscribe(res=>{
+          this.toastr.success("Device data added successfully");
+          this.firstForm.reset();
+          this.secondForm.reset();
+          this.thirdForm.reset();
+          this.fourthForm.reset();
+          this.fifthForm.reset();
+        },error=>{
+          this.toastr.error("Please try after some time")
+        })
       }
-      formdata.append("device_characterstics",this.fourthForm.value.device_characteristics);
-      formdata.append("device_standard_compilance",this.fifthForm.value.standard_compliances);
-      formdata.append("device_innovator_type",this.fifthForm.value.innovator_type);
-      formdata.append("device_usage_instruction",this.instructionFile[0]);
-
-      this.apiService.addInnovatorData(formdata).subscribe(res=>{
-        this.toastr.success("Device data added successfully");
-        this.firstForm.reset();
-        this.secondForm.reset();
-        this.thirdForm.reset();
-        this.fourthForm.reset();
-        this.fifthForm.reset();
-      },error=>{
-        this.toastr.error("Please try after some time")
-      })
-      
-
-
-
-      
-      //formdata.append()
+    }else{
+      if(!this.fifthForm.valid){
+        this.fifthForm.markAllAsTouched();
+      }else{
+        
+        let formdata = new FormData();
+        formdata.append('device_user_id',userDetails.id);
+        formdata.append('device_name',this.firstForm.value.device_name);
+        formdata.append('device_description',this.firstForm.value.device_description);
+        formdata.append('device_category',this.firstForm.value.device_cat);
+        formdata.append('device_type',this.firstForm.value.device_type);
+        formdata.append('device_reusable',this.firstForm.value.reusable);
+        formdata.append('device_autoclavable',this.firstForm.value.autoclavable);
+        formdata.append('device_ac_powered',this.firstForm.value.ac_powered);
+        formdata.append('device_battery_powered',this.secondForm.value.battery_powered);
+        formdata.append('device_power_consumption',this.secondForm.value.power_consumption);
+        formdata.append('device_unit_cost',this.secondForm.value.unit_cost);
+        formdata.append('device_required_investment',this.secondForm.value.required_investment);
+        formdata.append('device_development_stage',this.secondForm.value.dev_stage);
+        formdata.append('device_clinical_stage',this.secondForm.value.clinical_stage);
+        formdata.append('device_regulatory_stage',this.thirdForm.value.device_regulatory_stage);
+        formdata.append('device_regulatory_approvals',this.thirdForm.value.regulatory_approvals);
+        formdata.append('device_country',this.thirdForm.value.country);
+        formdata.append('device_project_link',this.thirdForm.value.website_link);
+        
+        formdata.append('device_manufactures',this.thirdForm.value.manufacturers);
+        formdata.append('device_test_data','abc');
+        formdata.append('device_design_file',this.fourthForm.value.design_files);
+        formdata.append('device_training_document',this.fourthForm.value.training_documents);
+        formdata.append('device_related_publications',this.fourthForm.value.related_publications);
+        formdata.append('device_videos',this.fourthForm.value.device_videos);
+        
+        formdata.append("device_characterstics",this.fourthForm.value.device_characteristics);
+        formdata.append("device_standard_compilance",this.fifthForm.value.standard_compliances);
+        formdata.append("device_innovator_type",this.fifthForm.value.innovator_type);
+        
+        if(this.materialFile && this.materialFile.length){
+          formdata.append("device_materials", this.materialFile[0]);
+        }
+        if(this.deviceFile && this.deviceFile.length){
+          for (var i = 0; i < this.deviceFile.length; i++) { 
+            formdata.append("device_image", this.deviceFile[i]);
+          }
+        }
+        if(this.instructionFile && this.instructionFile.length){
+          formdata.append("device_usage_instruction",this.instructionFile[0]);
+        }
+       
+  
+        this.apiService.updateInnovatorData(formdata,this.deviceId).subscribe(res=>{
+          this.toastr.success("Device data added successfully");
+          this.router.navigateByUrl('/pages/data-listing')
+          // this.firstForm.reset();
+          // this.secondForm.reset();
+          // this.thirdForm.reset();
+          // this.fourthForm.reset();
+          // this.fifthForm.reset();
+        },error=>{
+          this.toastr.error("Please try after some time")
+        })
+      }
     }
+   
   }
 
   deviceChange($event){

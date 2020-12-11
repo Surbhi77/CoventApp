@@ -81,58 +81,25 @@
         </div>
 
         <div class="row pt-4">
-          <div class="col-lg-3 col-md-3 col-12">
+         <div *ngFor="let item of featuredInnovatorListing" class="col-lg-3 col-md-3 col-12">
             <div class="service-img-box">
-               <a href="#" class="service-link-box">
+               <a (click)="navigateToDetail(item)" class="service-link-box">
                   <div class="service-box-overlay"></div>
-                  <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
+                  <img [src]="assetUrl+item.data_path" class="service-img img-fluid" alt="slide">
                   <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide">
-                  <h5>Home Care</h5>
-               </a>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-3 col-12">
-            <div class="service-img-box">
-               <a href="#" class="service-link-box">
-                  <div class="service-box-overlay"></div>
-                  <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                  <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide">
-                  <h5>PPE Use</h5>
-               </a>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-3 col-12">
-            <div class="service-img-box">
-               <a href="#" class="service-link-box">
-                  <div class="service-box-overlay"></div>
-                  <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                  <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide">
-                  <h5>Back to school</h5>
-               </a>
-            </div> 
-         </div>
-
-         <div class="col-lg-3 col-md-3 col-12">
-            <div class="service-img-box">
-               <a href="#" class="service-link-box">
-                  <div class="service-box-overlay"></div>
-                  <img src="./assets/images/home-care.svg" class="service-img img-fluid" alt="slide">
-                  <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide">
-                  <h5>Vote Safely</h5>
+                  <h5>{{item.device_name}}</h5>
                </a>
             </div>
          </div>
         </div>
 
-        <div class="row py-5">
+        <!-- <div class="row py-5">
           <div class="col-sm-12">
             <div class="view_all_btns">
               <button class="btn_all btn">View All →</button>
             </div>
           </div>
-        </div>
+        </div> -->
         
     </div>
   </section>
@@ -143,53 +110,20 @@
       <div class="row pb-4">
         <div class="col-sm-12">
             <div class="content-wrapper">
-                <h2 class="text-center feature_title_main">Featured Innovation</h2>
+                <h2 class="text-center feature_title_main">Featured Categories</h2>
                 <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
             </div>
         </div>
     </div>
 
     <div class="row pt-4">
-      <div class="col-lg-3 col-md-3 col-12">
+      <div *ngFor="let item of featuredCategories" class="col-lg-3 col-md-3 col-12">
         <div class="service-img-box_02">
-           <a href="#" class="service-link-box_02">
+           <a (click)="navigateToCategory(item)" class="service-link-box_02">
               <div class="service-box-overlay_02"></div>
-              <img src="./assets/images/home-care.svg" class="service-img_02 img-fluid" alt="slide">
-              <img src="./assets/images/right-arrow.svg" class="service-box-icon_02 img-fluid" alt="slide">
-              <h5>Home Care</h5>
-           </a>
-        </div>
-     </div>
-
-     <div class="col-lg-3 col-md-3 col-12">
-        <div class="service-img-box_02">
-           <a href="#" class="service-link-box_02">
-              <div class="service-box-overlay_02"></div>
-              <img src="./assets/images/home-care.svg" class="service-img_02 img-fluid" alt="slide">
-              <img src="./assets/images/right-arrow.svg" class="service-box-icon_02 img-fluid" alt="slide">
-              <h5>PPE Use</h5>
-           </a>
-        </div>
-     </div>
-
-     <div class="col-lg-3 col-md-3 col-12">
-        <div class="service-img-box_02">
-           <a href="#" class="service-link-box_02">
-              <div class="service-box-overlay_02"></div>
-              <img src="./assets/images/home-care.svg" class="service-img_02 img-fluid" alt="slide">
-              <img src="./assets/images/right-arrow.svg" class="service-box-icon_02 img-fluid" alt="slide">
-              <h5>Back to school</h5>
-           </a>
-        </div> 
-     </div>
-
-     <div class="col-lg-3 col-md-3 col-12">
-        <div class="service-img-box_02">
-           <a href="#" class="service-link-box_02">
-              <div class="service-box-overlay_02"></div>
-              <img src="./assets/images/home-care.svg" class="service-img_02 img-fluid" alt="slide">
-              <img src="./assets/images/right-arrow.svg" class="service-box-icon_02 img-fluid" alt="slide">
-              <h5>Vote Safely</h5>
+              <img [src]="assetUrl+item.category_image" class="service-img_02 img-fluid" alt="slide">
+              <img click="navigateToCategory(item)" src="./assets/images/right-arrow.svg" class="service-box-icon_02 img-fluid" alt="slide">
+              <h5>{{item.category_name}}</h5>
            </a>
         </div>
      </div>
