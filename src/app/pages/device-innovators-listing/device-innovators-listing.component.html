@@ -25,7 +25,12 @@
                <td>{{item.category_name}}</td>
                <td>{{item.subcategory_name}}</td>
                <td>{{item.device_created_date}}</td>
-               <td><a *ngIf="item.device_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)">Unblock</a></td>
+               <td>
+                 <a *ngIf="item.device_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)">Unblock</a>
+                 &nbsp;
+                 <a *ngIf="item.device_featured==1" (click)="makeUnfeatured(item,i)">Unfeature</a>
+                 <a *ngIf="item.device_featured==0" (click)="makeFeatured(item,i)">Feature</a>
+              </td>
            </tr>
         </tbody>
       </table>

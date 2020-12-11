@@ -18,6 +18,7 @@ import {ComplianceComponent} from './compliance/compliance.component'
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
 import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
+import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
 
 const routes: Routes = [{
   path: '',
@@ -84,6 +85,10 @@ const routes: Routes = [{
       component: DeviceInnovatorsListingComponent,
     },
     {
+      path: 'device-category-listing',
+      component: DeviceCategoryListingComponent,
+    },
+    {
       path: 'cms',
       component: CmsComponent,
     },
@@ -92,24 +97,9 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
-    {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
-    },
-    {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
-    },
-    {
-      path: 'modal-overlays',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
-        .then(m => m.ModalOverlaysModule),
     },
     {
       path: 'extra-components',
@@ -125,16 +115,6 @@ const routes: Routes = [{
       path: 'charts',
       loadChildren: () => import('./charts/charts.module')
         .then(m => m.ChartsModule),
-    },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
     },
     {
       path: 'miscellaneous',

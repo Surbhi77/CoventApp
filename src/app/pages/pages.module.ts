@@ -45,6 +45,7 @@ import { ComplianceComponent } from './compliance/compliance.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
 import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
+import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -97,6 +98,7 @@ const materialModules = [
     CharacteristicsComponent,
     ComplianceListingComponent,
     CharacteristicListingComponent,
+    DeviceCategoryListingComponent,
   ],
 })
 export class PagesModule {

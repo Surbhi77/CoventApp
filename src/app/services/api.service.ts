@@ -102,6 +102,14 @@ export class ApiService {
     return this.http.get(this.secureApi+'Characteristics-delete/'+id)
   }
 
+  public makeFeaturedUnfeatured(obj){
+    return this.http.post(this.secureApi+'add-featured-listing',obj)
+  }
+
+  public makeFeaturedCategory(obj){
+    return this.http.post(this.secureApi+'add-featured-category',obj)
+  }
+
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
   // }
