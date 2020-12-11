@@ -119,4 +119,24 @@ export class ApiService {
     return this.http.get(this.baseAPi+'/get-allfeaturedcategory')
   }
 
+  public getQuestionCountUserWise(id){
+    return this.http.get(this.baseAPi+'/innovator-questionscount/'+id)
+  }
+
+  public getStarRatings(id){
+    return this.http.get(this.baseAPi+'/innovator-reviewcount/'+id)
+  }
+
+  public getAvgRatings(id){
+    return this.http.get(this.baseAPi+'/innovator-startratingcount/'+id)
+  }
+
+  public getReviewsRecieved(id){
+    return this.http.get(this.baseAPi+'/innovator-reviewcount/'+id)
+  }
+
+  public getDeviceViews(id){
+    return this.http.get(this.baseAPi+'/innovator-viewcount/'+id)
+  }
+
 }
