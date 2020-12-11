@@ -65,4 +65,7 @@ ul#had_navs li a:hover {
   position: relative !important;
   top: 0 !important;
   box-shadow: 0 0 10px #ddd;
+}.inner_boxs h5 {
+  font-size: 16px;
+  color: #6200ee;
 }

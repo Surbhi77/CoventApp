@@ -1,20 +1,69 @@
-<div class="row">
-<div>
-  Question Count:{{questionCount}}
+<style>
+    .inner_boxs {
+  box-shadow: 0 0 10px #ddd;
+  padding: 15px;
+  border-radius: 5px;
+}
+.inner_boxs h5 {
+  font-size: 16px;
+  color: #6200ee;
+}
+</style>
+<div class="container">
+    <div class="row">
+    <div class="col-sm-3">
+        <div class="inner_boxs">
+            <h5>Question Count</h5>
+            <h3>{{questionCount}}</h3>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="inner_boxs">
+        <h5>No of Reviews Recieved</h5>
+        <h3>{{noOfstarRating}}</h3>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="inner_boxs">
+        <h5>Avg Ratings Recieved</h5>
+        <h3>{{getStarRatings}}</h3>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="inner_boxs">
+        <h5>No. of Device View</h5>
+        <h3>{{noOfDeviceViews}}</h3>
+        </div>
+    </div>
+<!-- <div>
+  
 </div>
 <br/>
 <div>
-  No of Reviews Recieved:{{noOfstarRating}}
+  :
 </div>
 <br/>
 <div>
-  Avg Ratings Recieved:{{getStarRatings}}
+  :
 </div>
 <div>
-  No. of Device View:{{noOfDeviceViews}}
+  :
+</div> -->
+</div>
+
+<div class="row py-5">
+    <div class="col-sm-6">
+        <h3>Weekly Review</h3>
+        <div id="chart1" echarts [options]="options" theme="macarons" class="demo-chart"></div>
+    </div>
+
+    <div class="col-sm-6">
+        <h3>Weekly Views</h3>
+        <div id="chart2" echarts [options]="options" theme="macarons" class="demo-chart"></div>
+    </div>
 </div>
 </div>
-<h1>Weekly Review</h1>
-<div id="chart1" echarts [options]="options" theme="macarons" class="demo-chart"></div>
-<h1>Weekly Views</h1>
-<div id="chart2" echarts [options]="options" theme="macarons" class="demo-chart"></div>
+
