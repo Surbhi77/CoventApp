@@ -110,6 +110,10 @@ export class ApiService {
     return this.http.post(this.secureApi+'add-featured-category',obj)
   }
 
+  public getLatestInnovator(){
+    return this.http.get(this.secureApi+'latest-innovatorlist')
+  }
+
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
   // }
