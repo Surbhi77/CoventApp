@@ -36,6 +36,7 @@ import { InnovatorListingComponent } from './innovator-listing/innovator-listing
 import { RatingModule } from 'ng-starrating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent],
   imports: [

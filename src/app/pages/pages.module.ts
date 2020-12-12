@@ -45,6 +45,7 @@ import { ReviewListingComponent } from './review-listing/review-listing.componen
 import { QuestionListingComponent } from './question-listing/question-listing.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -97,6 +98,7 @@ const materialModules = [
     QuestionListingComponent,
     EditQuestionComponent,
     MyReviewsComponent,
+    ChangePasswordComponent,
   ],
 })
 export class PagesModule {

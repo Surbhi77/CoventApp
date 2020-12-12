@@ -1,24 +1,43 @@
-<div class="row">
-  <div class="col-lg-6">
+
+  <div class="col-md-12 col-lg-12 col-xxxl-12 ">
     <nb-card>
-      <nb-card-header>Edit Profile</nb-card-header>
+      <nb-card-header class="  text-white" style="background-color:rgb(98, 0 ,238)">Edit Profile</nb-card-header>
       <nb-card-body>
         <form [formGroup]="form">
-        <input formControlName="user_name" type="text" nbInput fullWidth placeholder="User Name">
-        <input formControlName="user_email" disabled type="email" nbInput fullWidth placeholder="Email">
-        <input formControlName="mobile" type="text" nbInput fullWidth placeholder="Mobile">
-        <input formControlName="address" type="text" nbInput fullWidth placeholder="Address">
-        <input  type="file" accept="image/*" (change)="onFileChange($event)" nbInput fullWidth>
-        <button (click)="updateProfile()" nbButton matRipple hero class="size-medium status-primary">
-         Update
-        </button> 
+          <mat-form-field class="example-full-width col-lg-8">
+            <mat-label>User name</mat-label>
+            <input formControlName="user_name" matInput type="text" fullWidth placeholder="User Name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <mat-label>Email</mat-label>
+            <input formControlName="user_email" disabled type="email" matInput fullWidth placeholder="Email">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <input formControlName="mobile" type="text" matInput fullWidth placeholder="Mobile">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <input formControlName="address" type="text" matInput fullWidth placeholder="Address">
+          </mat-form-field>
+
+          <div>
+            <input type="file" accept="image/*" id="file" class="ml-3" (change)="onFileChange($event)">
+            <label for="file" >Choose file</label>
+          </div>
+          <br />
+          <br />
+          <button (click)="updateProfile()" nbButton matRipple hero class="size-medium status-primary ml-3">
+            Update
+          </button>
         </form>
-        
+
       </nb-card-body>
     </nb-card>
   </div>
 
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
 
    
    
@@ -45,8 +64,8 @@
         
       </nb-card-body>
     </nb-card>
-  </div>
-</div>
+  </div> -->
+
 <!-- <div *ngIf="showMaterialInputs" class="row">
   <div class="col-lg-12">
     <ngx-material-inputs></ngx-material-inputs>
