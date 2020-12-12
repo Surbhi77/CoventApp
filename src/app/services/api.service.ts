@@ -114,6 +114,18 @@ export class ApiService {
     return this.http.get(this.secureApi+'latest-innovatorlist')
   }
 
+  public getLatestViewInnovator(){
+    return this.http.get(this.secureApi+'latest-viewinnovatorlist')
+  }
+
+  public monthlyAddedCount(){
+    return this.http.get(this.secureApi+'/monthlyadded-innovatorscount')
+  }
+
+  public monthlyViewedCount(){
+    return this.http.get(this.secureApi+'/monthlyviewed-innovatorscount')
+  }
+
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
   // }

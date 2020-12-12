@@ -24,6 +24,7 @@ import {
 import { ReqInterceptor } from './req.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { DataTablesModule } from 'angular-datatables';
     AppRoutingModule,
     DataTablesModule,
     FormsModule,
+    ChartModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),

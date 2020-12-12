@@ -1,6 +1,6 @@
 <div class="row">
+<h1>Latest Added Devices</h1>
 <table>
-
     <thead>
         <td>Device Name</td>
         <td>Create Date</td>
@@ -15,5 +15,48 @@
             </td>
         </tr>
     </tbody>
-</table>  
+</table> 
+<h1>Top Viewed Devices</h1>
+<table>
+
+    <thead>
+        <td>Device Name</td>
+        <td>Create Date</td>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of topViewedListing">
+            <td (click)="openDetail(item)">
+             {{item.device_name}}
+            </td>
+            <td (click)="openDetail(item)">
+             {{item.device_created_date}}
+            </td>
+        </tr>
+    </tbody>
+</table>
 </div>
+
+
+<highcharts-chart
+      id="container"
+      [Highcharts]="Highcharts"
+      [constructorType]="chartConstructor"
+      [options]="chartOptions"
+      [callbackFunction]="chartCallback"
+      [(update)]="updateFlag"
+      [oneToOne]="true"
+      style="width: 100%; height: 400px; display: block;"
+    >
+</highcharts-chart>
+
+<highcharts-chart
+      id="container"
+      [Highcharts]="Highcharts"
+      [constructorType]="chartConstructor"
+      [options]="chartOptions2"
+      [callbackFunction]="chartCallback2"
+      [(update)]="updateFlag2"
+      [oneToOne]="true"
+      style="width: 100%; height: 400px; display: block;"
+    >
+</highcharts-chart>
