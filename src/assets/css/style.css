@@ -18,6 +18,17 @@ nb-stepper.mt-0.vertical .header {
     border-color: #6200ee;
     color: #fff;
   }
+  
+  .bgChange .header .label{
+
+   
+    color: #fff !important;
+   
+  }
+  .bgChange .header{
+  padding:  20px 25px ;
+  
+  }
   .step-content {
     width: 100%;
 }

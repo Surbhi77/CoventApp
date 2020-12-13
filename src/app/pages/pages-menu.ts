@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title:"Change Password",
     icon: 'lock-outline',
-    link: '#'
+    link: '/pages/change-password'
   }
 ];
 

@@ -18,11 +18,16 @@ import { ReviewListingComponent } from './review-listing/review-listing.componen
 import { QuestionListingComponent } from './question-listing/question-listing.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    {
+      path: 'change-password',
+      component: ChangePasswordComponent,
+    },
     {
       path: 'dashboard',
       component: ECommerceComponent,
