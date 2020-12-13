@@ -19,3 +19,26 @@ nb-card-body {
     display: inline-block;
     padding: 0 !important;
 }
+.custom_tabls tr td {
+  vertical-align: middle;
+}
+.conm_bns {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 30px;
+  text-decoration: none !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+.view_review {
+  background: #ff9f05;
+}
+.view_question {
+  background: #0495ee;
+}
+.tab_edit {
+  background: #8f9bb3;
+}
+.delete_n {
+  background: #b00020;
+}

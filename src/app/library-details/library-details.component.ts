@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LibraryDetailsComponent implements OnInit {
   categoryId: any;
   deviceDetails:any;
-  assetBaseUrl="http://localhost:9700/"
+  assetBaseUrl="http://134.209.68.96:9700/"
   safeURL: any;
   currentRate:any=5;
   closeResult: string;

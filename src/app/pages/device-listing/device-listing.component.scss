@@ -69,6 +69,29 @@ label.add_tens {
    
 //   }
  
-  nb-stepper { background-color: #6200ee !important;  }
+  nb-stepper { background-color: #13bfb3 !important;  }
   
  
+  .device_imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.device_imgs {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px #ccc;
+    background: #fff;
+}
+.pdf_links {
+  text-decoration: none !important;
+  text-transform: uppercase;
+  margin-top: 15px;
+  display: block;
+}
+.pdf_links i {
+  color: #6c757d;
+}

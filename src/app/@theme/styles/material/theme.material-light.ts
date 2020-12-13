@@ -1,7 +1,7 @@
 import { NbJSThemeOptions } from '@nebular/theme';
 
 const palette = {
-  primary: '#6200ee',
+  primary: '#13bfb3',
   success: '#60af20',
   info: '#0495ee',
   warning: '#ff9f05',
@@ -39,7 +39,7 @@ export const baseTheme: NbJSThemeOptions = {
     warning: palette.warning,
     danger: palette.danger,
 
-    primaryLight: '#903df4',
+    primaryLight: '#237973',
     successLight: '#8fcf50',
     infoLight: '#40bbf4',
     warningLight: '#ffbe43',

@@ -1,9 +1,9 @@
 
   <div class="col-md-12 col-lg-12 col-xxxl-12 ">
     <nb-card>
-      <nb-card-header class="  text-white" style="background-color:rgb(98, 0 ,238)">Edit Profile</nb-card-header>
+      <nb-card-header class="text-white" style="background-color:rgb(19 191 179)">Edit Profile</nb-card-header>
       <nb-card-body>
-        <form [formGroup]="form">
+        <form [formGroup]="form" class="py-5">
           <mat-form-field class="example-full-width col-lg-8">
             <mat-label>User name</mat-label>
             <input formControlName="user_name" matInput type="text" fullWidth placeholder="User Name">
@@ -22,15 +22,17 @@
             <input formControlName="address" type="text" matInput fullWidth placeholder="Address">
           </mat-form-field>
 
-          <div>
+          <div class="col-lg-8">
             <input type="file" accept="image/*" id="file" class="ml-3" (change)="onFileChange($event)">
             <label for="file" >Choose file</label>
           </div>
+
           <br />
-          <br />
-          <button (click)="updateProfile()" nbButton matRipple hero class="size-medium status-primary ml-3">
-            Update
-          </button>
+          <div class="col-lg-8">
+            <button (click)="updateProfile()" class="cutom_btn_all"> Update </button>
+          </div>
+          
+
         </form>
 
       </nb-card-body>

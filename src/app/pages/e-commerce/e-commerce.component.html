@@ -6,36 +6,60 @@
 }
 .inner_boxs h5 {
   font-size: 16px;
-  color: #6200ee;
+  color: #13bfb3;
 }
 </style>
-<div class="container">
+<div class="container"> 
     <div class="row">
     <div class="col-sm-3">
-        <div class="inner_boxs">
-            <h5>Question Count</h5>
-            <h3>{{questionCount}}</h3>
+        <div class="card widget-flat">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="fas fa-sort-numeric-up-alt widget-icon"></i>
+                </div>
+                <h5 class="text-muted font-weight-normal mt-0" title="Question Count">Question Count</h5>
+                <h3 class="mt-3 mb-0">{{questionCount}}</h3>
+            </div> <!-- end card-body-->
         </div>
     </div>
 
     <div class="col-sm-3">
-        <div class="inner_boxs">
+        <div class="card widget-flat">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="fas fa-poll widget-icon"></i>
+                </div>
+                <h5 class="text-muted font-weight-normal mt-0" title="No of Reviews Recieved">No of Reviews Recieved</h5>
+                <h3 class="mt-3 mb-0">{{noOfstarRating}}</h3>
+            </div> <!-- end card-body-->
+        </div>
+        <!-- <div class="inner_boxs">
         <h5>No of Reviews Recieved</h5>
         <h3>{{noOfstarRating}}</h3>
+        </div> -->
+    </div>
+
+    <div class="col-sm-3">
+        <div class="card widget-flat">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="far fa-chart-bar widget-icon"></i>
+                </div>
+                <h5 class="text-muted font-weight-normal mt-0" title="Avg Ratings Recieved">Avg Ratings Recieved</h5>
+                <h3 class="mt-3 mb-0">{{getStarRating}}</h3>
+            </div> <!-- end card-body-->
         </div>
     </div>
 
     <div class="col-sm-3">
-        <div class="inner_boxs">
-        <h5>Avg Ratings Recieved</h5>
-        <h3>{{getStarRatings}}</h3>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="inner_boxs">
-        <h5>No. of Device View</h5>
-        <h3>{{noOfDeviceViews}}</h3>
+        <div class="card widget-flat">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="fas fa-laptop widget-icon"></i>
+                </div>
+                <h5 class="text-muted font-weight-normal mt-0" title="No. of Device View">No. of Device View</h5>
+                <h3 class="mt-3 mb-0">{{noOfDeviceViews}}</h3>
+            </div> <!-- end card-body-->
         </div>
     </div>
 <!-- <div>
@@ -56,8 +80,10 @@
 
 <div class="row py-5">
     <div class="col-sm-6">
+        <div class="inner_chart">
+            <h4>Weekly Review</h4>
 
-        <highcharts-chart
+            <highcharts-chart
             id="container"
             [Highcharts]="Highcharts"
             [constructorType]="chartConstructor"
@@ -68,9 +94,12 @@
             style="width: 100%; height: 400px; display: block;"
         >
         </highcharts-chart>
+        </div>
     </div>
 
     <div class="col-sm-6">
+        <div class="inner_chart">
+            <h4>Weekly Views</h4>
 
         <highcharts-chart
         id="container"
@@ -82,6 +111,7 @@
         [oneToOne]="true"
         style="width: 100%; height: 400px; display: block;">
         </highcharts-chart>
+    </div>
     </div>
 </div>
 </div>

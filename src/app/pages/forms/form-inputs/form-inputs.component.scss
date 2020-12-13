@@ -31,7 +31,7 @@ nb-card-body {
 }
 
 [type="file"] + label {
-  background: #5703f3e8;
+  background: #13bfb3;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -45,5 +45,8 @@ nb-card-body {
   padding: 1rem 50px;
   position: relative;
   transition: all 0.3s;
-  vertical-align: middle;}
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+}
   

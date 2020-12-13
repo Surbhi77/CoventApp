@@ -1,0 +1,33 @@
+.widget-icon {
+    color: #13bfb3;
+    font-size: 20px;
+    background-color: #13bfb359;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 3px;
+    display: inline-block;
+}
+.card.widget-flat {
+    border: none;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 0;
+}
+.widget-flat h5 {
+    font-size: 17px;
+    color: #98a6ad;
+}
+.widget-flat h3 {
+    color: #6c757d;
+}
+.inner_chart h4 {
+    padding: 15px;
+    color: #6c757d;
+    font-size: 18px;
+    font-weight: 500;
+    background: #fff;
+}
+.inner_chart {
+    box-shadow: 0 0 10px #ccc;
+}

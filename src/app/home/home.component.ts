@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   featuredInnovatorListing:any=[];
   featuredCategories:any=[];
-  assetUrl:any='http://localhost:9700/'
+  assetUrl:any='http://134.209.68.96:9700/'
 
   constructor(private apiService:ApiService,private router:Router) { }
 

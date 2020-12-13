@@ -14,8 +14,8 @@ nb-stepper.mt-0.vertical .header {
     margin-bottom: 30px;
   }
   .nb-theme-material-light nb-stepper .header .step.selected .label-index {
-    background-color: #6200ee;
-    border-color: #6200ee;
+    background-color: #13bfb3;
+    border-color: #13bfb3;
     color: #fff;
   }
   
@@ -78,5 +78,24 @@ ul#had_navs li a:hover {
   box-shadow: 0 0 10px #ddd;
 }.inner_boxs h5 {
   font-size: 16px;
-  color: #6200ee;
+  color: #13bfb3;
+}
+
+.menus_lis ul li {
+  border: none !important; 
+  padding-bottom: 15px !important;
+}
+.cutom_btn_all {
+  background:#237973;
+  padding: 10px 35px;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 3px;
+}
+.nb-theme-material-light nb-stepper .header .step.selected .label-index {
+  border-color: #237973 !important;
+}
+.nb-theme-material-light nb-stepper .header .connector-past {
+  background-color: #237973 !important;
 }

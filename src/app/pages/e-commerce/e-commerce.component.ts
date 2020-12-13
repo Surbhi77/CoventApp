@@ -6,6 +6,7 @@ import * as Highcharts from "highcharts";
 @Component({
   selector: 'ngx-ecommerce',
   templateUrl: './e-commerce.component.html',
+  styleUrls: ['./e-commerce.component.scss']
 })
 export class ECommerceComponent {
   userDetails: any;
@@ -22,13 +23,15 @@ export class ECommerceComponent {
   updateFlag2=false;
   chartOptions = {
     title: {
-      text: 'Weekly Review'
+      text: ''
+      // text: 'Weekly Review'
     },
     series: [
       
       {
        type:'column',
        showInLegend:false,
+       color: '#13bfb3',
        data: [1, 2, 3, 6, 9]
       }
     ],
@@ -40,6 +43,7 @@ export class ECommerceComponent {
       allowDecimals: false,
       title: {
         text: "Reviews"
+        // text: ""
       }
     },
     xAxis: {
@@ -48,11 +52,13 @@ export class ECommerceComponent {
   };
   chartOptions2 = {
     title: {
-      text: 'Weekly Views'
+      // text: 'Weekly Views'
+      text: ''
     },
     series: [     
       {
         type:'column',
+        color: '#13bfb3',
         showInLegend:false,
         data: [1, 2, 3, 6, 9]
       }
@@ -108,6 +114,7 @@ export class ECommerceComponent {
       },
     ],
   };
+  getStarRating: any;
 
   constructor(private apiService:ApiService) {
     this.chartCallback = chart => {
@@ -173,7 +180,7 @@ export class ECommerceComponent {
   getStarRatings() {
     this.apiService.getAvgRatings(this.userDetails.id).subscribe(res=>{
       console.log(res);
-      this.getStarRatings = res['data'].rating
+      this.getStarRating = res['data'].rating
     })
   }
 

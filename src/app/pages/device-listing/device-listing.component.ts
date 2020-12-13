@@ -22,7 +22,7 @@ export class DeviceListingComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   devices:any;
-  assetUrl="http://localhost:9700/"
+  assetUrl="http://134.209.68.96:9700/"
   subCatDevices:any;
   firstForm: FormGroup;
   secondForm: FormGroup;
