@@ -3,8 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid"> -->
-                <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100">
+              <ngb-carousel *ngIf="deviceDetails&&deviceDetails.device_image">
+                <ng-template *ngFor="let image of deviceDetails.device_image" ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="assetBaseUrl+image" alt="Random first slide">
+                  </div>
+                  
+                </ng-template>
+              </ngb-carousel>
+                <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid w-100"> -->
+                <!-- <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100"> -->
             </div>
 
             <div class="col-sm-6">
@@ -12,8 +20,8 @@
                   <div class="d-flex justify-content-between align-items-center pb-3">
                     <h1 *ngIf="deviceDetails && deviceDetails.device_name" class="feature_title">{{deviceDetails.device_name}}</h1>
                     <div class="rattings">
-                      <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-                      <a href="#" class="view_res">View Reviews</a>
+                      <ngb-rating [max]="5" [(rate)]="deviceDetails.average_ratings" [readonly]="true"></ngb-rating>
+                      <a (click)="scroll('review')" class="view_res">View Reviews</a>
                     </div>
                     
                   </div>
@@ -23,7 +31,7 @@
                       <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
                     </div>
 
-                    <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Review <i class="far fa-edit"></i></a>
+                    <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
                     <a class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
                 </div>
             </div>  
@@ -173,7 +181,7 @@
                     <div *ngFor="let item of reviewList" class="d-flex blockquote review-item">
                      
                       <div class="col-md-2 text-center">
-                        <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                        
                         <div class="caption">
                           <small>by <a >{{item.user_name}}</a></small>
                         </div>
@@ -315,3 +323,44 @@
       <button type="button" class="btn btn-outline-dark" [disabled]="!form.valid||reviewStars==0" (click)="modal.close('Save click')">Add Review</button>
     </div>
   </ng-template>
+
+
+  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Login</h4>
+          <button (click)="showModal=false">X</button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && j.email.errors }" />
+                    <div *ngIf="submitted && j.email.errors" class="invalid-feedback">
+                        <div *ngIf="j.email.errors.required">Email is required</div>
+                        <div *ngIf="j.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && j.password.errors }" />
+                    <div *ngIf="submitted && j.password.errors" class="invalid-feedback">
+                        <div *ngIf="j.password.errors.required">Password is required</div>
+                    </div>
+                  </div>
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                </label>
+              </div>
+              <div class="form-group">
+                <p>New member <a routerLink="/auth/register">Register Here</a></p>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+    </div>
