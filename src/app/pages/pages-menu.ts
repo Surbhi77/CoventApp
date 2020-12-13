@@ -33,7 +33,7 @@ export const REVIEWER_ITEMS: NbMenuItem[]=[
   {
     title: 'Dashboard',
     icon: 'home',
-    link: '/pages/dashboard',
+    link: '/pages/review-list',
     home: true,
   },
   {

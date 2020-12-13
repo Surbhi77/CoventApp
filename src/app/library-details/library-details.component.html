@@ -34,8 +34,8 @@
                       <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
                     </div>
 
-                    <a  class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
-                    <a class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                    <a *ngIf="deviceDetails.device_user_id != userDetails.id" class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
+                    <a *ngIf="deviceDetails.device_user_id != userDetails.id"  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
                 </div>
             </div>  
         </div>

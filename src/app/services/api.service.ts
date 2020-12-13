@@ -10,6 +10,7 @@ export class ApiService {
 
   public baseAPi = environment.apiUrl+"frontend/";
   userLoggedOutorIn$ = new Subject<any>();
+  userDataUpdated$ = new Subject<any>();
 
   constructor(private http:HttpClient) {
 

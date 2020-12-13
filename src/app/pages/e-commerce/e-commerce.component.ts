@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ApiService} from './../../services/api.service'
 import * as moment from 'moment'; // add this 1 of 4
 import * as Highcharts from "highcharts";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-ecommerce',
@@ -116,7 +117,7 @@ export class ECommerceComponent {
   };
   getStarRating: any;
 
-  constructor(private apiService:ApiService) {
+  constructor(private apiService:ApiService,private router:Router) {
     this.chartCallback = chart => {
       this.chart = chart;
     };
@@ -128,6 +129,9 @@ export class ECommerceComponent {
   ngOnInit(){
     let userDetails = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = userDetails;
+    if(this.userDetails.user_type == 2){
+      this.router.navigateByUrl('/pages/review-list')
+    }
     this.getDeviceViews();
     this.getReviewsRecieved();
     this.getStarRatings();
