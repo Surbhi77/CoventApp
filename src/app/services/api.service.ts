@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9700/frontend/";
-  public secureApi="http://localhost:9700/secureApi/";
-  public authApi= "http://localhost:9700/api/";
+  public baseAPi = "http://134.209.68.96:9700/frontend/";
+  public secureApi="http://134.209.68.96:9700/secureApi/";
+  public authApi= "http://134.209.68.96:9700/api/";
 
   constructor(private http:HttpClient) {
 
