@@ -1,0 +1,31 @@
+<nb-card>
+    <nb-card-header>Add Characteristics</nb-card-header>
+    <nb-card-body>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Device category</mat-label>
+            <mat-select [disabled]="isEditScreen" formControlName="category_id"  (selectionChange)="deviceChange($event.value)">
+              <mat-option *ngFor="let device of category"  [value]="device.category_id">
+                {{device.category_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br/>
+          <mat-form-field appearance="fill" class="mt-0 pb-0">
+            <mat-label>Device type</mat-label>
+            <mat-select [disabled]="isEditScreen" formControlName="sub_category_id">
+              <mat-option value="">Select Device Type</mat-option>
+              <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
+                {{sub.subcategory_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+      <input formControlName="characteristics_data" type="text" nbInput fullWidth placeholder="Comma Seperated Characteristics">
+      <button (click)="saveComplianceData()" nbButton matRipple hero class="size-medium status-primary">
+       {{(isEditScreen)?'Update':'Add'}}
+      </button>
+    </form>
+        
+    </nb-card-body>
+  </nb-card>

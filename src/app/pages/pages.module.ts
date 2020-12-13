@@ -10,7 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { DeviceListingComponent } from './device-listing/device-listing.component';
 import { DeviceInnovatorsListingComponent } from './device-innovators-listing/device-innovators-listing.component';
 import { CmsComponent } from './cms/cms.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule as ngFormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -41,7 +41,11 @@ import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.co
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReviewerListComponent } from './reviewer-list/reviewer-list.component';
-
+import { ComplianceComponent } from './compliance/compliance.component';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
+import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
+import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -65,6 +69,7 @@ const materialModules = [
     ECommerceModule,
     MiscellaneousModule,
     Ng2SmartTableModule,
+    ReactiveFormsModule,
     NbActionsModule,
     NbButtonModule,
     NbCardModule,
@@ -89,6 +94,11 @@ const materialModules = [
     ReviewerListingComponent,
     NewsletterComponent,
     ReviewerListComponent,
+    ComplianceComponent,
+    CharacteristicsComponent,
+    ComplianceListingComponent,
+    CharacteristicListingComponent,
+    DeviceCategoryListingComponent,
   ],
 })
 export class PagesModule {

@@ -1,0 +1,32 @@
+<nb-card>
+    <nb-card-header>
+      Compliance Listing
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/add-compliance">Add</button>
+    </nb-card-header>
+  
+    <nb-card-body>
+      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>  -->
+      <table *ngIf="complianceList && complianceList.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Device Category</th>
+          <th>Device Subcategory</th>
+          <th>Action Buttons</th>
+        </tr>
+      </thead>
+      <tbody >
+       <tr *ngFor="let item of complianceList;let i=index">
+             <td>{{i+1}}</td>
+             <td>{{item.category_name}}</td>
+             <td>{{item.subcategory_name}}</td>
+             <td><a [routerLink]="'/pages/edit-compliance/'+item.compliance_id">Edit</a><br/>
+                <a (click)="deleteCompliance(item,i)">Delete</a></td>
+         </tr>
+      </tbody>
+    </table>
+    </nb-card-body>
+  </nb-card> 
+  

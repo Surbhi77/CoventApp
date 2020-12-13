@@ -6,15 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9700/api/";
-  public secureApi="http://localhost:9700/secureApi/"
+  public baseAPi = "http://localhost:9700/frontend/";
+  public secureApi="http://localhost:9700/secureApi/";
+  public authApi= "http://localhost:9700/api/";
 
   constructor(private http:HttpClient) {
 
   }
 
   public login(obj){
-    return this.http.post(this.baseAPi+'login',obj);
+    return this.http.post(this.authApi+'login',obj);
   }
 
   public getInnovatorList() {
@@ -22,7 +23,7 @@ export class ApiService {
   }
   
   public register(obj){
-    return this.http.post(this.baseAPi+'signup',obj);
+    return this.http.post(this.authApi+'signup',obj);
   }
 
   public getDeviceListing(){
@@ -53,13 +54,77 @@ export class ApiService {
     return this.http.get(this.secureApi+'reviewer-list')
   }
 
-  // public getSubcategoryListing(id){
-  //   return this.http.get(this.baseAPi+'device-sub-category/'+id);
-  // }
+  public getSubcategoryListing(id){
+    return this.http.get(this.baseAPi+'device-sub-category/'+id);
+  }
 
-  // public getCountryListing(){
-  //   return this.http.get(this.baseAPi+'country-list')
-  // }
+  public getDeviceCategoryListing(){
+    return this.http.get(this.baseAPi+'device-category')
+  }
+
+  public createCompliance(obj){
+    return this.http.post(this.secureApi+'create-compliance',obj)
+  }
+
+  public updateCompliance(obj){
+    return this.http.post(this.secureApi+'update-compliance',obj)
+  }
+
+  public updateCharacteristics(obj){
+    return this.http.post(this.secureApi+'update-characteristics',obj)
+  }
+
+  public createCharacteristics(obj){
+    return this.http.post(this.secureApi+'create-characteristics',obj)
+  }
+
+  public complianceListing(){
+    return this.http.get(this.secureApi+'Compliance-listing')
+  }
+
+  public characteristicListing(){
+    return this.http.get(this.secureApi+'Characteristics-listing')
+  }
+
+  public complianceDetail(id){
+    return this.http.get(this.secureApi+'Compliance-details/'+id)
+  }
+
+  public characteristicDetail(id){
+    return this.http.get(this.secureApi+'Characteristics-details/'+id)
+  }
+
+  public complianceDelete(id){
+    return this.http.get(this.secureApi+'Compliance-delete/'+id)
+  }
+
+  public characteristicsDelete(id){
+    return this.http.get(this.secureApi+'Characteristics-delete/'+id)
+  }
+
+  public makeFeaturedUnfeatured(obj){
+    return this.http.post(this.secureApi+'add-featured-listing',obj)
+  }
+
+  public makeFeaturedCategory(obj){
+    return this.http.post(this.secureApi+'add-featured-category',obj)
+  }
+
+  public getLatestInnovator(){
+    return this.http.get(this.secureApi+'latest-innovatorlist')
+  }
+
+  public getLatestViewInnovator(){
+    return this.http.get(this.secureApi+'latest-viewinnovatorlist')
+  }
+
+  public monthlyAddedCount(){
+    return this.http.get(this.secureApi+'/monthlyadded-innovatorscount')
+  }
+
+  public monthlyViewedCount(){
+    return this.http.get(this.secureApi+'/monthlyviewed-innovatorscount')
+  }
 
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);

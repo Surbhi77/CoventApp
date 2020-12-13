@@ -20,7 +20,7 @@ import { OrdersChartComponent } from './charts-panel/charts/orders-chart.compone
 import { ProfitChartComponent } from './charts-panel/charts/profit-chart.component';
 import { ChartPanelHeaderComponent } from './charts-panel/chart-panel-header/chart-panel-header.component';
 import { ChartPanelSummaryComponent } from './charts-panel/chart-panel-summary/chart-panel-summary.component';
-import { ChartModule } from 'angular2-chartjs';
+import { ChartModule } from 'angular-highcharts';
 import { StatsCardBackComponent } from './profit-card/back-side/stats-card-back.component';
 import { StatsAreaChartComponent } from './profit-card/back-side/stats-area-chart.component';
 import { StatsBarAnimationChartComponent } from './profit-card/front-side/stats-bar-animation-chart.component';
@@ -56,6 +56,7 @@ import { EarningPieChartComponent } from './earning-card/back-side/earning-pie-c
 import { EarningCardFrontComponent } from './earning-card/front-side/earning-card-front.component';
 import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earning-live-update-chart.component';
 import * as echarts from 'echarts';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import * as echarts from 'echarts';
     NbCardModule,
     NbUserModule,
     NbButtonModule,
+    HighchartsChartModule,
     NbIconModule,
     NbTabsetModule,
     NbSelectModule,

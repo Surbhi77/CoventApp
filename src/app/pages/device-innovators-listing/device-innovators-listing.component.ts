@@ -7,28 +7,19 @@ import {ApiService} from  './../../services/api.service';
   styleUrls: ['./device-innovators-listing.component.scss']
 })
 export class DeviceInnovatorsListingComponent {
-   dtOptions:DataTables.Settings = {};
+  dtOptions:DataTables.Settings = {};
 
   deviceListing: any=[];
 
 
   constructor(private apiService:ApiService) {
-    
-      
-    //const data = this.service.getData();
-   // console.log(data)
-   // this.source.load(data);
   }
 
   ngOnInit(){
-    // let userDetails = JSON.parse(localStorage.getItem("userData"));
-    // let obj={
-    //   "user_id":userDetails.id
-    // }
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-    lengthMenu : [5, 10, 25],
+      lengthMenu : [5, 10, 25],
       processing: true
     }
     this.apiService.getInnovatorList().subscribe(res=>{
@@ -37,8 +28,6 @@ export class DeviceInnovatorsListingComponent {
         this.deviceListing.forEach((currentValue, index) => {
           currentValue.id = index+1
         });
-       // this.dtTrigger.next();
-      //  this.source.load(this.deviceListing)
       }else{
         this.deviceListing = [];
       }
@@ -71,6 +60,26 @@ export class DeviceInnovatorsListingComponent {
       }
     })
     //alert("unblock called")
+  }
+
+  makeUnfeatured(item,i){
+    let obj={
+      "device_featured":"0", 
+	    "device_data_id":item.device_data_id
+    }
+    this.apiService.makeFeaturedUnfeatured(obj).subscribe(res=>{
+     this.deviceListing[i].device_featured=0;
+    })
+  }
+
+  makeFeatured(item,i){
+    let obj={
+      "device_featured":"1", 
+	    "device_data_id":item.device_data_id
+    }
+    this.apiService.makeFeaturedUnfeatured(obj).subscribe(res=>{
+     this.deviceListing[i].device_featured=1;
+    })
   }
 
 }

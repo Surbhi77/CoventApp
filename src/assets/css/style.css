@@ -1,9 +1,14 @@
 .p-4.table_sidj tr td {
     border-color: #dee2e6;
+    border: none !important;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 .p-4.table_sidj tr {
     border: none !important;
     border-color: #333 !important;
+    background: none !important;
+    border: none !important;
 }
 .p-4.table_sidj table {
     border: none !important;
@@ -11,4 +16,26 @@
 .p-4.table_sidj tr th {
     border: none !important;
     border: 1px solid #f2f2f2 !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+    padding: 8px !important;
+}
+div#DataTables_Table_0_info {
+    padding-top: 40px;
+}
+div#DataTables_Table_0_paginate {
+    padding-top: 30px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #ffffff !important;
+    border: 1px solid #6200ee !important;
+    background-color: #6200ee !important;
+    background: #6200ee !important;
+    border-radius: 60px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    color: #ffffff !important;
+    border: 1px solid #6200ee !important;
+    background-color: #6200ee !important;
+    background: #6200ee !important;
+    border-radius: 60px !important;
 }

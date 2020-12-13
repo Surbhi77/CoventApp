@@ -13,7 +13,12 @@ import { ReviewerListingComponent } from './reviewer-listing/reviewer-listing.co
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import {ReviewerListComponent} from './reviewer-list/reviewer-list.component'
+import {ReviewerListComponent} from './reviewer-list/reviewer-list.component';
+import {ComplianceComponent} from './compliance/compliance.component'
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
+import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
+import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
 
 const routes: Routes = [{
   path: '',
@@ -44,6 +49,30 @@ const routes: Routes = [{
       component: AddCmsComponent,
     },
     {
+      path: 'add-compliance',
+      component: ComplianceComponent
+    },
+    {
+      path:'edit-compliance/:id',
+      component:ComplianceComponent
+    },
+    {
+      path:'add-characteristics',
+      component:CharacteristicsComponent
+    },
+    {
+      path:'edit-characteristics/:id',
+      component:CharacteristicsComponent
+    },
+    {
+      path:'compliance-listing',
+      component:ComplianceListingComponent
+    },
+    {
+      path:'characteristic-listing',
+      component:CharacteristicListingComponent
+    },
+    {
       path: 'add-sliders',
       component: AddSlidersComponent,
     },
@@ -56,6 +85,10 @@ const routes: Routes = [{
       component: DeviceInnovatorsListingComponent,
     },
     {
+      path: 'device-category-listing',
+      component: DeviceCategoryListingComponent,
+    },
+    {
       path: 'cms',
       component: CmsComponent,
     },
@@ -64,24 +97,9 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
-    {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
-    },
-    {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
-    },
-    {
-      path: 'modal-overlays',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
-        .then(m => m.ModalOverlaysModule),
     },
     {
       path: 'extra-components',
@@ -97,16 +115,6 @@ const routes: Routes = [{
       path: 'charts',
       loadChildren: () => import('./charts/charts.module')
         .then(m => m.ChartsModule),
-    },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
     },
     {
       path: 'miscellaneous',
