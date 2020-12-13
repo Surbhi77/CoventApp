@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from './../services/api.service'
 import { Router } from '@angular/router';
+import {environment} from 'environments/environment'
 @Component({
   selector: 'ngx-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   featuredInnovatorListing:any=[];
   featuredCategories:any=[];
-  assetUrl:any='http://134.209.68.96:9700/'
+  assetUrl:any=environment.imageUrl
 
   constructor(private apiService:ApiService,private router:Router) { }
 

@@ -1,4 +1,4 @@
-<ng-container *ngIf="!userLoggedIn">
+<ng-container *ngIf="!showHeader">
   <!-- <section class="top_centions">
     <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -75,7 +75,8 @@
 
           <ul class="navbar-nav ml-auto" >
             <li class="nav-item">
-              <a class="nav-link login_links" routerLink="/auth/login">Login/Register</a>
+              <a *ngIf="!userLoggedIn" class="nav-link login_links" routerLink="/auth/login">Login/Register</a>
+              <a *ngIf="userLoggedIn" class="nav-link login_links" routerLink="/pages/dashboard">Dashboard</a>
             </li>
           </ul>
         </div>

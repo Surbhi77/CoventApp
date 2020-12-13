@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {environment} from 'environments/environment'
 
 interface Food {
   value: string;
@@ -22,7 +23,7 @@ export class DeviceListingComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   devices:any;
-  assetUrl="http://134.209.68.96:9700/"
+  assetUrl=environment.imageUrl;
   subCatDevices:any;
   firstForm: FormGroup;
   secondForm: FormGroup;

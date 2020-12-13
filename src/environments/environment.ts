@@ -10,4 +10,6 @@
 
 export const environment = {
   production: false,
+  apiUrl:'http://localhost:9700/',
+  imageUrl:'http://localhost:9700/'
 };

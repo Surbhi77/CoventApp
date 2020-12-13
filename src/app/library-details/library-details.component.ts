@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {Router,ActivatedRoute} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {ApiService} from './../services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StarRatingComponent } from 'ng-starrating';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import {environment} from 'environments/environment'
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngx-library-details',
   templateUrl: './library-details.component.html',
-  styleUrls: ['./library-details.component.scss']
+  styleUrls: ['./library-details.component.scss'],
+  providers: [NgbCarouselConfig]
 })
 export class LibraryDetailsComponent implements OnInit {
   categoryId: any;
   deviceDetails:any;
-  assetBaseUrl="http://134.209.68.96:9700/"
+  assetBaseUrl=environment.imageUrl;
   safeURL: any;
   currentRate:any=5;
   closeResult: string;
@@ -24,19 +27,74 @@ export class LibraryDetailsComponent implements OnInit {
   reviewList:any=[];
   quesList:any=[];
   quesForm:FormGroup = new FormGroup({});
+  showModal:boolean=false;
+  loginForm: FormGroup;
+  submitted: boolean=false;
+  isLoggedIn:boolean=false;
   
   constructor(private toastr: ToastrService,
      private fb:FormBuilder,
-     private router:Router,
+     config: NgbCarouselConfig,
      private modalService: NgbModal,
      private apiService:ApiService,
      private _sanitizer: DomSanitizer,
-     private activatedRoute:ActivatedRoute) { }
+     private activatedRoute:ActivatedRoute) {
+      config.interval = 2000;
+      config.keyboard = true;
+      config.pauseOnHover = true;
+  }
+
+  scroll(el) {
+    console.log("here");
+    let element = document.getElementById(el);
+    element.scrollIntoView({behavior:"smooth"});
+  }
+
+  get j(){ 
+    return this.loginForm.controls; 
+  }
+
+  checkLogin():boolean{
+    if(localStorage.getItem("userData")){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  onSubmit(){
+    this.submitted = true;
+    if(this.loginForm.valid){
+      let obj = {
+        "username":this.loginForm.value.email,
+        "password":this.loginForm.value.password
+      };
+      this.apiService.login(obj).subscribe(res=>{
+        console.log(res);
+        if(res['success']){
+          this.toastr.success('Login Successfull')
+          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+          this.showModal=false;
+          this.apiService.userLoggedOutorIn$.next(1);
+        }else{
+          this.toastr.error('Email or password do not match')
+        }
+      },error=>{
+        console.log(error)
+      })
+    }else{
+      return
+    }
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       review: new FormControl('',[Validators.required]),
       title: new FormControl('',[Validators.required])
+    });
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
     this.quesForm = this.fb.group({
       question:new FormControl('',[Validators.required])
@@ -61,7 +119,7 @@ export class LibraryDetailsComponent implements OnInit {
   }
 
   getReviewListing(){
-    this.apiService.getReviewListing(this.categoryId).subscribe(res=>{
+    this.apiService.getReviewListingByInnovator(this.categoryId).subscribe(res=>{
       if(res['data'] && res['data'].length){
         this.reviewList=res['data']
       }else{
@@ -71,10 +129,10 @@ export class LibraryDetailsComponent implements OnInit {
   }
 
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-    alert(`Old Value:${$event.oldValue}, 
-      New Value: ${$event.newValue}, 
-      Checked Color: ${$event.starRating.checkedcolor}, 
-      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+    // alert(`Old Value:${$event.oldValue}, 
+    //   New Value: ${$event.newValue}, 
+    //   Checked Color: ${$event.starRating.checkedcolor}, 
+    //   Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
 
   getDeviceDetails(){
@@ -125,7 +183,8 @@ export class LibraryDetailsComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }else{
-      this.toastr.error("Please login to continue")
+      this.showModal=true;
+      this.toastr.error('Please login to continue')
     }
     
   }
@@ -153,7 +212,8 @@ export class LibraryDetailsComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }else{
-      this.toastr.error("Please login to continue")
+      this.toastr.error("Please login to continue");
+      this.showModal=true
     }
     
   }

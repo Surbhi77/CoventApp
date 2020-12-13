@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from './../services/api.service';
 import {Router} from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {environment} from 'environments/environment'
 
 @Component({
   selector: 'ngx-library',
@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class LibraryComponent implements OnInit {
   categories: any=[];
-  baseImageUrl="http://134.209.68.96:9700";
+  baseImageUrl=environment.imageUrl;
 
   constructor(private apiService:ApiService,private router:Router) { }
 

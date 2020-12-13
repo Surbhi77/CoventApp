@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../../environments/environment';
+import { Subject,Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  public baseAPi = "http://134.209.68.96:9700/frontend/";
+  public baseAPi = environment.apiUrl+"frontend/";
+  userLoggedOutorIn$ = new Subject<any>();
 
   constructor(private http:HttpClient) {
 
@@ -46,6 +49,10 @@ export class ApiService {
 
   public getReviewListing(obj){
     return this.http.get(this.baseAPi+'get-allreviewlist/'+obj)
+  }
+
+  public getReviewListingByInnovator(obj){
+    return this.http.get(this.baseAPi+'get-reviewlist/'+obj)
   }
 
   public getQuestionList(obj){
@@ -149,6 +156,10 @@ export class ApiService {
 
   public getWeeklyViews(id){
     return this.http.get(this.baseAPi+'/weeklyinnovators-viewcount/'+id)
+  }
+
+  public searchInnovatorListing(obj){
+    return this.http.post(this.baseAPi+'search-listing',obj)
   }
 
 }

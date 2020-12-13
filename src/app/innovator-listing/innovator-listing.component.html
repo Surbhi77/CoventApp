@@ -14,16 +14,16 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group mb-3 input-group-lg">
-                    <input type="text" [(ngModel)]="searchString" class="form-control" placeholder="Search">
+                    <input type="text" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" class="form-control" placeholder="Search">
                     <div class="input-group-append">
-                        <button class="btn btn-success btn_searchs" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button (click)="searchChanged()" class="btn btn-success btn_searchs" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                   </div>
             </div>
             
             <div class="col-sm-3">
                 <div class="form-group input-group-lg">
-                    <select class="form-control" id="sel1">
+                    <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
                       <option value=0>All</option>
                       <option *ngFor="let item of getSubCategory" [value]="item.sub_category_id">{{item.subcategory_name}}</option>
                     </select>
@@ -44,7 +44,7 @@
              <a class="service-link-box">
                 <div class="service-box-overlay"></div>
                 <!-- <img [src]="imageBasePath+innovator.data_path" class="service-img img-fluid" alt="slide"> -->
-                <img src="./assets/images/anna-shvets.jpg" class="service-img img-fluid" alt="slide">
+                <img [src]="imageBasePath+innovator.data_path" (error)="onImgError($event)" class="service-img img-fluid" alt="slide">
 
                 <div class="LibCard-Btn service-box-icon">
                  <a (click)="openDetails(innovator)" href="javascript:void(0);">Info<img src="./assets/images/view.svg"></a>
@@ -54,6 +54,11 @@
                 <h5>{{innovator.device_name}}</h5>
              </a>
           </div>
+       </div>
+       <div class="col-lg-3 col-md-3 col-12 mb-4">
+        <div *ngIf="innovatorListing.length == 0" class="service-img-box">
+          No Listing Found
+        </div>
        </div>
 
       </div>
