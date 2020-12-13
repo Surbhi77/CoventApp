@@ -137,7 +137,7 @@
         <div class="row">
           <div class="col-sm-12">
             <ng-container *ngIf="deviceDetails&&deviceDetails.device_videos">
-              <h3 class="py-5">Device Videos : </h3>
+              <h3 class="py-3">Device Videos : </h3>
               <iframe width="100%" height="400" [src]="safeURL" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </ng-container>
           </div>
@@ -149,7 +149,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="review_titles">Reviews</h1>
+                <h3 class="review_titles py-3">Reviews</h3>
             </div>
         </div>
         <div class="row">
@@ -172,13 +172,13 @@
                   <div class="reviews">
                     <div *ngFor="let item of reviewList" class="d-flex blockquote review-item">
                      
-                      <div class="col-md-2 text-center">
+                      <!-- <div class="col-md-2 text-center">
                         <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
                         <div class="caption">
                           <small>by <a >{{item.user_name}}</a></small>
                         </div>
                   
-                      </div>
+                      </div> -->
                       <div class="col-md-10">
                         <h4>{{item.title}}</h4>
                         <div class="ratebox">
@@ -189,8 +189,11 @@
                         <p class="review-text">
                           {{item.desccription}}
                         </p>
-                  
-                        <small class="review-date">{{item.created_at|date}}</small>
+                        <div class="caption">
+                          <small>By <a >{{item.user_name}}</a></small>
+                          <small class="review-date">{{item.created_at|date}}</small>
+                        </div>
+                        
                       </div>                          
                     </div>  
 
@@ -233,7 +236,7 @@
 	<div class="container" id="accordion-style-1">
 			<div class="row">
 				<div class="col-12">
-					<h1 class="text-green mb-4 text-left">Questions and Answers</h1>
+					<h3 class="text-green mb-4 text-left ">Questions and Answers</h3>
 				</div>
 				<div class="col-12 mx-auto">
 					<div class="accordion" id="accordionExample">

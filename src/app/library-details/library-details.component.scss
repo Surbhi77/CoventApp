@@ -1,3 +1,6 @@
+a {
+    color: #13bfb3;
+}
 .feature_description {
     font-size: 20px !important;
     color: #444;
@@ -65,6 +68,7 @@ button.btn.btn-custom {
     text-decoration: none !important;
     font-size: 16px;
     font-weight: bold;
+    text-transform: capitalize;
 	// padding-left: 25px;
 }
 
@@ -215,5 +219,9 @@ a.view_res {
     bottom: 0;
     left: 50px;
 }
-
-
+.caption small {
+    margin-right: 15px;
+}
+.review-item h4 {
+    text-transform: capitalize;
+}

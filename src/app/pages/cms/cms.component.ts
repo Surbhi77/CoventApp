@@ -10,7 +10,7 @@ import {ApiService} from  './../../services/api.service';
   styleUrls: ['./cms.component.scss']
 })
 export class CmsComponent {
-  dtOptions: any={}
+  dtOptions: any={};
   settings = {
     actions: {
       add: false,
