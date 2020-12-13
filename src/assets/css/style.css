@@ -1,0 +1,14 @@
+.p-4.table_sidj tr td {
+    border-color: #dee2e6;
+}
+.p-4.table_sidj tr {
+    border: none !important;
+    border-color: #333 !important;
+}
+.p-4.table_sidj table {
+    border: none !important;
+}
+.p-4.table_sidj tr th {
+    border: none !important;
+    border: 1px solid #f2f2f2 !important;
+}
