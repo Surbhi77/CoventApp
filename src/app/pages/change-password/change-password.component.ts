@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'app/services/api.service';
 import { ConfirmedValidator } from './confirm.validator';
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-form-inputs',
-  styleUrls: ['./form-inputs.component.scss'],
-  templateUrl: './form-inputs.component.html',
+  selector: 'ngx-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.scss']
 })
-export class FormInputsComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
+
   public materialTheme$: Observable<boolean>;
-  public starRate: number = 2;
+  public starRate: number = 2;s
   public heartRate: number = 4;
   public radioGroupValue: string = 'This is value 2';
   public showMaterialInputs = false;
@@ -52,12 +52,12 @@ export class FormInputsComponent implements OnInit {
   
 
   ngOnInit() {
-    this.getUserDetails()
-    this.materialTheme$ = this.themeService.onThemeChange()
-    .pipe(tap(theme => {
-      const themeName: string = theme?.name || '';
-      this.showMaterialInputs = themeName.startsWith('material');
-    }));
+  //   this.getUserDetails()
+  //   //this.materialTheme$ = this.themeService.onThemeChange()
+  //  // .pipe(tap(theme => {
+  //     const themeName: string = theme?.name || '';
+  //     this.showMaterialInputs = themeName.startsWith('material');
+  //   }));
   }
 
   onFileChange($event){
@@ -144,4 +144,5 @@ export class FormInputsComponent implements OnInit {
       }
     })
   }
+
 }

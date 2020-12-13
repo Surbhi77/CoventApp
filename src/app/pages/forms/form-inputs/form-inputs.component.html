@@ -1,36 +1,71 @@
-<div class="row">
-  <div class="col-lg-6">
+
+  <div class="col-md-12 col-lg-12 col-xxxl-12 ">
     <nb-card>
-      <nb-card-header>Edit Profile</nb-card-header>
+      <nb-card-header class="  text-white" style="background-color:rgb(98, 0 ,238)">Edit Profile</nb-card-header>
       <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Name">
-        <input type="email" nbInput fullWidth placeholder="Email">
-        <input type="text" nbInput fullWidth placeholder="Mobile">
-        <input type="file" nbInput fullWidth>
-        <button nbButton matRipple hero class="size-medium status-primary">
-         Update
-        </button>
+        <form [formGroup]="form">
+          <mat-form-field class="example-full-width col-lg-8">
+            <mat-label>User name</mat-label>
+            <input formControlName="user_name" matInput type="text" fullWidth placeholder="User Name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <mat-label>Email</mat-label>
+            <input formControlName="user_email" disabled type="email" matInput fullWidth placeholder="Email">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <input formControlName="mobile" type="text" matInput fullWidth placeholder="Mobile">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col-lg-8">
+            <input formControlName="address" type="text" matInput fullWidth placeholder="Address">
+          </mat-form-field>
+
+          <div>
+            <input type="file" accept="image/*" id="file" class="ml-3" (change)="onFileChange($event)">
+            <label for="file" >Choose file</label>
+          </div>
+          <br />
+          <br />
+          <button (click)="updateProfile()" nbButton matRipple hero class="size-medium status-primary ml-3">
+            Update
+          </button>
+        </form>
+
       </nb-card-body>
     </nb-card>
   </div>
 
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
 
    
    
     <nb-card>
       <nb-card-header>Change Password</nb-card-header>
       <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Old Password">
-        <input type="email" nbInput fullWidth placeholder="New Password">
-        <input type="text" nbInput fullWidth placeholder="Confirm Password">
-        <button nbButton matRipple hero class="size-medium status-primary">
-          Update
-         </button>
+        <form [formGroup]="changePassword">
+          <input type="password" formControlName="old_password" nbInput fullWidth placeholder="Old Password">
+          <div>
+            <p *ngIf="changePassword.controls.old_password.touched &&changePassword.controls.old_password.errors">Old password is a required field</p>
+          </div>
+          <input type="password" formControlName="new_password" nbInput fullWidth placeholder="New Password">
+          <div>
+            <p *ngIf="changePassword.controls.new_password.touched &&changePassword.controls.new_password.errors">New password is a required field</p>
+          </div>
+          <input type="password" formControlName="confirm_password" nbInput fullWidth placeholder="Confirm Password">
+          <div>
+            <p *ngIf="changePassword.controls.confirm_password.touched &&changePassword.controls.confirm_password.errors">Password and Confirm password must match</p>
+          </div>
+          <button (click)="updatePassword()" nbButton matRipple hero class="size-medium status-primary">
+            Update
+          </button>
+        </form>
+        
       </nb-card-body>
     </nb-card>
-  </div>
-</div>
+  </div> -->
+
 <!-- <div *ngIf="showMaterialInputs" class="row">
   <div class="col-lg-12">
     <ngx-material-inputs></ngx-material-inputs>

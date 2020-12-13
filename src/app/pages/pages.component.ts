@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MENU_ITEMS } from './pages-menu';
+import { MENU_ITEMS,REVIEWER_ITEMS } from './pages-menu';
 
 @Component({
   selector: 'ngx-pages',
@@ -14,10 +14,22 @@ import { MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent {
 
-  menu = MENU_ITEMS;  
+  menu:any; 
+  isReviewer:boolean=false 
 
   constructor(){
     let body = document.getElementsByTagName('body')[0];
     body.classList.add("nb-theme-material-light");
+  }
+
+  ngOnInit(){
+    let userDetails = JSON.parse(localStorage.getItem("userData"));
+    if(userDetails.user_type == 2){
+      this.isReviewer=true;
+      this.menu = REVIEWER_ITEMS
+    }else{
+      this.isReviewer=false;
+      this.menu=MENU_ITEMS
+    }
   }
 }

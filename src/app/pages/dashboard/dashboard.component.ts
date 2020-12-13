@@ -1,8 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
-import { takeWhile } from 'rxjs/operators' ;
-import { SolarData } from '../../@core/data/solar';
-
+import {ApiService} from './../../services/api.service'
 interface CardSettings {
   title: string;
   iconClass: string;
@@ -15,89 +12,43 @@ interface CardSettings {
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnDestroy {
+  userDetails: any;
 
-  private alive = true;
+  constructor(private apiService:ApiService) {
+    
+  }
 
-  solarValue: number;
-  lightCard: CardSettings = {
-    title: 'Light',
-    iconClass: 'nb-lightbulb',
-    type: 'primary',
-  };
-  rollerShadesCard: CardSettings = {
-    title: 'Roller Shades',
-    iconClass: 'nb-roller-shades',
-    type: 'success',
-  };
-  wirelessAudioCard: CardSettings = {
-    title: 'Wireless Audio',
-    iconClass: 'nb-audio',
-    type: 'info',
-  };
-  coffeeMakerCard: CardSettings = {
-    title: 'Coffee Maker',
-    iconClass: 'nb-coffee-maker',
-    type: 'warning',
-  };
+  ngOnInit(){
+    let userDetails = JSON.parse(localStorage.getItem("userData"));
+    this.userDetails = userDetails;
+    this.getDeviceViews();
+    this.getReviewsRecieved();
+    this.getStarRatings();
+    this.questionsRecieved()
+  }
 
-  statusCards: string;
+  questionsRecieved() {
+    this.apiService.getDeviceViews(this.userDetails.id).subscribe(res=>{
+      console.log(res)
+    })
+  }
 
-  commonStatusCardsSet: CardSettings[] = [
-    this.lightCard,
-    this.rollerShadesCard,
-    this.wirelessAudioCard,
-    this.coffeeMakerCard,
-  ];
+  getStarRatings() {
+   this.apiService.getStarRatings(this.userDetails.id).subscribe(res=>{
+     console.log(res)
+   }) 
+  }
 
-  statusCardsByThemes: {
-    default: CardSettings[];
-    cosmic: CardSettings[];
-    corporate: CardSettings[];
-    dark: CardSettings[];
-    'material-dark': CardSettings[];
-    'material-light': CardSettings[];
-  } = {
-    default: this.commonStatusCardsSet,
-    cosmic: this.commonStatusCardsSet,
-    corporate: [
-      {
-        ...this.lightCard,
-        type: 'warning',
-      },
-      {
-        ...this.rollerShadesCard,
-        type: 'primary',
-      },
-      {
-        ...this.wirelessAudioCard,
-        type: 'danger',
-      },
-      {
-        ...this.coffeeMakerCard,
-        type: 'info',
-      },
-    ],
-    dark: this.commonStatusCardsSet,
-    'material-dark': this.commonStatusCardsSet,
-    'material-light': this.commonStatusCardsSet,
-  };
+  getReviewsRecieved() {
+    
+  }
 
-  constructor(private themeService: NbThemeService,
-              private solarService: SolarData) {
-    this.themeService.getJsTheme()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe(theme => {
-        this.statusCards = this.statusCardsByThemes[theme.name];
-    });
-
-    this.solarService.getSolarData()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((data) => {
-        this.solarValue = data;
-      });
+  getDeviceViews() {
+   
   }
 
   ngOnDestroy() {
-    this.alive = false;
+    
   }
+
 }

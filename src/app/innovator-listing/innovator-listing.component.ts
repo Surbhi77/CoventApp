@@ -10,6 +10,8 @@ export class InnovatorListingComponent implements OnInit {
   categoryId: any;
   innovatorListing:any=[];
   imageBasePath:any='http://134.209.68.96:9700/'
+  getSubCategory: any=[];
+  searchString:any='';
 
   constructor(private router:Router,
     private apiService:ApiService, 
@@ -18,10 +20,18 @@ export class InnovatorListingComponent implements OnInit {
     ngOnInit(): void {
       this.categoryId = this.activatedRoute.snapshot.params['id'];
       console.log(this.categoryId);
-      this.getCategoryListing()
+      this.getCategoryListing();
+      this.getSubcategoryListing();
 
       let body = document.getElementsByTagName('body')[0];
       body.classList.add("absolute-header");
+    }
+
+    getSubcategoryListing() {
+      this.apiService.getSubcategoryListing(this.categoryId).subscribe(res=>{
+        console.log(res);
+        this.getSubCategory=res['data']
+      })
     }
 
     getCategoryListing(){

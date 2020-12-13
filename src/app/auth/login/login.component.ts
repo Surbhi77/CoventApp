@@ -19,7 +19,14 @@ export class LoginComponent implements OnInit {
     this.form = fb.group({
       email: new FormControl('',[Validators.required,Validators.email]),
       password: new FormControl('',[Validators.required])
-    })
+    });
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add("absolute-header");
+  }
+
+  ngOnDestroy(){
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.remove("absolute-header");
   }
 
   ngOnInit(): void {

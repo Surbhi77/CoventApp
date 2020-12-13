@@ -36,12 +36,16 @@ export class ApiService {
     return this.http.post(this.baseAPi+'add-innovator-data',obj);
   }
 
+  public updateInnovatorData(obj,id){
+    return this.http.put(this.baseAPi+'update-innovator-data/'+id,obj)
+  }
+
   public getListing(obj){
     return this.http.post(this.baseAPi+'innovator-list',obj)
   }
 
   public getReviewListing(obj){
-    return this.http.get(this.baseAPi+'get-reviewlist/'+obj)
+    return this.http.get(this.baseAPi+'get-allreviewlist/'+obj)
   }
 
   public getQuestionList(obj){
@@ -71,6 +75,10 @@ export class ApiService {
     return this.http.get(this.baseAPi+'device_delete/'+id)
   }
 
+  public getReviewListingByUser(id){
+    return this.http.get(this.baseAPi+'get-allreviewlist/'+id)
+  }
+
   public getInnovationListing(obj){
     return this.http.post(this.baseAPi+'innovator-list',obj)
   }
@@ -86,5 +94,61 @@ export class ApiService {
   public addQuestion(obj){
     return this.http.post(this.baseAPi+'/add-question',obj)
   }
-  
+
+  public getDeviceDetail(id){
+    return this.http.get(this.baseAPi+'/innovator-detail/'+id)
+  }
+
+  public getUserDetails(obj){
+    return this.http.post(this.baseAPi+'/user-profile',obj)
+  }
+
+  public updateUserDetails(obj,id){
+    return this.http.put(this.baseAPi+'/update-profile/'+id,obj)
+  }
+
+  public changePassword(obj){
+    return this.http.post(this.baseAPi+'/change-password',obj)
+  }
+
+  public getFeaturedInnovationListing(){
+    return this.http.get(this.baseAPi+'/get-allfeaturedlisting')
+  }
+
+  public getFeaturedCategories(){
+    return this.http.get(this.baseAPi+'/get-allfeaturedcategory')
+  }
+
+  public getQuestionCountUserWise(id){
+    return this.http.get(this.baseAPi+'/innovator-questionscount/'+id)
+  }
+
+  public getStarRatings(id){
+    return this.http.get(this.baseAPi+'/innovator-reviewcount/'+id)
+  }
+
+  public getAvgRatings(id){
+    return this.http.get(this.baseAPi+'/innovator-startratingcount/'+id)
+  }
+
+  public getReviewsRecieved(id){
+    return this.http.get(this.baseAPi+'/innovator-reviewcount/'+id)
+  }
+
+  public getDeviceViews(id){
+    return this.http.get(this.baseAPi+'/innovator-viewcount/'+id)
+  }
+
+  public updateViewCount(obj){
+    return this.http.post(this.baseAPi+'/update-viewcount',obj)
+  }
+
+  public getWeeklyReview(id){
+    return this.http.get(this.baseAPi+'/weeklyinnovators-reviewcount/'+id)
+  }
+
+  public getWeeklyViews(id){
+    return this.http.get(this.baseAPi+'/weeklyinnovators-viewcount/'+id)
+  }
+
 }

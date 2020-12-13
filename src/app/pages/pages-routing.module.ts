@@ -17,11 +17,17 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { ReviewListingComponent } from './review-listing/review-listing.component';
 import { QuestionListingComponent } from './question-listing/question-listing.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
+import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    {
+      path: 'change-password',
+      component: ChangePasswordComponent,
+    },
     {
       path: 'dashboard',
       component: ECommerceComponent,
@@ -29,6 +35,10 @@ const routes: Routes = [{
     {
       path: 'device-listing', 
       component: DeviceListingComponent,
+    },
+    {
+      path: 'device-listing/:innovator_id',
+      component:DeviceListingComponent
     },
     {
       path: 'review-listing/:innovator_id', 
@@ -77,6 +87,10 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'review-list',
+      component: MyReviewsComponent
     },
     {
       path: 'layout',

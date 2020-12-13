@@ -20,7 +20,7 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { MaterialButtonsComponent } from './buttons/material-buttons/material-buttons.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule as ngFormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -61,6 +61,7 @@ const materialModules = [
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    ReactiveFormsModule,
     ...materialModules,
   ],
   declarations: [
