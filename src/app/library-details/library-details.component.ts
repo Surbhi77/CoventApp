@@ -39,7 +39,7 @@ export class LibraryDetailsComponent implements OnInit {
      private apiService:ApiService,
      private _sanitizer: DomSanitizer,
      private activatedRoute:ActivatedRoute) {
-      config.interval = 2000;
+      config.interval = 3500;
       config.keyboard = true;
       config.pauseOnHover = true;
   }

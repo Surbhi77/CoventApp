@@ -99,3 +99,16 @@ ul#had_navs li a:hover {
 .nb-theme-material-light nb-stepper .header .connector-past {
   background-color: #237973 !important;
 }
+span.carousel-control-next-icon {
+  color: #000;
+  opacity: 9;
+  filter: invert(0.8);
+}
+span.carousel-control-prev-icon {
+  color: #000;
+  opacity: 9;
+  filter: invert(0.8);
+}
+.carousel-indicators li{
+  background-color: #000 !important;
+}

@@ -3,16 +3,19 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-              <ngb-carousel *ngIf="deviceDetails&&deviceDetails.device_image">
-                <ng-template *ngFor="let image of deviceDetails.device_image" ngbSlide>
-                  <div class="wrapper">
-                    <img [src]="assetBaseUrl+image" alt="Random first slide">
-                  </div>
-                  
-                </ng-template>
-              </ngb-carousel>
-                <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid w-100"> -->
-                <!-- <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100"> -->
+              <div class="inner_slides">
+                <ngb-carousel *ngIf="deviceDetails&&deviceDetails.device_image">
+                  <ng-template *ngFor="let image of deviceDetails.device_image" ngbSlide>
+                    <div class="wrapper">
+                      <img [src]="assetBaseUrl+image" alt="Random first slide" class="customs_imgs">
+                    </div>
+                    
+                  </ng-template>
+                </ngb-carousel>
+                  <!-- <img [src]="assetBaseUrl+deviceDetails.device_image[0]" class="img-fluid w-100"> -->
+                  <!-- <img src="./assets/images/anna-shvets.jpg" class="img-fluid w-100"> -->
+              </div>
+             
             </div>
 
             <div class="col-sm-6">
@@ -162,47 +165,30 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                
-
-                <!-- <form action="/action_page.php" class="pt-4">
-                    <div class="form-group">
-                      <label for="uname">Review Title:</label>
-                      <input type="text" class="form-control" id="uname" name="uname" required>
-                    </div>
-                    <div class="form-group py-3">
-                      <label for="pwd">Review comment:</label>
-                      <textarea class="form-control" rows="5" id="comment" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-custom">Submit</button>
-                  </form> -->
 
                   <div class="reviews">
                     <div *ngFor="let item of reviewList" class="d-flex blockquote review-item">
                      
-                      <div class="col-md-2 text-center">
-                        
+                      <div class="col-md-12">
+
+                        <div class="ratebox">
+                          <div class="rattings">
+                            <ngb-rating [max]="5" [(rate)]="item.ratings" [readonly]="false"></ngb-rating>
+                            <small class="review-date">{{item.created_at|date}}</small>
+                          </div>
+                      </div>
+
+                      <h4 class="mt-2 mb-2">{{item.title}}</h4>
+
+                      <p class="review-text">
+                        {{item.desccription}}
+                      </p>
+
                         <div class="caption">
-                          <small>by <a >{{item.user_name}}</a></small>
+                          <small>By <a href="#">{{item.user_name}}</a></small>
                         </div>
                   
-                      </div> -->
-                      <div class="col-md-10">
-                        <h4>{{item.title}}</h4>
-                        <div class="ratebox">
-                            <div class="rattings">
-                              <ngb-rating [max]="5" [(rate)]="item.ratings" [readonly]="false"></ngb-rating>
-                            </div>
-                        </div>
-                        <p class="review-text">
-                          {{item.desccription}}
-                        </p>
-                        <div class="caption">
-                          <small>By <a >{{item.user_name}}</a></small>
-                          <small class="review-date">{{item.created_at|date}}</small>
-                        </div>
-                        
-                      </div>                          
+                      </div>                         
                     </div>  
 
                     <!-- <div class="d-flex blockquote review-item">
@@ -327,13 +313,14 @@
     </div>
   </ng-template>
 
+  
 
-  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div [style.display]="showModal ? 'block' : 'none'" class="modal fade show" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">Login</h4>
-          <button (click)="showModal=false">X</button>
+          <button (click)="showModal=false" class="clos_nmd">X</button>
         </div>
         <div class="modal-body">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -358,9 +345,9 @@
                 </label>
               </div>
               <div class="form-group">
-                <p>New member <a routerLink="/auth/register">Register Here</a></p>
+                <p>New member ? <a routerLink="/auth/register"> Register Here</a></p>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary cusims">Submit</button>
             </form>
         </div>
         

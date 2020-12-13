@@ -108,7 +108,9 @@ button.btn.btn-custom {
   }
   
   .review-item .review-date{
-    color: #cecece;
+    color: #adadad;
+    margin-left: 15px;
+    font-size: 17px;
   }
   .review-item .review-text{ 
     font-size: 16px;
@@ -224,4 +226,54 @@ a.view_res {
 }
 .review-item h4 {
     text-transform: capitalize;
+}
+// .inner_slides {
+//     box-shadow: 0 0 10px #ccc;
+// }
+.inner_slides {
+    box-shadow: 0 0 10px #ccc;
+    width: 100%;
+    vertical-align: middle;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.customs_imgs{
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+}
+// .inner_slides .carousel-item {
+//     height: 500px;
+//     width: 100%;
+// }
+
+.caption small {
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.fade {
+    transition: opacity 0.15s linear;
+    background: rgba(0, 0, 0, 0.65);
+}
+button.clos_nmd {
+    background: #000;
+    border: none;
+    color: #fff;
+    border-radius: 60px;
+    height: 25px;
+    width: 25px;
+}
+button.btn.btn-primary.cusims {
+    background: #54d1c8;
+    border: none;
+    padding: 8px 30px;
+}
+.modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

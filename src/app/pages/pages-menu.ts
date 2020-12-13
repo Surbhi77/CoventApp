@@ -44,12 +44,12 @@ export const REVIEWER_ITEMS: NbMenuItem[]=[
   {
     title: 'Review Listing',
     icon: 'edit-2-outline',
-    link: '/pages/forms/inputs',
+    link: '/pages/review-list',
   },
   {
     title: 'Change Password',
     icon: 'edit-2-outline',
-    link: '/pages/forms/inputs',
+    link: '/pages/change-password',
   },
 
 ];

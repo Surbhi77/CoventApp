@@ -12,8 +12,9 @@
 <section class="pt-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="input-group mb-3 input-group-lg">
+            <div class="d-flex back_cover">
+            <div class="col-lg-4">
+                <div class="input-group input-group-lg m-0">
                     <input type="text" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" class="form-control" placeholder="Search">
                     <div class="input-group-append">
                         <button (click)="searchChanged()" class="btn btn-success btn_searchs" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -21,8 +22,8 @@
                   </div>
             </div>
             
-            <div class="col-sm-3">
-                <div class="form-group input-group-lg">
+            <div class="col-sm-4">
+                <div class="form-group input-group-lg m-0">
                     <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
                       <option value=0>All</option>
                       <option *ngFor="let item of getSubCategory" [value]="item.sub_category_id">{{item.subcategory_name}}</option>
@@ -33,6 +34,7 @@
                 <button class="btn btn-success btn_searchs" type="submit">Search</button>
             </div> -->
         </div>
+    </div>
     </div>
 </section>
 <section class="pb-5">
