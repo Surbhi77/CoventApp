@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from  './../../services/api.service';
 import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
-
+import {environment} from 'environments/environment'
 @Component({
   selector: 'ngx-device-innovator-detail',
   templateUrl: './device-innovator-detail.component.html',
@@ -10,7 +10,7 @@ import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
 export class DeviceInnovatorDetailComponent implements OnInit {
   device_id:any;
   device_data:any;
-  assetsbasepath:any='http://localhost:9700/';
+  assetsbasepath:any=environment.imageUrl;
   constructor(private apiService:ApiService,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
