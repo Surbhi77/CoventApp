@@ -6,7 +6,8 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
-
+import {ApiService} from  './../../../services/api.service';
+import {environment} from 'environments/environment'
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
   user: any;
-
+  assetBasePath:any=environment.imageUrl
   themes = [
     {
       value: 'default',
@@ -49,9 +50,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'material-light';
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  profilePic:any='';
 
   public constructor(
     private router: Router,
+    private apiService:ApiService,
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
     private themeService: NbThemeService,
@@ -71,10 +74,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+    this.user = JSON.parse(localStorage.getItem('userData')).user_name;
     
+    this.profilePic = this.assetBasePath+JSON.parse(localStorage.getItem('userData')).image;
+    this.apiService.userDataUpdated$.subscribe(res=>{
+      console.log(res)
+      if(res.image!='' && res.image!=null){
+        this.profilePic = this.assetBasePath+res.image
+        let userDetails = JSON.parse(localStorage.getItem('userData'));
+        userDetails.image = res.image;
+        localStorage.setItem("userData",JSON.stringify(userDetails))
+      }
+      if(res.user_name){
+        let userDetails = JSON.parse(localStorage.getItem('userData'));
+        userDetails.user_name = res.user_name;
+        this.user = res.user_name
+        localStorage.setItem("userData",JSON.stringify(userDetails))
+      }
+      //if(res.user_name)
+    })
       this.menuService.onItemClick()
       .pipe(
         filter(({ tag }) => tag === 'my-context-menu'),

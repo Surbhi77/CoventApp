@@ -80,6 +80,12 @@ export class FormInputsComponent implements OnInit {
       this.apiService.updateUserDetails(formdata,user_id).subscribe(res=>{
         console.log(res);
         if(res['success']){
+          let obj ={
+            "user_id":this.userDetails.id
+          }
+          this.apiService.getUserDetails(obj).subscribe(res=>{
+            this.apiService.userDataUpdated$.next(res['data'][0])
+          })
           this.toastr.success("User profile updated successfully.")
         }
       })

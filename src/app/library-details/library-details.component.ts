@@ -31,6 +31,7 @@ export class LibraryDetailsComponent implements OnInit {
   loginForm: FormGroup;
   submitted: boolean=false;
   isLoggedIn:boolean=false;
+  userDetails:any;
   
   constructor(private toastr: ToastrService,
      private fb:FormBuilder,
@@ -43,6 +44,8 @@ export class LibraryDetailsComponent implements OnInit {
       config.keyboard = true;
       config.pauseOnHover = true;
   }
+
+ 
 
   scroll(el) {
     console.log("here");
@@ -74,6 +77,7 @@ export class LibraryDetailsComponent implements OnInit {
         if(res['success']){
           this.toastr.success('Login Successfull')
           localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+          this.userDetails=res['data'][0];
           this.showModal=false;
           this.apiService.userLoggedOutorIn$.next(1);
         }else{
@@ -88,6 +92,9 @@ export class LibraryDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("userData")){
+      this.userDetails = JSON.parse(localStorage.getItem("userData"))
+    }
     this.form = this.fb.group({
       review: new FormControl('',[Validators.required]),
       title: new FormControl('',[Validators.required])
