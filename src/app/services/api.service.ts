@@ -139,4 +139,16 @@ export class ApiService {
     return this.http.get(this.baseAPi+'/innovator-viewcount/'+id)
   }
 
+  public updateViewCount(obj){
+    return this.http.post(this.baseAPi+'/update-viewcount',obj)
+  }
+
+  public getWeeklyReview(id){
+    return this.http.get(this.baseAPi+'/weeklyinnovators-reviewcount/'+id)
+  }
+
+  public getWeeklyViews(id){
+    return this.http.get(this.baseAPi+'/weeklyinnovators-viewcount/'+id)
+  }
+
 }

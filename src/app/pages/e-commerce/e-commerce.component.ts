@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ApiService} from './../../services/api.service'
+import * as moment from 'moment'; // add this 1 of 4
+import * as Highcharts from "highcharts";
 
 @Component({
   selector: 'ngx-ecommerce',
@@ -10,6 +12,65 @@ export class ECommerceComponent {
   questionCount: any;
   noOfstarRating: any;
   noOfDeviceViews: any;
+  Highcharts = Highcharts;
+  chartConstructor = "chart";
+  chartCallback;
+  chartCallback2;
+  chart;
+  chart2;
+  updateFlag = false;
+  updateFlag2=false;
+  chartOptions = {
+    title: {
+      text: 'Weekly Review'
+    },
+    series: [
+      
+      {
+       type:'column',
+       showInLegend:false,
+       data: [1, 2, 3, 6, 9]
+      }
+    ],
+    exporting: {
+      enabled: true
+    },
+    yAxis: {
+      min:0,
+      allowDecimals: false,
+      title: {
+        text: "Reviews"
+      }
+    },
+    xAxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  };
+  chartOptions2 = {
+    title: {
+      text: 'Weekly Views'
+    },
+    series: [     
+      {
+        type:'column',
+        showInLegend:false,
+        data: [1, 2, 3, 6, 9]
+      }
+    ],
+    exporting: {
+      enabled: true
+    },
+    yAxis: {
+      min:0,
+      allowDecimals: false,
+      title: {
+        text: "Views"
+      }
+    },
+    xAxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  };
   options = {
     color: ['#3398DB'],
     tooltip: {
@@ -27,7 +88,7 @@ export class ECommerceComponent {
     xAxis: [
       {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        data: [],
         axisTick: {
           alignWithLabel: true,
         },
@@ -49,7 +110,12 @@ export class ECommerceComponent {
   };
 
   constructor(private apiService:ApiService) {
-    
+    this.chartCallback = chart => {
+      this.chart = chart;
+    };
+    this.chartCallback2 = chart2 => {
+      this.chart2 = chart2;
+    }; 
   }
 
   ngOnInit(){
@@ -58,7 +124,43 @@ export class ECommerceComponent {
     this.getDeviceViews();
     this.getReviewsRecieved();
     this.getStarRatings();
-    this.questionsRecieved()
+    this.questionsRecieved();
+    this.weeklyReview();
+    this.weeklyView()
+  }
+
+  weeklyView(){
+    this.apiService.getWeeklyViews(this.userDetails.id).subscribe(res=>{
+      console.log(res);
+      let records = res['data']
+      let series=[];
+      let category=[];
+      records.forEach(element => {
+        series.push(element.counts);
+        category.push(moment(element.date).format('ddd'))
+      });
+      console.log(series,category);
+      this.chartOptions2.xAxis.categories = category
+      this.chartOptions2.series[0].data = series
+      this.updateFlag2=true
+    })
+  }
+
+  weeklyReview(){
+    this.apiService.getWeeklyReview(this.userDetails.id).subscribe(res=>{
+      console.log(res);
+      let records = res['data']
+      let series=[];
+      let category=[];
+      records.forEach(element => {
+        series.push(element.counts);
+        category.push(moment(element.date).format('ddd'))
+      });
+      console.log(series,category);
+      this.chartOptions.xAxis.categories = category
+      this.chartOptions.series[0].data = series
+      this.updateFlag=true
+    })
   }
 
   questionsRecieved() {

@@ -48,6 +48,16 @@ export class LibraryDetailsComponent implements OnInit {
     this.getDeviceDetails();
     this.getReviewListing();
     this.getQuestionListing();
+    this.updateViewCount()
+  }
+
+  updateViewCount(){
+    let obj={
+      "innovator_id":this.categoryId
+    }
+    this.apiService.updateViewCount(obj).subscribe(res=>{
+      
+    })
   }
 
   getReviewListing(){
@@ -81,7 +91,7 @@ export class LibraryDetailsComponent implements OnInit {
   }
 
   get f(){
-    console.log(localStorage.getItem("userData"))
+    //console.log(localStorage.getItem("userData"))
     return localStorage.getItem("userData")
   }
 
