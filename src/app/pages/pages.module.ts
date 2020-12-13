@@ -46,6 +46,10 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
 import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
 import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
 import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
+import { HospitalsUsersComponent } from './hospitals-users/hospitals-users.component';
+import { HospitalsListComponent } from './hospitals-list/hospitals-list.component';
+import { HospitalDetailComponent } from './hospital-detail/hospital-detail.component';
+import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -99,6 +103,10 @@ const materialModules = [
     ComplianceListingComponent,
     CharacteristicListingComponent,
     DeviceCategoryListingComponent,
+    HospitalsUsersComponent,
+    HospitalsListComponent,
+    HospitalDetailComponent,
+    DeviceInnovatorDetailComponent,
   ],
 })
 export class PagesModule {
