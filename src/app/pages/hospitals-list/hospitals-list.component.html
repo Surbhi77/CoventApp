@@ -1,0 +1,35 @@
+<nb-card>
+    <nb-card-header>
+      ICU Needs Listing
+    </nb-card-header>
+  
+    <nb-card-body>
+      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>  -->
+      <table *ngIf="hospitalsListing && hospitalsListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Hospital Name</th>
+          <th>Locations</th>
+          <th>User Name</th>
+          <th>Date</th>
+          <th>Action Buttons</th>
+        </tr>
+      </thead>
+      <tbody >
+       <tr *ngFor="let item of hospitalsListing;let i=index">
+             <td>{{item.id}}</td>
+             <td>{{item.healthcare_facility_name}}</td>
+             <td>{{item.facility_location}}</td>
+             <td>{{item.user_name}}</td>
+             <td>{{item.updated_date}}</td>
+             <td><a [routerLink]="'/pages/hospitals-detail/'+item.id">View</a>
+              <a (click)="deleteListing(item.id,i)">Delete</a></td>
+             
+         </tr>
+      </tbody>
+    </table>
+    </nb-card-body>
+  </nb-card> 
+  

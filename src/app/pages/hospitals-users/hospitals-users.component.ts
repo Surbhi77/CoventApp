@@ -1,19 +1,16 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import {ApiService} from  './../../services/api.service';
 
 @Component({
-  selector: 'ngx-website-user-listing',
-  templateUrl: './website-user-listing.component.html',
-  styleUrls: ['./website-user-listing.component.scss']
+  selector: 'ngx-hospitals-users',
+  templateUrl: './hospitals-users.component.html',
+  styleUrls: ['./hospitals-users.component.scss']
 })
-export class WebsiteUserListingComponent {
+export class HospitalsUsersComponent implements OnInit {
   dtOptions:DataTables.Settings = {};
   userListing:any=[];
 
-  constructor(private apiService:ApiService) {
-  
-  }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(){
     this.dtOptions = {
@@ -22,19 +19,11 @@ export class WebsiteUserListingComponent {
     lengthMenu : [5, 10, 25],
       processing: true
     }
-    this.apiService.getUserInnovatorList().subscribe(res=>{
+    this.apiService.getHospitalsUserlist().subscribe(res=>{
       console.log(res)
       this.userListing = res['data']
     })
   }
-
-  // onDeleteConfirm(event): void {
-  //   if (window.confirm('Are you sure you want to delete?')) {
-  //     event.confirm.resolve();
-  //   } else {
-  //     event.confirm.reject();
-  //   }
-  // }
 
   block(item,i){
     this.apiService.blockUser(item.id).subscribe(res=>{

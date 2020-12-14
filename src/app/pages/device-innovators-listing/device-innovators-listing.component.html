@@ -26,6 +26,7 @@
                <td>{{item.subcategory_name}}</td>
                <td>{{item.device_created_date}}</td>
                <td>
+                <a [routerLink]="'/pages/device-innovatory-detail/'+item.id">View</a>
                  <a *ngIf="item.device_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)">Unblock</a>
                  &nbsp;
                  <a *ngIf="item.device_featured==1" (click)="makeUnfeatured(item,i)">Unfeature</a>

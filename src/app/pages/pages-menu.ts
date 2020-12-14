@@ -62,4 +62,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'keypad-outline',
     link: '/pages/website-user-listing'
   },
+  {
+    title:'Hospitals User Listing',
+    icon: 'keypad-outline',
+    link: '/pages/hospitals-users'
+  },
+  {
+    title:'ICU Needs Listing',
+    icon: 'keypad-outline',
+    link: '/pages/hospitals-list'
+  },
   ];

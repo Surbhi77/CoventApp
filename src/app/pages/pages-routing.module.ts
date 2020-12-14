@@ -19,6 +19,10 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
 import { ComplianceListingComponent } from './compliance-listing/compliance-listing.component';
 import { CharacteristicListingComponent } from './characteristic-listing/characteristic-listing.component';
 import { DeviceCategoryListingComponent } from './device-category-listing/device-category-listing.component';
+import { HospitalsUsersComponent } from './hospitals-users/hospitals-users.component';
+import { HospitalsListComponent } from './hospitals-list/hospitals-list.component';
+import { HospitalDetailComponent } from './hospital-detail/hospital-detail.component';
+import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -39,6 +43,22 @@ const routes: Routes = [{
     {
       path: 'website-user-listing',
       component: WebsiteUserListingComponent,
+    },
+    {
+      path: 'hospitals-users',
+      component: HospitalsUsersComponent,
+    },
+    {
+      path: 'hospitals-list',
+      component: HospitalsListComponent,
+    },
+    {
+      path: 'hospitals-detail/:id',
+      component: HospitalDetailComponent,
+    },
+    {
+      path: 'device-innovatory-detail/:id',
+      component: DeviceInnovatorDetailComponent,
     },
     {
       path: 'reviewer-user-listing',

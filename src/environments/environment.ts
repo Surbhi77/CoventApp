@@ -10,4 +10,6 @@
 
 export const environment = {
   production: false,
+  apiUrl:'http://134.209.68.96:9700/',
+  imageUrl:'http://134.209.68.96:9700/'
 };

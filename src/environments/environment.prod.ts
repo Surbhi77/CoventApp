@@ -5,4 +5,6 @@
  */
 export const environment = {
   production: true,
+  apiUrl:'http://134.209.68.96:9700/',
+  imageUrl:'http://134.209.68.96:9700/'
 };

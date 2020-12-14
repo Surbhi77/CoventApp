@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from './../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  public baseAPi = "http://localhost:9700/frontend/";
-  public secureApi="http://localhost:9700/secureApi/";
-  public authApi= "http://localhost:9700/api/";
+  public baseAPi = environment.apiUrl+"frontend/";
+  public secureApi=environment.apiUrl+"secureApi/";
+  public authApi= environment.apiUrl+"api/";
 
   constructor(private http:HttpClient) {
 
@@ -49,6 +50,8 @@ export class ApiService {
   public getUserInnovatorList(){
     return this.http.get(this.secureApi+'user-innovator-list')
   }
+
+  
 
   public getReviewerList(){
     return this.http.get(this.secureApi+'reviewer-list')
@@ -126,6 +129,23 @@ export class ApiService {
     return this.http.get(this.secureApi+'/monthlyviewed-innovatorscount')
   }
 
+  /**** by #as ****/
+  public getHospitalsUserlist(){
+    return this.http.get(this.secureApi+'get-userlisting/3')
+  }
+  public getHospitalslist(){
+    return this.http.get(this.secureApi+'hospitals-list')
+  }
+  public deleteHospital(id){
+    return this.http.get(this.secureApi+'delete-hospital/'+id)
+  }
+  public getHospitalDetail(id){
+    return this.http.get(this.secureApi+'hospital-detail/'+id)
+  }
+  public getDeviceInnovatorDetail(id){
+    return this.http.get(this.secureApi+'get-deviceinnovator-detail/'+id)
+  }
+  /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
   // }

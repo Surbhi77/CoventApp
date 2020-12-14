@@ -1,62 +1,64 @@
-<div class="row">
-<h1>Latest Added Devices</h1>
-<table>
-    <thead>
-        <td>Device Name</td>
-        <td>Create Date</td>
-    </thead>
-    <tbody>
-        <tr  *ngFor="let item of deviceListing">
-            <td (click)="openDetail(item)">
-             {{item.device_name}}
-            </td>
-            <td (click)="openDetail(item)">
-             {{item.device_created_date}}
-            </td>
-        </tr>
-    </tbody>
-</table> 
-<h1>Top Viewed Devices</h1>
-<table>
+<div class="row ">
 
-    <thead>
-        <td>Device Name</td>
-        <td>Create Date</td>
-    </thead>
-    <tbody>
-        <tr  *ngFor="let item of topViewedListing">
-            <td (click)="openDetail(item)">
-             {{item.device_name}}
-            </td>
-            <td (click)="openDetail(item)">
-             {{item.device_created_date}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <div class="col-sm-6">
+        <div class="table-responsive shadow p-3 mb-5 bg-white rounded">
+        <p class="text-muted">Latest Added Devices</p>
+       
+        <table class="table  table-hover " cellspacing="0" width="100%" >
+            <thead class="text-white" style="background: #6200ee;">
+                <tr>
+                <th class="th-lg">Device Name</th>
+                <th class="th-lg">Create Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of deviceListing">
+                    <td (click)="openDetail(item)" scope="row">
+                        {{item.device_name}}
+                    </td>
+                    <td (click)="openDetail(item)" scope="row">
+                        {{item.device_created_date}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="table-responsive shadow p-3 mb-5 bg-white rounded">
+        <p class="text-muted">Top Viewed Devices</p>
+        <table class="table table-hover ">
+
+            <thead class="text-white" style="background: #6200ee;">
+                <tr>
+                <th class="th-lg">Device Name</th>
+                <th class="th-lg">Create Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of topViewedListing">
+                    <td (click)="openDetail(item)">
+                        {{item.device_name}}
+                    </td>
+                    <td (click)="openDetail(item)">
+                        {{item.device_created_date}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 </div>
 
 
-<highcharts-chart
-      id="container"
-      [Highcharts]="Highcharts"
-      [constructorType]="chartConstructor"
-      [options]="chartOptions"
-      [callbackFunction]="chartCallback"
-      [(update)]="updateFlag"
-      [oneToOne]="true"
-      style="width: 100%; height: 400px; display: block;"
-    >
+<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions"
+    [callbackFunction]="chartCallback" [(update)]="updateFlag" [oneToOne]="true"
+    style="width: 100%; height: 400px; display: block;">
 </highcharts-chart>
 
-<highcharts-chart
-      id="container"
-      [Highcharts]="Highcharts"
-      [constructorType]="chartConstructor"
-      [options]="chartOptions2"
-      [callbackFunction]="chartCallback2"
-      [(update)]="updateFlag2"
-      [oneToOne]="true"
-      style="width: 100%; height: 400px; display: block;"
-    >
+<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
+    [options]="chartOptions2" [callbackFunction]="chartCallback2" [(update)]="updateFlag2" [oneToOne]="true"
+    style="width: 100%; height: 400px; display: block;">
 </highcharts-chart>
