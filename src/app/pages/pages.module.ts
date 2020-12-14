@@ -46,6 +46,10 @@ import { QuestionListingComponent } from './question-listing/question-listing.co
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-form.component';
+import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
+import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
+
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -99,6 +103,9 @@ const materialModules = [
     EditQuestionComponent,
     MyReviewsComponent,
     ChangePasswordComponent,
+    HospitalNeedFormComponent,
+    HospitalsItemListComponent,
+    HospitalItemEditComponent,
   ],
 })
 export class PagesModule {

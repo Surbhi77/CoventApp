@@ -163,4 +163,28 @@ export class ApiService {
     return this.http.post(this.baseAPi+'search-listing',obj)
   }
 
+  /**** by #as ***/
+  public hospitalCategoryListing(){
+    return this.http.get(this.baseAPi+'/hospitals-categorieslist/')
+  }
+  public hospitalItemListing(cat_id){
+    return this.http.post(this.baseAPi+'/hospitals-itemlist/',cat_id)
+  }
+  public hospitalDataAdd(formvalue){
+    return this.http.post(this.baseAPi+'/add-hospitals/',formvalue)
+  }
+  public hospitalsIcuItemListing(user_id){
+    return this.http.get(this.baseAPi+'/hospital-list/'+user_id)
+  }
+  public deleteHospital(id){
+    return this.http.get(this.baseAPi+'/hospital-delete/'+id)
+  }
+  public getHospitalDetail(id){
+    return this.http.get(this.baseAPi+'/hospital-detail/'+id)
+  }
+  public updateHospitalData(formvalue){
+    return this.http.post(this.baseAPi+'/update-hospitaldata/',formvalue)
+  }
+  /*****by #as end **/
+
 }

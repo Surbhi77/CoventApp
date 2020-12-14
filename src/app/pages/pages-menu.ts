@@ -26,6 +26,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title:"Change Password",
     icon: 'lock-outline',
     link: '/pages/change-password'
+  },
+  {
+    title:"Add Hospitals Item",
+    icon: 'lock-outline',
+    link: '/pages/hospital-need-item-form'
+  },
+  {
+    title:"Hospitals Item List",
+    icon: 'lock-outline',
+    link: '/pages/hospital-item-list'
   }
 ];
 

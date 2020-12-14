@@ -19,6 +19,9 @@ import { QuestionListingComponent } from './question-listing/question-listing.co
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-form.component';
+import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
+import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
 
 const routes: Routes = [{
   path: '',
@@ -91,6 +94,18 @@ const routes: Routes = [{
     {
       path: 'review-list',
       component: MyReviewsComponent
+    },
+    {
+      path: 'hospital-need-item-form',
+      component: HospitalNeedFormComponent
+    },
+    {
+      path: 'hospital-item-list',
+      component: HospitalsItemListComponent
+    },
+    {
+      path: 'hospital-item-edit/:id',
+      component: HospitalItemEditComponent
     },
     {
       path: 'layout',
