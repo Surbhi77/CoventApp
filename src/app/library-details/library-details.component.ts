@@ -206,7 +206,7 @@ export class LibraryDetailsComponent implements OnInit {
           let userDetails = JSON.parse(localStorage.getItem("userData"));
           
           let obj={
-            "question":this.form.value.quesForm,
+            "question":this.quesForm.value.question,
             "innovator_id":this.categoryId,
             "user_id":userDetails.id
           }

@@ -22,7 +22,7 @@
                 <div class="details">
                   <div class="d-flex justify-content-between align-items-center pb-3">
                     <h1 *ngIf="deviceDetails && deviceDetails.device_name" class="feature_title">{{deviceDetails.device_name}}</h1>
-                    <div class="rattings">
+                    <div *ngIf="deviceDetails && deviceDetails.average_ratings" class="rattings">
                       <ngb-rating [max]="5" [(rate)]="deviceDetails.average_ratings" [readonly]="true"></ngb-rating>
                       <a (click)="scroll('review')" class="view_res">View Reviews</a>
                     </div>
@@ -34,8 +34,8 @@
                       <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
                     </div>
 
-                    <a *ngIf="deviceDetails.device_user_id != userDetails.id" class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
-                    <a *ngIf="deviceDetails.device_user_id != userDetails.id"  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                    <a class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
+                    <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
                 </div>
             </div>  
         </div>
@@ -262,7 +262,7 @@
 
   <ng-template #quesModal let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Add Review</h4>
+      <h4 class="modal-title" id="modal-basic-title">Add Question</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -279,7 +279,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" [disabled]="!quesForm.valid" (click)="modal.close('Save click')">Add Review</button>
+      <button type="button" class="btn btn-outline-dark" [disabled]="!quesForm.valid" (click)="modal.close('Save click')">Add Question</button>
     </div>
   </ng-template>
 

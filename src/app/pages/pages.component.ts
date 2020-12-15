@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MENU_ITEMS,REVIEWER_ITEMS } from './pages-menu';
+import { MENU_ITEMS,ADMIN_ITEMS,REVIEWER_ITEMS } from './pages-menu';
 
 @Component({
   selector: 'ngx-pages',
@@ -27,6 +27,8 @@ export class PagesComponent {
     if(userDetails.user_type == 2){
       this.isReviewer=true;
       this.menu = REVIEWER_ITEMS
+    }else if(userDetails.user_type == 3){
+      this.menu=ADMIN_ITEMS
     }else{
       this.isReviewer=false;
       this.menu=MENU_ITEMS

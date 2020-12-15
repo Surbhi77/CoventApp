@@ -116,6 +116,7 @@ export class ECommerceComponent {
     ],
   };
   getStarRating: any;
+  userType:any;
 
   constructor(private apiService:ApiService,private router:Router) {
     this.chartCallback = chart => {
@@ -129,6 +130,7 @@ export class ECommerceComponent {
   ngOnInit(){
     let userDetails = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = userDetails;
+    this.userType = userDetails.user_type
     if(this.userDetails.user_type == 2){
       this.router.navigateByUrl('/pages/review-list')
     }
