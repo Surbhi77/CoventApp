@@ -64,18 +64,18 @@ export class DeviceListingComponent implements OnInit {
 
     this.secondForm = fb.group({
       battery_powered:new FormControl('',[Validators.required]),
-      power_consumption:new FormControl('',[Validators.required]),
-      unit_cost:new FormControl('',[Validators.required]),
-      required_investment:new FormControl('',[Validators.required]),
+      power_consumption:new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
+      unit_cost:new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
+      required_investment:new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")]),
       dev_stage:new FormControl('',[Validators.required]),
       clinical_stage:new FormControl('',[Validators.required]),
     });
-
+    const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
     this.thirdForm = fb.group({
       regulatory_stage:new FormControl('',[Validators.required]),
       regulatory_approvals:new FormControl('',[Validators.required]),
       country:new FormControl('',[Validators.required]),
-      website_link:new FormControl('',[Validators.required]),
+      website_link:new FormControl('',[Validators.required,Validators.pattern(reg)]),
       materials:new FormControl('',[Validators.required]),
       manufacturers:new FormControl('',[Validators.required])
     });

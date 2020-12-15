@@ -16,6 +16,7 @@ export class ApiService {
 
   }
 
+  
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
@@ -185,6 +186,20 @@ export class ApiService {
   public updateHospitalData(formvalue){
     return this.http.post(this.baseAPi+'/update-hospitaldata/',formvalue)
   }
+
+  public hospitalItemData(formvalue){
+    return this.http.post(this.baseAPi+'/add-hospital-item-data/',formvalue)
+  }
+  public hospitalItemList(formvalue){
+    return this.http.post(this.baseAPi+'/hospital-item-list/',formvalue)
+  }
+  public hospitalItemListDelete(id){
+    return this.http.get(this.baseAPi+'/hospital-item-delete/'+id)
+  }
+  public hospitalVerify(formvalue){
+    return this.http.post(this.baseAPi+'/upload-document',formvalue)
+  }
   /*****by #as end **/
+ 
 
 }
