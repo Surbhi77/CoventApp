@@ -24,7 +24,10 @@ import {
 import { ReqInterceptor } from './req.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
-import { ChartModule } from 'angular-highcharts';
+import { ChartModule } from 'angular2-chartjs';
+import { AuthguardGuard } from './guard/authguard.guard';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,7 +53,7 @@ import { ChartModule } from 'angular-highcharts';
     ThemeModule.forRoot(),
   ],
   bootstrap: [AppComponent],
-  providers: [
+  providers: [AuthguardGuard,
     { provide: HTTP_INTERCEPTORS, useClass: ReqInterceptor, multi: true }
   ]
 })

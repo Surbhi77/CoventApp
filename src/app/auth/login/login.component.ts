@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if(res['success']){
           this.invalidLogin = false;
-          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+          localStorage.setItem("adminData",JSON.stringify(res['data'][0]));
           localStorage.setItem("token",res['token']);
          
           //this.apiService.getUsers().subscribe(res=>{
