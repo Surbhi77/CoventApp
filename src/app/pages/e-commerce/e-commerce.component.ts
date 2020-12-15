@@ -25,9 +25,10 @@ export class ECommerceComponent {
       // text: 'Monthly Added'
       text: ''
     },
-    series: [
-      
-      {type:'column',
+    series: [   
+      {
+        type:'column',
+        showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
       }
@@ -39,7 +40,7 @@ export class ECommerceComponent {
       min:0,
       allowDecimals: false,
       title: {
-        text: "Data"
+        text: "Device Added"
       }
     },
     xAxis: {
@@ -51,12 +52,12 @@ export class ECommerceComponent {
      // text: 'Monthly Views'
      text:''
     },
-    series: [
-      
-      {type:'column',
+    series: [ 
+      {
+        type:'column',
+        showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
-
       }
     ],
     exporting: {
@@ -66,7 +67,7 @@ export class ECommerceComponent {
       min:0,
       allowDecimals: false,
       title: {
-        text: "Data"
+        text: "Views"
       }
     },
     xAxis: {
