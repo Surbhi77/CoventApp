@@ -36,10 +36,11 @@ export class FormInputsComponent implements OnInit {
     this.form = fb.group({
      "address": new FormControl('',[Validators.required]),
      "user_name": new FormControl('',[Validators.required]),
-     "mobile": new FormControl('',[Validators.required]),
+     "mobile": new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
      "profile_image": new FormControl(''),
      "user_email": new FormControl('',[Validators.required,Validators.email])
     });
+    
     this.changePassword = fb.group({
       "old_password":new FormControl('',[Validators.required]),
       "new_password":new FormControl('',[Validators.required]),
@@ -58,6 +59,10 @@ export class FormInputsComponent implements OnInit {
       const themeName: string = theme?.name || '';
       this.showMaterialInputs = themeName.startsWith('material');
     }));
+  }
+  //number validation
+  get f(){
+    return this.form.controls;
   }
 
   onFileChange($event){

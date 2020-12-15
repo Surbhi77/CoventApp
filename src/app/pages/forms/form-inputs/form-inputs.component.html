@@ -12,10 +12,24 @@
           <mat-form-field class="example-full-width col-lg-8">
             <mat-label>Email</mat-label>
             <input formControlName="user_email" disabled type="email" matInput fullWidth placeholder="Email">
+            <ng-container *ngIf="f.user_email.touched && f.user_email.invalid">
+              <mat-error *ngIf="f.user_email.errors.required" class="alert alert-danger">
+                Please enter Email
+              </mat-error>
+              <mat-error *ngIf="f.user_email.errors.pattern">enter correct EmailId
+              </mat-error>
+            </ng-container>
           </mat-form-field>
 
           <mat-form-field class="example-full-width col-lg-8">
             <input formControlName="mobile" type="text" matInput fullWidth placeholder="Mobile">
+            <ng-container *ngIf="f.mobile.touched && f.mobile.invalid">
+              <mat-error *ngIf="f.mobile.errors.required" class="alert alert-danger">
+                Please enter Mobile number
+              </mat-error>
+              <mat-error *ngIf="f.mobile.errors.pattern">enter correct number
+              </mat-error>
+            </ng-container>
           </mat-form-field>
 
           <mat-form-field class="example-full-width col-lg-8">

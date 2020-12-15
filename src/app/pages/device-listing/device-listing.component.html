@@ -111,30 +111,36 @@
 
                 <mat-form-field class="example-full-width">
                   <mat-label>Power Consumption (watts)</mat-label>
-                  <input type="email" matInput formControlName="power_consumption">
+                  <input type="text" matInput formControlName="power_consumption">
                   <ng-container *ngIf="g.power_consumption.touched && g.power_consumption.invalid">
-                    <mat-error *ngIf="g.power_consumption.errors.required" class="errors">
+                    <mat-error *ngIf="g.power_consumption.errors.required" class="alert alert-danger">
                       Please enter power consumption
+                    </mat-error>
+                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
                     </mat-error>
                   </ng-container>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                   <mat-label>Unit cost (USD)</mat-label>
-                  <input type="email" matInput formControlName="unit_cost">
+                  <input type="text" matInput formControlName="unit_cost">
                   <ng-container *ngIf="g.unit_cost.touched && g.unit_cost.invalid">
-                    <mat-error *ngIf="g.unit_cost.errors.required" class="errors">
+                    <mat-error *ngIf="g.unit_cost.errors.required" class="alert alert-danger">
                       Please enter unit cost
+                    </mat-error>
+                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
                     </mat-error>
                   </ng-container>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                   <mat-label>Required investment (USD)</mat-label>
-                  <input type="email" matInput formControlName="required_investment">
+                  <input type="text" matInput formControlName="required_investment">
                   <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
-                    <mat-error *ngIf="g.required_investment.errors.required" class="errors">
+                    <mat-error *ngIf="g.required_investment.errors.required" class="alert alert-danger">
                       Please enter required investment
+                    </mat-error>
+                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
                     </mat-error>
                   </ng-container>
                 </mat-form-field>
@@ -299,11 +305,14 @@
                           <mat-form-field class="example-full-width">
                             <mat-label>Website link</mat-label>
                             <input type="text" matInput formControlName="website_link">
-                            <!-- <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
-                              <mat-error *ngIf="g.required_investment.errors.required" class="errors">
-                                Please enter required investment
+                             <ng-container *ngIf="h.website_link.touched && h.website_link.invalid">
+                              <mat-error *ngIf="h.website_link.errors.required" class="errors">
+                                URL is required.
                               </mat-error>
-                            </ng-container> -->
+                              <mat-error *ngIf="h.website_link.errors.pattern">
+                                Please enter valid url.
+                              </mat-error>
+                            </ng-container> 
                           </mat-form-field>
 
                           <mat-label class="mb-3 d-block">Materials</mat-label>

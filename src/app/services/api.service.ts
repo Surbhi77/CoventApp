@@ -16,6 +16,7 @@ export class ApiService {
 
   }
 
+  
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
@@ -199,5 +200,6 @@ export class ApiService {
     return this.http.post(this.baseAPi+'/upload-document',formvalue)
   }
   /*****by #as end **/
+ 
 
 }
