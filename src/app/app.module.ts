@@ -12,6 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+//import {AgmCoreModule} from '@agm/core'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -43,6 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
+    //AgmCoreModule.forRoot({apiKey:'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
