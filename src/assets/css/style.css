@@ -26,15 +26,15 @@ div#DataTables_Table_0_paginate {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     color: #ffffff !important;
-    border: 1px solid #6200ee !important;
-    background-color: #6200ee !important;
-    background: #6200ee !important;
+    border: 1px solid #13bfb3 !important;
+    background-color: #13bfb3 !important;
+    background: #13bfb3 !important;
     border-radius: 60px !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
     color: #ffffff !important;
-    border: 1px solid #6200ee !important;
-    background-color: #6200ee !important;
-    background: #6200ee !important;
+    border: 1px solid #13bfb3 !important;
+    background-color: #13bfb3 !important;
+    background: #13bfb3 !important;
     border-radius: 60px !important;
 }

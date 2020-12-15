@@ -1,0 +1,27 @@
+@import '../../@theme/styles/themes';
+@include nb-install-component() {
+    nb-card {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+tr.ng2-smart-filters {
+    display: none;
+}
+
+nb-card-header {
+    background-color: #13bfb3 !important;
+    color: white;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+nb-card {
+    box-shadow: 0 0 10px #ccc;
+}
+
+nb-card-body {
+    line-height: 2.5rem;
+}

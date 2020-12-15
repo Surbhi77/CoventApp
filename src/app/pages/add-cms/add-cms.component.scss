@@ -1,12 +1,27 @@
 @import '../../@theme/styles/themes';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
-
 nb-card-body {
     overflow: visible;
     padding-top: 0;
-  
-    > * {
-      margin-top: 1rem;
+    >* {
+        margin-top: 1rem;
     }
-  }
+}
+
+tr.ng2-smart-filters {
+    display: none;
+}
+
+nb-card-header {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #13bfb3 !important;
+}
+
+button {
+    background-image: linear-gradient(90deg, #237973, #13bfb3) !important;
+}

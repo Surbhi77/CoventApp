@@ -1,31 +1,35 @@
 <nb-card>
-    <nb-card-header>Add Compliance</nb-card-header>
-    <nb-card-body>
-    <form [formGroup]="form">
-        <mat-form-field appearance="fill">
-            <mat-label>Device category</mat-label>
-            <mat-select [disabled]="isEditScreen" formControlName="category_id"  (selectionChange)="deviceChange($event.value)">
-              <mat-option *ngFor="let device of category"  [value]="device.category_id">
-                {{device.category_name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br/>
-          <mat-form-field appearance="fill" class="mt-0 pb-0">
-            <mat-label>Device type</mat-label>
-            <mat-select [disabled]="isEditScreen" formControlName="sub_category_id">
-              <mat-option value="">Select Device Type</mat-option>
-              <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
-                {{sub.subcategory_name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-      <input formControlName="compliance_data" type="text" nbInput fullWidth placeholder="Comma Seperated compliances">
-      <button (click)="saveComplianceData()" nbButton matRipple hero class="size-medium status-primary">
+    <nb-card-header>
+        Add Compliance
+    </nb-card-header>
+    <nb-card-body class="p-3">
+        <form [formGroup]="form">
+            <mat-form-field appearance="fill" class="col-md-8">
+                <mat-label>Device category</mat-label>
+                <mat-select [disabled]="isEditScreen" formControlName="category_id" (selectionChange)="deviceChange($event.value)">
+                    <mat-option *ngFor="let device of category" [value]="device.category_id">
+                        {{device.category_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="fill" class="mt-0 pb-0 col-md-8">
+                <mat-label>Device type</mat-label>
+                <mat-select [disabled]="isEditScreen" formControlName="sub_category_id">
+                    <mat-option value="">Select Device Type</mat-option>
+                    <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
+                        {{sub.subcategory_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="col-md-8">
+                <input formControlName="compliance_data" type="text" nbInput fullWidth placeholder="Comma Seperated compliances">
+            </div>
+            <br/>
+            <button (click)="saveComplianceData()" nbButton matRipple hero class="size-medium status-primary  ml-3 changebtn">
        {{isEditScreen?'Update':'Add'}}
       </button>
-    </form>
-        
+        </form>
+
     </nb-card-body>
-  </nb-card>
+</nb-card>

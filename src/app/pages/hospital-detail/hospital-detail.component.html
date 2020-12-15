@@ -1,61 +1,118 @@
 <nb-card>
     <nb-card-header>ICU Needs Detail</nb-card-header>
     <nb-card-body>
-    
-        <div *ngIf="hospital_data">
-            
-            <table class="table table-striped table-bordered table-sm row-border hover">
-              <thead>
-                <tr>
-                    <th>Property Name</th>
-                    <th>Property Valaue</th>
-                </tr>
-              </thead>
-              <tbody >
-              <tr><td>Healthcare Facility Name </td><td> {{hospital_data.healthcare_facility_name}}</td></tr>
-              <tr><td>Facility Location </td><td> {{hospital_data.facility_location}}</td></tr>
-              <tr><td>Email Address </td><td> {{hospital_data.email_address}}</td></tr>
-              <tr><td>Phone Number </td><td> {{hospital_data.phone_number}}</td></tr>
-              <tr><td>Type of facility </td><td> {{hospital_data.type_of_facility}}</td></tr>
-              <tr><td>Electricity source </td><td> {{hospital_data.electricity_source}}</td></tr>
-              <tr><td>Electricity reliabile </td><td> {{hospital_data.electricity_reliabile}}</td></tr>
-              <tr><td>Oxygen distribution in facility </td><td> {{hospital_data.oxygen_distribution_facility}}</td></tr>
-              <tr><td>Number of healthcare workers </td><td> {{hospital_data.healthcare_workers}}</td></tr>
-              <tr><td>Number of other caregivers </td><td> {{hospital_data.other_caregivers}}</td></tr>
-              <tr><td>Number of janitorial staff </td><td> {{hospital_data.janitorial_staff}}</td></tr>
-              <tr><td>Number of ambulance personnel </td><td> {{hospital_data.ambulance_personnel}}</td></tr>
-              <tr><td>Number of biomedical engineers </td><td> {{hospital_data.biomedical_engineers}}</td></tr>
-              <tr><td>Number of Critical Care/ICU Beds </td><td> {{hospital_data.critical_care_icu_beds}}</td></tr>
-              <tr><td>Number of Critical Care/ICU Patients </td><td> {{hospital_data.critical_care_icu_patients}}</td></tr>
-              <tr><td>Number of Hospital Beds </td><td> {{hospital_data.hospital_beds}}</td></tr>
-              <tr><td>Number of Hospital Patients </td><td> {{hospital_data.hospital_patients}}</td></tr>
-              <tr><td>Update Date </td><td> {{hospital_data.updated_date}}</td></tr>
-              <tr><td>User Name </td><td> {{hospital_data.user_name}}</td></tr>
-              </tbody>
+
+        <div *ngIf="hospital_data" class="p-3">
+
+            <table class="table table-bordered table-sm row-border hover">
+                <thead>
+                    <tr>
+                        <th>Property Name</th>
+                        <th>Property Valaue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Healthcare Facility Name </td>
+                        <td> {{hospital_data.healthcare_facility_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Facility Location </td>
+                        <td> {{hospital_data.facility_location}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address </td>
+                        <td> {{hospital_data.email_address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number </td>
+                        <td> {{hospital_data.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Type of facility </td>
+                        <td> {{hospital_data.type_of_facility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Electricity source </td>
+                        <td> {{hospital_data.electricity_source}}</td>
+                    </tr>
+                    <tr>
+                        <td>Electricity reliabile </td>
+                        <td> {{hospital_data.electricity_reliabile}}</td>
+                    </tr>
+                    <tr>
+                        <td>Oxygen distribution in facility </td>
+                        <td> {{hospital_data.oxygen_distribution_facility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of healthcare workers </td>
+                        <td> {{hospital_data.healthcare_workers}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of other caregivers </td>
+                        <td> {{hospital_data.other_caregivers}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of janitorial staff </td>
+                        <td> {{hospital_data.janitorial_staff}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of ambulance personnel </td>
+                        <td> {{hospital_data.ambulance_personnel}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of biomedical engineers </td>
+                        <td> {{hospital_data.biomedical_engineers}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Critical Care/ICU Beds </td>
+                        <td> {{hospital_data.critical_care_icu_beds}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Critical Care/ICU Patients </td>
+                        <td> {{hospital_data.critical_care_icu_patients}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Hospital Beds </td>
+                        <td> {{hospital_data.hospital_beds}}</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Hospital Patients </td>
+                        <td> {{hospital_data.hospital_patients}}</td>
+                    </tr>
+                    <tr>
+                        <td>Update Date </td>
+                        <td> {{hospital_data.updated_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>User Name </td>
+                        <td> {{hospital_data.user_name}}</td>
+                    </tr>
+                </tbody>
             </table>
-            
+
             <table *ngIf="hospital_data && hospital_data.item_category_data.length>0" class="table table-striped table-bordered table-sm row-border hover">
                 <thead>
-                  <tr>
-                      <th>Item id</th>
-                      <th>Item</th>
-                      <th>Unit</th>
-                      <th>Reusable</th>
-                      <th>Category</th>
-                  </tr>
+                    <tr>
+                        <th>Item id</th>
+                        <th>Item</th>
+                        <th>Unit</th>
+                        <th>Reusable</th>
+                        <th>Category</th>
+                    </tr>
                 </thead>
-                <tbody >
-                 <tr *ngFor="let items of hospital_data.item_category_data;let i=index">
-                       <td>{{items.item_id}}</td>
-                       <td>{{items.item}}</td>
-                       <td>{{items.unit}}</td>
-                       <td>{{items.reusable}}</td>
-                       <td>{{items.category}}</td>
-                                             
-                   </tr>
+                <tbody>
+                    <tr *ngFor="let items of hospital_data.item_category_data;let i=index">
+                        <td>{{items.item_id}}</td>
+                        <td>{{items.item}}</td>
+                        <td>{{items.unit}}</td>
+                        <td>{{items.reusable}}</td>
+                        <td>{{items.category}}</td>
+
+                    </tr>
                 </tbody>
-              </table>
+            </table>
         </div>
-        
+
     </nb-card-body>
-  </nb-card>
+</nb-card>

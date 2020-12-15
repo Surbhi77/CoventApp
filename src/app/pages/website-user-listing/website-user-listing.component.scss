@@ -1,19 +1,31 @@
 @import '../../@theme/styles/themes';
-
 @include nb-install-component() {
-  nb-card {
-    transform: translate3d(0, 0, 0);
-  }
+    nb-card {
+        transform: translate3d(0, 0, 0);
+    }
 }
-tr.ng2-smart-filters{
+
+tr.ng2-smart-filters {
     display: none;
 }
+
 nb-card-header {
     width: 100%;
     display: inline-block;
+    background-color: #13bfb3 !important;
+    color: white;
 }
+
 nb-card-body {
     width: 100%;
     display: inline-block;
     padding: 0 !important;
-} 
+}
+
+nb-card-body {
+    line-height: 2.5rem;
+}
+
+nb-card {
+    box-shadow: 0 0 10px #ccc;
+}

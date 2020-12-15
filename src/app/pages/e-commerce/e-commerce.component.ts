@@ -6,6 +6,7 @@ import * as Highcharts from "highcharts";
 @Component({
   selector: 'ngx-ecommerce',
   templateUrl: './e-commerce.component.html',
+  styleUrls: ['./e-commerce.component.scss']
 })
 export class ECommerceComponent {
   deviceListing: any=[];
@@ -21,12 +22,14 @@ export class ECommerceComponent {
   updateFlag2=false;
   chartOptions = {
     title: {
-      text: 'Monthly Added'
+      // text: 'Monthly Added'
+      text: ''
     },
     series: [
       
       {type:'column',
-        data: [1, 2, 3, 6, 9]
+        data: [1, 2, 3, 6, 9],
+        color: '#13bfb3'
       }
     ],
     exporting: {
@@ -45,12 +48,15 @@ export class ECommerceComponent {
   };
   chartOptions2 = {
     title: {
-      text: 'Monthly Views'
+     // text: 'Monthly Views'
+     text:''
     },
     series: [
       
       {type:'column',
-        data: [1, 2, 3, 6, 9]
+        data: [1, 2, 3, 6, 9],
+        color: '#13bfb3'
+
       }
     ],
     exporting: {
