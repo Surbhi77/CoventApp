@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           //})
           
         }else{
-          this.toastr.error('Email or password do not match')
+          this.toastr.error(res['message'])
         }
       },error=>{
         console.log(error)
