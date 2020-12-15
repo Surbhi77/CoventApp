@@ -1,46 +1,45 @@
-<nb-card>
-    <nb-card-header>
+<nb-card class="shadow">
+    <nb-card-header class="header">
         Hospital ICU Need Listing
 
-      <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/hospital-ICU-need"> Add </button>
+        <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/hospital-ICU-need"> Add </button>
     </nb-card-header>
-    
+
     <nb-card-body>
-        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
-      <table *ngIf="hospitalsListData && hospitalsListData.length>0" class="table table-bordered custom_tabls" [dtOptions]="dtOptions"  datatable >
-        <thead>
-          <tr>
-            <th class="text-center">S.No.</th>
-            <th>Number of devices in use</th>
-            <th>Number of devices not in use</th>
-            <th>Number of additional devices needed per day</th>
-            <th>Category</th>
-            <th>Item</th>
-            <th>Unit</th>
-            <th>Reusable</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody >
-         <tr *ngFor="let item of hospitalsListData;let i=index">
-               <td class="text-center">{{i+1}}</td>
-               <td>{{item.device_in_use }}</td>
-               <td>{{item.device_not_use}}</td>
-               <td>{{item.device_need_perday}}</td>
-               <td>{{item.category}}</td>
-               <td>{{item.item}}</td>
-               <td>{{item.unit}}</td>
-               <td>{{item.reusable}}</td>
-               <td>{{item.date}}</td>
-               <td style="width: 400px;">
-                
-                <!-- <a [routerLink]="'/pages/hospital-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit </a> -->
-                <a (click)="deleteHospitalsItemList(item.id,i)" class="conm_bns delete_n"> <i class="far fa-trash-alt"></i> Delete</a>
-              </td>
-           </tr>
-        </tbody>
-      </table>
+        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg table-responsive" *ngIf="successform">{{successform}}</div>
+        <table *ngIf="hospitalsListData && hospitalsListData.length>0" class="table  table-bordered custom_tabls w-100" [dtOptions]="dtOptions" datatable>
+            <thead>
+                <tr>
+                    <!-- <th class="text-center">S.No.</th> -->
+                    <th>Devices in use</th>
+                    <th>Devices not in use</th>
+                    <th>Additional devices needed</th>
+                    <th>Category</th>
+                    <th>Item</th>
+                    <th>Unit</th>
+                    <th>Reusable</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of hospitalsListData;let i=index">
+                    <!-- <td class="text-center">{{i+1}}</td> -->
+                    <td>{{item.device_in_use }}</td>
+                    <td>{{item.device_not_use}}</td>
+                    <td>{{item.device_need_perday}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.item}}</td>
+                    <td>{{item.unit}}</td>
+                    <td>{{item.reusable}}</td>
+                    <td style="width: 120px;">{{item.date}}</td>
+                    <td style="width: 120px;">
+
+                        <!-- <a [routerLink]="'/pages/hospital-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit </a> -->
+                        <a (click)="deleteHospitalsItemList(item.id,i)" class="conm_bns delete_n delbtn text-white"> <i class="far fa-trash-alt"></i> Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </nb-card-body>
-  </nb-card>
-  
+</nb-card>

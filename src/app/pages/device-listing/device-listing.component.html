@@ -1,380 +1,371 @@
-<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange" >
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange">
     <nb-card-body class="p-0 m-0">
-      <nb-stepper [linear]="linearMode" orientation="vertical"   >
-        <nb-step [stepControl]="firstForm" [label]="labelOne" class="text-white" >
-          <ng-template #labelOne >First step</ng-template>
-          <form [formGroup]="firstForm" >
-            <div class="row ">
-              <div class="col-lg-8 p-5">
-                  <mat-form-field class="example-full-width ">
-                    <mat-label>Device name</mat-label>
-                    <input type="email" matInput formControlName="device_name">
-                    <ng-container *ngIf="f.device_name.touched && f.device_name.invalid">
-                      <mat-error *ngIf="f.device_name.errors.required" class="errors">
-                        Device Name is required.
-                      </mat-error>
-                    </ng-container>
-                  </mat-form-field>
+        <nb-stepper [linear]="linearMode" orientation="vertical">
+            <nb-step [stepControl]="firstForm" [label]="labelOne" class="text-white">
+                <ng-template #labelOne>First step</ng-template>
+                <form [formGroup]="firstForm">
+                    <div class="row ">
+                        <div class="col-lg-8 p-5">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Device name</mat-label>
+                                <input type="email" matInput formControlName="device_name">
+                                <ng-container *ngIf="f.device_name.touched && f.device_name.invalid">
+                                    <mat-error *ngIf="f.device_name.errors.required" class="errors">
+                                        Device Name is required.
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                  <mat-form-field>
-                    <mat-label>Device Description</mat-label>
-                    <input type="textarea" matInput formControlName="device_description">
-                  </mat-form-field>
-                  
+                            <mat-form-field>
+                                <mat-label>Device Description</mat-label>
+                                <input type="textarea" matInput formControlName="device_description">
+                            </mat-form-field>
 
-                  <mat-form-field class="input-example">
-                    <mat-label>Device category</mat-label>
-                    <mat-select formControlName="device_cat" (selectionChange)="deviceChange($event.value)">
-                      <mat-option *ngFor="let device of devices"  [value]="device.category_id">
-                        {{device.category_name}}
-                      </mat-option>
-                    </mat-select>
-                    <ng-container *ngIf="f.device_cat.touched && f.device_cat.invalid">
-                      <mat-error *ngIf="f.device_cat.errors.required" class="errors">
-                        Device Category is required.
-                      </mat-error>
-                    </ng-container>
-                  </mat-form-field>
 
-                  <mat-form-field class="input-example">
-                    <mat-label>Device type</mat-label>
-                    <mat-select (selectionChange)="deviceCatChange($event.value)" formControlName="device_type">
-                      <mat-option value="">Select Device Type</mat-option>
-                      <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
-                        {{sub.subcategory_name}}
-                      </mat-option>
-                    </mat-select>
-                    <ng-container *ngIf="f.device_type.touched && f.device_type.invalid">
-                      <mat-error *ngIf="f.device_type.errors.required" class="errors">
-                        Device Type is required.
-                      </mat-error>
-                    </ng-container>
-                  </mat-form-field>
+                            <mat-form-field class="input-example">
+                                <mat-label>Device category</mat-label>
+                                <mat-select formControlName="device_cat" (selectionChange)="deviceChange($event.value)">
+                                    <mat-option *ngFor="let device of devices" [value]="device.category_id">
+                                        {{device.category_name}}
+                                    </mat-option>
+                                </mat-select>
+                                <ng-container *ngIf="f.device_cat.touched && f.device_cat.invalid">
+                                    <mat-error *ngIf="f.device_cat.errors.required" class="errors">
+                                        Device Category is required.
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                  <div class="in_radios">
-                    <label id="Reusable" class="block_lab">Reusable</label>
-                    <mat-radio-group formControlName="reusable" aria-label="Select an option" color="primary">
-                        <mat-radio-button [checked]="firstForm.controls.reusable.value === 1" value="1">Yes</mat-radio-button>
-                        <mat-radio-button [checked]="firstForm.controls.reusable.value === 2" value="2">No</mat-radio-button>
-                    </mat-radio-group>
-                    <div *ngIf="f.reusable.touched && f.reusable.invalid" class="alert alert-danger">
-                      <div *ngIf="f.reusable.errors.required" class="errors">Please select yes/no</div>
+                            <mat-form-field class="input-example">
+                                <mat-label>Device type</mat-label>
+                                <mat-select (selectionChange)="deviceCatChange($event.value)" formControlName="device_type">
+                                    <mat-option value="">Select Device Type</mat-option>
+                                    <mat-option *ngFor="let sub of subCatDevices" [value]="sub.sub_category_id">
+                                        {{sub.subcategory_name}}
+                                    </mat-option>
+                                </mat-select>
+                                <ng-container *ngIf="f.device_type.touched && f.device_type.invalid">
+                                    <mat-error *ngIf="f.device_type.errors.required" class="errors">
+                                        Device Type is required.
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab">Reusable</label>
+                                <mat-radio-group formControlName="reusable" aria-label="Select an option" color="primary">
+                                    <mat-radio-button [checked]="firstForm.controls.reusable.value === 1" value="1">Yes</mat-radio-button>
+                                    <mat-radio-button [checked]="firstForm.controls.reusable.value === 2" value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="f.reusable.touched && f.reusable.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.reusable.errors.required" class="errors">Please select yes/no</div>
+                                </div>
+                            </div>
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab">Autoclavable</label>
+                                <mat-radio-group formControlName="autoclavable" aria-label="Select an option" color="primary">
+                                    <mat-radio-button [checked]="firstForm.controls.autoclavable.value === 1" value="1">Yes</mat-radio-button>
+                                    <mat-radio-button [checked]="firstForm.controls.autoclavable.value === 2" value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="f.autoclavable.touched && f.autoclavable.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.autoclavable.errors.required" class="errors">Please select yes/no</div>
+                                </div>
+                            </div>
+
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab">AC-Powered</label>
+                                <mat-radio-group formControlName="ac_powered" aria-label="Select an option" color="primary">
+                                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 1" value="1">Yes</mat-radio-button>
+                                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 2" value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="f.ac_powered.touched && f.ac_powered.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.ac_powered.errors.required" class="errors">Please select yes/no</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-lg-8 pl-5">
+                        <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary ml-0">prev</button>
+                        <button nbButton matRipple (click)="onFirstSubmit()" nbStepperNext class="size-medium status-primary">next</button>
                     </div>
                 </div>
-                <div class="in_radios">
-                  <label id="Reusable" class="block_lab">Autoclavable</label>
-                  <mat-radio-group formControlName="autoclavable" aria-label="Select an option" color="primary">
-                      <mat-radio-button  [checked]="firstForm.controls.autoclavable.value === 1" value="1">Yes</mat-radio-button>
-                      <mat-radio-button [checked]="firstForm.controls.autoclavable.value === 2" value="2">No</mat-radio-button>
-                  </mat-radio-group>
-                  <div *ngIf="f.autoclavable.touched && f.autoclavable.invalid" class="alert alert-danger">
-                    <div *ngIf="f.autoclavable.errors.required" class="errors">Please select yes/no</div>
-                  </div>
-              </div>
+            </nb-step>
+            <nb-step [stepControl]="secondForm" [label]="labelTwo">
+                <ng-template #labelTwo>Second step</ng-template>
+                <form [formGroup]="secondForm">
+                    <div class="row">
+                        <div class="col-lg-8 p-5">
 
-              <div class="in_radios">
-                <label id="Reusable" class="block_lab">AC-Powered</label>
-                <mat-radio-group formControlName="ac_powered" aria-label="Select an option" color="primary">
-                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 1" value="1">Yes</mat-radio-button>
-                    <mat-radio-button [checked]="firstForm.controls.ac_powered.value === 2" value="2">No</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="f.ac_powered.touched && f.ac_powered.invalid" class="alert alert-danger">
-                  <div *ngIf="f.ac_powered.errors.required" class="errors">Please select yes/no</div>
-                </div>
-            </div>
-                </div>
-            </div>
-          </form>
-          <div class="row">
-            <div class="col-lg-8 pl-5">
-            <button nbButton matRipple disabled nbStepperNext class="size-medium status-primary ml-0">prev</button>
-            <button nbButton matRipple (click)="onFirstSubmit()" nbStepperNext class="size-medium status-primary">next</button>
-          </div>
-        </div>
-        </nb-step>
-        <nb-step [stepControl]="secondForm" [label]="labelTwo">
-          <ng-template #labelTwo >Second step</ng-template>
-          <form [formGroup]="secondForm">
-            <div class="row">
-              <div class="col-lg-8 p-5">
+                            <div class="in_radios">
+                                <label id="Reusable" class="block_lab mt-3">Battery-Powered</label>
+                                <mat-radio-group formControlName="battery_powered" aria-label="Select an option" color="primary">
+                                    <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 1" value="1">Yes</mat-radio-button>
+                                    <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 2" value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="g.battery_powered.touched && g.battery_powered.invalid" class="alert alert-danger">
+                                    <div *ngIf="g.battery_powered.errors.required" class="errors">Please select yes/no</div>
+                                </div>
+                            </div>
 
-                <div class="in_radios">
-                  <label id="Reusable" class="block_lab mt-3">Battery-Powered</label>
-                  <mat-radio-group formControlName="battery_powered" aria-label="Select an option" color="primary">
-                      <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 1" value="1">Yes</mat-radio-button>
-                      <mat-radio-button [checked]="secondForm.controls.battery_powered.value === 2" value="2">No</mat-radio-button>
-                  </mat-radio-group>
-                  <div *ngIf="g.battery_powered.touched && g.battery_powered.invalid" class="alert alert-danger">
-                    <div *ngIf="g.battery_powered.errors.required" class="errors">Please select yes/no</div>
-                  </div>
-                </div>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Power Consumption (watts)</mat-label>
+                                <input type="email" matInput formControlName="power_consumption">
+                                <ng-container *ngIf="g.power_consumption.touched && g.power_consumption.invalid">
+                                    <mat-error *ngIf="g.power_consumption.errors.required" class="errors">
+                                        Please enter power consumption
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                  <mat-label>Power Consumption (watts)</mat-label>
-                  <input type="text" matInput formControlName="power_consumption">
-                  <ng-container *ngIf="g.power_consumption.touched && g.power_consumption.invalid">
-                    <mat-error *ngIf="g.power_consumption.errors.required" class="alert alert-danger">
-                      Please enter power consumption
-                    </mat-error>
-                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Unit cost (USD)</mat-label>
+                                <input type="email" matInput formControlName="unit_cost">
+                                <ng-container *ngIf="g.unit_cost.touched && g.unit_cost.invalid">
+                                    <mat-error *ngIf="g.unit_cost.errors.required" class="errors">
+                                        Please enter unit cost
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                  <mat-label>Unit cost (USD)</mat-label>
-                  <input type="text" matInput formControlName="unit_cost">
-                  <ng-container *ngIf="g.unit_cost.touched && g.unit_cost.invalid">
-                    <mat-error *ngIf="g.unit_cost.errors.required" class="alert alert-danger">
-                      Please enter unit cost
-                    </mat-error>
-                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Required investment (USD)</mat-label>
+                                <input type="email" matInput formControlName="required_investment">
+                                <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
+                                    <mat-error *ngIf="g.required_investment.errors.required" class="errors">
+                                        Please enter required investment
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                  <mat-label>Required investment (USD)</mat-label>
-                  <input type="text" matInput formControlName="required_investment">
-                  <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
-                    <mat-error *ngIf="g.required_investment.errors.required" class="alert alert-danger">
-                      Please enter required investment
-                    </mat-error>
-                    <mat-error *ngIf="g.power_consumption.errors.pattern">enter only number
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="input-example">
+                                <mat-label>Development stage</mat-label>
+                                <mat-select formControlName="dev_stage">
+                                    <mat-option value="Stage 1: Ideation">
+                                        Stage 1: Ideation
+                                    </mat-option>
+                                    <mat-option value="Stage 2: Research & Development">
+                                        Stage 2: Research & Development
+                                    </mat-option>
+                                    <mat-option value="Stage 3: Proof of Concept">
+                                        Stage 3: Proof of Concept
+                                    </mat-option>
+                                    <mat-option value="Stage 4: Design for Manufacturing">
+                                        Stage 4: Design for Manufacturing
+                                    </mat-option>
+                                    <mat-option value="Stage 5: Verification & Validation">
+                                        Stage 5: Verification & Validation
+                                    </mat-option>
+                                    <mat-option value="Stage 6: Early Production">
+                                        Stage 6: Early Production
+                                    </mat-option>
+                                    <mat-option value="Stage 7: Scaling">
+                                        Stage 7: Scaling
+                                    </mat-option>
+                                </mat-select>
+                                <ng-container *ngIf="g.dev_stage.touched && g.dev_stage.invalid">
+                                    <mat-error *ngIf="g.dev_stage.errors.required" class="errors">
+                                        Please select development stage
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <mat-form-field class="input-example">
-                  <mat-label>Development stage</mat-label>
-                  <mat-select formControlName="dev_stage">
-                    <mat-option value="Stage 1: Ideation">
-                      Stage 1: Ideation
-                    </mat-option>
-                    <mat-option value="Stage 2: Research & Development">
-                      Stage 2: Research & Development
-                    </mat-option>
-                    <mat-option value="Stage 3: Proof of Concept">
-                      Stage 3: Proof of Concept
-                    </mat-option>
-                    <mat-option value="Stage 4: Design for Manufacturing">
-                      Stage 4: Design for Manufacturing
-                    </mat-option>
-                    <mat-option value="Stage 5: Verification & Validation">
-                      Stage 5: Verification & Validation
-                    </mat-option>
-                    <mat-option value="Stage 6: Early Production">
-                      Stage 6: Early Production
-                    </mat-option>
-                    <mat-option value="Stage 7: Scaling">
-                      Stage 7: Scaling
-                    </mat-option>
-                  </mat-select>
-                  <ng-container *ngIf="g.dev_stage.touched && g.dev_stage.invalid">
-                    <mat-error *ngIf="g.dev_stage.errors.required" class="errors">
-                      Please select development stage
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="input-example">
+                                <mat-label>Clinical stage</mat-label>
+                                <mat-select formControlName="clinical_stage">
+                                    <mat-option value="Stage 1: No clinical use">
+                                        Stage 1: No clinical use
+                                    </mat-option>
+                                    <mat-option value="Stage 2: First in-human use">
+                                        Stage 2: First in-human use
+                                    </mat-option>
+                                    <mat-option value="Stage 3: Clinical trials">
+                                        Stage 3: Clinical trials
+                                    </mat-option>
+                                    <mat-option value="Stage 4: Limited clinical use">
+                                        Stage 4: Limited clinical use
+                                    </mat-option>
+                                    <mat-option value="Stage 5: Scaling clinical use">
+                                        Stage 5: Scaling clinical use
+                                    </mat-option>
+                                </mat-select>
+                                <ng-container *ngIf="g.clinical_stage.touched && g.clinical_stage.invalid">
+                                    <mat-error *ngIf="g.clinical_stage.errors.required" class="errors">
+                                        Please select clinical stage
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <mat-form-field class="input-example">
-                  <mat-label>Clinical stage</mat-label>
-                  <mat-select formControlName="clinical_stage">
-                    <mat-option value="Stage 1: No clinical use">
-                      Stage 1: No clinical use
-                    </mat-option>
-                    <mat-option value="Stage 2: First in-human use">
-                      Stage 2: First in-human use
-                    </mat-option>
-                    <mat-option value="Stage 3: Clinical trials">
-                      Stage 3: Clinical trials
-                    </mat-option>
-                    <mat-option value="Stage 4: Limited clinical use">
-                      Stage 4: Limited clinical use
-                    </mat-option>
-                    <mat-option value="Stage 5: Scaling clinical use">
-                      Stage 5: Scaling clinical use
-                    </mat-option>
-                  </mat-select>
-                  <ng-container *ngIf="g.clinical_stage.touched && g.clinical_stage.invalid">
-                    <mat-error *ngIf="g.clinical_stage.errors.required" class="errors">
-                      Please select clinical stage
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
 
-               
 
-                          <!-- <input type="text" formControlName="power_consumption" nbInput fullWidth placeholder="Power Consumption (watts)">
+                            <!-- <input type="text" formControlName="power_consumption" nbInput fullWidth placeholder="Power Consumption (watts)">
                           <div *ngIf="g.power_consumption.touched && g.power_consumption.invalid" class="alert alert-danger">
                             <div *ngIf="g.power_consumption.errors.required">Please enter power consumption</div>
                           </div> -->
 
-                        <!-- <input type="text" formControlName="unit_cost" nbInput fullWidth placeholder="Unit cost (USD)">
+                            <!-- <input type="text" formControlName="unit_cost" nbInput fullWidth placeholder="Unit cost (USD)">
                         <div *ngIf="g.unit_cost.touched && g.unit_cost.invalid" class="alert alert-danger">
                           <div *ngIf="g.unit_cost.errors.required">Please enter unit cost</div>
                         </div> -->
 
-                        <!-- <input type="text" formControlName="required_investment" nbInput fullWidth placeholder="Required investment (USD)">
+                            <!-- <input type="text" formControlName="required_investment" nbInput fullWidth placeholder="Required investment (USD)">
                         <div *ngIf="g.required_investment.touched && g.required_investment.invalid" class="alert alert-danger">
                           <div *ngIf="g.required_investment.errors.required">Please enter required investment</div>
                         </div> -->
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-lg-8 pl-5 mt-4">
+                        <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
+                        <button nbButton matRipple nbStepperNext (click)="onSecondSubmit()" class="size-medium status-primary">next</button>
+                    </div>
                 </div>
-            </div>
-          </form>
-          <div class="row">
-            <div class="col-lg-8 pl-5 mt-4">
-            <button nbButton matRipple nbStepperPrevious  class="size-medium status-primary ml-0">prev</button>
-            <button nbButton matRipple nbStepperNext (click)="onSecondSubmit()" class="size-medium status-primary">next</button>
-          </div>
-        </div>
-        </nb-step>
-        <nb-step [stepControl]="thirdForm" label="Third step">
-            <form [formGroup]="thirdForm">
-              <div class="row">
-                <div class="col-lg-8 p-5">
+            </nb-step>
+            <nb-step [stepControl]="thirdForm" label="Third step">
+                <form [formGroup]="thirdForm">
+                    <div class="row">
+                        <div class="col-lg-8 p-5">
 
-                        <mat-form-field class="input-example" class="mt-3">
-                            <mat-label>Regulatory stage</mat-label>
-                            <mat-select formControlName="regulatory_stage">
-                              <mat-option value="Stage 1: No regulatory submission">
-                                Stage 1: No regulatory submission
-                              </mat-option>
-                              <mat-option value="Stage 2: Pending regulatory approval">
-                                Stage 2: Pending regulatory approval
-                              </mat-option>
-                              <mat-option value="Stage 3: Emergency use authorization">
-                                Stage 3: Emergency use authorization
-                              </mat-option>
-                              <mat-option value="Stage 4: Full regulatory approval">
-                                Stage 4: Full regulatory approval
-                              </mat-option>
-                              <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                            <mat-form-field class="input-example" class="mt-3">
+                                <mat-label>Regulatory stage</mat-label>
+                                <mat-select formControlName="regulatory_stage">
+                                    <mat-option value="Stage 1: No regulatory submission">
+                                        Stage 1: No regulatory submission
+                                    </mat-option>
+                                    <mat-option value="Stage 2: Pending regulatory approval">
+                                        Stage 2: Pending regulatory approval
+                                    </mat-option>
+                                    <mat-option value="Stage 3: Emergency use authorization">
+                                        Stage 3: Emergency use authorization
+                                    </mat-option>
+                                    <mat-option value="Stage 4: Full regulatory approval">
+                                        Stage 4: Full regulatory approval
+                                    </mat-option>
+                                    <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
                                 {{food.viewValue}}
                               </mat-option> -->
-                            </mat-select>
-                            <ng-container *ngIf="h.regulatory_stage.touched && h.regulatory_stage.invalid">
-                              <mat-error *ngIf="h.regulatory_stage.errors.required" class="errors">
-                                Please select a value
+                                </mat-select>
+                                <ng-container *ngIf="h.regulatory_stage.touched && h.regulatory_stage.invalid">
+                                    <mat-error *ngIf="h.regulatory_stage.errors.required" class="errors">
+                                        Please select a value
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+                            <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
+
+                            <mat-form-field class="input-example">
+                                <mat-label>Regulatory approvals</mat-label>
+                                <mat-select formControlName="regulatory_approvals">
+                                    <mat-option value="US FDA">
+                                        US FDA
+                                    </mat-option>
+                                    <mat-option value="CE">
+                                        CE
+                                    </mat-option>
+                                    <mat-option value="Health Canada">
+                                        Health Canada
+                                    </mat-option>
+                                    <mat-option value="CFDA">
+                                        CFDA
+                                    </mat-option>
+                                </mat-select>
+
+                                <ng-container *ngIf="h.regulatory_approvals.touched && h.regulatory_approvals.invalid">
+                                    <mat-error *ngIf="h.regulatory_approvals.errors.required" class="errors">
+                                        Please select a value
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+
+                            <mat-form-field class="input-example">
+                                <mat-label>Where deployed?</mat-label>
+                                <mat-select formControlName="country">
+                                    <mat-option *ngFor="let country of countries" [value]="country.id">
+                                        {{country.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <ng-container *ngIf="h.country.touched && h.country.invalid">
+                                    <mat-error *ngIf="h.country.errors.required" class="errors">
+                                        Please select a value
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Website link</mat-label>
+                                <input type="text" matInput formControlName="website_link">
+                                <!-- <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
+                              <mat-error *ngIf="g.required_investment.errors.required" class="errors">
+                                Please enter required investment
                               </mat-error>
-                            </ng-container>
-                        </mat-form-field>
+                            </ng-container> -->
+                            </mat-form-field>
 
-                        <!-- <input type="text" nbInput fullWidth placeholder="Device name"> -->
-    
-                        <mat-form-field class="input-example">
-                            <mat-label>Regulatory approvals</mat-label>
-                            <mat-select formControlName="regulatory_approvals">
-                              <mat-option value="US FDA">
-                                US FDA
-                              </mat-option>
-                              <mat-option value="CE">
-                                CE
-                              </mat-option>
-                              <mat-option value="Health Canada">
-                                Health Canada
-                              </mat-option>
-                              <mat-option value="CFDA">
-                                CFDA
-                              </mat-option>
-                            </mat-select>
+                            <mat-label class="mb-3 d-block">Materials</mat-label>
 
-                            <ng-container *ngIf="h.regulatory_approvals.touched && h.regulatory_approvals.invalid">
-                              <mat-error *ngIf="h.regulatory_approvals.errors.required" class="errors">
-                                Please select a value
-                              </mat-error>
-                            </ng-container>
-                        </mat-form-field>
-
-    
-                          <mat-form-field class="input-example">
-                            <mat-label>Where deployed?</mat-label>
-                            <mat-select formControlName="country">
-                              <mat-option *ngFor="let country of countries" [value]="country.id">
-                                {{country.name}}
-                              </mat-option>
-                            </mat-select>
-                            <ng-container *ngIf="h.country.touched && h.country.invalid">
-                              <mat-error *ngIf="h.country.errors.required" class="errors">
-                                Please select a value
-                              </mat-error>
-                            </ng-container>
-                          </mat-form-field>
-
-
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Website link</mat-label>
-                            <input type="text" matInput formControlName="website_link">
-                             <ng-container *ngIf="h.website_link.touched && h.website_link.invalid">
-                              <mat-error *ngIf="h.website_link.errors.required" class="errors">
-                                URL is required.
-                              </mat-error>
-                              <mat-error *ngIf="h.website_link.errors.pattern">
-                                Please enter valid url.
-                              </mat-error>
-                            </ng-container> 
-                          </mat-form-field>
-
-                          <mat-label class="mb-3 d-block">Materials</mat-label>
-                            
-                            <input type="file" (change)="onMaterialFileChange($event)" formControlName="materials" nbInput fullWidth> 
+                            <input type="file" (change)="onMaterialFileChange($event)" formControlName="materials" nbInput fullWidth>
                             <ng-container *ngIf="isEditScreen && editDeviceDetails && !isImage(editDeviceDetails.device_materials)">
-                              <a [href]="assetUrl+editDeviceDetails.device_materials" target="_blank" class="pdf_links"><i class="fas fa-external-link-alt"></i> {{editDeviceDetails.device_materials}}</a>
+                                <a [href]="assetUrl+editDeviceDetails.device_materials" target="_blank" class="pdf_links"><i class="fas fa-external-link-alt"></i> {{editDeviceDetails.device_materials}}</a>
                             </ng-container>
                             <ng-container *ngIf="isEditScreen && editDeviceDetails && isImage(editDeviceDetails.device_materials)">
-                              <div class="device_imgs">
-                                <img [src]="assetUrl+editDeviceDetails.device_materials">
-                              </div>
-                              
+                                <div class="device_imgs">
+                                    <img [src]="assetUrl+editDeviceDetails.device_materials">
+                                </div>
+
                             </ng-container>
                             <mat-form-field class="example-full-width tpo">
-                              <mat-label>Manufacturers</mat-label>
-                              <input type="email" matInput formControlName="manufacturers">
-                              <!-- <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
+                                <mat-label>Manufacturers</mat-label>
+                                <input type="email" matInput formControlName="manufacturers">
+                                <!-- <ng-container *ngIf="g.required_investment.touched && g.required_investment.invalid">
                                 <mat-error *ngIf="g.required_investment.errors.required" class="errors">
                                   Please enter required investment
                                 </mat-error>
                               </ng-container> -->
                             </mat-form-field>
 
-                  </div>
-            </div>
-            </form>
-            
-           <div class="row">
-            <div class="mt-3 col-lg-8 pl-5">
-            <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
-            <button nbButton matRipple nbStepperNext (click)="onThirdSubmit()" class="size-medium status-primary">next</button>
-          </div> 
-        </div> 
-        </nb-step>
-        <nb-step [stepControl]="fourthForm" [label]="labelFour">
-          <ng-template #labelFour class="text-white">Fourth step</ng-template>
-          <form [formGroup]="fourthForm">
-            <div class="row">
-              <div class="col-lg-8 p-5">
+                        </div>
+                    </div>
+                </form>
 
-                <mat-form-field class="example-full-width tpo">
-                  <mat-label>Design Files</mat-label>
-                  <input type="email" matInput formControlName="design_files">
-                  <ng-container *ngIf="i.design_files.touched && i.design_files.invalid">
-                    <mat-error *ngIf="i.design_files.errors.required" class="errors">
-                      Please enter required Design Files
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                <div class="row">
+                    <div class="mt-3 col-lg-8 pl-5">
+                        <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
+                        <button nbButton matRipple nbStepperNext (click)="onThirdSubmit()" class="size-medium status-primary">next</button>
+                    </div>
+                </div>
+            </nb-step>
+            <nb-step [stepControl]="fourthForm" [label]="labelFour">
+                <ng-template #labelFour class="text-white">Fourth step</ng-template>
+                <form [formGroup]="fourthForm">
+                    <div class="row">
+                        <div class="col-lg-8 p-5">
 
-                <mat-form-field class="example-full-width tpo">
-                  <mat-label>Training Documents</mat-label>
-                  <input type="text" matInput formControlName="training_documents">
-                  <ng-container *ngIf="i.training_documents.touched && i.training_documents.invalid">
-                    <mat-error *ngIf="i.training_documents.errors.required" class="errors">
-                      Please enter link to training documents
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="example-full-width tpo">
+                                <mat-label>Design Files</mat-label>
+                                <input type="email" matInput formControlName="design_files">
+                                <ng-container *ngIf="i.design_files.touched && i.design_files.invalid">
+                                    <mat-error *ngIf="i.design_files.errors.required" class="errors">
+                                        Please enter required Design Files
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
-                <!-- <mat-form-field class="example-full-width tpo">
+                            <mat-form-field class="example-full-width tpo">
+                                <mat-label>Training Documents</mat-label>
+                                <input type="text" matInput formControlName="training_documents">
+                                <ng-container *ngIf="i.training_documents.touched && i.training_documents.invalid">
+                                    <mat-error *ngIf="i.training_documents.errors.required" class="errors">
+                                        Please enter link to training documents
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+                            <!-- <mat-form-field class="example-full-width tpo">
                   <mat-label>Training Documents</mat-label>
                   <input type="email" matInput formControlName="training_documents">
                   <ng-container *ngIf="i.training_documents.touched && i.training_documents.invalid">
@@ -384,87 +375,87 @@
                   </ng-container>
                 </mat-form-field> -->
 
-                <mat-form-field class="example-full-width tpo">
-                  <mat-label>Related publications</mat-label>
-                  <input type="text" matInput formControlName="related_publications">
-                  <ng-container *ngIf="i.related_publications.touched && i.related_publications.invalid">
-                    <mat-error *ngIf="i.related_publications.errors.required" class="errors">
-                      Please enter link to Related publications
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <mat-form-field class="example-full-width tpo">
+                                <mat-label>Related publications</mat-label>
+                                <input type="text" matInput formControlName="related_publications">
+                                <ng-container *ngIf="i.related_publications.touched && i.related_publications.invalid">
+                                    <mat-error *ngIf="i.related_publications.errors.required" class="errors">
+                                        Please enter link to Related publications
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
 
-                <label class="mb-3 d-block">Device images</label>
+                            <label class="mb-3 d-block">Device images</label>
 
-                <input formControlName="device_image" (change)="onDeviceFileChange($event)" multiple type="file" nbInput fullWidth> 
-                
-                <ng-container *ngIf="isEditScreen&&editDeviceDetails">
-                  
-                  <div class="device_imgs" *ngFor="let item of editDeviceDetails.device_image">
-                    <img [src]="assetUrl+item">
-                  </div>
-                  
-                </ng-container>
-                <ng-container *ngIf="i.device_image.touched && i.device_image.invalid">
-                  <mat-error *ngIf="i.device_image.errors.required" class="errors">
-                    Please upload device images
-                  </mat-error>
-                </ng-container>
+                            <input formControlName="device_image" (change)="onDeviceFileChange($event)" multiple type="file" nbInput fullWidth>
 
-                <mat-form-field class="example-full-width tpo">
-                  <mat-label>Device videos</mat-label>
-                  <textarea matInput rows="3" formControlName="device_videos" fullwidth class="w-100">1600 Amphitheatre Pkwy</textarea>
-                  <ng-container *ngIf="i.device_videos.touched && i.device_videos.invalid">
-                    <mat-error *ngIf="i.device_videos.errors.required" class="errors">
-                      Please enter link to device videos
-                    </mat-error>
-                  </ng-container>
-                </mat-form-field>
+                            <ng-container *ngIf="isEditScreen&&editDeviceDetails">
 
+                                <div class="device_imgs" *ngFor="let item of editDeviceDetails.device_image">
+                                    <img [src]="assetUrl+item">
+                                </div>
 
-                <label class="mb-3 d-block">Device Characteristics</label>   
-                      <section class="example-section mb-4">
-                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCharacteristics" [checked]="checkIfSelectedCharacteristics(compliance)" (change)="onDeviceCharacteristics($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
-                          <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
-                          <ng-container *ngIf="i.device_characteristics.touched && i.device_characteristics.invalid">
-                            <mat-error *ngIf="i.device_characteristics.errors.required" class="errors">
-                              Please Check device characteristics
-                            </mat-error>
-                          </ng-container>
-                      </section>
+                            </ng-container>
+                            <ng-container *ngIf="i.device_image.touched && i.device_image.invalid">
+                                <mat-error *ngIf="i.device_image.errors.required" class="errors">
+                                    Please upload device images
+                                </mat-error>
+                            </ng-container>
+
+                            <mat-form-field class="example-full-width tpo">
+                                <mat-label>Device videos</mat-label>
+                                <textarea matInput rows="3" formControlName="device_videos" fullwidth class="w-100">1600 Amphitheatre Pkwy</textarea>
+                                <ng-container *ngIf="i.device_videos.touched && i.device_videos.invalid">
+                                    <mat-error *ngIf="i.device_videos.errors.required" class="errors">
+                                        Please enter link to device videos
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
 
 
-                      <label class="mb-3 d-block">Standards Compliance</label>   
-                      <section class="example-section mb-5">
-                          <mat-checkbox color="primary" *ngFor="let compliance of deviceCompliance" [checked]="checkIfSelected(compliance)" (change)="onChangeCompliance($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
-                          <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
+                            <label class="mb-3 d-block">Device Characteristics</label>
+                            <section class="example-section mb-4">
+                                <mat-checkbox color="primary" *ngFor="let compliance of deviceCharacteristics" [checked]="checkIfSelectedCharacteristics(compliance)" (change)="onDeviceCharacteristics($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                                <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
+                                <ng-container *ngIf="i.device_characteristics.touched && i.device_characteristics.invalid">
+                                    <mat-error *ngIf="i.device_characteristics.errors.required" class="errors">
+                                        Please Check device characteristics
+                                    </mat-error>
+                                </ng-container>
+                            </section>
 
-                          <ng-container *ngIf="i.standard_compliances.touched && i.standard_compliances.invalid">
-                            <mat-error *ngIf="i.standard_compliances.errors.required" class="errors">
-                              Please Check device Standards
-                            </mat-error>
-                          </ng-container>
-                      </section>
-  
+
+                            <label class="mb-3 d-block">Standards Compliance</label>
+                            <section class="example-section mb-5">
+                                <mat-checkbox color="primary" *ngFor="let compliance of deviceCompliance" [checked]="checkIfSelected(compliance)" (change)="onChangeCompliance($event)" [value]="compliance" class="example-margin">{{compliance}}</mat-checkbox>
+                                <!-- <mat-checkbox (change)="onChangeCompliance($event)" value="interminate" class="example-margin">Indeterminate</mat-checkbox> -->
+
+                                <ng-container *ngIf="i.standard_compliances.touched && i.standard_compliances.invalid">
+                                    <mat-error *ngIf="i.standard_compliances.errors.required" class="errors">
+                                        Please Check device Standards
+                                    </mat-error>
+                                </ng-container>
+                            </section>
+
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="mt-3 col-lg-8 pl-5">
+                        <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
+                        <button nbButton matRipple nbStepperNext (click)="onFourthSubmit()" class="size-medium status-primary">next</button>
+                    </div>
                 </div>
-            </div>
-          </form>
-          <div class="row">
-          <div class="mt-3 col-lg-8 pl-5">
-          <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
-          <button nbButton matRipple nbStepperNext (click)="onFourthSubmit()" class="size-medium status-primary">next</button>
-          </div>
-        </div>
-        </nb-step>
+            </nb-step>
 
-        <nb-step [stepControl]="fifthForm" [label]="labelFifth">
-            <ng-template #labelFifth >Fifth step</ng-template>
-            <form [formGroup]="fifthForm">
-              <div class="row">
-                <div class="col-lg-8 p-5">
+            <nb-step [stepControl]="fifthForm" [label]="labelFifth">
+                <ng-template #labelFifth>Fifth step</ng-template>
+                <form [formGroup]="fifthForm">
+                    <div class="row">
+                        <div class="col-lg-8 p-5">
 
-                  <!-- <mat-form-field class="example-full-width tpo">
+                            <!-- <mat-form-field class="example-full-width tpo">
                     <mat-label>Instructions For Use</mat-label>
                     <input type="file" (change)="onInstructionFileChange($event)" formControlName="use_instructions" nbInput fullWidth>
                     <ng-container *ngIf="j.use_instructions.touched && j.use_instructions.invalid">
@@ -474,55 +465,55 @@
                     </ng-container>
                   </mat-form-field> -->
 
-                      <label class="mt-3 d-block">Instructions For Use</label>
-                      <input type="file" (change)="onInstructionFileChange($event)" formControlName="use_instructions" nbInput fullWidth>
-                      <ng-container *ngIf="j.use_instructions.touched && j.use_instructions.invalid">
-                        <mat-error *ngIf="j.use_instructions.errors.required" class="errors">
-                          Please upload a file
-                        </mat-error>
-                      </ng-container>
-                      <ng-container *ngIf="isEditScreen && editDeviceDetails && !isImage(editDeviceDetails.device_usage_instruction)">
-                        <a [href]="assetUrl+editDeviceDetails.device_usage_instruction" target="_blank" class="pdf_links"><i class="fas fa-external-link-alt"></i> {{editDeviceDetails.device_usage_instruction}}</a>
-                      </ng-container>
-                      <ng-container *ngIf="isEditScreen && editDeviceDetails && isImage(editDeviceDetails.device_usage_instruction)">
-                        <div class="device_imgs" >
-                          <img [src]="assetUrl+editDeviceDetails.device_usage_instruction">
-                        </div>
-                        
-                      </ng-container>
+                            <label class="mt-3 d-block">Instructions For Use</label>
+                            <input type="file" (change)="onInstructionFileChange($event)" formControlName="use_instructions" nbInput fullWidth>
+                            <ng-container *ngIf="j.use_instructions.touched && j.use_instructions.invalid">
+                                <mat-error *ngIf="j.use_instructions.errors.required" class="errors">
+                                    Please upload a file
+                                </mat-error>
+                            </ng-container>
+                            <ng-container *ngIf="isEditScreen && editDeviceDetails && !isImage(editDeviceDetails.device_usage_instruction)">
+                                <a [href]="assetUrl+editDeviceDetails.device_usage_instruction" target="_blank" class="pdf_links"><i class="fas fa-external-link-alt"></i> {{editDeviceDetails.device_usage_instruction}}</a>
+                            </ng-container>
+                            <ng-container *ngIf="isEditScreen && editDeviceDetails && isImage(editDeviceDetails.device_usage_instruction)">
+                                <div class="device_imgs">
+                                    <img [src]="assetUrl+editDeviceDetails.device_usage_instruction">
+                                </div>
 
-                      <mat-form-field class="input-example mt-4">
-                        <mat-label>Innovator Type</mat-label>
-                        <mat-select formControlName="innovator_type">
-                          <mat-option value="Unaffiliated Individual">
-                            Unaffiliated Individual
-                          </mat-option>
-                          <mat-option value="Unaffiliated Group">
-                            Unaffiliated Group
-                          </mat-option>
-                          <mat-option value="For-profit company">
-                            For-profit company
-                          </mat-option>
-                          <mat-option value="Non-profit organization (not academic)">
-                            Non-profit organization (not academic)
-                          </mat-option>
-                          <mat-option value="University">
-                            University
-                          </mat-option>
-                          <mat-option value="Government agency">
-                            Government agency
-                          </mat-option>
-                        </mat-select>
+                            </ng-container>
 
-                        <ng-container *ngIf="j.innovator_type.touched && j.innovator_type.invalid">
-                          <mat-error *ngIf="j.innovator_type.errors.required" class="errors">
-                            Please select a value
-                          </mat-error>
-                        </ng-container>
-                    </mat-form-field>
-                     
+                            <mat-form-field class="input-example mt-4">
+                                <mat-label>Innovator Type</mat-label>
+                                <mat-select formControlName="innovator_type">
+                                    <mat-option value="Unaffiliated Individual">
+                                        Unaffiliated Individual
+                                    </mat-option>
+                                    <mat-option value="Unaffiliated Group">
+                                        Unaffiliated Group
+                                    </mat-option>
+                                    <mat-option value="For-profit company">
+                                        For-profit company
+                                    </mat-option>
+                                    <mat-option value="Non-profit organization (not academic)">
+                                        Non-profit organization (not academic)
+                                    </mat-option>
+                                    <mat-option value="University">
+                                        University
+                                    </mat-option>
+                                    <mat-option value="Government agency">
+                                        Government agency
+                                    </mat-option>
+                                </mat-select>
 
-                    <!-- <mat-form-field class="example-full-width tpo">
+                                <ng-container *ngIf="j.innovator_type.touched && j.innovator_type.invalid">
+                                    <mat-error *ngIf="j.innovator_type.errors.required" class="errors">
+                                        Please select a value
+                                    </mat-error>
+                                </ng-container>
+                            </mat-form-field>
+
+
+                            <!-- <mat-form-field class="example-full-width tpo">
                       <mat-label>Training Documents</mat-label>
                       <input type="email" matInput formControlName="training_documents">
                       <ng-container *ngIf="i.training_documents.touched && i.training_documents.invalid">
@@ -531,22 +522,22 @@
                         </mat-error>
                       </ng-container>
                     </mat-form-field> -->
-                    
+
                             <label class="add_tens">Team <span><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
                             <input type="text" nbInput fullWidth placeholder="Add multiple innovator team members">
-                    
-                  </div>
-              </div>
-            </form>
 
-            <div class="row">
-              <div class="mt-3 col-lg-8 pl-5">
-                <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
-                <button nbButton matRipple (click)="onFifthSubmit()" class="size-medium status-primary">submit</button>
-              </div>
-            </div>
+                        </div>
+                    </div>
+                </form>
 
-          </nb-step>
-      </nb-stepper>
+                <div class="row">
+                    <div class="mt-3 col-lg-8 pl-5">
+                        <button nbButton matRipple nbStepperPrevious class="size-medium status-primary ml-0">prev</button>
+                        <button nbButton matRipple (click)="onFifthSubmit()" class="size-medium status-primary">submit</button>
+                    </div>
+                </div>
+
+            </nb-step>
+        </nb-stepper>
     </nb-card-body>
-  </nb-card>
+</nb-card>

@@ -1,3 +1,12 @@
 table a {
-    margin:5px;
+    margin: 5px;
+}
+
+nb-card-header {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    background-color: #13bfb3 !important;
+    color: white;
 }

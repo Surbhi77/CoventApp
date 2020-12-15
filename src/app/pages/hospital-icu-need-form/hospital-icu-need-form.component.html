@@ -1,65 +1,69 @@
-<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange" >
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 shadow " class="bgChange">
     <nb-card-header>
         Add ICU Need
     </nb-card-header>
     <nb-card-body class="p-0 m-0">
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
-        
+
         <form [formGroup]="icuform" (ngSubmit)="onSubmit()" *ngIf="documentVerify; else elseBlock">
-            <div class="form-group">
-                <label for="item_category">Categories</label>
-                <select class="form-control" formControlName="item_category" name="item_category"  id="item_category" (change)="selectCategory($event.target.value)" required >
-                    <option *ngFor="let item_cat of itemCategory" [value]="item_cat.id">{{item_cat.category}}</option>
-                </select>
-                <span *ngIf="f.item_category.touched && f.item_category.invalid">
-                    <span *ngIf="f.item_category.errors.required" class="errors-input">
-                        Please select Category.
-                    </span>
-                </span>
+            <div class=" p-5">
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label>Categories</mat-label>
+                    <mat-select formControlName="item_category" name="item_category" id="item_category" (change)="selectCategory($event.target.value)" required>
+                        <mat-option *ngFor="let item_cat of itemCategory" [value]="item_cat.id">{{item_cat.category}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.item_category.touched && f.item_category.invalid">
+                        <mat-error *ngIf="f.item_category.errors.required" class="errors-input errors">
+                            Please select Category.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label>Items</mat-label>
+                    <mat-select formControlName="item_list" name="item_list" id="item_list" required>
+                        <mat-option *ngFor="let item_value of itemList" [value]="item_value.id">{{item_value.item}} (unit: {{item_value.unit}}) (reusable:{{item_value.reusable}})</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.item_list.touched && f.item_list.invalid">
+                        <mat-error *ngIf="f.item_list.errors.required" class="errors-input errors">
+                            Please select Items.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="device_in_use">Number of devices in use</mat-label>
+                    <input type="number" value="0" formControlName="device_in_use" matInput name="device_in_use" required/>
+                    <ng-container *ngIf="f.device_in_use.touched && f.device_in_use.invalid">
+                        <mat-error *ngIf="f.device_in_use.errors.required" class="errors-input errors">
+                            Required
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="device_not_use">Number of devices not in use</mat-label>
+                    <input type="number" value="0" formControlName="device_not_use" name="device_not_use" matInput required/>
+                    <ng-container *ngIf="f.device_not_use.touched && f.device_not_use.invalid">
+                        <mat-error *ngIf="f.device_not_use.errors.required" class="errors-input errors">
+                            Required
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="device_need_perday">Number of additional devices needed per day</mat-label>
+                    <input type="number" value="0" formControlName="device_need_perday" matInput name="device_need_perday" required/>
+                    <ng-container *ngIf="f.device_need_perday.touched && f.device_need_perday.invalid">
+                        <mat-error *ngIf="f.device_need_perday.errors.required" class="errors-input errors">
+                            Required
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <div class="col-lg-8">
+                    <button type="submit" class="btnchanges">Submit</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="item_list">Items</label>
-                <select class="form-control" formControlName="item_list" name="item_list"  id="item_list" required>
-                    <option *ngFor="let item_value of itemList" [value]="item_value.id">{{item_value.item}} (unit: {{item_value.unit}}) (reusable:{{item_value.reusable}})</option>
-                </select>
-                <span *ngIf="f.item_list.touched && f.item_list.invalid">
-                    <span *ngIf="f.item_list.errors.required" class="errors-input">
-                        Please select Items.
-                    </span>
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="device_in_use">Number of devices in use</label>
-                <input type="number" value="0" formControlName="device_in_use" name="device_in_use" class="form-control" required/>
-                <span *ngIf="f.device_in_use.touched && f.device_in_use.invalid">
-                    <span *ngIf="f.device_in_use.errors.required" class="errors-input">
-                        Required
-                    </span>
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="device_not_use">Number of devices not in use</label>
-                <input type="number" value="0" formControlName="device_not_use" name="device_not_use" class="form-control" required/>
-                <span *ngIf="f.device_not_use.touched && f.device_not_use.invalid">
-                    <span *ngIf="f.device_not_use.errors.required" class="errors-input">
-                        Required
-                    </span>
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="device_need_perday">Number of additional devices needed per day</label>
-                <input type="number" value="0" formControlName="device_need_perday" name="device_need_perday" class="form-control" required/>
-                <span *ngIf="f.device_need_perday.touched && f.device_need_perday.invalid">
-                    <span *ngIf="f.device_need_perday.errors.required" class="errors-input">
-                        Required
-                    </span>
-                </span>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
         </form>
         <ng-template #elseBlock>
             {{documentUploadMsg}}
-            
-          </ng-template>
+
+        </ng-template>
     </nb-card-body>
 </nb-card>

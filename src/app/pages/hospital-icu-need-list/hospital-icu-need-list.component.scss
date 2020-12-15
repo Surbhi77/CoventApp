@@ -1,0 +1,25 @@
+nb-card-header {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    background-color: #13bfb3 !important;
+    color: white;
+}
+
+table thead th {
+    vertical-align: top !important;
+    align-items: center;
+}
+
+table {
+    font-size: 14px;
+}
+
+.delbtn {
+    background-color: red;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white !important;
+    font-size: 15px;
+}
