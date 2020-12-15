@@ -1,11 +1,11 @@
 <nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange" >
     <nb-card-header>
-        Add ICU Needs
+        Add Hospital
     </nb-card-header>
     <nb-card-body class="p-0 m-0">
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="cat">Categories</label>
                 <ul class="itemCategory">
                     <li *ngFor="let cat_value of itemCategory">
@@ -33,7 +33,7 @@
                         Please Check Items
                     </span>
                 </span>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="power">Healthcare Facility Name</label>
                 <input type="text" formControlName="healthcare_facility_name" name="healthcare_facility_name" class="form-control" required/>

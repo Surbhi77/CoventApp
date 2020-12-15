@@ -1,0 +1,35 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange" >
+    <nb-card-header>
+        Add ICU Need
+    </nb-card-header>
+    <nb-card-body class="p-0 m-0">
+        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
+        <form [formGroup]="icuform">
+            <div class="form-group">
+                <label for="item_category">Categories</label>
+                <select class="form-control" formControlName="item_category" name="item_category"  id="item_category" (change)="selectCategory($event.target.value)" required >
+                    <option *ngFor="let item_cat of itemCategory" [value]="item_cat.id">{{item_cat.category}}</option>
+                </select>
+                <!-- <span *ngIf="f.item_category.touched && f.item_category.invalid">
+                    <span *ngIf="f.item_category.errors.required" class="errors-input">
+                        Please select Category.
+                    </span>
+                </span> -->
+            </div>
+            <div class="form-group">
+                <label for="item_list">Items</label>
+                <select class="form-control" formControlName="item_list" name="item_list"  id="item_list" required>
+                    <option *ngFor="let item_value of itemList" [value]="item_value.id">{{item_value.item}} {{item_value.unit}} {{item_value.reusable}}</option>
+                </select>
+                <!-- <span *ngIf="f.item_list.touched && f.item_list.invalid">
+                    <span *ngIf="f.item_list.errors.required" class="errors-input">
+                        Please select Items.
+                    </span>
+                </span> -->
+            </div>
+            
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        
+    </nb-card-body>
+</nb-card>

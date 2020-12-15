@@ -66,7 +66,7 @@ export class HospitalItemEditComponent implements OnInit {
         this.apiService.getHospitalDetail(this.hospital_id).subscribe(res=>{
           if(res['success']){
             let hospital_data = res['data'][0]
-            console.log(hospital_data);
+            // console.log(hospital_data);
             this.hospitalData = hospital_data;
             this.cat_obj={"category_id":hospital_data.hospital_item_cat_id}
             // console.log(this.cat_obj);
@@ -77,10 +77,11 @@ export class HospitalItemEditComponent implements OnInit {
             // this.selectedCharacteristics=deviceDetails.device_characterstics.split(",");
             this.selectedCategory=hospital_data.hospital_item_cat_id.split(",");
             this.selectedCategoryItems=hospital_data.hospital_required_items.split(",");
-            console.log(this.selectedCategoryItems);
+            // console.log('selectedCategoryItems'+this.selectedCategoryItems);
             this.hospitalItems=hospital_data.hospital_required_items;
             this.hospitalItemCatId=hospital_data.hospital_item_cat_id;
-            console.log(this.hospitalItemCatId);
+            // console.log('hospitalItemCatId'+this.hospitalItemCatId);
+            // console.log('hospitalItems'+this.hospitalItems);
             this.form.patchValue({
               "healthcare_facility_name":hospital_data.healthcare_facility_name,
               "email_address": hospital_data.email_address,
@@ -143,9 +144,9 @@ export class HospitalItemEditComponent implements OnInit {
   }
 
   checkIfSelectCategoryItem(value){
-    // console.log(value)
+    // console.log(this.selectedCategoryItems)
     // value = '"'+value+'"';
-    var index = this.selectedCategoryItems.indexOf(value.toString());
+    var index = this.selectedCategoryItems.indexOf(value);
     // console.log(value,this.selectedCharacteristics)
     // console.log(index)
     if(index<0){
