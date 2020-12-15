@@ -22,6 +22,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-form.component';
 import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
 import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
+import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-icu-need-form.component';
 
 const routes: Routes = [{
   path: '',
@@ -96,16 +97,20 @@ const routes: Routes = [{
       component: MyReviewsComponent
     },
     {
-      path: 'hospital-need-item-form',
+      path: 'hospital-form',
       component: HospitalNeedFormComponent
     },
     {
-      path: 'hospital-item-list',
+      path: 'hospital-list',
       component: HospitalsItemListComponent
     },
     {
-      path: 'hospital-item-edit/:id',
+      path: 'hospital-edit/:id',
       component: HospitalItemEditComponent
+    },
+    {
+      path: 'hospital-ICU-need',
+      component: HospitalIcuNeedFormComponent
     },
     {
       path: 'layout',

@@ -28,14 +28,19 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/change-password'
   },
   {
-    title:"Add Hospitals Item",
+    title:"Add Hospitals",
     icon: 'lock-outline',
-    link: '/pages/hospital-need-item-form'
+    link: '/pages/hospital-form'
   },
   {
-    title:"Hospitals Item List",
+    title:"Hospitals List",
     icon: 'lock-outline',
-    link: '/pages/hospital-item-list'
+    link: '/pages/hospital-list'
+  },
+  {
+    title:"Hospital ICU Need",
+    icon: 'lock-outline',
+    link: '/pages/hospital-ICU-need'
   }
 ];
 

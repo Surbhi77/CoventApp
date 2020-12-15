@@ -49,6 +49,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-form.component';
 import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
 import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
+import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-icu-need-form.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -106,6 +107,7 @@ const materialModules = [
     HospitalNeedFormComponent,
     HospitalsItemListComponent,
     HospitalItemEditComponent,
+    HospitalIcuNeedFormComponent,
   ],
 })
 export class PagesModule {
