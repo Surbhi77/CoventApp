@@ -16,6 +16,7 @@ export class ApiService {
 
   }
 
+  
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
@@ -186,5 +187,6 @@ export class ApiService {
     return this.http.post(this.baseAPi+'/update-hospitaldata/',formvalue)
   }
   /*****by #as end **/
+ 
 
 }

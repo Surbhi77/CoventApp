@@ -6,6 +6,9 @@ import { FormInputsComponent } from './form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { AuthguardGuard } from 'app/guard/authguard.guard';
+
+
 
 const routes: Routes = [
   {
@@ -14,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'inputs',
-        component: FormInputsComponent,
+        component: FormInputsComponent,canActivate:[AuthguardGuard],
       },
       {
         path: 'layouts',
