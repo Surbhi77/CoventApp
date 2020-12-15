@@ -1,0 +1,26 @@
+.itemCategory li{
+    float: left;
+    margin: 0 10px;
+    
+}
+ul li
+{
+    list-style: none;
+}
+ul{
+    padding-left: 15px;
+}
+.itemCategory li label{
+    margin-bottom: 0px !important;
+}
+ul li input{
+    margin: 2px;
+}
+.errors-input{
+    color:#ff0000
+}
+.success-msg{
+    color: #fff;
+    background: #75cc75;
+    padding: 10px;
+}

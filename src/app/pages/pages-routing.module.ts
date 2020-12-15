@@ -23,6 +23,8 @@ import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-fo
 import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
 import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
 import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-icu-need-form.component';
+import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
+import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 
 const routes: Routes = [{
   path: '',
@@ -112,6 +114,15 @@ const routes: Routes = [{
       path: 'hospital-ICU-need',
       component: HospitalIcuNeedFormComponent
     },
+    {
+      path: 'hospital-ICU-need-list',
+      component: HospitalIcuNeedListComponent
+    },
+    {
+      path: 'hospital-verification',
+      component: HospitalUserVerificationComponent
+    },
+    
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

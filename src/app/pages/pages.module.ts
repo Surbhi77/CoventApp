@@ -50,6 +50,8 @@ import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-fo
 import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
 import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
 import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-icu-need-form.component';
+import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
+import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -108,6 +110,8 @@ const materialModules = [
     HospitalsItemListComponent,
     HospitalItemEditComponent,
     HospitalIcuNeedFormComponent,
+    HospitalIcuNeedListComponent,
+    HospitalUserVerificationComponent,
   ],
 })
 export class PagesModule {
