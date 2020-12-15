@@ -22,6 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import {
   NbActionsModule,
   NbButtonModule,
@@ -46,6 +47,14 @@ import { QuestionListingComponent } from './question-listing/question-listing.co
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { HospitalNeedFormComponent } from './hospital-need-form/hospital-need-form.component';
+import { HospitalsItemListComponent } from './hospitals-item-list/hospitals-item-list.component';
+import { HospitalItemEditComponent } from './hospital-item-edit/hospital-item-edit.component';
+import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-icu-need-form.component';
+
+import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
+import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
+
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -99,6 +108,12 @@ const materialModules = [
     EditQuestionComponent,
     MyReviewsComponent,
     ChangePasswordComponent,
+    HospitalNeedFormComponent,
+    HospitalsItemListComponent,
+    HospitalItemEditComponent,
+    HospitalIcuNeedFormComponent,
+    HospitalIcuNeedListComponent,
+    HospitalUserVerificationComponent,
   ],
 })
 export class PagesModule {

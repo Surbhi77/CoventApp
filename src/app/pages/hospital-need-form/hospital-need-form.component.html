@@ -1,0 +1,177 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 shadow " class="bgChange">
+    <nb-card-header>
+        Add Hospital
+    </nb-card-header>
+    <nb-card-body class="p-0 m-0">
+        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group">
+                <label for="cat">Categories</label>
+                <ul class="itemCategory">
+                    <li *ngFor="let cat_value of itemCategory">
+                        <label for="power">{{cat_value.category}}</label>
+                        <input type="checkbox" formControlName="hospital_item_cat_id" name="hospital_item_cat_id" (change)="selectCategory(cat_value.id,$event.target.checked)"  [value]="cat_value.id" required/>
+                    </li>
+                </ul>
+                <span *ngIf="f.hospital_item_cat_id.touched && f.hospital_item_cat_id.invalid" style="width: 100%;float: left;">
+                    <span *ngIf="f.hospital_item_cat_id.errors.required" class="errors-input">
+                        Please Check Categories
+                    </span>
+                </span>
+            </div>
+            <br>
+            <div class="form-group" style="width: 100%; float: left;">
+                <label for="cat">Items</label>
+                <ul class="itemList" *ngIf="itemList && itemList.length>0">
+                    <li *ngFor="let item_value of itemList">
+                        <label for="power">{{item_value.item}} {{item_value.unit}} {{item_value.reusable}}</label>
+                        <input type="checkbox" formControlName="hospital_required_items" [value]="item_value.id" name="hospital_required_items" required (change)="selectItems(item_value.id,$event.target.checked)"/>
+                    </li>
+                </ul>
+                <span *ngIf="f.hospital_required_items.touched && f.hospital_required_items.invalid" style="width: 100%;float: left;">
+                    <span *ngIf="f.hospital_required_items.errors.required" class="errors-input">
+                        Please Check Items
+                    </span>
+                </span>
+            </div> -->
+            <div class="p-5">
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Healthcare Facility Name</mat-label>
+                    <input type="text" formControlName="healthcare_facility_name" name="healthcare_facility_name" matInput required/>
+
+                    <ng-container *ngIf="f.healthcare_facility_name.touched && f.healthcare_facility_name.invalid">
+                        <mat-error *ngIf="f.healthcare_facility_name.errors.required" class="errors-input" class="errors">
+                            Healthcare Facility Name is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Facility Location</mat-label>
+                    <input type="text" formControlName="facility_location" name="facility_location" matInput required/>
+                    <ng-container *ngIf="f.facility_location.touched && f.facility_location.invalid">
+                        <mat-error *ngIf="f.facility_location.errors.required" class="errors-input" class="errors">
+                            Facility Location is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Email Address</mat-label>
+                    <input type="email" formControlName="email_address" name="email_address" matInput required/>
+                    <ng-container *ngIf="f.email_address.touched && f.email_address.invalid">
+                        <mat-error *ngIf="f.email_address.errors.required" class="errors-input" class="errors">
+                            Email is required.
+                        </mat-error>
+                        <mat-error *ngIf="f.email_address.errors.email" class="errors-input" class="errors">
+                            Email is not valid.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Phone Number</mat-label>
+                    <input type="text" formControlName="phone_number" name="phone_number" matInput required [pattern]="'[789][0-9]{9}'" />
+                    <ng-container *ngIf="f.phone_number.touched && f.phone_number.invalid">
+                        <mat-error *ngIf="f.phone_number.errors.required" class="errors-input" class="errors">
+                            Phone Number is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Type of facility</mat-label>
+                    <mat-select formControlName="type_of_facility" name="type_of_facility" id="power" required>
+                        <mat-option *ngFor="let facility of typeOfFacility" [value]="facility">{{facility}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.type_of_facility.touched && f.type_of_facility.invalid">
+                        <mat-error *ngIf="f.type_of_facility.errors.required" class="errors-input" class="errors">
+                            Facility is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Electricity source</mat-label>
+                    <mat-select formControlName="electricity_source" name="electricity_source" id="power" required>
+                        <mat-option *ngFor="let elec_source of electricitySource" [value]="elec_source">{{elec_source}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.electricity_source.touched && f.electricity_source.invalid">
+                        <mat-error *ngIf="f.electricity_source.errors.required" class="errors-input" class="errors">
+                            Electricity Source is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <br><br>
+                <div class="example-full-width col-lg-8">
+                    <mat-radio-group formControlName="electricity_reliabile">
+                        <mat-label for="power">Electricity reliabile</mat-label>
+
+
+                        &nbsp;&nbsp;
+                        <mat-radio-button type="radio" value="Y" checked>Yes</mat-radio-button>
+
+                        &nbsp;&nbsp;
+                        <mat-radio-button type="radio" value="N">No</mat-radio-button>
+                    </mat-radio-group>
+
+                    <ng-container *ngIf="f.electricity_reliabile.touched && f.electricity_reliabile.invalid">
+
+                        <mat-error *ngIf="f.electricity_reliabile.errors.required" class="errors">
+                            Please select Yes or No.
+                        </mat-error>
+                    </ng-container>
+
+                </div>
+                <br><br>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Oxygen distribution in facility</mat-label>
+                    <mat-select formControlName="oxygen_distribution_facility" name="oxygen_distribution_facility" id="power" required>
+                        <mat-option *ngFor="let oxygen_type of oxygenFacility" [value]="oxygen_type">{{oxygen_type}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.oxygen_distribution_facility.touched && f.oxygen_distribution_facility.invalid">
+                        <mat-error *ngIf="f.oxygen_distribution_facility.errors.required" class="errors-input" class="errors">
+                            Please selectany one of them.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of healthcare workers</mat-label>
+                    <input type="number" value="0" formControlName="healthcare_workers" matInput name="healthcare_workers" required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of other caregivers</mat-label>
+                    <input type="number" formControlName="other_caregivers" name="other_caregivers" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of janitorial staff</mat-label>
+                    <input type="number" formControlName="janitorial_staff" name="janitorial_staff" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of ambulance personnel</mat-label>
+                    <input type="number" formControlName="ambulance_personnel" name="ambulance_personnel" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of biomedical engineers</mat-label>
+                    <input type="number" formControlName="biomedical_engineers" name="biomedical_engineers" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of Critical Care/ICU Beds</mat-label>
+                    <input type="number" formControlName="critical_care_icu_beds" name="critical_care_icu_beds" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of Critical Care/ICU Patients</mat-label>
+                    <input type="number" formControlName="critical_care_icu_patients" name="critical_care_icu_patients" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of Hospital Beds</mat-label>
+                    <input type="number" formControlName="hospital_beds" name="hospital_beds" matInput required/>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label for="power">Number of Hospital Patients</mat-label>
+                    <input type="number" formControlName="hospital_patients" name="hospital_patients" matInput required/>
+                </mat-form-field>
+                <div class="example-full-width col-lg-8 ">
+                    <button type="submit" class="btnchanges">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </nb-card-body>
+</nb-card>

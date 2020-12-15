@@ -1,0 +1,45 @@
+.itemCategory li {
+    float: left;
+    margin: 0 10px;
+}
+
+ul li {
+    list-style: none;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+.itemCategory li label {
+    margin-bottom: 0px !important;
+}
+
+ul li input {
+    margin: 2px;
+}
+
+.errors-input {
+    color: #ff0000
+}
+
+.success-msg {
+    color: #fff;
+    background: #75cc75;
+    padding: 10px;
+}
+
+nb-card-header {
+    background-color: #13bfb3 !important;
+    color: white;
+}
+
+.btnchanges {
+    background: #237973;
+    padding: 10px 35px;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer
+}

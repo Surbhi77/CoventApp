@@ -16,6 +16,7 @@ export class ApiService {
 
   }
 
+  
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
@@ -162,5 +163,43 @@ export class ApiService {
   public searchInnovatorListing(obj){
     return this.http.post(this.baseAPi+'search-listing',obj)
   }
+
+  /**** by #as ***/
+  public hospitalCategoryListing(){
+    return this.http.get(this.baseAPi+'/hospitals-categorieslist/')
+  }
+  public hospitalItemListing(cat_id){
+    return this.http.post(this.baseAPi+'/hospitals-itemlist/',cat_id)
+  }
+  public hospitalDataAdd(formvalue){
+    return this.http.post(this.baseAPi+'/add-hospitals/',formvalue)
+  }
+  public hospitalsIcuItemListing(user_id){
+    return this.http.get(this.baseAPi+'/hospital-list/'+user_id)
+  }
+  public deleteHospital(id){
+    return this.http.get(this.baseAPi+'/hospital-delete/'+id)
+  }
+  public getHospitalDetail(id){
+    return this.http.get(this.baseAPi+'/hospital-detail/'+id)
+  }
+  public updateHospitalData(formvalue){
+    return this.http.post(this.baseAPi+'/update-hospitaldata/',formvalue)
+  }
+
+  public hospitalItemData(formvalue){
+    return this.http.post(this.baseAPi+'/add-hospital-item-data/',formvalue)
+  }
+  public hospitalItemList(formvalue){
+    return this.http.post(this.baseAPi+'/hospital-item-list/',formvalue)
+  }
+  public hospitalItemListDelete(id){
+    return this.http.get(this.baseAPi+'/hospital-item-delete/'+id)
+  }
+  public hospitalVerify(formvalue){
+    return this.http.post(this.baseAPi+'/upload-document',formvalue)
+  }
+  /*****by #as end **/
+ 
 
 }

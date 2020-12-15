@@ -36,6 +36,8 @@ import { MapDetailsComponent } from './map-details/map-details.component';
 import { InnovatorListingComponent } from './innovator-listing/innovator-listing.component';
 import { RatingModule } from 'ng-starrating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthguardGuard } from './guard/authguard.guard';
+import { ApiService } from './services/api.service';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ThemeModule.forRoot(),
     
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthguardGuard,ApiService]
 })
 export class AppModule {
 }

@@ -1,0 +1,159 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange" >
+    <nb-card-header>
+        Edit Hospital
+    </nb-card-header>
+    <nb-card-body class="p-0 m-0">
+        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
+        
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group">
+                <label for="cat">Categories</label>
+                <ul class="itemCategory">
+                    <li *ngFor="let cat_value of itemCategory">
+                        <label for="power">{{cat_value.category}}</label>
+                        <input type="checkbox" formControlName="hospital_item_cat_id" name="hospital_item_cat_id" (change)="selectCategory(cat_value.id,$event.target.checked)" [checked]="checkIfSelectCategory(cat_value.id)" [value]="cat_value.id" required/>
+                    </li>
+                </ul>
+                <span *ngIf="f.hospital_item_cat_id.touched && f.hospital_item_cat_id.invalid" style="width: 100%;float: left;">
+                    <span *ngIf="f.hospital_item_cat_id.errors.required" class="errors-input">
+                        Please Check Categories
+                    </span>
+                </span>
+            </div>
+            <div class="form-group" style="width: 100%; float: left;">
+                <label for="cat">Items</label>
+                <ul class="itemList" *ngIf="itemList && itemList.length>0">
+                    <li *ngFor="let item_value of itemList">
+                        <label for="power">{{item_value.item}} {{item_value.unit}} {{item_value.reusable}}</label>
+                        <input type="checkbox" formControlName="hospital_required_items" [value]="item_value.id" name="hospital_required_items" required (change)="selectItems(item_value.id,$event.target.checked)" [checked]="checkIfSelectCategoryItem(item_value.id)"/>
+                    </li>
+                </ul>
+                <span *ngIf="f.hospital_required_items.touched && f.hospital_required_items.invalid" style="width: 100%;float: left;">
+                    <span *ngIf="f.hospital_required_items.errors.required" class="errors-input">
+                        Please Check Items
+                    </span>
+                </span>
+            </div> -->
+            <div class="form-group">
+                <label for="power">Healthcare Facility Name</label>
+                <input type="text" formControlName="healthcare_facility_name" name="healthcare_facility_name" class="form-control" required readonly="true"/>
+                <span *ngIf="f.healthcare_facility_name.touched && f.healthcare_facility_name.invalid">
+                    <span *ngIf="f.healthcare_facility_name.errors.required" class="errors-input">
+                        Healthcare Facility Name is required.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Facility Location</label>
+                <input type="text" formControlName="facility_location" name="facility_location" class="form-control" required readonly="true"/>
+                <span *ngIf="f.facility_location.touched && f.facility_location.invalid">
+                    <span *ngIf="f.facility_location.errors.required" class="errors-input">
+                        Facility Location is required.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Email Address</label>
+                <input type="email" formControlName="email_address" name="email_address" class="form-control" required/>
+                <span *ngIf="f.email_address.touched && f.email_address.invalid">
+                    <span *ngIf="f.email_address.errors.required" class="errors-input">
+                        Email is required.
+                    </span>
+                    <span *ngIf="f.email_address.errors.email" class="errors-input">
+                        Email is not valid.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Phone Number</label>
+                <input type="text" formControlName="phone_number" name="phone_number" class="form-control" required [pattern]="'[789][0-9]{9}'"/>
+                <span *ngIf="f.phone_number.touched && f.phone_number.invalid">
+                    <span *ngIf="f.phone_number.errors.required" class="errors-input">
+                        Phone Number is required.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Type of facility</label>
+                <select class="form-control" formControlName="type_of_facility" name="type_of_facility"  id="power" required>
+                    <option *ngFor="let facility of typeOfFacility" [value]="facility">{{facility}}</option>
+                </select>
+                <span *ngIf="f.type_of_facility.touched && f.type_of_facility.invalid">
+                    <span *ngIf="f.type_of_facility.errors.required" class="errors-input">
+                        Facility is required.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Electricity source</label>
+                <select class="form-control" formControlName="electricity_source" name="electricity_source" id="power" required>
+                    <option *ngFor="let elec_source of electricitySource" [value]="elec_source">{{elec_source}}</option>
+                </select>
+                <span *ngIf="f.electricity_source.touched && f.electricity_source.invalid">
+                    <span *ngIf="f.electricity_source.errors.required" class="errors-input">
+                        Electricity Source is required.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Electricity reliabile</label>
+                <input type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="Y" checked/>Yes
+                <input type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="N"/>No
+                <span *ngIf="f.electricity_reliabile.touched && f.electricity_reliabile.invalid">
+                    <span *ngIf="f.electricity_reliabile.errors.required" class="errors-input">
+                        Please select Yes or No.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Oxygen distribution in facility</label>
+                <select class="form-control" formControlName="oxygen_distribution_facility" name="oxygen_distribution_facility" id="power" required>
+                    <option *ngFor="let oxygen_type of oxygenFacility" [value]="oxygen_type">{{oxygen_type}}</option>
+                </select>
+                <span *ngIf="f.oxygen_distribution_facility.touched && f.oxygen_distribution_facility.invalid">
+                    <span *ngIf="f.oxygen_distribution_facility.errors.required" class="errors-input">
+                        Please selectany one of them.
+                    </span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of healthcare workers</label>
+                <input type="number" value="0" formControlName="healthcare_workers" name="healthcare_workers" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of other caregivers</label>
+                <input type="number" formControlName="other_caregivers" name="other_caregivers" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of janitorial staff</label>
+                <input type="number" formControlName="janitorial_staff" name="janitorial_staff" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of ambulance personnel</label>
+                <input type="number" formControlName="ambulance_personnel" name="ambulance_personnel" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of biomedical engineers</label>
+                <input type="number" formControlName="biomedical_engineers" name="biomedical_engineers" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of Critical Care/ICU Beds</label>
+                <input type="number" formControlName="critical_care_icu_beds" name="critical_care_icu_beds" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of Critical Care/ICU Patients</label>
+                <input type="number" formControlName="critical_care_icu_patients" name="critical_care_icu_patients" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of Hospital Beds</label>
+                <input type="number" formControlName="hospital_beds" name="hospital_beds" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="power">Number of Hospital Patients</label>
+                <input type="number" formControlName="hospital_patients" name="hospital_patients" class="form-control" required/>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        
+    </nb-card-body>
+</nb-card>

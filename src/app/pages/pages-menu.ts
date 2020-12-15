@@ -26,6 +26,31 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title:"Change Password",
     icon: 'lock-outline',
     link: '/pages/change-password'
+  },
+  {
+    title:"Add Hospitals",
+    icon: 'lock-outline',
+    link: '/pages/hospital-form'
+  },
+  {
+    title:"Hospitals List",
+    icon: 'lock-outline',
+    link: '/pages/hospital-list'
+  },
+  {
+    title:"Hospital ICU Need",
+    icon: 'lock-outline',
+    link: '/pages/hospital-ICU-need'
+  },
+  {
+    title:"Hospital ICU Need List",
+    icon: 'lock-outline',
+    link: '/pages/hospital-ICU-need-list'
+  },
+  {
+    title:"Hospital Verification",
+    icon: 'lock-outline',
+    link: '/pages/hospital-verification'
   }
 ];
 
