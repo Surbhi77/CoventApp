@@ -8,6 +8,7 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {MapComponent} from './map/map.component';
 import {MapDetailsComponent} from './map-details/map-details.component';
 import {InnovatorListingComponent} from './innovator-listing/innovator-listing.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
   {
     path:'home',
     component:HomeComponent 
+  },
+  {
+    path:'forgot-password',
+    component:ForgotPasswordComponent
   },
   {
     path:'library-details/:id',
