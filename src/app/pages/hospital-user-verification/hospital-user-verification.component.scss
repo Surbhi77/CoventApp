@@ -1,11 +1,32 @@
+// nb-card-body {
+//     background-color: white;
+//     overflow: visible;
+//     padding-top: 0;
+//     >* {
+//         margin-top: 1rem;
+//     }
+// }
+// .full-name-inputs,
+// .validation-checkboxes {
+//     display: flex;
+//     margin: 0 -0.5rem;
+//     >* {
+//         margin: 0 0.5rem;
+//     }
+// }
+nb-card-body {
+    display: flow-root;
+    width: 100%;
+    background: #fff;
+}
+
 .errors-input {
     color: #ff0000
 }
 
 .success-msg {
-    color: #fff;
+    color: rgb(80, 44, 238);
     background: #75cc75;
-    padding: 10px;
 }
 
 nb-card-header {
@@ -15,32 +36,50 @@ nb-card-header {
     align-items: center;
     background-color: #13bfb3 !important;
     color: white;
+    border: gray;
 }
 
-.fileup {
+[type="file"] {
     height: 0;
     overflow: hidden;
     width: 0;
 }
 
-.fileup+label {
-    background: #13bfb3 !important;
+nb-card {
+    box-shadow: gray;
+}
+
+// [type="file"]+label {
+//     background: #a89c98 !important;
+//     border: none;
+//     border-radius: 5px;
+//     color: #fff;
+//     cursor: pointer;
+//     display: inline-block;
+//     font-family: 'Rubik', sans-serif;
+//     font-size: inherit;
+//     font-weight: 500;
+//     margin-bottom: 1rem;
+//     outline: none;
+//     padding: 1rem 50px;
+//     position: relative;
+//     transition: all 0.3s;
+//     vertical-align: middle;
+// }
+.btn-1 {
+    background-color: #13bfb3;
     border: none;
     border-radius: 5px;
+    transition: none;
     color: #fff;
-    cursor: pointer;
-    display: inline-block;
     font-family: 'Rubik', sans-serif;
     font-size: inherit;
     font-weight: 500;
-    margin-bottom: 1rem;
     outline: none;
-    padding: 1rem 50px;
+    padding: 5px 50px;
     position: relative;
     transition: all 0.3s;
     vertical-align: middle;
-    width: 100%;
-    text-align: center;
 }
 
 .btnChanges {
@@ -50,5 +89,4 @@ nb-card-header {
     text-transform: uppercase;
     color: #fff;
     border-radius: 3px;
-    cursor: pointer;
 }

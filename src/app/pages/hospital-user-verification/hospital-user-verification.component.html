@@ -1,23 +1,33 @@
-<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange">
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 container shadow  " class="bgChange">
     <nb-card-header>
         Verification Form
     </nb-card-header>
     <nb-card-body>
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg p-3" *ngIf="successform">{{successform}}</div>
         <form [formGroup]="userverifyform" (ngSubmit)="onSubmit()">
-            <div class="col-lg-8">
-                <label for="document">Upload File</label>
-                <input type="file" (change)="onDocFileChange($event)" formControlName="document" class="fileup">
-                <span *ngIf="f.document.touched && f.document.invalid">
-                    <span *ngIf="f.document.errors.required" class="errors-input">
-                        Please select file.
-                    </span>
-                </span>
+            <div class="row p-3">
+                <div class="col-md-8 ">
+                    <div class=" text-center btn-1">
+                        <label for="file">Upload File</label>
+                        <input type="file" accept="image/*" (change)="onDocFileChange($event)" id="file" formControlName="document" class="">
+
+                        <span *ngIf="f.document.touched && f.document.invalid">
+                        <span *ngIf="f.document.errors.required" class="errors-input">
+                            Please select file.
+                        </span>
+                        </span>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btnChanges">Submit</button>
+                </div>
             </div>
-            <div>
-                <button type="submit" class="btnChanges">Submit</button>
-            </div>
+
         </form>
+
 
     </nb-card-body>
 </nb-card>
