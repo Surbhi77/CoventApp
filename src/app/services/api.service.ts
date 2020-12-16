@@ -145,6 +145,10 @@ export class ApiService {
   public getDeviceInnovatorDetail(id){
     return this.http.get(this.secureApi+'get-deviceinnovator-detail/'+id)
   }
+
+  public verifyhospitaluserdoc(id){
+    return this.http.get(this.secureApi+'verify-hospital-user/'+id)
+  }
   /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);

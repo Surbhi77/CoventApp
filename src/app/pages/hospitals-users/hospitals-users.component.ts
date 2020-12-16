@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from  './../../services/api.service';
+import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
+import {environment} from './../../../environments/environment'
+
 
 @Component({
   selector: 'ngx-hospitals-users',
@@ -9,10 +12,12 @@ import {ApiService} from  './../../services/api.service';
 export class HospitalsUsersComponent implements OnInit {
   dtOptions:DataTables.Settings = {};
   userListing:any=[];
+  public baseAPi = environment.apiUrl;
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService,private router: Router) { }
 
   ngOnInit(){
+    console.log(this.baseAPi);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -37,6 +42,16 @@ export class HospitalsUsersComponent implements OnInit {
     this.apiService.unBlockUser(item.id).subscribe(res=>{
       if(res['success']){
         this.userListing[i].user_status=1
+      }
+    })
+  }
+
+  verifyhospitaldoc(item_id,i){
+    console.log(item_id)
+    this.apiService.verifyhospitaluserdoc(item_id).subscribe(res=>{
+      if(res['success']){
+        // this.userListing[i].user_status=1
+        this.userListing[i].admin_verify_status=1
       }
     })
   }
