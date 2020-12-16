@@ -17,11 +17,14 @@ export class ApiService {
   }
 
   public forgotPassword(obj){
-    return this.http.post(this.baseAPi+'/forgot-password',obj)
+    return this.http.post(this.baseAPi+'forgot-password',obj)
   }
 
   public verifyCode(obj){
     return this.http.post(this.baseAPi+'verify-code',obj)
+  }
+  public updatePassword(obj){
+    return this.http.post(this.baseAPi+'update-newpassword',obj)
   }
 
   
