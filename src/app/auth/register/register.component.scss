@@ -247,7 +247,7 @@
     display: flex;
     width: 116px;
     height: 38px;
-    font-size: 13px;
+    font-size: 15px;
     align-items: center;
     justify-content: flex-end;
     margin: 0;
@@ -258,7 +258,9 @@
     color: #fff;
     margin: 0;
 }
-
+.radio-block input[type=radio]:checked+img {
+    filter: invert(50%);
+}
 .rd_btn {
     position: relative;
     display: flex;
@@ -267,6 +269,7 @@
 
 img.svg_icon_rd {
     position: absolute;
-    width: 25%;
+    width: 20%;
     left: 8px;
+    // filter: invert(100%);
 }
