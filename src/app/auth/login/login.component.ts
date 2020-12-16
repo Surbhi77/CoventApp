@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("userData",JSON.stringify(res['data'][0]));
           this.router.navigateByUrl('/pages');  
         }else{
-          this.toastr.error('Email or password do not match')
+          this.toastr.error(res['message'])
         }
       },error=>{
         this.showLoader=false
