@@ -3,92 +3,111 @@
     margin-bottom: 0.75rem;
     text-align: center;
 }
+
 .sub-title {
     margin-bottom: 2rem;
     text-align: center;
 }
+
 .form-control-group {
     margin-bottom: 2rem;
 }
+
 .label {
     display: block;
     margin-bottom: 0.5rem;
 }
+
 .size-large {
     font-size: .9375rem;
     font-weight: 400;
     line-height: 1.5rem;
     padding: 1rem;
 }
+
 .status-basic {
     background-color: transparent;
-    border-color: rgba(0,0,0,.42);
+    border-color: rgba(0, 0, 0, .42);
     color: #424242;
 }
+
 .input-full-width {
     width: 100%;
     border-style: solid;
     border-width: 1px;
 }
+
 .nb-transition {
     transition-duration: .15s;
-    transition-property: border,background-color,color,box-shadow;
+    transition-property: border, background-color, color, box-shadow;
     transition-timing-function: ease-in;
 }
+
 .shape-rectangle {
     border-radius: .25rem;
 }
+
 .label-with-link {
     display: flex;
     justify-content: space-between;
 }
+
 .forgot-password {
-    color: hsla(0,0%,51.4%,.48) !important;
+    color: hsla(0, 0%, 51.4%, .48) !important;
     color: #838383;
 }
+
 .forgot-password {
     text-decoration: none;
     margin-bottom: 0.5rem;
 }
-.custom-control-label::after{
+
+.custom-control-label::after {
     width: 1.3rem;
     height: 1.3rem;
     top: 0;
 }
+
 .custom-control-label::before {
     width: 1.3rem;
     height: 1.3rem;
     top: 0;
 }
+
 .status-primary[disabled] {
-    background-color: hsla(0,0%,51.4%,.24);
-    border-color: hsla(0,0%,51.4%,.24);
-    color: hsla(0,0%,51.4%,.48);
+    background-color: hsla(0, 0%, 51.4%, .24);
+    border-color: hsla(0, 0%, 51.4%, .24);
+    color: hsla(0, 0%, 51.4%, .48);
 }
+
 .appearance-filled.size-large {
     padding: .8125rem 1.125rem;
 }
+
 .appearance-filled {
     border-style: solid;
     border-width: .0625rem;
     text-transform: uppercase;
 }
+
 .shape-rectangle {
     border-radius: .25rem;
 }
+
 .size-large {
     font-size: 1rem;
     line-height: 1.25rem;
 }
+
 .full-width {
     width: 100%;
 }
+
 .appearance-filled.status-primary {
     background-color: #13bfb3;
     border-color: #13bfb3;
     color: #fff;
 }
-
 
 .LoginFormSec {
     display: flex;
@@ -119,6 +138,7 @@
 .LoginFormInputs {
     padding: 60px 0px 50px;
 }
+
 
 /*.RegistrationFormInputs {
 	padding: 40px 0px 20px;
@@ -154,8 +174,8 @@
 
 .LoginForm input:focus,
 .LoginForm select:focus {
-	box-shadow: none !important;
-	border-color: #3e2abe;
+    box-shadow: none !important;
+    border-color: #3e2abe;
 }
 
 .btn-block button {
@@ -205,5 +225,48 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+}
+
+.radio-block input {
+    display: none;
+}
+
+.radio-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio-block label {
+    padding: 6px 15px;
+    border: 1px solid #13bfb3;
+    /* margin-right: 9px; */
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    width: 116px;
+    height: 38px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.radio-block input[type=radio]:checked+label {
+    background: #13bfb3;
+    color: #fff;
+    margin: 0;
+}
+
+.rd_btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+img.svg_icon_rd {
+    position: absolute;
+    width: 25%;
+    left: 8px;
 }
