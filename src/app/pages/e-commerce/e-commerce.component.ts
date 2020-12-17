@@ -18,8 +18,10 @@ export class ECommerceComponent {
   chartConstructor = "chart";
   chartCallback;
   chartCallback2;
+  chartCallback3;
   chart;
   chart2;
+  chart3;
   updateFlag = false;
   updateFlag2=false;
   chartOptions = {
@@ -78,6 +80,33 @@ export class ECommerceComponent {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   },
   };
+  chartOptions3 = {
+    title: {
+      // text: 'Weekly Views'
+      text: ''
+    },
+    series: [     
+      {
+        type:'column',
+        color: '#13bfb3',
+        showInLegend:false,
+        data: [0, 0, 0, 0, 0,0,0]
+      }
+    ],
+    exporting: {
+      enabled: true
+    },
+    yAxis: {
+      min:0,
+      allowDecimals: false,
+      title: {
+        text: "Views"
+      }
+    },
+    xAxis: {
+      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  };
   options = {
     color: ['#3398DB'],
     tooltip: {
@@ -117,6 +146,8 @@ export class ECommerceComponent {
   };
   getStarRating: any;
   userType:any;
+  hospitalData:any;
+  hospitalGraphData:any;
 
   constructor(private apiService:ApiService,private router:Router) {
     this.chartCallback = chart => {
@@ -124,6 +155,9 @@ export class ECommerceComponent {
     };
     this.chartCallback2 = chart2 => {
       this.chart2 = chart2;
+    };
+    this.chartCallback3 = chart3 => {
+      this.chart3 = chart3;
     }; 
   }
 
@@ -140,6 +174,9 @@ export class ECommerceComponent {
     this.questionsRecieved();
     this.weeklyReview();
     this.weeklyView()
+
+    this.getHospitalsDashboardCount();
+    this.getHospitalsDashboardGraphData();
   }
 
   weeklyView(){
@@ -206,5 +243,38 @@ export class ECommerceComponent {
   ngOnDestroy() {
     
   }
-  
+
+  /***************  hospital user *********/
+  getHospitalsDashboardCount() {
+    console.log('userid'+this.userDetails.id);
+    let obj = {'user_id':this.userDetails.id};
+    this.apiService.hospitalDashboardCount(obj).subscribe(res=>{
+      this.hospitalData = res['data'][0]
+      console.log(this.hospitalData);
+    })
+  }
+
+  getHospitalsDashboardGraphData() {
+    console.log('userid'+this.userDetails.id);
+    let obj = {'user_id':this.userDetails.id};
+    this.apiService.hospitalDashboardCountGraphData(obj).subscribe(res=>{
+      this.hospitalGraphData = res['data']
+      console.log(this.hospitalGraphData);
+      let records = res['data']
+      let series=[];
+      let category1=[];
+      records.forEach(element => {
+        series.push(element.counts);
+        category1.push(moment(element.date).format('ddd'))
+      });
+      this.chartOptions3.xAxis.categories = category1
+      this.chartOptions3.series[0].data = series
+      this.updateFlag=true
+    })
+  }
+
+ 
+
+
+
 }

@@ -9,7 +9,7 @@
             <div class=" p-5">
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label>Categories</mat-label>
-                    <mat-select formControlName="item_category" name="item_category" id="item_category" (change)="selectCategory($event.target.value)" required>
+                    <mat-select formControlName="item_category" name="item_category" id="item_category" (selectionChange)="selectCategory($event)" required>
                         <mat-option *ngFor="let item_cat of itemCategory" [value]="item_cat.id">{{item_cat.category}}</mat-option>
                     </mat-select>
                     <ng-container *ngIf="f.item_category.touched && f.item_category.invalid">

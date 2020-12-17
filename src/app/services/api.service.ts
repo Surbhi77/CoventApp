@@ -210,6 +210,15 @@ export class ApiService {
   public hospitalVerify(formvalue){
     return this.http.post(this.baseAPi+'/upload-document',formvalue)
   }
+
+  public hospitalDashboardCount(formvalue){
+    return this.http.post(this.baseAPi+'/hospitaluser-dashboardcount',formvalue)
+  }
+
+  
+  public hospitalDashboardCountGraphData(formvalue){
+    return this.http.post(this.baseAPi+'/hospitaluser-dashboardgraph',formvalue)
+  }
   /*****by #as end **/
  
 

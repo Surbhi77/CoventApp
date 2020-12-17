@@ -58,11 +58,11 @@ export class HospitalIcuNeedFormComponent implements OnInit {
   }
 
   selectCategory(catid){
-    console.log(catid)
+    console.log(catid.value)
     
     if(catid){
-      this.cat_obj={"category_id":catid}
-      // console.log(this.cat_obj);
+      this.cat_obj={"category_id":catid.value}
+      console.log(this.cat_obj);
       this.apiService.hospitalItemListing(this.cat_obj).subscribe(res=>{
         this.itemList = res['data']
         console.log(this.itemList)
