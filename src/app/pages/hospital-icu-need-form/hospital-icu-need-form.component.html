@@ -30,6 +30,17 @@
                     </ng-container>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
+                    <mat-label>Urgency of Need</mat-label>
+                    <mat-select formControlName="urgency_icuneed" name="urgency_icuneed" id="urgency_icuneed"  required>
+                        <mat-option *ngFor="let item_cat of urgencyicuneedDataList" [value]="item_cat.id">{{item_cat.value}}</mat-option>
+                    </mat-select>
+                    <!-- <ng-container *ngIf="f.item_category.touched && f.item_category.invalid">
+                        <mat-error *ngIf="f.item_category.errors.required" class="errors-input errors">
+                            Please select Category.
+                        </mat-error>
+                    </ng-container> -->
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="device_in_use">Number of devices in use</mat-label>
                     <input type="number" value="0" formControlName="device_in_use" matInput name="device_in_use" required/>
                     <ng-container *ngIf="f.device_in_use.touched && f.device_in_use.invalid">
