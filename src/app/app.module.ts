@@ -12,7 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-//import {AgmCoreModule} from '@agm/core'
+import {AgmCoreModule} from '@agm/core'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -39,14 +39,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthguardGuard } from './guard/authguard.guard';
 import { ApiService } from './services/api.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
-
+import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
+const MyGoogleChartsSettings: GoogleChartsSettings = {
+  mapsApiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'
+};
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent, ForgotPasswordComponent],
   imports: [
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
+    Ng2GoogleChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
     //AgmCoreModule.forRoot({apiKey:'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -68,7 +73,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     
   ],
   bootstrap: [AppComponent],
-  providers: [AuthguardGuard,ApiService]
+  providers: [ {
+       provide: 'googleChartsSettings',
+       useValue: MyGoogleChartsSettings,
+    },
+    AuthguardGuard,ApiService]
 })
 export class AppModule {
 }
