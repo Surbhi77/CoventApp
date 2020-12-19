@@ -22,14 +22,14 @@
                         <td>{{i+1}}</td>
                         <td>{{item.user_name}}</td>
                         <td>{{item.user_email}}</td>
-                        <td><a [href]="baseAPi+item.document" target="_blank" *ngIf="item.document && item.document!=''">View Document</a></td>
-                        <td><span *ngIf="item.admin_verify_status==1">Verify</span>
-                            <span *ngIf="item.admin_verify_status==0">Unverify</span>
+                        <td><a [href]="baseAPi+item.document" target="_blank" *ngIf="item.document && item.document!=''" class="UV-btn viewDoc">View Document</a></td>
+                        <td><span *ngIf="item.admin_verify_status==1" class="UV-btn">Verify</span>
+                            <span *ngIf="item.admin_verify_status==0" class="UV-btn">Unverify</span>
                         </td>
                         <td>
-                            <a *ngIf="item.user_status==1" (click)="block(item,i)">Block</a>
-                            <a *ngIf="item.user_status==0" (click)="unblock(item,i)">Unblock</a>
-                            <a *ngIf="item.admin_verify_status==0" (click)="verifyhospitaldoc(item.id,i)"> Verify</a>
+                            <a *ngIf="item.user_status==1" (click)="block(item,i)" class="UV-btn">Block</a>
+                            <a *ngIf="item.user_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a>
+                            <a *ngIf="item.admin_verify_status==0" (click)="verifyhospitaldoc(item.id,i)" class="UV-btn"> Verify</a>
                         </td>
                     </tr>
                 </tbody>

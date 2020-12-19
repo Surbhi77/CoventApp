@@ -29,3 +29,18 @@ nb-card-body {
 nb-card {
     box-shadow: 0 0 10px #ccc;
 }
+
+.UV-btn {
+    cursor: pointer;
+    border: 1px solid #13bfb3;
+    text-decoration: none !important;
+    padding: 3px 10px;
+    font-size: 13px !important;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.UV-btn:hover {
+    background: #13bfb3;
+    color: #fff !important;
+}

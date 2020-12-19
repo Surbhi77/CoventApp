@@ -20,7 +20,7 @@
                         <td>{{item.id}}</td>
                         <td>{{item.user_name}}</td>
                         <td>{{item.user_email}}</td>
-                        <td><a *ngIf="item.user_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.user_status==0" (click)="unblock(item,i)">Unblock</a></td>
+                        <td><a *ngIf="item.user_status==1" (click)="block(item,i)" class="UV-btn">Block</a><a *ngIf="item.user_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a></td>
                     </tr>
                 </tbody>
             </table>
