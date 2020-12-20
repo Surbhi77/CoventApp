@@ -19,11 +19,13 @@ export class HospitalIcuNeedFormComponent implements OnInit {
   hospital_id:any;
   documentVerify:any;
   documentUploadMsg:any;
+  urgencyicuneedDataList:any=[];
 
   icuform = new FormGroup({
     
     item_category: new FormControl('', Validators.required),
     item_list: new FormControl('', Validators.required),
+    urgency_icuneed: new FormControl('', Validators.required),
     device_in_use: new FormControl('', Validators.required),
     device_not_use: new FormControl('', Validators.required),
     device_need_perday: new FormControl('', Validators.required)
@@ -49,12 +51,13 @@ export class HospitalIcuNeedFormComponent implements OnInit {
 
     this.apiService.hospitalCategoryListing().subscribe(res=>{
       this.itemCategory = res['data']
-      // console.log(this.itemCategory)
+      console.log(this.itemCategory)
     })
     this.apiService.hospitalsIcuItemListing(this.userDetails.id).subscribe(res=>{
       this.hospital_id = res['data'][0]
     })
-    
+    this.getUrgencyicuneedDataList();
+
   }
 
   selectCategory(catid){
@@ -77,7 +80,7 @@ export class HospitalIcuNeedFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('asd');
+    console.log(this.icuform.getRawValue());
     if(this.icuform.valid){
       var formvalue = this.icuform.getRawValue()
       // formvalue.hospital_item_cat_id=this.hospitalItemCatId
@@ -99,4 +102,17 @@ export class HospitalIcuNeedFormComponent implements OnInit {
     }
   }
 
+  getUrgencyicuneedDataList(){
+    this.urgencyicuneedDataList =[
+      {id:"Emergent",value:"Emergent (no alternatives available, unable to meet current need)"}, 
+      {id:"Urgent",value:"Urgent (able to meet current need, >95% of supply in use)"}, 
+      {id:"Critical",value:"Critical (able to meet current need, >90% of supply in use)"}, 
+      {id:"High Risk",value:"High Risk (able to meet current need, >80% of supply in use)"}, 
+      {id:"Medium Risk",value:"Medium Risk (>70% of supply in use)"}, 
+      {id:"Low Risk",value:"Low Risk (<70% of supply in use)"}
+    ]
+    console.log(this.urgencyicuneedDataList);
+  }
+
+  
 } 
