@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    // console.log(this.form.value);
     if(this.form.valid){
       let obj={
         user_name:this.form.value.user_name,
@@ -48,6 +49,7 @@ export class RegisterComponent implements OnInit {
         user_type:this.form.value.user_type,
         password:this.form.value.password
       };
+      console.log(obj);
       this.api.register(obj).subscribe(res=>{
         if(res['success']){
           this.toastr.success('Registration successful...!');
@@ -56,6 +58,8 @@ export class RegisterComponent implements OnInit {
           this.toastr.error(res['message'])
         }
       })
+    }else{
+      this.form.markAllAsTouched();
     }
   }
 

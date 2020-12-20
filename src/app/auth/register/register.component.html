@@ -115,19 +115,19 @@
                                     <div class="radio-block">
                                         <div class="rd_btn">
                                             <img src="./assets/images/lightbulb.svg" class="svg_icon_rd">
-                                            <input type="radio" name="material" id="radio-1">
+                                            <input type="radio" formControlName="user_type" value="1" name="material" id="radio-1">
                                             <label for="radio-1">Innovator</label>
                                         </div>
 
                                         <div class="rd_btn">
                                             <img src="./assets/images/notes.svg" class="svg_icon_rd">
-                                            <input type="radio" name="material" id="radio-2">
+                                            <input type="radio" formControlName="user_type" value="2" name="material" id="radio-2">
                                             <label for="radio-2">Reviewer</label>
                                         </div>
 
                                         <div class="rd_btn">
                                             <img src="./assets/images/hospital.svg" class="svg_icon_rd">
-                                            <input type="radio" name="material" id="radio-3">
+                                            <input type="radio" formControlName="user_type" value="3" name="material" id="radio-3">
                                             <label for="radio-3">Hospital</label>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
 
-                                <button status="primary" size="large" [disabled]="!form.valid" (click)="register()" class="appearance-filled full-width size-large status-primary shape-rectangle btn-disabled nb-transition"> Sign Up </button>
+                                <button status="primary" size="large" (click)="register()" class="appearance-filled full-width size-large status-primary shape-rectangle btn-disabled nb-transition"> Sign Up </button>
                             </form>
                         </div>
                     </div>
