@@ -68,8 +68,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/hospitals-users'
   },
   {
-    title:'ICU Needs Listing',
+    title:'Hospital & ICU Needs Listing',
     icon: 'keypad-outline',
     link: '/pages/hospitals-list'
+  },
+  {
+    title:'ICU Needs Listing',
+    icon: 'keypad-outline',
+    link: '/pages/icu-need-List'
   },
   ];

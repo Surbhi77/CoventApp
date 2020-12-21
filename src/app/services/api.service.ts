@@ -149,6 +149,19 @@ export class ApiService {
   public verifyhospitaluserdoc(id){
     return this.http.get(this.secureApi+'verify-hospital-user/'+id)
   }
+
+  public latestAddItems(){
+    return this.http.get(this.secureApi+'admin-hospital-dashboard')
+  }
+  public monthlyItemsgraph(){
+    return this.http.get(this.secureApi+'monthlyadded-hospital-item')
+  }
+  public weeklyItemsgraph(){
+    return this.http.get(this.secureApi+'weeklyadded-hospital-item')
+  }
+  public getIcuNeedHospitalslist(){
+    return this.http.get(this.secureApi+'admin-icuneed-hospital-dashboard')
+  }
   /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);

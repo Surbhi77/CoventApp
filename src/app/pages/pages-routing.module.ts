@@ -24,7 +24,7 @@ import { HospitalsListComponent } from './hospitals-list/hospitals-list.componen
 import { HospitalDetailComponent } from './hospital-detail/hospital-detail.component';
 import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
 import { AuthguardGuard } from 'app/guard/authguard.guard';
-
+import { IcuneedListComponent } from './icuneed-list/icuneed-list.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -116,6 +116,10 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'icu-need-List',
+      component: IcuneedListComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'forms',

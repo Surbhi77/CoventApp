@@ -2,10 +2,10 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-pills">
         <li class="nav-item navbg">
-            <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+            <a class="nav-link active" data-toggle="tab" href="#home">Innovator</a>
         </li>
         <li class="nav-item navbg">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+            <a class="nav-link" data-toggle="tab" href="#menu1">ICU Needs</a>
         </li>
     </ul>
 
@@ -85,21 +85,21 @@
             <div class="row ">
                 <div class="col-sm-6">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable">
-                        <p class="text-muted p-2">Latest Added Devices</p>
+                        <p class="text-muted p-2">Latest Added Items</p>
                         <table class="table  table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <td>Device Name</td>
+                                    <td>Item Name</td>
                                     <td>Create Date</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of deviceListing">
-                                    <td (click)="openDetail(item)" scope="row">
-                                        {{item.device_name}}
+                                <tr *ngFor="let item of latestAddedItems">
+                                    <td scope="row">
+                                        {{item.item_name}}
                                     </td>
-                                    <td (click)="openDetail(item)" scope="row">
-                                        {{item.device_created_date}}
+                                    <td scope="row">
+                                        {{item.date}}
                                     </td>
                                 </tr>
                             </tbody>
@@ -108,21 +108,21 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable ">
-                        <p class="text-muted p-2">Top Viewed Devices</p>
+                        <p class="text-muted p-2">Latest Added Items</p>
                         <table class="table table-hover ">
                             <thead>
                                 <tr>
-                                    <td>Device Name</td>
+                                    <td>Item Category Name</td>
                                     <td>Create Date</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of topViewedListing">
-                                    <td (click)="openDetail(item)">
-                                        {{item.device_name}}
+                                <tr *ngFor="let item of latestAddedItems">
+                                    <td>
+                                        {{item.itemcat_name}}
                                     </td>
-                                    <td (click)="openDetail(item)">
-                                        {{item.device_created_date}}
+                                    <td>
+                                        {{item.date}}
                                     </td>
                                 </tr>
                             </tbody>
@@ -134,17 +134,18 @@
                 <div class="col-md-6">
                     <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
                         <div class="inner_chart">
-                            <h4>Monthly Added</h4>
-                            <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions" [callbackFunction]="chartCallback" [(update)]="updateFlag" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                            <h4>Weekly Need</h4>
+                            <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions3" [callbackFunction]="chartCallback3" [(update)]="updateFlag3" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
                             </highcharts-chart>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
                     <div class=" shadow p-3 mb-3 bg-white chart">
                         <div class="inner_chart">
-                            <h4>Monthly Views</h4>
-                            <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions2" [callbackFunction]="chartCallback2" [(update)]="updateFlag2" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                            <h4>Monthly Need</h4>
+                            <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions4" [callbackFunction]="chartCallback4" [(update)]="updateFlag4" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
                             </highcharts-chart>
                         </div>
                     </div>
