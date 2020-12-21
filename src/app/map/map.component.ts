@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
-  GoogleChartInterface,
+GoogleChartInterface,
 } from 'ng2-google-charts';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -87,12 +87,13 @@ export class MapComponent implements OnInit {
   looped:boolean=false;
   openedWindow: any;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-  latitude: number;
-  longitude: number;
+  latitude: any;
+  longitude: any;
   selectedAddress: boolean;
   items:any[]=[];
   risk:any;
   item:any;
+  noResult: boolean=false;
 
   constructor(private apiService:ApiService) { }
 
@@ -126,8 +127,7 @@ export class MapComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getAllItemLists();
+  public getMapItems(){
     this.apiService.getAllMapsNeeds().subscribe(res=>{
       console.log(res);
       this.json=res['data'];
@@ -160,10 +160,18 @@ export class MapComponent implements OnInit {
         }
       });
       console.log(this.json)
+      console.log(this.geoChart.dataTable)
+      
       this.looped=true;
     })
+  }
+
+  ngOnInit(): void {
+    this.getAllItemLists();
+    this.getMapItems()
     let body = document.getElementsByTagName('body')[0];
     body.classList.add("absolute-header");
+
    // this.geoChart.dataTable.push( ['Latitude', 'Longitude', 'Label','Value',{type:'string', role:'tooltip', 'p': {'html': true}}]);
     // var self=this;
     // this.json.forEach(element => {
@@ -188,46 +196,72 @@ export class MapComponent implements OnInit {
     };
     this.apiService.searchListing(obj).subscribe(res=>{
       console.log(res);
-      this.looped=false;
+      //this.looped=false;
       this.json=res['data'];
       let self = this;
-      this.json.forEach(element=>{
-        var arr = [];
-        arr.push(+element.latitude);
-        arr.push(+element.longitude);
-        arr.push(element.hospital_name);
-        arr.push(+element.urgency_value);
-        arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
-        self.geoChart.dataTable.push(arr);
-        if(element.urgency_icuneed == "Low Risk"){
-          element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Medium Risk"){
-          element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "High Risk"){
-          element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Critical"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Urgent"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Emergent"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-      });
-      console.log(this.json)
-      let ccComponent = this.geoChart.component;
-    let ccWrapper = ccComponent.wrapper;
-
-    //force a redraw
-    ccComponent.draw();
-     // this.geoChart.component.draw()
-      this.looped=true;
+      if(this.json.length){
+        this.geoChart.dataTable.length = 1;
+        console.log(self.geoChart)
+        this.json.forEach(element=>{
+          var arr = [];
+          arr.push(+element.latitude);
+          arr.push(+element.longitude);
+          arr.push(element.hospital_name);
+          arr.push(+element.urgency_value);
+          arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
+          self.geoChart.dataTable.push(arr);
+          if(element.urgency_icuneed == "Low Risk"){
+            element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Medium Risk"){
+            element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "High Risk"){
+            element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Critical"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Urgent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Emergent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+        });
+        console.log(this.geoChart.dataTable)
+        let ccComponent = this.geoChart.component;
+        let ccWrapper = ccComponent.wrapper;
   
+      //force a redraw
+        ccComponent.draw();
+        this.looped=true;
+        this.noResult=false;
+       // this.geoChart.component.draw()
+        //this.looped=true;
+    
+      }else{
+        this.geoChart.dataTable.length = 1;
+        this.looped=false;
+        this.noResult=true;
+        //this.geoChart.dataTable.push(['','','','',''])
+        // let ccComponent = this.geoChart.component;
+        // let ccWrapper = ccComponent.wrapper;
+  
+      //force a redraw
+        //ccComponent.draw();
+        //this.getMapItems();
+      }
+      
     })
+  }
+
+  clearFilters(){
+    this.risk='';
+    this.item='';
+    this.latitude='';
+    this.longitude='';
+    this.getMapItems()
   }
 
   ngOnDestroy(){
