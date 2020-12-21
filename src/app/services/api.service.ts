@@ -7,6 +7,9 @@ import { Subject,Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
+  success(arg0: string, arg1: boolean) {
+    throw new Error('Method not implemented.');
+  }
 
   public baseAPi = environment.apiUrl+"frontend/";
   userLoggedOutorIn$ = new Subject<any>();

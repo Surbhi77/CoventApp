@@ -2,7 +2,7 @@
     <nb-card-header>
         Hospital Listing
 
-      <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/hospital-form"> Add </button>
+      <button nbButton matRipple hero class="size-medium status-primary"  *ngIf="hospitalsListData.length==0" routerLink="/pages/hospital-form"> Add </button>
     </nb-card-header>
   
     <nb-card-body>
@@ -29,7 +29,7 @@
                <td style="width: 400px;">
                 
                 <a [routerLink]="'/pages/hospital-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit </a>
-                <a (click)="deleteHospitalsList(item.id,i)" class="conm_bns delete_n"> <i class="far fa-trash-alt"></i> Delete</a>
+                <!-- //<a (click)="deleteHospitalsList(item.id,i)" class="conm_bns delete_n"> <i class="far fa-trash-alt"></i> Delete</a> -->
               </td>
            </tr>
         </tbody>

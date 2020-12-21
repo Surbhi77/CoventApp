@@ -14,6 +14,7 @@ export class HospitalUserVerificationComponent implements OnInit {
   userDetails:any;
   successform:any;
   fileuploaded:any;
+  url:any="";
 
   userverifyform = new FormGroup({
   
@@ -63,11 +64,26 @@ export class HospitalUserVerificationComponent implements OnInit {
     }
   }
 
-  onDocFileChange($event){
-    console.log($event.target.files);
-    // for (var i = 0; i < $event.target.files.length; i++) { 
-      this.fileuploaded = ($event.target.files[0]);
-    // }
-  }
+  // onDocFileChange($event){
+  //   console.log($event.target.files);
+  //   // for (var i = 0; i < $event.target.files.length; i++) { 
+  //     this.fileuploaded = ($event.target.files[0]);
+  //   // }
+  // }
+  
+
+
+
+  onDocFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+       var reader = new FileReader();
+
+       reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+         this.url = event.target.result;
+       }
+     }
+   }
 
 }

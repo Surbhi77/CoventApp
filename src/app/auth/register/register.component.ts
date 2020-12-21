@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       console.log(obj);
       this.api.register(obj).subscribe(res=>{
         if(res['success']){
-          this.toastr.success('Registration successful...!');
+          this.toastr.success('Verification email sent, Please verify your email address to login.');
           this.router.navigateByUrl('/auth/login');
         }else{
           this.toastr.error(res['message'])

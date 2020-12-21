@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidationErrors} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
+//import { RouterModule , Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -26,6 +27,9 @@ export class HospitalNeedFormComponent implements OnInit {
   userDetails:any;
   cat_obj:any;
   successform:any;
+  showMsg: boolean = false;
+
+
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
   selectedFromList:boolean=false;
   form = new FormGroup({
@@ -34,7 +38,7 @@ export class HospitalNeedFormComponent implements OnInit {
     facility_location: new FormControl('', Validators.required),
     //hospital_item_cat_id: new FormControl('', Validators.required),
     //hospital_required_items: new FormControl('', Validators.required),
-    phone_number: new FormControl('', Validators.required),
+    phone_number: new FormControl('', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     type_of_facility: new FormControl('', Validators.required),
     electricity_source: new FormControl('', Validators.required),
     electricity_reliabile: new FormControl('', Validators.required),
@@ -135,6 +139,12 @@ export class HospitalNeedFormComponent implements OnInit {
     // console.log(this.hospitalItems);
     // console.log(this.itemArr);
     
+  }
+  onclick(){
+    this.router.navigate(['/pages/hospital-list']);
+   
+    return false;
+    this.showMsg= true;
   }
 
   onSubmit(){
