@@ -211,22 +211,22 @@ export class MapComponent implements OnInit {
           arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
           self.geoChart.dataTable.push(arr);
           if(element.urgency_icuneed == "Low Risk"){
-            element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
           }
           if(element.urgency_icuneed == "Medium Risk"){
-            element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
-          }
-          if(element.urgency_icuneed == "High Risk"){
             element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
           }
+          if(element.urgency_icuneed == "High Risk"){
+            element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+          }
           if(element.urgency_icuneed == "Critical"){
-            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+            element.iconUrl = {url:'./assets/images/circle-08.png',"scaledSize": {"height": 10, "width": 10}}
           }
           if(element.urgency_icuneed == "Urgent"){
-            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+            element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
           }
           if(element.urgency_icuneed == "Emergent"){
-            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+            element.iconUrl = {url:'./assets/images/circle-11.png',"scaledSize": {"height": 10, "width": 10}}
           }
         });
         console.log(this.geoChart.dataTable)

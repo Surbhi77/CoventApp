@@ -67,7 +67,7 @@ const MyGoogleChartsSettings: GoogleChartsSettings = {
     BrowserAnimationsModule,
     Ng2GoogleChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'}),
+    apiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'}),
     //AgmCoreModule.forRoot({apiKey:'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
     ToastrModule.forRoot(),
     HttpClientModule,

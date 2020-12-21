@@ -4,7 +4,7 @@
     </nb-card-header> 
     <nb-card-body class="p-0 m-0">
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form">
             <!-- <div class="form-group">
                 <label for="cat">Categories</label>
                 <ul class="itemCategory">
@@ -180,7 +180,7 @@
                     </div>
                   </div>
                 <div class="example-full-width col-lg-8 ">
-                    <button type="submit" class="btnchanges" (click)="onclick()" >Submit</button>
+                    <button type="submit" class="btnchanges" (click)="onSubmit()" >Submit</button>
                 </div>
             </div>
         </form>

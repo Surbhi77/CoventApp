@@ -140,12 +140,12 @@ export class HospitalNeedFormComponent implements OnInit {
     // console.log(this.itemArr);
     
   }
-  onclick(){
-    this.router.navigate(['/pages/hospital-list']);
+  // onclick(){
+  //   this.router.navigate(['/pages/hospital-list']);
    
-    return false;
-    this.showMsg= true;
-  }
+  //   return false;
+  //  // this.showMsg= true;
+  // }
 
   onSubmit(){
     console.log(this.form.valid);
@@ -160,8 +160,10 @@ export class HospitalNeedFormComponent implements OnInit {
     
       this.apiService.hospitalDataAdd(formvalue).subscribe(res=>{
         console.log(res['data']);
-        this.form.reset()
-        this.successform = 'Successfully Updated';
+        this.form.reset();
+        
+        this.toastr.success("Form updated successfully");
+        this.router.navigate(['/pages/hospital-list']);
       })
       console.log('asdvalid');
     }else{

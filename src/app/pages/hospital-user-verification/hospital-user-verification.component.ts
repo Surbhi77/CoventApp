@@ -44,6 +44,7 @@ export class HospitalUserVerificationComponent implements OnInit {
       let formdata = new FormData()
       formdata.append('document',this.fileuploaded);
       formdata.append('user_id',this.userDetails.id);
+      console.log(this.userDetails.id,this.fileuploaded)
         // formdata.append('device_user_id',userDetails.id);
       // formvalue.hospital_required_items=this.hospitalItems
       // formvalue.user_id=this.userDetails.id
@@ -60,6 +61,7 @@ export class HospitalUserVerificationComponent implements OnInit {
       console.log('asdvalid');
 
     }else{
+      alert("here")
       this.userverifyform.markAllAsTouched();
     }
   }
@@ -77,7 +79,7 @@ export class HospitalUserVerificationComponent implements OnInit {
   onDocFileChange(event) {
     if (event.target.files && event.target.files[0]) {
        var reader = new FileReader();
-
+       this.fileuploaded = event.target.files[0];
        reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
