@@ -220,6 +220,18 @@ export class ApiService {
     return this.http.post(this.baseAPi+'/hospitaluser-dashboardgraph',formvalue)
   }
   /*****by #as end **/
+
+  public getAllMapsNeeds(){
+    return this.http.get(this.baseAPi+'/hospital-list-onmap')
+  }
+
+  public getAllItemLists(){
+    return this.http.get(this.baseAPi+'hospital-item-list');
+  }
+
+  public searchListing(obj){
+    return this.http.post(this.baseAPi+'/hospital-map-filter',obj)
+  }
  
 
 }

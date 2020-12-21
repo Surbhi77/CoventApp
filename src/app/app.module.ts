@@ -40,18 +40,34 @@ import { AuthguardGuard } from './guard/authguard.guard';
 import { ApiService } from './services/api.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 const MyGoogleChartsSettings: GoogleChartsSettings = {
   mapsApiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'
 };
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, LibraryFilterComponent, LibraryDetailsComponent, LibraryComponent, AboutUsComponent, ContactUsComponent, MapComponent, MapDetailsComponent, InnovatorListingComponent, ForgotPasswordComponent],
+  declarations: [AppComponent, 
+                HomeComponent, 
+                HeaderComponent, 
+                FooterComponent, 
+                LibraryFilterComponent, 
+                LibraryDetailsComponent, 
+                LibraryComponent, 
+                AboutUsComponent, 
+                ContactUsComponent, 
+                MapComponent, 
+                MapDetailsComponent, 
+                InnovatorListingComponent, 
+                ForgotPasswordComponent],
   imports: [
+    GooglePlaceModule,
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     Ng2GoogleChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
+      apiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'}),
     //AgmCoreModule.forRoot({apiKey:'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -66,7 +82,7 @@ const MyGoogleChartsSettings: GoogleChartsSettings = {
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
     NbChatModule.forRoot({
-      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+      messageGoogleMapKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk',
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),

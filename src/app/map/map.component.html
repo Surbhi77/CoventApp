@@ -7,34 +7,7 @@
          </div>
       </div>
    </div>
-   <!-- <div class="row">
-      <div class="col-sm-3">
-        
-      </div>
-   </div> -->
-
-    <!-- <div class="row">
-      <div class="col-sm-12">
-        
-        <div class="iner_filters">
-
-          <div class="uls_filters py-5">
-            
-            <ul>
-              <li><a href="#">Category</a></li>
-              <li><a href="#">Item</a></li> 
-              <li><a href="#">Search </a></li>
-              <li><a href="#">Location</a></li>
-              <li><a href="#">Monthly Stays</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="row py-5">
-      
-    </div> -->
+   
 
     <div class="row">
       <div class="col-sm-4">
@@ -45,8 +18,8 @@
             </div>
           </div> -->
           <div class="col-sm-12">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group mb-3 ">
+              <input #placesRef="ngx-places" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" type="text" [options]="{address_component:'geometry'}" (onAddressChange)="handleAddressChange($event)" class="form-control" placeholder="Search Location">
               <div class="input-group-append">
                 <button class="btn btn-success test_searchs" type="submit"><i class="fas fa-search"></i></button>
               </div>
@@ -56,12 +29,10 @@
             </div> -->
           </div>
           <div class="col-sm-12">
-            <div class="form-group mb-3 locationss">
-              <select class="form-control">
-                <option>Location</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <div class="form-group mb-3">
+              <select [(ngModel)]="item" class="form-control">
+                <option>Item</option>
+                <option *ngFor="let item of items">{{item.item}}</option>
               </select>
             </div>
           </div>
@@ -73,7 +44,16 @@
                 <option>3</option> 
                 <option>4</option>
               </select> -->
-              <h4 class="titles_hm py-2">Category</h4>
+              <!-- <mat-form-field>
+                <mat-chip-list aria-label="Fish selection">
+                  <mat-chip>One fish</mat-chip>
+                  <mat-chip>Two fish</mat-chip>
+                  <mat-chip color="primary" selected>Primary fish</mat-chip>
+                  <mat-chip color="accent" selected>Accent fish</mat-chip>
+                </mat-chip-list>
+              </mat-form-field> -->
+              
+              <!-- <h4 class="titles_hm py-2">Category</h4>
               <div class="uls_filters py-1">
                 <ul>
                   <li><a href="#">Hygiene</a></li>
@@ -90,13 +70,12 @@
                   <li><a href="#">ICU</a></li>
                   <li><a href="#">More +</a></li>
                 </ul>
-            </div>
+            </div> -->
           </div>
           <div class="col-sm-12">
-            <h4 class="titles_hm py-2">Item</h4>
-            <!-- <label></label> -->
+            <!-- <h4 class="titles_hm py-2">Item</h4> -->
 
-            <div class="uls_filters py-1">
+            <!-- <div class="uls_filters py-1">
               <ul>
                 <li><a href="#">Chlorine, HTH 70%</a></li>
                 <li><a href="#">Alcohol-based hand rub</a></li> 
@@ -107,36 +86,37 @@
                 <li><a href="#">Scrubs, pants</a></li>
                 <li><a href="#">More +</a></li>
               </ul>
-          </div>
-            <!-- <div class="form-group mb-3">
-              <select class="form-control">
-                <option>Item</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+          </div> -->
+            <div class="form-group mb-3">
+              <select [(ngModel)]="risk" class="form-control">
+                <option value="">Severity</option>
+                <option value="1">Low Risk</option>
+                <option value="Medium Risk">Medium Risk</option>
+                <option value="Critical">Critical</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Emergent">Emergent</option>
               </select>
-            </div> -->
+            </div>
           </div>
-          
+          <div>
+            <button (click)="search()">Submit</button>
+          </div>
          
         </div>
       </div>
-    <div>
-      <google-chart [data]="geoChart" ></google-chart>
+    <div  *ngIf="looped" class="col-sm-8">
+      <google-chart #mychart [data]="geoChart" ></google-chart>
     </div>
-    <div class="col-sm-12">
-      <div>
+    <div class="col-sm-12 pt-5">
+      <div *ngIf="looped">
         <agm-map style="height:700px" [zoom]="zoom" [latitude]='lat' [longitude]='long' >
-          <agm-marker [latitude]="'37.762691'"
-                [longitude]="'-122.458588'"></agm-marker>
-                <agm-marker [latitude]="'37.762691'"
-                [longitude]="'-122.458588'"></agm-marker>
-                <agm-marker [latitude]="'37.789580'"
-                [longitude]="'-122.416900'"></agm-marker>
-                <agm-marker [latitude]="'40.712776'" [longitude]="'-74.005974'"> 
-                </agm-marker>
-                <agm-marker [latitude]="'61.0666922'" [longitude]="'-107.9917071'"> 
-                </agm-marker>
+                <agm-marker *ngFor="let item of json" [latitude]="item.latitude"
+                [longitude]="item.longitude" [iconUrl]="item.iconUrl" (click)="onMouseOver(infoWindow, $event)" 
+                (mouseOut)="onMouseOut(infoWindow, $event)">
+                <agm-info-window #infoWindow><p>{{item.hospital_name}}</p><p>Requirement: {{item.urgency_icuneed}}</p>
+                  <p>Need For: {{item.item_name}}</p>
+                </agm-info-window>
+              </agm-marker>                
         </agm-map>
       </div>
         

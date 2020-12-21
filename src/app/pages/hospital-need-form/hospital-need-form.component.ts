@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators, ValidationErrors} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
+
 
 @Component({
   selector: 'ngx-hospital-need-form',
@@ -23,13 +26,14 @@ export class HospitalNeedFormComponent implements OnInit {
   userDetails:any;
   cat_obj:any;
   successform:any;
-
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  selectedFromList:boolean=false;
   form = new FormGroup({
     healthcare_facility_name: new FormControl('', [Validators.required]),
     email_address: new FormControl('', [Validators.required, Validators.email]),
     facility_location: new FormControl('', Validators.required),
-    hospital_item_cat_id: new FormControl('', Validators.required),
-    hospital_required_items: new FormControl('', Validators.required),
+    //hospital_item_cat_id: new FormControl('', Validators.required),
+    //hospital_required_items: new FormControl('', Validators.required),
     phone_number: new FormControl('', Validators.required),
     type_of_facility: new FormControl('', Validators.required),
     electricity_source: new FormControl('', Validators.required),
@@ -45,6 +49,9 @@ export class HospitalNeedFormComponent implements OnInit {
     hospital_beds: new FormControl('', Validators.required),
     hospital_patients: new FormControl('', Validators.required)
   });
+  latitude: number;
+  longitude: number;
+  selectedAddress: boolean=false;
 
   constructor(private toastr: ToastrService,
     private fb:FormBuilder,
@@ -101,6 +108,14 @@ export class HospitalNeedFormComponent implements OnInit {
     }
   }
 
+  public handleAddressChange(address: Address) {
+     console.log("called...",address)
+     console.log(address.geometry.location.lat(),address.geometry.location.lng());
+     this.latitude = address.geometry.location.lat();
+     this.longitude = address.geometry.location.lng();
+     this.selectedAddress = true;
+  }
+
   selectItems(itemId,datavalue){
     console.log(itemId)
     console.log(datavalue)
@@ -123,21 +138,36 @@ export class HospitalNeedFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.form);
-    if(this.form.valid){
+    console.log(this.form.valid);
+    if(this.form.valid && this.selectedAddress){
       var formvalue = this.form.getRawValue()
       formvalue.hospital_item_cat_id=this.hospitalItemCatId
       formvalue.hospital_required_items=this.hospitalItems
       formvalue.user_id=this.userDetails.id
+      formvalue.latitude =this.latitude
+      formvalue.longitude=this.longitude
       console.log(formvalue);
     
       this.apiService.hospitalDataAdd(formvalue).subscribe(res=>{
-        console.log(res['data'])
+        console.log(res['data']);
+        this.form.reset()
         this.successform = 'Successfully Updated';
       })
       console.log('asdvalid');
     }else{
       this.form.markAllAsTouched();
+      if(!this.selectedAddress){
+        this.toastr.error("Please choose a address from autocomplete")
+      }
+      // Object.keys(this.form.controls).forEach(key => {
+
+      //   const controlErrors: ValidationErrors = this.form.get(key).errors;
+      //   if (controlErrors != null) {
+      //         Object.keys(controlErrors).forEach(keyError => {
+      //           console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+      //         });
+      //       }
+      //     });
     }
     
   }

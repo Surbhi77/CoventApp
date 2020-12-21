@@ -48,7 +48,7 @@
 
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Facility Location</mat-label>
-                    <input type="text" formControlName="facility_location" name="facility_location" matInput required/>
+                    <input #placesRef="ngx-places" ngx-google-places-autocomplete formControlName="facility_location" name="facility_location" [options]="{address_component:'geometry'}" (onAddressChange)="handleAddressChange($event)" matInput required/>
                     <ng-container *ngIf="f.facility_location.touched && f.facility_location.invalid">
                         <mat-error *ngIf="f.facility_location.errors.required" class="errors-input" class="errors">
                             Facility Location is required.

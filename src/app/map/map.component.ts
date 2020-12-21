@@ -1,17 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
-  ChartReadyEvent,
-  ChartErrorEvent,
-  ChartSelectEvent,
-  ChartMouseOverEvent,
-  ChartMouseOutEvent,
-  RegionClickEvent,
   GoogleChartInterface,
-  GoogleChartsControlInterface,
-  GoogleChartsDashboardInterface,
-  GoogleChartEditor,
-  GoogleChartWrapper,
 } from 'ng2-google-charts';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import {ApiService} from './../services/api.service';
 
 declare var $: any;
 declare var google: any;
@@ -23,30 +16,220 @@ declare var google: any;
 })
 
 export class MapComponent implements OnInit {
+  json:any[]=[];
+ // lowRiskIcon = ""
+  //  json= [{
+  //    "latitude":43.8766588,
+  //    "longitude":-97.1530225,
+  //    "Hospital":"Mayo Clinic, Rochester",
+  //    "requirement":"Emergent",
+  //    "value":1,
+  //    "need":"masks",
+  //    "iconUrl":{url:"./assets/images/circle-05.png","scaledSize": {"height": 10, "width": 10}}
+     
+  //   },
+  //   {
+  //     "latitude":24.4749673,
+  //     "longitude":-90.2057287,
+  //     "Hospital":"UChicago Medicine",
+  //     "requirement":"High",
+  //     "value":3,
+  //     "need":"PPE",
+  //     "iconUrl":{url:"./assets/images/circle-05.png","scaledSize": {"height": 10, "width": 10}}
+  //   },
+  //   {
+  //     "latitude":39.2967385,
+  //     "longitude":-76.5949249,
+  //     "Hospital":"Johns Hopkins Hospital",
+  //     "requirement":"Low",
+  //     "value":4,
+  //     "need":"masks",
+  //     "iconUrl":{url:"./assets/images/circle-07.png","scaledSize": {"height": 15, "width": 15}}
+  //   },
+  //   {
+  //     "latitude":39.2967385,
+  //     "longitude":-76.594609,
+  //     "Hospital":"Johns Hopkins Hospital",
+  //     "requirement":"Low",
+  //     "value":5,
+  //     "need":"masks",
+  //     "iconUrl":{url:"./assets/images/circle-07.png","scaledSize": {"height": 10, "width": 10}}
+  //   },
+  //   {
+  //     "latitude":34.071494,
+  //     "longitude":-118.3829765,
+  //     "Hospital":"Cedars-Sinai Medical Center",
+  //     "requirement":"Low",
+  //     "value":6,
+  //     "need":"masks",
+  //     "iconUrl":{url:"./assets/images/circle-08.png","scaledSize": {"height": 10, "width": 10}}
+  //   }
+  // ]
+  @ViewChild('mychart ', {static: false}) mychart;
   public geoChart: GoogleChartInterface = {
     chartType: 'GeoChart',
     dataTable: [
-      ['Latitude', 'Longitude', 'Label','Value 1'],
-      [43.8766588,-97.1530225, 'Mayo Clinic, Rochester', 9.0],
-      [24.4749673,-90.2057287, 'UChicago Medicine', 3.0],
-      [39.2967385,-76.5949249, 'Johns Hopkins Hospital', 1.0],
-      [34.071494,-118.3829765, 'Cedars-Sinai Medical Center', 6.0],
+      ['Latitude', 'Longitude', 'Label','Value',{type:'string', role:'tooltip', 'p': {'html': true}}]
     ],
     options: {
       colorAxis: {colors: ['#ffc107', '#fd7e14', '#dc3545']},
       backgroundColor: '#9cf',
       datalessRegionColor: '#f8f9fa',
       defaultColor: '#6c757d',
+      "tooltip": {
+        "isHtml":true
+      }
     }
   };
   lat = 38.907192;
   long = -77.036873;
-  zoom = 3;
-  constructor() { }
+  zoom = 2;
+  looped:boolean=false;
+  openedWindow: any;
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  latitude: number;
+  longitude: number;
+  selectedAddress: boolean;
+  items:any[]=[];
+  risk:any;
+  item:any;
+
+  constructor(private apiService:ApiService) { }
+
+  isInfoWindowOpen(hospitalName) {
+    return this.openedWindow == hospitalName; // alternative: check if id is in array
+  }
+
+  onMouseOver(infoWindow, $event: MouseEvent) {
+    infoWindow.open();
+  }
+
+  onMouseOut(infoWindow, $event: MouseEvent) {
+      infoWindow.close();
+  }
+
+  openWindow(id) {
+    this.openedWindow = id; // alternative: push to array of numbers
+  }
+
+  public handleAddressChange(address: Address) {
+    // console.log("called...",address)
+    // console.log(address.geometry.location.lat(),address.geometry.location.lng());
+    this.latitude = address.geometry.location.lat();
+    this.longitude = address.geometry.location.lng();
+    this.selectedAddress = true;
+  }
+
+  public getAllItemLists(){
+    this.apiService.getAllItemLists().subscribe(res=>{
+      this.items=res['data'];
+    })
+  }
 
   ngOnInit(): void {
-  
+    this.getAllItemLists();
+    this.apiService.getAllMapsNeeds().subscribe(res=>{
+      console.log(res);
+      this.json=res['data'];
+      let self = this;
+      this.json.forEach(element=>{
+        var arr = [];
+        arr.push(+element.latitude);
+        arr.push(+element.longitude);
+        arr.push(element.hospital_name);
+        arr.push(+element.urgency_value);
+        arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
+        self.geoChart.dataTable.push(arr);
+        if(element.urgency_icuneed == "Low Risk"){
+          element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Medium Risk"){
+          element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "High Risk"){
+          element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Critical"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Urgent"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Emergent"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+      });
+      console.log(this.json)
+      this.looped=true;
+    })
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add("absolute-header");
+   // this.geoChart.dataTable.push( ['Latitude', 'Longitude', 'Label','Value',{type:'string', role:'tooltip', 'p': {'html': true}}]);
+    // var self=this;
+    // this.json.forEach(element => {
+    //   var arr=[];
+    //   arr.push(element.latitude);
+    //   arr.push(element.longitude);
+    //   arr.push(element.Hospital);
+    //   arr.push(element.value);
+    //   arr.push('<p>Requirement: '+element.requirement+'</p><p>Need for: '+element.need+'</p>');
+    //   self.geoChart.dataTable.push(arr);
+    // });
+    // this.looped=true;
+    console.log(this.geoChart)
   }
+
+  search(){
+   let obj={
+    "itemcat_name":this.item,
+    "latitude":this.latitude,
+    "longitude":this.longitude,
+    "urgency_value":this.risk
+    };
+    this.apiService.searchListing(obj).subscribe(res=>{
+      console.log(res);
+      this.looped=false;
+      this.json=res['data'];
+      let self = this;
+      this.json.forEach(element=>{
+        var arr = [];
+        arr.push(+element.latitude);
+        arr.push(+element.longitude);
+        arr.push(element.hospital_name);
+        arr.push(+element.urgency_value);
+        arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
+        self.geoChart.dataTable.push(arr);
+        if(element.urgency_icuneed == "Low Risk"){
+          element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Medium Risk"){
+          element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "High Risk"){
+          element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Critical"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Urgent"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+        if(element.urgency_icuneed == "Emergent"){
+          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+        }
+      });
+      console.log(this.json)
+      let ccComponent = this.geoChart.component;
+    let ccWrapper = ccComponent.wrapper;
+
+    //force a redraw
+    ccComponent.draw();
+     // this.geoChart.component.draw()
+      this.looped=true;
+  
+    })
+  }
+
   ngOnDestroy(){
     let body = document.getElementsByTagName('body')[0];
     body.classList.remove("absolute-header");
