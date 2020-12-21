@@ -1,26 +1,35 @@
-.itemCategory li{
+.itemCategory li {
     float: left;
     margin: 0 10px;
-    
 }
-ul li
-{
+
+ul li {
     list-style: none;
 }
-ul{
+
+ul {
     padding-left: 15px;
 }
-.itemCategory li label{
+
+.itemCategory li label {
     margin-bottom: 0px !important;
 }
-ul li input{
+
+ul li input {
     margin: 2px;
 }
-.errors-input{
-    color:#ff0000
+
+.errors-input {
+    color: #ff0000
 }
-.success-msg{
+
+.success-msg {
     color: #fff;
     background: #75cc75;
     padding: 10px;
+}
+
+nb-card-header {
+    background-color: #13bfb3 !important;
+    color: white;
 }

@@ -2,38 +2,37 @@
     <nb-card-header>
         Hospital Listing
 
-      <button nbButton matRipple hero class="size-medium status-primary"  *ngIf="hospitalsListData.length==0" routerLink="/pages/hospital-form"> Add </button>
+        <button nbButton matRipple hero class="size-medium status-primary" *ngIf="hospitalsListData.length==0" routerLink="/pages/hospital-form"> Add </button>
     </nb-card-header>
-  
+
     <nb-card-body>
-      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
       </ng2-smart-table>  -->
-      <table *ngIf="hospitalsListData && hospitalsListData.length>0" class="table table-bordered custom_tabls" [dtOptions]="dtOptions"  datatable >
-        <thead>
-          <tr>
-            <th class="text-center">S.No.</th>
-            <th>Hospital Name</th>
-            <th>Location</th>
-            <th>Facility</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody >
-         <tr *ngFor="let item of hospitalsListData;let i=index">
-               <td class="text-center">{{i+1}}</td>
-               <td>{{item.healthcare_facility_name }}</td>
-               <td>{{item.facility_location}}</td>
-               <td>{{item.type_of_facility}}</td>
-               <td>{{item.updated_date}}</td>
-               <td style="width: 400px;">
-                
-                <a [routerLink]="'/pages/hospital-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit </a>
-                <!-- //<a (click)="deleteHospitalsList(item.id,i)" class="conm_bns delete_n"> <i class="far fa-trash-alt"></i> Delete</a> -->
-              </td>
-           </tr>
-        </tbody>
-      </table>
+        <table *ngIf="hospitalsListData && hospitalsListData.length>0" class="table table-bordered custom_tabls" [dtOptions]="dtOptions" datatable>
+            <thead>
+                <tr>
+                    <th class="text-center">S.No.</th>
+                    <th>Hospital Name</th>
+                    <th>Location</th>
+                    <th>Facility</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of hospitalsListData;let i=index">
+                    <td class="text-center">{{i+1}}</td>
+                    <td>{{item.healthcare_facility_name }}</td>
+                    <td>{{item.facility_location}}</td>
+                    <td>{{item.type_of_facility}}</td>
+                    <td>{{item.updated_date}}</td>
+                    <td>
+
+                        <a [routerLink]="'/pages/hospital-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit </a>
+                        <!-- //<a (click)="deleteHospitalsList(item.id,i)" class="conm_bns delete_n"> <i class="far fa-trash-alt"></i> Delete</a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </nb-card-body>
-  </nb-card>
-  
+</nb-card>
