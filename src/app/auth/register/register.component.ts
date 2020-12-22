@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
       user_email:['',[Validators.email,Validators.required]],
       user_type:['',[Validators.required]],
       password: ['', [Validators.required]],
+      healthcare_facility_name: ['', [Validators.required]],
       confirm_password: ['', [Validators.required]]
     }, { 
       validator: ConfirmedValidator('password', 'confirm_password')
@@ -47,7 +48,8 @@ export class RegisterComponent implements OnInit {
         user_name:this.form.value.user_name,
         user_email:this.form.value.user_email,
         user_type:this.form.value.user_type,
-        password:this.form.value.password
+        password:this.form.value.password,
+        healthcare_facility_name:this.form.value.healthcare_facility_name
       };
       console.log(obj);
       this.api.register(obj).subscribe(res=>{

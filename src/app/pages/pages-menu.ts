@@ -33,12 +33,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/hospital-form'
   },
   {
-    title:"Hospitals List",
+    title:"Hospitals Detail",
     icon: 'lock-outline',
     link: '/pages/hospital-list'
   },
   {
-    title:"Hospital ICU Need",
+    title:"Submit ICU need",
     icon: 'lock-outline',
     link: '/pages/hospital-ICU-need'
   },
@@ -82,12 +82,12 @@ export const ADMIN_ITEMS: NbMenuItem[]=[
   //    link: '/pages/hospital-form'
   //  },
   {
-    title:"Hospitals List",
+    title:"Hospitals Detail",
     icon: 'lock-outline',
     link: '/pages/hospital-list'
   },
   {
-    title:"Hospital ICU Need",
+    title:"Submit ICU need",
     icon: 'lock-outline',
     link: '/pages/hospital-ICU-need'
   },

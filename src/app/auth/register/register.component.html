@@ -72,7 +72,7 @@
                     <div class="LoginFormDetails">
                         <div class="LoginFormHeader">
                             <img src="./assets/images/logo.png" width="50">
-                            <button type="submit" class="login-btn">Sign In</button>
+                            <button routerLink="/auth/login" class="login-btn">Sign In</button>
                         </div>
 
                         <div class="LoginFormInputs">
@@ -137,7 +137,15 @@
                                     </div>
                                 </div>
 
-
+                                <div class="form-control-group" *ngIf="f.user_type.value==3">
+                                  <span class="label-with-link">
+                                    <label class="label" for="input-hospitalname">Hospital Name:</label>
+                                  </span>
+                                  <input name="healthcare_facility_name" type="text" formControlName="healthcare_facility_name" id="input-hospitalname" placeholder="Healthcare Facility Name" class="input-full-width size-large status-basic shape-rectangle ng-pristine ng-invalid nb-transition ng-touched">
+                                  <div *ngIf="f.healthcare_facility_name.touched && f.healthcare_facility_name.invalid" class="text-danger h6">
+                                      <div *ngIf="f.healthcare_facility_name.errors.required"><small>Hospital Name is required.</small></div>
+                                  </div>
+                                </div>
 
 
                                 <!-- <div class="form-check">
