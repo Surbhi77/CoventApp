@@ -23,13 +23,17 @@
                         <td>{{item.user_name}}</td>
                         <td>{{item.user_email}}</td>
                         <td><a [href]="baseAPi+item.document" target="_blank" *ngIf="item.document && item.document!=''" class="UV-btn viewDoc">View Document</a></td>
-                        <td><span *ngIf="item.admin_verify_status==1" class="UV-btn">Verify</span>
-                            <span *ngIf="item.admin_verify_status==0" class="UV-btn">Unverify</span>
+                        <td><span *ngIf="item.admin_verify_status==1">Accept</span>
+                            <span *ngIf="item.admin_verify_status==2">Reject</span>
+                            <span *ngIf="item.admin_verify_status==0">Pending</span>
                         </td>
                         <td>
                             <a *ngIf="item.user_status==1" (click)="block(item,i)" class="UV-btn">Block</a>
                             <a *ngIf="item.user_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a>
-                            <a *ngIf="item.admin_verify_status==0" (click)="verifyhospitaldoc(item.id,i)" class="UV-btn"> Verify</a>
+                            <a (click)="verifyhospitaldoc(item.id,i,1)" class="UV-btn" *ngIf="item.admin_verify_status==0 && item.document && item.document!=''"> Accept</a>
+                            <a (click)="verifyhospitaldoc(item.id,i,1)" class="UV-btn" *ngIf="item.admin_verify_status==2 && item.document && item.document!=''"> Accept</a>
+                            <a (click)="verifyhospitaldoc(item.id,i,0)" class="UV-btn" *ngIf="item.admin_verify_status==1 && item.document && item.document!=''"> Reject</a>
+                            <a (click)="verifyhospitaldoc(item.id,i,0)" class="UV-btn" *ngIf="item.admin_verify_status==0 && item.document && item.document!=''"> Reject</a>
                         </td>
                     </tr>
                 </tbody>

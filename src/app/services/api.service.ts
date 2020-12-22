@@ -146,8 +146,8 @@ export class ApiService {
     return this.http.get(this.secureApi+'get-deviceinnovator-detail/'+id)
   }
 
-  public verifyhospitaluserdoc(id){
-    return this.http.get(this.secureApi+'verify-hospital-user/'+id)
+  public verifyhospitaluserdoc(id,type){
+    return this.http.get(this.secureApi+'verify-hospital-user/'+id+'/'+type)
   }
 
   public latestAddItems(){

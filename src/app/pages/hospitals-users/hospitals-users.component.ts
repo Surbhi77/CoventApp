@@ -32,26 +32,29 @@ export class HospitalsUsersComponent implements OnInit {
 
   block(item,i){
     this.apiService.blockUser(item.id).subscribe(res=>{
+      console.log(res['success']);
       if(res['success']){
         this.userListing[i].user_status=0
       }
     })
   }
-
+  
   unblock(item,i){
     this.apiService.unBlockUser(item.id).subscribe(res=>{
+      console.log(res['success']);
       if(res['success']){
         this.userListing[i].user_status=1
       }
     })
   }
 
-  verifyhospitaldoc(item_id,i){
+  verifyhospitaldoc(item_id,i,type){
     console.log(item_id)
-    this.apiService.verifyhospitaluserdoc(item_id).subscribe(res=>{
+    this.apiService.verifyhospitaluserdoc(item_id,type).subscribe(res=>{
       if(res['success']){
         // this.userListing[i].user_status=1
-        this.userListing[i].admin_verify_status=1
+        this.userListing[i].admin_verify_status=type
+        this.userListing[i].document='';
       }
     })
   }
