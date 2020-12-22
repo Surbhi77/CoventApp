@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'ngx-hospital-item-edit',
@@ -27,12 +29,17 @@ export class HospitalItemEditComponent implements OnInit {
   selectedCategory:any=[];
   selectedCategoryItems:any=[];
 
+  latitude: number;
+  longitude: number;
+  selectedAddress: boolean=false;
+  hospitaladdress:any;
+
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+
   form = new FormGroup({
     healthcare_facility_name: new FormControl('', [Validators.required]),
     email_address: new FormControl('', [Validators.required, Validators.email]),
     facility_location: new FormControl('', Validators.required),
-    hospital_item_cat_id: new FormControl('', Validators.required),
-    hospital_required_items: new FormControl('', Validators.required),
     phone_number: new FormControl('', Validators.required),
     type_of_facility: new FormControl('', Validators.required),
     electricity_source: new FormControl('', Validators.required),
@@ -63,25 +70,26 @@ export class HospitalItemEditComponent implements OnInit {
         // this.isEditScreen=true
 
         this.hospital_id= params.id;
+        
         this.apiService.getHospitalDetail(this.hospital_id).subscribe(res=>{
           if(res['success']){
             let hospital_data = res['data'][0]
-            // console.log(hospital_data);
+            console.log(hospital_data);
             this.hospitalData = hospital_data;
-            this.cat_obj={"category_id":hospital_data.hospital_item_cat_id}
+            // this.cat_obj={"category_id":hospital_data.hospital_item_cat_id}
             // console.log(this.cat_obj);
-            this.apiService.hospitalItemListing(this.cat_obj).subscribe(res=>{
-              this.itemList = res['data']
-              console.log(this.itemList)
-            })
+            // this.apiService.hospitalItemListing(this.cat_obj).subscribe(res=>{
+            //   this.itemList = res['data']
+            //   console.log(this.itemList)
+            // })
             // this.selectedCharacteristics=deviceDetails.device_characterstics.split(",");
-            this.selectedCategory=hospital_data.hospital_item_cat_id.split(",");
-            this.selectedCategoryItems=hospital_data.hospital_required_items.split(",");
+            // this.selectedCategory=hospital_data.hospital_item_cat_id.split(",");
+            // this.selectedCategoryItems=hospital_data.hospital_required_items.split(",");
             // console.log('selectedCategoryItems'+this.selectedCategoryItems);
-            this.hospitalItems=hospital_data.hospital_required_items;
-            this.hospitalItemCatId=hospital_data.hospital_item_cat_id;
+            // this.hospitalItems=hospital_data.hospital_required_items;
+            // this.hospitalItemCatId=hospital_data.hospital_item_cat_id;
             // console.log('hospitalItemCatId'+this.hospitalItemCatId);
-            // console.log('hospitalItems'+this.hospitalItems);
+            console.log('healthcare_facility_name'+hospital_data.healthcare_facility_name);
             this.form.patchValue({
               "healthcare_facility_name":hospital_data.healthcare_facility_name,
               "email_address": hospital_data.email_address,
@@ -128,6 +136,15 @@ export class HospitalItemEditComponent implements OnInit {
 
   get f(){
     return this.form.controls;
+  }
+
+  public handleAddressChange(address: Address) {
+    console.log("called...",address)
+    console.log(address.geometry.location.lat(),address.geometry.location.lng());
+    this.latitude = address.geometry.location.lat();
+    this.longitude = address.geometry.location.lng();
+    this.hospitaladdress = address.formatted_address
+    this.selectedAddress = true;
   }
 
   checkIfSelectCategory(value){
@@ -206,14 +223,20 @@ export class HospitalItemEditComponent implements OnInit {
     
   }
 
+  getElectricityValue(event){
+    console.log(event)
+  }
   onSubmit(){
-    // console.log(this.form.getRawValue());
+    
     if(this.form.valid){
       var formvalue = this.form.getRawValue()
-      formvalue.hospital_item_cat_id=this.hospitalItemCatId
-      formvalue.hospital_required_items=this.hospitalItems
+      // formvalue.hospital_item_cat_id=this.hospitalItemCatId
+      // formvalue.hospital_required_items=this.hospitalItems
       formvalue.user_id=this.userDetails.id
       formvalue.hospital_id=this.hospital_id
+      formvalue.latitude =this.latitude
+      formvalue.longitude=this.longitude
+      formvalue.facility_location = this.hospitaladdress
       console.log(formvalue);
     
       this.apiService.updateHospitalData(formvalue).subscribe(res=>{
@@ -222,6 +245,7 @@ export class HospitalItemEditComponent implements OnInit {
       })
       console.log('asdvalid');
     }else{
+      console.log('else');
       this.form.markAllAsTouched();
     }
     

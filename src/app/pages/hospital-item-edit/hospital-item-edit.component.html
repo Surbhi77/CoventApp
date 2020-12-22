@@ -1,6 +1,6 @@
 <nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange">
     <nb-card-header>
-        Edit Hospital
+        Hospitals Detail
     </nb-card-header>
     <nb-card-body class="p-0 m-0">
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg " *ngIf="successform">{{successform}}</div>
@@ -47,7 +47,8 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8 outer">
                     <mat-label for="power">Facility Location</mat-label>
-                    <input type="text" formControlName="facility_location" name="facility_location" matInput required readonly="true" />
+                    <input #placesRef="ngx-places" ngx-google-places-autocomplete formControlName="facility_location" name="facility_location" [options]="{address_component:'geometry'}" (onAddressChange)="handleAddressChange($event)" matInput required/>
+                    <!-- <input type="text" formControlName="facility_location" name="facility_location" matInput required/> -->
                     <ng-container *ngIf="f.facility_location.touched && f.facility_location.invalid">
                         <mat-error *ngIf="f.facility_location.errors.required" class="errors-input errors alert alert-danger">
                             Facility Location is required.
@@ -97,10 +98,16 @@
                         </mat-error>
                     </ng-container>
                 </mat-form-field>
+                
                 <div class="form-group col-md-8">
                     <mat-label for="power">Electricity reliabile</mat-label>&nbsp;
-                    <mat-radio-button type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="Y" checked>Yes</mat-radio-button> &nbsp;
-                    <mat-radio-button type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="N">No</mat-radio-button>
+                    <mat-radio-group formControlName="electricity_reliabile">
+                        <mat-radio-button value="Y">Yes</mat-radio-button>
+                        <mat-radio-button  value="N">No</mat-radio-button>
+                    </mat-radio-group>
+
+                    <!-- <mat-radio-button type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="Y">Yes</mat-radio-button> &nbsp;
+                    <mat-radio-button type="radio" formControlName="electricity_reliabile" name="electricity_reliabile" value="N">No</mat-radio-button> -->
                     <ng-container *ngIf="f.electricity_reliabile.touched && f.electricity_reliabile.invalid">
                         <mat-error *ngIf="f.electricity_reliabile.errors.required" class="errors-input errors alert alert-danger">
                             Please select Yes or No.
@@ -156,7 +163,7 @@
                     <input type="number" formControlName="hospital_patients" name="hospital_patients" matInput required/>
                 </mat-form-field>
                 <div class="col-lg-8">
-                    <button type=" submit " class="btn btn-success " class="cutom_btn_all ">Submit</button>
+                    <button type="submit" class="btn btn-success " class="cutom_btn_all ">Submit</button>
                 </div>
             </div>
         </form>

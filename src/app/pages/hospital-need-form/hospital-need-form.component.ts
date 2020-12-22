@@ -157,6 +157,8 @@ export class HospitalNeedFormComponent implements OnInit {
       formvalue.latitude =this.latitude
       formvalue.longitude=this.longitude
       console.log(formvalue);
+      console.log(this.hospitalItemCatId);
+      console.log(this.hospitalItems);
     
       this.apiService.hospitalDataAdd(formvalue).subscribe(res=>{
         console.log(res['data']);

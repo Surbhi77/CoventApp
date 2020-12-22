@@ -2,7 +2,7 @@
     <nb-card-header>
         Hospital Listing
 
-        <button nbButton matRipple hero class="size-medium status-primary" *ngIf="hospitalsListData.length==0" routerLink="/pages/hospital-form"> Add </button>
+        <button nbButton matRipple hero class="size-medium status-primary" *ngIf="hospitalsListData && hospitalsListData.length==0" routerLink="/pages/hospital-form"> Add </button>
     </nb-card-header>
 
     <nb-card-body>

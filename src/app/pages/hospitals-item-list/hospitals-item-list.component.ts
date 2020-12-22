@@ -31,6 +31,7 @@ export class HospitalsItemListComponent implements OnInit {
     this.apiService.hospitalsIcuItemListing(userDetails.id).subscribe(res=>{
       this.hospitalsListData = res['data']
       console.log(this.hospitalsListData)
+      this.router.navigateByUrl("/pages/hospital-edit/"+this.hospitalsListData[0].id)
     })
     // this.hospitalsListData
   }
