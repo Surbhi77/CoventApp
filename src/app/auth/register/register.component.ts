@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       user_email:['',[Validators.email,Validators.required]],
       user_type:['',[Validators.required]],
       password: ['', [Validators.required]],
-      healthcare_facility_name: ['', [Validators.required]],
+      healthcare_facility_name: [''],
       confirm_password: ['', [Validators.required]]
     }, { 
       validator: ConfirmedValidator('password', 'confirm_password')
@@ -30,6 +30,16 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form.get('user_type').valueChanges.subscribe(val => {
+      console.log(val);
+      if(val == 3){
+          this.form.get('healthcare_facility_name').setValidators([Validators.required]);
+          this.form.get('healthcare_facility_name').updateValueAndValidity();
+      }else{
+          this.form.get('healthcare_facility_name').clearValidators();
+          this.form.get('healthcare_facility_name').updateValueAndValidity();
+      }
+    });
   }
 
   ngOnDestroy(){

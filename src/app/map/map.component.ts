@@ -77,9 +77,12 @@ export class MapComponent implements OnInit {
       datalessRegionColor: '#f8f9fa',
       defaultColor: '#6c757d',
       "tooltip": {
-        "isHtml":true
+        "isHtml":true,
+        "textStyle" : {fontSize : 12},
+        "backgroundColor" : '#9cf',
       }
-    }
+    },
+
   };
   lat = 38.907192;
   long = -77.036873;
@@ -94,6 +97,7 @@ export class MapComponent implements OnInit {
   risk:any;
   item:any;
   noResult: boolean=false;
+  location:any='';
 
   constructor(private apiService:ApiService) { }
 
@@ -119,6 +123,7 @@ export class MapComponent implements OnInit {
     this.latitude = address.geometry.location.lat();
     this.longitude = address.geometry.location.lng();
     this.selectedAddress = true;
+    this.search();
   }
 
   public getAllItemLists(){
@@ -132,37 +137,45 @@ export class MapComponent implements OnInit {
       console.log(res);
       this.json=res['data'];
       let self = this;
-      this.json.forEach(element=>{
-        var arr = [];
-        arr.push(+element.latitude);
-        arr.push(+element.longitude);
-        arr.push(element.hospital_name);
-        arr.push(+element.urgency_value);
-        arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
-        self.geoChart.dataTable.push(arr);
-        if(element.urgency_icuneed == "Low Risk"){
-          element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Medium Risk"){
-          element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "High Risk"){
-          element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Critical"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Urgent"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-        if(element.urgency_icuneed == "Emergent"){
-          element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
-        }
-      });
-      console.log(this.json)
-      console.log(this.geoChart.dataTable)
+      if(this.json.length){
+        this.json.forEach(element=>{
+          var arr = [];
+          arr.push(+element.latitude);
+          arr.push(+element.longitude);
+          arr.push(element.hospital_name);
+          arr.push(+element.urgency_value);
+          arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.urgency_icuneed+'</td><tr><tr><td>Need for</td><td>'+element.item_name+'</td><tr></table></div>');
+          self.geoChart.dataTable.push(arr);
+          if(element.urgency_icuneed == "Low Risk"){
+            element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Medium Risk"){
+            element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "High Risk"){
+            element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Critical"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Urgent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Emergent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+        });
+        this.looped=true;
+      }else{
+        this.geoChart.dataTable.length = 1;
+        this.looped=false;
+        this.noResult=true;
+      }
       
-      this.looped=true;
+      //console.log(this.json)
+      //console.log(this.geoChart.dataTable)
+      
+     
     })
   }
 
@@ -188,6 +201,7 @@ export class MapComponent implements OnInit {
   }
 
   search(){
+    //console.log(this.risk)
    let obj={
     "itemcat_name":this.item,
     "latitude":this.latitude,
@@ -208,7 +222,7 @@ export class MapComponent implements OnInit {
           arr.push(+element.longitude);
           arr.push(element.hospital_name);
           arr.push(+element.urgency_value);
-          arr.push('<p>Requirement: '+element.urgency_icuneed+'</p><p>Need for: '+element.item_name+'</p>');
+          arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.urgency_icuneed+'</td><tr><tr><td>Need for</td><td>'+element.item_name+'</td><tr></table></div>');
           self.geoChart.dataTable.push(arr);
           if(element.urgency_icuneed == "Low Risk"){
             element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
@@ -261,6 +275,7 @@ export class MapComponent implements OnInit {
     this.item='';
     this.latitude='';
     this.longitude='';
+    this.location=''
     this.getMapItems()
   }
 

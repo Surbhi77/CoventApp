@@ -1,6 +1,52 @@
 *:focus {
   outline: none !important;
 }
+/* .gm-style .gm-style-iw {
+  background-color: #252525 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 120px !important;
+  padding-top: 10px;
+  display: block !important;
+}     */
+
+/*style the paragraph tag*/
+.gm-style .gm-style-iw p{
+  /* padding: 10px !important; */
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-bottom: 10px !important;
+}
+.tooltipa{
+  padding: 0 !important;
+}
+.tooltipa tr{
+  padding: 0px !important;
+}
+.tooltipa td{
+  padding: 5px 0px !important;
+}
+
+.google-visualization-tooltip { width:300px }
+
+.gm-style-iw button {display: none !important;}
+.gm-style-iw div {display: none !important;}
+/*style the annoying little arrow at the bottom*/
+.gm-style div div div div div div div div {
+  background-color: #fff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0;
+  color: #000;
+  font-size: 16px;
+  max-width: 200px !important;
+  width: 200px;
+  display: inline-block !important;
+  overflow: hidden !important;
+}
+
 nb-stepper.mt-0.vertical .header {
     width: 200px !important;
   }
@@ -111,4 +157,36 @@ span.carousel-control-prev-icon {
 }
 .carousel-indicators li{
   background-color: #000 !important;
+}
+
+.not_found {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-top: 10px solid #13bfb3;
+  border-bottom: 10px solid #13bfb3;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.clear_filter {
+  background: #13bfb3;
+  padding: 5px 15px;
+  border-radius: 30px;
+  color: #fff;
+  margin-left: 15px;
+}
+.clear_filter:hover{
+  color: #fff;
+  text-decoration: none;
+}
+.shodows {
+  display: inline-block;
+  width: 100%;
+  box-shadow: 0 0 10px #ccc;
+}
+.main_logo {
+  width: 180px;
 }

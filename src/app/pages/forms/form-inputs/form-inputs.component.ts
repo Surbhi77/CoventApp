@@ -77,8 +77,7 @@ export class FormInputsComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       // alert('asdasd')
        var reader = new FileReader();
-       this.profileImage.push(event.target.files[0])
-      //  console.log(this.profileImage)
+       this.profileImage.push(event.target.files[0]);
        reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed

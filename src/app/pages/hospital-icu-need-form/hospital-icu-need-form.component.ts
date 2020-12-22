@@ -44,7 +44,7 @@ export class HospitalIcuNeedFormComponent implements OnInit {
       let userDataResult = res['data'][0]
       // console.log(this.itemCategory)
       this.documentVerify = userDataResult.admin_verify_status;
-      this.documentUploadMsg = (userDataResult.document==null || userDataResult.document=='') ? 'Please Upload File' : 'Hospital ID verification pending';
+      this.documentUploadMsg = (userDataResult.document==null || userDataResult.document=='') ? 'Please complete hospital verification' : 'Hospital ID verification pending';
       // console.log(userDataResult);
       // console.log(this.documentUploadMsg+" document "+userDataResult.document)
     })
