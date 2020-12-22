@@ -123,11 +123,12 @@
             <div class="card widget-flat">
                 <div class="card-body">
                     <div class="float-right">
-                        <i class="fas fa-sort-numeric-up-alt widget-icon"></i>
+                        <i class="fas fa-shield-alt widget-icon"></i>
+                        <!-- <i class="fas fa-sort-numeric-up-alt widget-icon"></i> -->
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="Question Count">Hospital Verification Status</h5>
-                    <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.admin_verify_status==1">Verified</h3>
-                    <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.admin_verify_status==0">Unverified</h3>
+                    <h5 class="text-muted font-weight-normal mt-0" title="Question Count">Verify Status</h5>
+                    <h3 class="mt-3 mb-0 green" *ngIf="hospitalData && hospitalData.admin_verify_status==1">Verified</h3>
+                    <h3 class="mt-3 mb-0 red" *ngIf="hospitalData && hospitalData.admin_verify_status==0">Unverified</h3>
                 </div> <!-- end card-body-->
             </div>
         </div>
@@ -138,7 +139,7 @@
                     <div class="float-right">
                         <i class="fas fa-poll widget-icon"></i>
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="No of Reviews Recieved">No. ICU need of this month </h5>
+                    <h5 class="text-muted font-weight-normal mt-0" title="No of Reviews Recieved">No. of ICU Need</h5>
                     <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.icu_needcount; else elseBlock">{{hospitalData.icu_needcount}}</h3>
                     <ng-template #elseBlock>
                         <h3 class="mt-3 mb-0">0</h3>
@@ -148,14 +149,14 @@
             </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-4" *ngIf="hospitalData && hospitalData.hospitalLasticuneedItem">
             <div class="card widget-flat">
                 <div class="card-body">
                     <div class="float-right">
                         <i class="far fa-chart-bar widget-icon"></i>
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="Avg Ratings Recieved">No. of ICU Need to All</h5>
-                    <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.all_icu_needcount; else elseBlock1">{{hospitalData.all_icu_needcount}}</h3>
+                    <h5 class="text-muted font-weight-normal mt-0" title="Avg Ratings Recieved">{{hospitalData.hospitalLasticuneedItem.item}}</h5>
+                    <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.all_icu_needcount; else elseBlock1">{{hospitalData.hospitalLasticuneedItem.device_need_perday}}</h3>
                     <ng-template #elseBlock1>
                         <h3 class="mt-3 mb-0">0</h3>
             
