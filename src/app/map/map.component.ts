@@ -164,8 +164,8 @@ export class MapComponent implements OnInit {
           element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
         }
       });
-      console.log(this.json)
-      console.log(this.geoChart.dataTable)
+      //console.log(this.json)
+      //console.log(this.geoChart.dataTable)
       
       this.looped=true;
     })
@@ -193,7 +193,7 @@ export class MapComponent implements OnInit {
   }
 
   search(){
-    console.log(this.risk)
+    //console.log(this.risk)
    let obj={
     "itemcat_name":this.item,
     "latitude":this.latitude,

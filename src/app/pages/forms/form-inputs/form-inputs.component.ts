@@ -76,7 +76,7 @@ export class FormInputsComponent implements OnInit {
    onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
        var reader = new FileReader();
-
+       this.profileImage.push(event.target.files[0]);
        reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed

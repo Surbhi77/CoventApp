@@ -130,7 +130,7 @@
                   [longitude]="item.longitude"  [iconUrl]="item.iconUrl" (mouseOver)="onMouseOver(infoWindow, $event)" 
                   (mouseOut)="onMouseOut(infoWindow, $event)">
                   <agm-info-window #infoWindow ><p style="padding: 10px; background-color: #13bfb3; color: #fff; font-size: 12px; margin-bottom: 10px;">{{item.hospital_name}}</p><p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Requirement: {{item.urgency_icuneed}}</p>
-                    <p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Need For: {{item.item_name}}</p>
+                  <p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Need For: {{item.item_name}}</p>
                   </agm-info-window>
                 </agm-marker>                
           </agm-map>
