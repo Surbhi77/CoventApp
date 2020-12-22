@@ -73,8 +73,11 @@
             </div>
         </form>
         <ng-template #elseBlock>
-            {{documentUploadMsg}}
-
+            <div class="pending_mesg">
+                {{documentUploadMsg}}
+                <a *ngIf="documentUploadMsg=='Please complete hospital verification'" routerLink="/pages/hospital-verification" class="click_here">Click Here</a>
+            </div>
+            
         </ng-template>
     </nb-card-body>
 </nb-card>
