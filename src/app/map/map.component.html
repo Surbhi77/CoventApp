@@ -91,8 +91,8 @@
               <select [(ngModel)]="risk" class="form-control">
                 <option value="">Severity</option>
                 <option value="1">Low Risk</option>
-                <option value="Medium Risk">Medium Risk</option>
-                <option value="Critical">Critical</option>
+                <option value="2">Medium Risk</option>
+                <option value="3">Critical</option>
                 <option value="Urgent">Urgent</option>
                 <option value="Emergent">Emergent</option>
               </select>
@@ -107,11 +107,14 @@
     <div  *ngIf="looped" class="col-sm-8">
       <google-chart #mychart [data]="geoChart" ></google-chart>
     </div>
+    <div *ngIf="!looped && noResult">
+     <p>No data found for your search <a (click)="clearFilters()">Clear Filters</a></p>
+    </div>
     <div class="col-sm-12 pt-5">
       <div *ngIf="looped">
         <agm-map style="height:700px" [zoom]="zoom" [latitude]='lat' [longitude]='long' >
                 <agm-marker *ngFor="let item of json" [latitude]="item.latitude"
-                [longitude]="item.longitude" [iconUrl]="item.iconUrl" (click)="onMouseOver(infoWindow, $event)" 
+                [longitude]="item.longitude" [iconUrl]="item.iconUrl" (mouseOver)="onMouseOver(infoWindow, $event)" 
                 (mouseOut)="onMouseOut(infoWindow, $event)">
                 <agm-info-window #infoWindow><p>{{item.hospital_name}}</p><p>Requirement: {{item.urgency_icuneed}}</p>
                   <p>Need For: {{item.item_name}}</p>

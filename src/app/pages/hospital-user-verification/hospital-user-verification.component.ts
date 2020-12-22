@@ -14,6 +14,7 @@ export class HospitalUserVerificationComponent implements OnInit {
   userDetails:any;
   successform:any;
   fileuploaded:any;
+  url:any="";
 
   userverifyform = new FormGroup({
   
@@ -43,6 +44,7 @@ export class HospitalUserVerificationComponent implements OnInit {
       let formdata = new FormData()
       formdata.append('document',this.fileuploaded);
       formdata.append('user_id',this.userDetails.id);
+      console.log(this.userDetails.id,this.fileuploaded)
         // formdata.append('device_user_id',userDetails.id);
       // formvalue.hospital_required_items=this.hospitalItems
       // formvalue.user_id=this.userDetails.id
@@ -59,15 +61,31 @@ export class HospitalUserVerificationComponent implements OnInit {
       console.log('asdvalid');
 
     }else{
+      alert("here")
       this.userverifyform.markAllAsTouched();
     }
   }
 
-  onDocFileChange($event){
-    console.log($event.target.files);
-    // for (var i = 0; i < $event.target.files.length; i++) { 
-      this.fileuploaded = ($event.target.files[0]);
-    // }
-  }
+  // onDocFileChange($event){
+  //   console.log($event.target.files);
+  //   // for (var i = 0; i < $event.target.files.length; i++) { 
+  //     this.fileuploaded = ($event.target.files[0]);
+  //   // }
+  // }
+  
+
+
+
+  onDocFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+       var reader = new FileReader();
+       this.fileuploaded = event.target.files[0];
+       reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+         this.url = event.target.result;
+       }
+     }
+   }
 
 }

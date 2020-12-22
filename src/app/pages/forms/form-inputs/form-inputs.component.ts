@@ -23,6 +23,7 @@ export class FormInputsComponent implements OnInit {
   public form:FormGroup;
   profileImage: any=[];
   changePassword: FormGroup;
+  url:any;
 
   public constructor(
               private toastr: ToastrService,
@@ -65,11 +66,24 @@ export class FormInputsComponent implements OnInit {
     return this.form.controls;
   }
 
-  onFileChange($event){
-    for (var i = 0; i < $event.target.files.length; i++) { 
-      this.profileImage.push($event.target.files[i]);
-    }
-  }
+  // onFileChange($event){
+  //   for (var i = 0; i < $event.target.files.length; i++) { 
+  //     this.profileImage.push($event.target.files[i]);
+  //   }
+  // }
+  
+  // image preview
+   onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+       var reader = new FileReader();
+
+       reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+         this.url = event.target.result;
+       }
+     }
+   }
 
   updateProfile(){
     if(this.form.valid){

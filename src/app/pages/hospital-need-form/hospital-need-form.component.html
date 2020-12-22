@@ -1,10 +1,10 @@
 <nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 shadow " class="bgChange">
-    <nb-card-header>
+ <nb-card-header>
         Add Hospital
-    </nb-card-header>
+    </nb-card-header> 
     <nb-card-body class="p-0 m-0">
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg" *ngIf="successform">{{successform}}</div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form">
             <!-- <div class="form-group">
                 <label for="cat">Categories</label>
                 <ul class="itemCategory">
@@ -74,6 +74,9 @@
                         <mat-error *ngIf="f.phone_number.errors.required" class="errors-input" class="errors">
                             Phone Number is required.
                         </mat-error>
+                        <mat-error *ngIf="f.phone_number.errors.pattern" class="errors-input" class="errors">
+                            Phone Number is not valid.
+                        </mat-error>
                     </ng-container>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
@@ -133,42 +136,51 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of healthcare workers</mat-label>
-                    <input type="number" value="0" formControlName="healthcare_workers" matInput name="healthcare_workers" required/>
+                    <input type="number"
+                    min="0"  formControlName="healthcare_workers" matInput name="healthcare_workers" required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of other caregivers</mat-label>
-                    <input type="number" formControlName="other_caregivers" name="other_caregivers" matInput required/>
+                    <input type="number" min="0" formControlName="other_caregivers" name="other_caregivers" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of janitorial staff</mat-label>
-                    <input type="number" formControlName="janitorial_staff" name="janitorial_staff" matInput required/>
+                    <input type="number"  min="0" formControlName="janitorial_staff" name="janitorial_staff" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of ambulance personnel</mat-label>
-                    <input type="number" formControlName="ambulance_personnel" name="ambulance_personnel" matInput required/>
+                    <input type="number" min="0" formControlName="ambulance_personnel" name="ambulance_personnel" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of biomedical engineers</mat-label>
-                    <input type="number" formControlName="biomedical_engineers" name="biomedical_engineers" matInput required/>
+                    <input type="number" min="0" formControlName="biomedical_engineers" name="biomedical_engineers" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of Critical Care/ICU Beds</mat-label>
-                    <input type="number" formControlName="critical_care_icu_beds" name="critical_care_icu_beds" matInput required/>
+                    <input type="number" min="0" formControlName="critical_care_icu_beds" name="critical_care_icu_beds" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of Critical Care/ICU Patients</mat-label>
-                    <input type="number" formControlName="critical_care_icu_patients" name="critical_care_icu_patients" matInput required/>
+                    <input type="number" min="0" formControlName="critical_care_icu_patients" name="critical_care_icu_patients" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of Hospital Beds</mat-label>
-                    <input type="number" formControlName="hospital_beds" name="hospital_beds" matInput required/>
+                    <input type="number" min="0" formControlName="hospital_beds" name="hospital_beds" matInput required/>
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-lg-8">
                     <mat-label for="power">Number of Hospital Patients</mat-label>
-                    <input type="number" formControlName="hospital_patients" name="hospital_patients" matInput required/>
+                    <input type="number" min="0" formControlName="hospital_patients" name="hospital_patients" matInput required/>
                 </mat-form-field>
+                <div class="row"  *ngIf="showMsg">
+                    <div class="col-xs-12">
+                      <p class="alert alert-success">
+                          <strong>hospital form filled !</strong> 
+            
+                      </p>
+                    </div>
+                  </div>
                 <div class="example-full-width col-lg-8 ">
-                    <button type="submit" class="btnchanges">Submit</button>
+                    <button type="submit" class="btnchanges" (click)="onSubmit()" >Submit</button>
                 </div>
             </div>
         </form>
