@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
       arr.push(element.longitude);
       arr.push(element.Hospital);
       arr.push(element.value);
-      arr.push('<p>Requirement: '+element.requirement+'</p><p>Need for: '+element.need+'</p>');
+      arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.requirement+'</td><tr><tr><td>Need for</td><td>'+element.need+'</td><tr></table></div>');
       self.geoChart.dataTable.push(arr);
     });
     this.looped=true;
