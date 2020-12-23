@@ -259,7 +259,7 @@ export class ECommerceComponent {
     let obj = {'user_id':this.userDetails.id};
     this.apiService.hospitalDashboardCountGraphData(obj).subscribe(res=>{
       this.hospitalGraphData = res['data']
-      console.log(this.hospitalGraphData);
+      console.log('hospitalGraphData',this.hospitalGraphData);
       let records = res['data']
       let series=[];
       let category1=[];

@@ -13,13 +13,20 @@
     border: none;
     box-shadow: 0 0 10px #ccc;
     border-radius: 0;
+    min-height: 108px;
+}
+.card.widget-flat .card-body {
+    padding: 10px;
 }
 .widget-flat h5 {
     font-size: 17px;
     color: #98a6ad;
+    line-height: inherit;
 }
 .widget-flat h3 {
     color: #6c757d;
+    font-size: 18px;
+    margin: 0 !important;
 }
 .inner_chart h4 {
     padding: 15px;

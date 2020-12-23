@@ -71,11 +71,7 @@ export const ADMIN_ITEMS: NbMenuItem[]=[
     icon: 'lock-outline',
     link: '/pages/hospital-verification'
   },
-  {
-    title:"Change Password",
-    icon: 'lock-outline',
-    link: '/pages/change-password'
-  },
+  
   //  {
   //   title:"Add Hospitals",
   //    icon: 'lock-outline',
@@ -95,17 +91,22 @@ export const ADMIN_ITEMS: NbMenuItem[]=[
     title:"Hospital ICU Need List",
     icon: 'lock-outline',
     link: '/pages/hospital-ICU-need-list'
+  },
+  {
+    title:"Change Password",
+    icon: 'lock-outline',
+    link: '/pages/change-password'
   }
  
 ]
 
 export const REVIEWER_ITEMS: NbMenuItem[]=[
-  {
-    title: 'Dashboard',
-    icon: 'home',
-    link: '/pages/review-list',
-    home: true,
-  },
+  // {
+  //   title: 'Dashboard',
+  //   icon: 'home',
+  //   link: '/pages/review-list',
+  //   home: true,
+  // },
   {
     title: 'Edit Profile',
     icon: 'edit-2-outline',

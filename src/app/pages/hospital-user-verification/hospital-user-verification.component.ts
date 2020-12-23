@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {environment} from 'environments/environment';
 
 @Component({
   selector: 'ngx-hospital-user-verification',
@@ -15,7 +16,9 @@ export class HospitalUserVerificationComponent implements OnInit {
   successform:any;
   fileuploaded:any;
   url:any="";
-
+  documentVerify:any;
+  documentFile:any;
+  assetBasePath:any=environment.imageUrl
   userverifyform = new FormGroup({
   
     document: new FormControl('', Validators.required),
@@ -30,6 +33,15 @@ export class HospitalUserVerificationComponent implements OnInit {
   
   ngOnInit(): void {
     this.userDetails = JSON.parse(localStorage.getItem("userData"));
+    let userdata = {"user_id":this.userDetails.id}
+    this.apiService.getUserDetails(userdata).subscribe(res=>{
+      let userDataResult = res['data'][0]
+      console.log('userDataResult',userDataResult);
+      this.documentVerify = userDataResult.admin_verify_status;
+      console.log(this.documentVerify);
+      // this.documentFile = userDataResult.document;
+      this.documentFile = this.assetBasePath+userDataResult.document;
+    })
   }
 
   get f(){

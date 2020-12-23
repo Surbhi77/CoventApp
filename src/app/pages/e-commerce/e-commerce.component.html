@@ -17,7 +17,7 @@
                 <div class="float-right">
                     <i class="fas fa-sort-numeric-up-alt widget-icon"></i>
                 </div>
-                <h5 class="text-muted font-weight-normal mt-0" title="Question Count">Question Count</h5>
+                <h5 class="text-muted font-weight-normal mt-0">Question Count</h5>
                 <h3 class="mt-3 mb-0">{{questionCount}}</h3>
             </div> <!-- end card-body-->
         </div>
@@ -29,7 +29,7 @@
                 <div class="float-right">
                     <i class="fas fa-poll widget-icon"></i>
                 </div>
-                <h5 class="text-muted font-weight-normal mt-0" title="No of Reviews Recieved">No of Reviews Recieved</h5>
+                <h5 class="text-muted font-weight-normal mt-0">No of Reviews Recieved</h5>
                 <h3 class="mt-3 mb-0">{{noOfstarRating}}</h3>
             </div> <!-- end card-body-->
         </div>
@@ -45,7 +45,7 @@
                 <div class="float-right">
                     <i class="far fa-chart-bar widget-icon"></i>
                 </div>
-                <h5 class="text-muted font-weight-normal mt-0" title="Avg Ratings Recieved">Avg Ratings Recieved</h5>
+                <h5 class="text-muted font-weight-normal mt-0">Avg Ratings Recieved</h5>
                 <h3 class="mt-3 mb-0">{{getStarRating}}</h3>
             </div> <!-- end card-body-->
         </div>
@@ -57,7 +57,7 @@
                 <div class="float-right">
                     <i class="fas fa-laptop widget-icon"></i>
                 </div>
-                <h5 class="text-muted font-weight-normal mt-0" title="No. of Device View">No. of Device View</h5>
+                <h5 class="text-muted font-weight-normal mt-0">No. of Device View</h5>
                 <h3 class="mt-3 mb-0">{{noOfDeviceViews}}</h3>
             </div> <!-- end card-body-->
         </div>
@@ -126,7 +126,7 @@
                         <i class="fas fa-shield-alt widget-icon"></i>
                         <!-- <i class="fas fa-sort-numeric-up-alt widget-icon"></i> -->
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="Question Count">Verify Status</h5>
+                    <h5 class="text-muted font-weight-normal mt-0">Verify Status</h5>
                     <h3 class="mt-3 mb-0 green" *ngIf="hospitalData && hospitalData.admin_verify_status==1">Verified</h3>
                     <h3 class="mt-3 mb-0 red" *ngIf="hospitalData && hospitalData.admin_verify_status==0">Unverified</h3>
                 </div> <!-- end card-body-->
@@ -139,7 +139,7 @@
                     <div class="float-right">
                         <i class="fas fa-poll widget-icon"></i>
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="No of Reviews Recieved">No. of ICU Need</h5>
+                    <h5 class="text-muted font-weight-normal mt-0">No. of ICU Need</h5>
                     <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.icu_needcount; else elseBlock">{{hospitalData.icu_needcount}}</h3>
                     <ng-template #elseBlock>
                         <h3 class="mt-3 mb-0">0</h3>
@@ -155,7 +155,7 @@
                     <div class="float-right">
                         <i class="far fa-chart-bar widget-icon"></i>
                     </div>
-                    <h5 class="text-muted font-weight-normal mt-0" title="Avg Ratings Recieved">{{hospitalData.hospitalLasticuneedItem.item}}</h5>
+                    <h5 class="text-muted font-weight-normal mt-0">{{hospitalData.hospitalLasticuneedItem.item}}</h5>
                     <h3 class="mt-3 mb-0" *ngIf="hospitalData && hospitalData.all_icu_needcount; else elseBlock1">{{hospitalData.hospitalLasticuneedItem.device_need_perday}}</h3>
                     <ng-template #elseBlock1>
                         <h3 class="mt-3 mb-0">0</h3>

@@ -26,7 +26,8 @@ import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-
 import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
 import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 import { AuthguardGuard } from '../guard/authguard.guard';
-
+import { MyreviewEditComponent } from './myreview-edit/myreview-edit.component';
+import { HospitalIcuneedEditComponent } from './hospital-icuneed-edit/hospital-icuneed-edit.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,canActivate:[AuthguardGuard],
@@ -100,6 +101,10 @@ const routes: Routes = [{
       component: MyReviewsComponent,canActivate:[AuthguardGuard],
     },
     {
+      path: 'review-edit/:id',
+      component: MyreviewEditComponent,canActivate:[AuthguardGuard],
+    },
+    {
       path: 'hospital-form',
       component: HospitalNeedFormComponent,canActivate:[AuthguardGuard],
     },
@@ -115,6 +120,11 @@ const routes: Routes = [{
       path: 'hospital-ICU-need',
       component: HospitalIcuNeedFormComponent
     },
+    {
+      path: 'edit-ICU-need/:id',
+      component: HospitalIcuneedEditComponent
+    },
+    
     {
       path: 'hospital-ICU-need-list',
       component: HospitalIcuNeedListComponent

@@ -10,6 +10,7 @@
                   <th>Review Title</th>
                   <th>Review Description</th>
                   <th>Ratings</th>
+                  <th style="width:120px">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -19,6 +20,8 @@
                     <td>{{item.title}}</td>
                     <td>{{item.desccription}}</td>
                     <td>{{item.ratings}}</td>
+                    <td>
+                      <a [routerLink]="'/pages/review-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a></td>
                   </tr>
               </tbody>
         </table>

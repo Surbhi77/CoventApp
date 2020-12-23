@@ -55,6 +55,7 @@ export class FormInputsComponent implements OnInit {
 
   ngOnInit() {
     this.getUserDetails()
+    
     this.materialTheme$ = this.themeService.onThemeChange()
     .pipe(tap(theme => {
       const themeName: string = theme?.name || '';
