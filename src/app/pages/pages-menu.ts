@@ -25,6 +25,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/cms',
       },
       {
+        title: 'Map Setting',
+        link: '/pages/map-setting',
+      },
+      {
         title: 'Slider Management',
         link: '/pages/slider-management',
       },

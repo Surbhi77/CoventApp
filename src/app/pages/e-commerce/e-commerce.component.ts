@@ -36,6 +36,7 @@ export class ECommerceComponent {
     series: [   
       {
         type:'column',
+        name:'Total add',
         showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
@@ -63,6 +64,7 @@ export class ECommerceComponent {
     series: [ 
       {
         type:'column',
+        name:'Total view',
         showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
@@ -91,6 +93,7 @@ export class ECommerceComponent {
     series: [   
       {
         type:'column',
+        name:'Total need',
         showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
@@ -103,7 +106,7 @@ export class ECommerceComponent {
       min:0,
       allowDecimals: false,
       title: {
-        text: "Item Added"
+        text: "No. Of Items Submitted"
       }
     },
     xAxis: {
@@ -119,6 +122,7 @@ export class ECommerceComponent {
     series: [   
       {
         type:'column',
+        name:'Total need',
         showInLegend:false,
         data: [1, 2, 3, 6, 9],
         color: '#13bfb3'
@@ -131,7 +135,7 @@ export class ECommerceComponent {
       min:0,
       allowDecimals: false,
       title: {
-        text: "Item Added"
+        text: "No. Of Items Submitted"
       }
     },
     xAxis: {
@@ -171,7 +175,7 @@ export class ECommerceComponent {
     this.getweeklyItems();
     this.date=new Date();
     let latest_date =this.datepipe.transform(this.date, 'EEEE');
-    console.log(latest_date)
+    // console.log(latest_date)
   }
 
   getLatestAddedItems(){
@@ -189,7 +193,7 @@ export class ECommerceComponent {
       let values=[];
       this.monthlyViewedData.forEach(element => {
         series.push(element.counts);
-        values.push(element.month)
+        values.push(this.datepipe.transform(element.month, 'MMM'))
       });
       this.chartOptions3.series[0].data = series;
       this.chartOptions3.xAxis.categories = values;
@@ -221,7 +225,7 @@ export class ECommerceComponent {
       let values=[];
       this.monthlyViewedData.forEach(element => {
         series.push(element.counts);
-        values.push(element.month)
+        values.push(this.datepipe.transform(element.month, 'MMM'))
       });
       this.chartOptions2.series[0].data = series;
       this.chartOptions2.xAxis.categories = values;
@@ -239,7 +243,7 @@ export class ECommerceComponent {
       this.monthlyData.forEach(element => {
         //console.log(element);
         series.push(element.counts);
-        values.push(element.month)
+        values.push(this.datepipe.transform(element.month, 'MMM'))
       });
       console.log(series)
       this.chartOptions.series[0].data = series;

@@ -12,7 +12,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="home" class="tab-pane active">
-            <div class="row ">
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable">
                         <p class="text-muted p-2">Latest Added Devices</p>
@@ -61,7 +61,41 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs nav-pills">
+                        <li class="nav-item navbg">
+                            <a class="nav-link active" data-toggle="tab" href="#monthly-add">Monthly Added</a>
+                        </li>
+                        <li class="nav-item navbg">
+                            <a class="nav-link" data-toggle="tab" href="#monthly-view">Monthly Views</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="monthly-add" class="tab-pane active">
+                            <div class="col-md-12">
+                                <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
+                                    <div class="inner_chart">
+                                        <h4>Monthly Added</h4>
+                                        <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions" [callbackFunction]="chartCallback" [(update)]="updateFlag" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="monthly-view" class="tab-pane">
+                            <div class="col-md-12">
+                                <div class=" shadow p-3 mb-3 bg-white chart">
+                                    <div class="inner_chart">
+                                        <h4>Monthly Views</h4>
+                                        <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions2" [callbackFunction]="chartCallback2" [(update)]="updateFlag2" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-12">
                     <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
                         <div class="inner_chart">
                             <h4>Monthly Added</h4>
@@ -69,16 +103,7 @@
                             </highcharts-chart>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class=" shadow p-3 mb-3 bg-white chart">
-                        <div class="inner_chart">
-                            <h4>Monthly Views</h4>
-                            <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions2" [callbackFunction]="chartCallback2" [(update)]="updateFlag2" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
-                            </highcharts-chart>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div id="menu1" class="tab-pane fade">
@@ -90,17 +115,15 @@
                             <thead>
                                 <tr>
                                     <td>S.No.</td>
-                                    <td>Category</td>
-                                    <td>Item Name</td>
-                                    <td>Hospital</td>
+                                    <td style="width: 270px;">Item Name</td>
+                                    <td style="width: 270px;">Hospital</td>
                                     <td>Urgency</td>
-                                    <td>Create Date</td>
+                                    <td style="width: 115px;">Create Date</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of latestAddedItems;let i=index">
                                     <td>{{i+1}}</td>
-                                    <td>{{item.itemcat_name}}</td>
                                     <td>{{item.item_name}}</td>
                                     <td>{{item.healthcare_facility_name }}</td>
                                     <td>{{item.urgency_icuneed}}</td>
@@ -137,25 +160,59 @@
                 </div>-->
             </div> 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs nav-pills">
+                        <li class="nav-item navbg">
+                            <a class="nav-link active" data-toggle="tab" href="#monthly-need">Monthly Need</a>
+                        </li>
+                        <li class="nav-item navbg">
+                            <a class="nav-link" data-toggle="tab" href="#weekly-need">Weekly Need</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="monthly-need" class="tab-pane active">
+                            <div class="col-md-12">
+                                <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
+                                    <div class="inner_chart">
+                                        <h4>Monthly Need</h4>
+                                        <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions3" [callbackFunction]="chartCallback3" [(update)]="updateFlag3" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="weekly-need" class="tab-pane">
+                            <div class="col-md-12">
+                                <div class=" shadow p-3 mb-3 bg-white chart">
+                                    <div class="inner_chart">
+                                        <h4>Weekly Need</h4>
+                                        <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions4" [callbackFunction]="chartCallback4" [(update)]="updateFlag4" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-12">
                     <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
                         <div class="inner_chart">
-                            <h4>Weekly Need</h4>
+                            <h4>Monthly Need</h4>
                             <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions3" [callbackFunction]="chartCallback3" [(update)]="updateFlag3" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
                             </highcharts-chart>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class=" shadow p-3 mb-3 bg-white chart">
                         <div class="inner_chart">
-                            <h4>Monthly Need</h4>
+                            <h4>Weekly Need</h4>
                             <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor" [options]="chartOptions4" [callbackFunction]="chartCallback4" [(update)]="updateFlag4" [oneToOne]="true" style="width: 100%; height: 500px; display: block;">
                             </highcharts-chart>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
