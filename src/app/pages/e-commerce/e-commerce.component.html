@@ -83,22 +83,28 @@
         </div>
         <div id="menu1" class="tab-pane fade">
             <div class="row ">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable">
                         <p class="text-muted p-2">Latest Added Items</p>
                         <table class="table  table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
+                                    <td>S.No.</td>
+                                    <td>Category</td>
                                     <td>Item Name</td>
+                                    <td>Hospital</td>
+                                    <td>Urgency</td>
                                     <td>Create Date</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of latestAddedItems">
-                                    <td scope="row">
-                                        {{item.item_name}}
-                                    </td>
-                                    <td scope="row">
+                                <tr *ngFor="let item of latestAddedItems;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.itemcat_name}}</td>
+                                    <td>{{item.item_name}}</td>
+                                    <td>{{item.healthcare_facility_name }}</td>
+                                    <td>{{item.urgency_icuneed}}</td>
+                                    <td>
                                         {{item.date}}
                                     </td>
                                 </tr>
@@ -106,7 +112,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable ">
                         <p class="text-muted p-2">Latest Added Items</p>
                         <table class="table table-hover ">
@@ -128,8 +134,8 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
+                </div>-->
+            </div> 
             <div class="row">
                 <div class="col-md-6">
                     <div class=" shadow p-3 mb-3 bg-white line-height-base chart">

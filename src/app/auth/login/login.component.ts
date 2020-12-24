@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   user:any;
   form: FormGroup = new FormGroup({});
   invalidLogin: boolean = false;
-
+  showloader:boolean=false;
   constructor(private toastr: ToastrService,private fb:FormBuilder,private router: Router,private apiService:ApiService) {
     this.form = fb.group({
       email: new FormControl('',[Validators.required,Validators.email]),
@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
         "username":this.form.value.email,
         "password":this.form.value.password
       };
+      this.showloader=true;
       this.apiService.login(obj).subscribe(res=>{
+        
         console.log(res);
         if(res['success']){
           this.invalidLogin = false;
@@ -41,15 +43,18 @@ export class LoginComponent implements OnInit {
          
           //this.apiService.getUsers().subscribe(res=>{
             this.form.reset();
+            this.showloader=false;
             this.router.navigateByUrl('/pages/dashboard');
           //})
           
         }else{
+          this.showloader=false;
           this.invalidLogin = true;
           this.toastr.error('Invalid username or password!')
         }
       },error=>{
         console.log(error)
+        this.showloader=false;
         this.toastr.error('Something went wrong....please try later')
       })
     }

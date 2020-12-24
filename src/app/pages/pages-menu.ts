@@ -53,17 +53,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Reviewer User Listing',
+    title: 'Reviewer Listing',
     icon: 'keypad-outline',
     link: '/pages/reviewer-user-listing'
   },
   {
-    title:'Innovator User Listing',
+    title:'Device Innovator Listing',
     icon: 'keypad-outline',
     link: '/pages/website-user-listing'
   },
   {
-    title:'Hospitals User Listing',
+    title:'Hospitals Listing',
     icon: 'keypad-outline',
     link: '/pages/hospitals-users'
   },
