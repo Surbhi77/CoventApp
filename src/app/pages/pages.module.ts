@@ -50,6 +50,8 @@ import { HospitalsUsersComponent } from './hospitals-users/hospitals-users.compo
 import { HospitalsListComponent } from './hospitals-list/hospitals-list.component';
 import { HospitalDetailComponent } from './hospital-detail/hospital-detail.component';
 import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
+import { IcuneedListComponent } from './icuneed-list/icuneed-list.component';
+import { MapSettingComponent } from './map-setting/map-setting.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -107,6 +109,8 @@ const materialModules = [
     HospitalsListComponent,
     HospitalDetailComponent,
     DeviceInnovatorDetailComponent,
+    IcuneedListComponent,
+    MapSettingComponent,
   ],
 })
 export class PagesModule {

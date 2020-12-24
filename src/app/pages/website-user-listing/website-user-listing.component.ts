@@ -23,7 +23,7 @@ export class WebsiteUserListingComponent {
       processing: true
     }
     this.apiService.getUserInnovatorList().subscribe(res=>{
-      console.log(res)
+      console.log('list',res)
       this.userListing = res['data']
     })
   }

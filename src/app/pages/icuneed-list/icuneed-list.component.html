@@ -1,0 +1,33 @@
+<nb-card>
+    <nb-card-header>
+        ICU Needs Listing
+    </nb-card-header>
+    <div class="p-3">
+        <nb-card-body>
+            <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>  -->
+            <table *ngIf="icuneedhospitalsListing && icuneedhospitalsListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions" datatable>
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Hospital Name</th>
+                        <th style="width: 200px;">Item Name</th>
+                        <th style="width: 150px;">Category</th>
+                        <th>Urgency Type</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of icuneedhospitalsListing;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.healthcare_facility_name}}</td>
+                        <td>{{item.item_name}}</td>
+                        <td>{{item.itemcat_name}}</td>
+                        <td>{{item.urgency_icuneed}}</td>
+                        <td>{{item.date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </nb-card-body>
+    </div>
+</nb-card>

@@ -1,41 +1,40 @@
 <nb-card>
-  <nb-card-header>
-    Device Innovators Listing
-  </nb-card-header>
+    <nb-card-header>
+        Device Innovators Listing
+    </nb-card-header>
 
-  <nb-card-body>
-    <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <nb-card-body>
+        <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>  -->
-    <div class="p-4 table_sidj">
-      <table *ngIf="deviceListing && deviceListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Device Name</th>
-            <th>Device Category</th>
-            <th>Device Type</th>
-            <th>Create Date</th>
-            <th>Action Buttons</th>
-          </tr>
-        </thead>
-        <tbody >
-         <tr *ngFor="let item of deviceListing;let i=index">
-               <td>{{item.id}}</td>
-               <td>{{item.device_name}}</td>
-               <td>{{item.category_name}}</td>
-               <td>{{item.subcategory_name}}</td>
-               <td>{{item.device_created_date}}</td>
-               <td>
-                <a [routerLink]="'/pages/device-innovatory-detail/'+item.id">View</a>
-                 <a *ngIf="item.device_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)">Unblock</a>
-                 &nbsp;
-                 <a *ngIf="item.device_featured==1" (click)="makeUnfeatured(item,i)">Unfeature</a>
-                 <a *ngIf="item.device_featured==0" (click)="makeFeatured(item,i)">Feature</a>
-              </td>
-           </tr>
-        </tbody>
-      </table>
-    </div>
-    
-  </nb-card-body>
+        <div class="p-4 table_sidj">
+            <table *ngIf="deviceListing && deviceListing.length>0" class="table table-striped table-bordered  row-border hover" [dtOptions]="dtOptions" datatable>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Device Name</th>
+                        <th>Device Category</th>
+                        <th>Device Type</th>
+                        <th>Create Date</th>
+                        <th>Action Buttons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of deviceListing;let i=index">
+                        <td>{{item.id}}</td>
+                        <td>{{item.device_name}}</td>
+                        <td>{{item.category_name}}</td>
+                        <td>{{item.subcategory_name}}</td>
+                        <td>{{item.device_created_date}}</td>
+                        <td>
+                            <a [routerLink]="'/pages/device-innovatory-detail/'+item.id" class="btnchanges "><i class="fa fa-eye"></i>&nbsp;View</a>&nbsp;&nbsp;&nbsp;
+                            <a *ngIf="item.device_status==1" (click)="block(item,i)" class="UV-btn">Block</a><a *ngIf="item.device_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a> &nbsp;
+                            <a *ngIf="item.device_featured==1" (click)="makeUnfeatured(item,i)" class="UV-btn">Unfeature</a>
+                            <a *ngIf="item.device_featured==0" (click)="makeFeatured(item,i)" class="UV-btn">Feature</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </nb-card-body>
 </nb-card>

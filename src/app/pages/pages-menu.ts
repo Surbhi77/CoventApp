@@ -25,6 +25,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/cms',
       },
       {
+        title: 'Map Setting',
+        link: '/pages/map-setting',
+      },
+      {
         title: 'Slider Management',
         link: '/pages/slider-management',
       },
@@ -53,23 +57,28 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Reviewer User Listing',
+    title: 'Reviewer Listing',
     icon: 'keypad-outline',
     link: '/pages/reviewer-user-listing'
   },
   {
-    title:'Innovator User Listing',
+    title:'Device Innovator Listing',
     icon: 'keypad-outline',
     link: '/pages/website-user-listing'
   },
   {
-    title:'Hospitals User Listing',
+    title:'Hospitals Listing',
     icon: 'keypad-outline',
     link: '/pages/hospitals-users'
   },
   {
-    title:'ICU Needs Listing',
+    title:'Hospital & ICU Needs Listing',
     icon: 'keypad-outline',
     link: '/pages/hospitals-list'
+  },
+  {
+    title:'ICU Needs Listing',
+    icon: 'keypad-outline',
+    link: '/pages/icu-need-List'
   },
   ];

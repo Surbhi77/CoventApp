@@ -24,24 +24,32 @@ nb-card-body {
 
 nb-card-body {
     line-height: 2.5rem;
-    display: initial !important;
 }
 
 nb-card {
     box-shadow: 0 0 10px #ccc;
 }
 
-.UV-btn {
-    cursor: pointer;
-    border: 1px solid #13bfb3;
-    text-decoration: none !important;
-    padding: 3px 10px;
-    font-size: 13px !important;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
+.btnchanges {
+    padding: 5px 10px;
+    border-radius: 30px;
+    text-decoration: none!important;
+    color: #fff!important;
+    font-size: 14px;
+    background-color: royalblue;
 }
 
-.UV-btn:hover {
+.tabedit {
+    background: #8f9bb3;
+}
+
+.tabdel {
+    background: red;
+}
+button.cutom_btn_all {
+    padding: 10px 30px;
+    border: none;
     background: #13bfb3;
-    color: #fff !important;
+    color: #fff;
+    border-radius: 3px;
 }

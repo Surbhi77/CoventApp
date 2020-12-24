@@ -23,123 +23,113 @@ import { HospitalsUsersComponent } from './hospitals-users/hospitals-users.compo
 import { HospitalsListComponent } from './hospitals-list/hospitals-list.component';
 import { HospitalDetailComponent } from './hospital-detail/hospital-detail.component';
 import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
-
+import { AuthguardGuard } from 'app/guard/authguard.guard';
+import { IcuneedListComponent } from './icuneed-list/icuneed-list.component';
+import { MapSettingComponent } from './map-setting/map-setting.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
     {
       path: 'dashboard',
-      component: ECommerceComponent,
+      component: ECommerceComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'newsletter',
-      component: NewsletterComponent,
+      component: NewsletterComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'reviewer-listing',
-      component: ReviewerListingComponent,
+      component: ReviewerListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'website-user-listing',
-      component: WebsiteUserListingComponent,
+      component: WebsiteUserListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'hospitals-users',
-      component: HospitalsUsersComponent,
+      component: HospitalsUsersComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'hospitals-list',
-      component: HospitalsListComponent,
+      component: HospitalsListComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'hospitals-detail/:id',
-      component: HospitalDetailComponent,
+      component: HospitalDetailComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'device-innovatory-detail/:id',
-      component: DeviceInnovatorDetailComponent,
+      component: DeviceInnovatorDetailComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'reviewer-user-listing',
-      component: ReviewerListComponent,
+      component: ReviewerListComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'add-cms',
-      component: AddCmsComponent,
+      component: AddCmsComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'add-compliance',
-      component: ComplianceComponent
+      component: ComplianceComponent,canActivate:[AuthguardGuard],
     },
     {
       path:'edit-compliance/:id',
-      component:ComplianceComponent
+      component:ComplianceComponent,canActivate:[AuthguardGuard],
     },
     {
       path:'add-characteristics',
-      component:CharacteristicsComponent
+      component:CharacteristicsComponent,canActivate:[AuthguardGuard],
     },
     {
       path:'edit-characteristics/:id',
-      component:CharacteristicsComponent
+      component:CharacteristicsComponent,canActivate:[AuthguardGuard],
     },
     {
       path:'compliance-listing',
-      component:ComplianceListingComponent
+      component:ComplianceListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path:'characteristic-listing',
-      component:CharacteristicListingComponent
+      component:CharacteristicListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'add-sliders',
-      component: AddSlidersComponent,
+      component: AddSlidersComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'slider-management',
-      component: SliderManagementComponent,
+      component: SliderManagementComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'device-innovators-listing',
-      component: DeviceInnovatorsListingComponent,
+      component: DeviceInnovatorsListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'device-category-listing',
-      component: DeviceCategoryListingComponent,
+      component: DeviceCategoryListingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'cms',
-      component: CmsComponent,
+      component: CmsComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'iot-dashboard',
-      component: DashboardComponent,
+      component: DashboardComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'icu-need-List',
+      component: IcuneedListComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'map-setting',
+      component: MapSettingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
-    },
-    {
-      path: 'extra-components',
-      loadChildren: () => import('./extra-components/extra-components.module')
-        .then(m => m.ExtraComponentsModule),
-    },
-    {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
-    },
-    {
-      path: 'miscellaneous',
-      loadChildren: () => import('./miscellaneous/miscellaneous.module')
-        .then(m => m.MiscellaneousModule),
     },
     {
       path: '',

@@ -145,6 +145,31 @@ export class ApiService {
   public getDeviceInnovatorDetail(id){
     return this.http.get(this.secureApi+'get-deviceinnovator-detail/'+id)
   }
+
+  public verifyhospitaluserdoc(id,type){
+    return this.http.get(this.secureApi+'verify-hospital-user/'+id+'/'+type)
+  }
+
+  public latestAddItems(){
+    return this.http.get(this.secureApi+'admin-hospital-dashboard')
+  }
+  public monthlyItemsgraph(){
+    return this.http.get(this.secureApi+'monthlyadded-hospital-item')
+  }
+  public weeklyItemsgraph(){
+    return this.http.get(this.secureApi+'weeklyadded-hospital-item')
+  }
+  public getIcuNeedHospitalslist(){
+    return this.http.get(this.secureApi+'admin-icuneed-hospital-dashboard')
+  }
+
+  public updateMapSetting(formvalue){
+    return this.http.post(this.secureApi+'admin-map-settingupdate',formvalue)
+  }
+  public getMapSetting(){
+    return this.http.get(this.secureApi+'admin-map-setting/map_setting')
+  }
+
   /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);

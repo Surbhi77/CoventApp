@@ -1,35 +1,35 @@
 <nb-card>
     <nb-card-header>
-      Device Innovators Listing
+
+        Device Innovators Listing
     </nb-card-header>
-  
+
     <nb-card-body>
-      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
       </ng2-smart-table>  -->
-      <div class="p-4 table_sidj">
-        <table *ngIf="deviceCategories && deviceCategories.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
-          <thead>
-            <tr>
-              <th>Id</th> 
-              <th>Category Name</th>
-              <th>Action Buttons</th>
-            </tr>
-          </thead>
-          <tbody >
-           <tr *ngFor="let item of deviceCategories;let i=index">
-                 <td>{{i+1}}</td>
-                 <td>{{item.category_name}}</td>
-                 
-                 <td>
-                   
-                   <a *ngIf="item.category_featured==1" (click)="makeUnfeatured(item,i)">Unfeature</a>
-                   <a *ngIf="item.category_featured==0" (click)="makeFeatured(item,i)">Feature</a>
-                </td>
-             </tr>
-          </tbody>
-        </table>
-      </div>
-      
+        <div class="p-4 table_sidj">
+            <table *ngIf="deviceCategories && deviceCategories.length>0" class="table  table-bordered table-sm row-border hover" [dtOptions]="dtOptions" datatable>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Category Name</th>
+                        <th>Action Buttons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of deviceCategories;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.category_name}}</td>
+
+                        <td>
+
+                            <a *ngIf="item.category_featured==1" (click)="makeUnfeatured(item,i)">Unfeature</a>
+                            <a *ngIf="item.category_featured==0" (click)="makeFeatured(item,i)">Feature</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </nb-card-body>
-  </nb-card>
-  
+</nb-card>

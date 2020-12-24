@@ -1,0 +1,34 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange">
+    <nb-card-header>
+        Map Setting
+    </nb-card-header>
+    <nb-card-body class="p-0 m-0">
+        <div class="col-md-12 col-lg-12" >
+        <nb-alert status="success" *ngIf="successform" class="status-success w-100 d-block mb-0 mt-2 text-center">{{successform}}</nb-alert>
+    </div>
+        <!-- <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg " >{{successform}}</div> -->
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="p-5">
+                <div class="form-group col-md-8">
+                    <mat-label for="power" class="pb-3 d-block">Show Map History</mat-label>
+                    <mat-radio-group formControlName="show_hisory">
+                        <mat-radio-button color="primary" class="pr-5" value="7">7 Days</mat-radio-button>
+                        <mat-radio-button color="primary" class="pr-5" value="15">15 Days</mat-radio-button>
+                        <mat-radio-button color="primary" class="pr-5" value="30">1 Month</mat-radio-button>
+                        <mat-radio-button color="primary" class="pr-5" value="90">3 Months</mat-radio-button>
+                    </mat-radio-group>
+                    <ng-container *ngIf="f.show_hisory.touched && f.show_hisory.invalid">
+                        <mat-error *ngIf="f.show_hisory.errors.required" class="errors-input errors alert alert-danger">
+                            Please select any one.
+                        </mat-error>
+                    </ng-container>
+                </div>
+                <div class="col-lg-8">
+                    <button type="submit" class="btn btn-success" class="cutom_btn_all ">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </nb-card-body>
+</nb-card>

@@ -1,29 +1,29 @@
 <nb-card>
     <nb-card-header>
-      Website User Listing
+        Website User Listing
     </nb-card-header>
-  
-    <nb-card-body>
-      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <div class="p-3">
+        <nb-card-body>
+            <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
       </ng2-smart-table>  -->
-      <table *ngIf="userListing && userListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"  datatable >
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>User Name</th>
-          <th>User Email</th>
-          <th>Action Buttons</th>
-        </tr>
-      </thead>
-      <tbody >
-       <tr *ngFor="let item of userListing;let i=index">
-             <td>{{item.id}}</td>
-             <td>{{item.user_name}}</td>
-             <td>{{item.user_email}}</td>
-             <td><a *ngIf="item.user_status==1" (click)="block(item,i)">Block</a><a *ngIf="item.user_status==0" (click)="unblock(item,i)">Unblock</a></td>
-         </tr>
-      </tbody>
-    </table>
-    </nb-card-body>
-  </nb-card> 
-  
+            <table *ngIf="userListing && userListing.length>0" class="table  table-striped table-bordered table-sm row-border hover " [dtOptions]="dtOptions" datatable>
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                        <th>Action Buttons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of userListing;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.user_name}}</td>
+                        <td>{{item.user_email}}</td>
+                        <td><a *ngIf="item.user_status==1" (click)="block(item,i)" class="UV-btn">Block</a><a *ngIf="item.user_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </nb-card-body>
+    </div>
+</nb-card>

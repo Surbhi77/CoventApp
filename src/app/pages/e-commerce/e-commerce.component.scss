@@ -1,0 +1,49 @@
+        .inner_chart h4 {
+            padding: 0px;
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: 500;
+            background: #fff;
+        }
+        
+        .chart {
+            box-shadow: 0 0 10px #ccc;
+        }
+        
+        .clTable {
+            box-shadow: 0 0 10px #ccc;
+            line-height: 2.5rem;
+        }
+        
+        // Hospital history
+        .hospital-data ul {
+            margin: 0 !important;
+            border: 0;
+            background: #ebebeb;
+        }
+        
+        .hospital-data ul li {
+            margin: 0;
+            width: 120px;
+        }
+        
+        .hospital-data ul li a {
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 0 !important;
+            background: #13bfb326;
+            color: #222;
+        }
+        
+        .hospital-data ul li a.active {
+            color: #fff;
+            background-color: #13bfb3 !important;
+        }
+        
+        .hospital-data .tab-content {
+            padding: 20px;
+            background: #ebebeb;
+        }
+        
+        // Hospital history
