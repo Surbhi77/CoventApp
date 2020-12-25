@@ -87,7 +87,7 @@ export class ReviewListingComponent implements OnInit {
     }
     
     
-    this.apiService.getReviewListing(this.innovator_Id).subscribe(res=>{
+    this.apiService.getReviewListingByInnovator(this.innovator_Id).subscribe(res=>{
       if(res["success"]){
         this.deviceListing = res['data'];
         console.log(this.deviceListing);
