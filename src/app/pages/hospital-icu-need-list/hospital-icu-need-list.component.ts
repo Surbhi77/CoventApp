@@ -20,7 +20,7 @@ export class HospitalIcuNeedListComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 10,
       lengthMenu : [5, 10, 25],
       processing: true
     }

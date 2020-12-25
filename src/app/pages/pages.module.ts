@@ -56,6 +56,9 @@ import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-
 import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { ViewDetailsComponent } from './view-details/view-details.component';
+import { MyreviewEditComponent } from './myreview-edit/myreview-edit.component';
+import { DataTablesModule } from 'angular-datatables';
+import { HospitalIcuneedEditComponent } from './hospital-icuneed-edit/hospital-icuneed-edit.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -81,6 +84,7 @@ const materialModules = [
     Ng2SmartTableModule,
     NbActionsModule,
     NbButtonModule,
+    DataTablesModule,
     NbCardModule,
     NbCheckboxModule,
     NbDatepickerModule, NbIconModule,
@@ -117,6 +121,8 @@ const materialModules = [
     HospitalIcuNeedListComponent,
     HospitalUserVerificationComponent,
     ViewDetailsComponent,
+    MyreviewEditComponent,
+    HospitalIcuneedEditComponent,
   ],
 })
 export class PagesModule {

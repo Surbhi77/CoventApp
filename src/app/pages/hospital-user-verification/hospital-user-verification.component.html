@@ -4,42 +4,52 @@
     </nb-card-header>
     <nb-card-body>
         <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg p-3" *ngIf="successform">{{successform}}</div>
-        <form [formGroup]="userverifyform" (ngSubmit)="onSubmit()">
-            <div class="row p-3">
-                <!-- <div class="col-lg-8">
-         
-                    <input type='file'   accept="image/*" id="file" (change)="onDocFileChange($event)">
-                    <label for="file" >Choose file</label>
-                    <img [src]="url" height="200" class="p-3"> <br/>
-                    <span *ngIf="f.document.touched && f.document.invalid">
-                        <span *ngIf="f.document.errors.required" class="errors-input">
-                            Please select file.
-                        </span>
-                        </span>
-                   </div> -->
-                <div class="col-md-8 ">
-                    <div class=" text-center btn-1">
-                        <input type="file" accept="image/*" (change)="onDocFileChange($event)" id="file" formControlName="document" class="">
-                        <label for="file">Upload File</label>
-
-                        
-                        <span *ngIf="f.document.touched && f.document.invalid">
-                        <span *ngIf="f.document.errors.required" class="errors-input">
-                            Please select file.
-                        </span>
-                        </span>
-                    </div>
-
-                    <img [src]="url" height="200" class="p-3"> <br/>
-
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btnChanges">Submit</button>
+        
+            <div *ngIf="documentVerify; else elseBlock">
+                <div class="pending_mesg">
+                    <a [href]="documentFile" target="_blank">View File</a>
+                    <p>Your hospital is already verified.</p>
                 </div>
             </div>
+            <ng-template #elseBlock>
+                
+                
+            
+            
+            <form [formGroup]="userverifyform" (ngSubmit)="onSubmit()">
+                <div class="row p-3">
+                    <!-- <div class="col-lg-8">
+            
+                        <input type='file'   accept="image/*" id="file" (change)="onDocFileChange($event)">
+                        <label for="file" >Choose file</label>
+                        <img [src]="url" height="200" class="p-3"> <br/>
+                        <span *ngIf="f.document.touched && f.document.invalid">
+                            <span *ngIf="f.document.errors.required" class="errors-input">
+                                Please select file.
+                            </span>
+                            </span>
+                    </div> -->
+                    <div class="col-md-8 ">
+                        <div class=" text-center btn-1">
+                            <input type="file" accept="image/*" (change)="onDocFileChange($event)" id="file" formControlName="document" class="">
+                            <label for="file">Upload File</label>
 
-        </form>
+                            
+                            <span *ngIf="f.document.touched && f.document.invalid">
+                            <span *ngIf="f.document.errors.required" class="errors-input">
+                                Please select file.
+                            </span>
+                            </span>
+                        </div>
 
+                        <img [src]="url" height="200" class="p-3"> <br/>
 
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btnChanges">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </ng-template>
     </nb-card-body>
 </nb-card>

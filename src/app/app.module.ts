@@ -43,6 +43,8 @@ import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { DataTablesModule } from 'angular-datatables';
+
 const MyGoogleChartsSettings: GoogleChartsSettings = {
   mapsApiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'
 };
@@ -75,6 +77,7 @@ const MyGoogleChartsSettings: GoogleChartsSettings = {
     FormsModule,
     ReactiveFormsModule,
     RatingModule,
+    DataTablesModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),

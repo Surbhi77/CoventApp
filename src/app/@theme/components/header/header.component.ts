@@ -93,7 +93,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
       //if(res.user_name)
     })
-      this.menuService.onItemClick()
+      
+    this.menuService.onItemClick()
       .pipe(
         filter(({ tag }) => tag === 'my-context-menu'),
         map(({ item: { title } }) => title),
@@ -104,6 +105,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
           localStorage.clear();
           this.apiService.userLoggedOutorIn$.next(0)
           this.router.navigateByUrl('/auth/login');
+        }
+        if(title == 'Profile'){
+          // localStorage.clear();
+          // this.apiService.userLoggedOutorIn$.next(0)
+          this.router.navigateByUrl('/pages/forms/inputs');
         }
       });
 

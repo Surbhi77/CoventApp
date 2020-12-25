@@ -55,6 +55,7 @@ export class FormInputsComponent implements OnInit {
 
   ngOnInit() {
     this.getUserDetails()
+    
     this.materialTheme$ = this.themeService.onThemeChange()
     .pipe(tap(theme => {
       const themeName: string = theme?.name || '';
@@ -75,6 +76,7 @@ export class FormInputsComponent implements OnInit {
   // image preview
    onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
+      // alert('asdasd')
        var reader = new FileReader();
        this.profileImage.push(event.target.files[0]);
        reader.readAsDataURL(event.target.files[0]); // read file as data url

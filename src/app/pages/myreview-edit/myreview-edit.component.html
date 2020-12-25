@@ -1,0 +1,50 @@
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 " class="bgChange">
+    <nb-card-header>
+        Edit Review
+    </nb-card-header>
+    <nb-card-body class="p-0 m-0">
+        <div class="col-md-12 col-lg-12 col-xxxl-12 success-msg " *ngIf="successform">{{successform}}</div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="p-5">
+                
+                <mat-form-field class="example-full-width col-lg-8 outer">
+                    <mat-label for="power">Ratings</mat-label>
+                    <mat-select formControlName="ratings" name="ratings" id="power" required>
+                        <mat-option *ngFor="let elec_source of reviewStars" [value]="elec_source">{{elec_source}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngIf="f.ratings.touched && f.ratings.invalid">
+                        <mat-error *ngIf="f.ratings.errors.required" class="errors-input errors alert alert-danger">
+                            Required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8 outer">
+                    <mat-label for="power">Title</mat-label>
+
+                    <input type="text" formControlName="title" name="title" matInput required/>
+                    <ng-container *ngIf="f.title.touched && f.title.invalid">
+                        <mat-error *ngIf="f.title.errors.required" class="errors-input errors alert alert-danger">
+                            Title is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-lg-8 outer">
+                    <mat-label for="power">Description</mat-label>
+
+                    <input type="text" formControlName="desccription" name="desccription" matInput required/>
+                    <ng-container *ngIf="f.desccription.touched && f.desccription.invalid">
+                        <mat-error *ngIf="f.desccription.errors.required" class="errors-input errors alert alert-danger">
+                            desccription is required.
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+
+                <div class="col-lg-8">
+                    <button type="submit" class="btn btn-success " class="cutom_btn_all ">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </nb-card-body>
+</nb-card>
