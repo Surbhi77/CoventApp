@@ -28,6 +28,9 @@ export class ECommerceComponent {
   updateFlag3=false;
   updateFlag4=false;
   latestAddedItems:any;
+  lat = 38.907192;
+  long = -77.036873;
+  zoom = 2;
   chartOptions = {
     title: {
       // text: 'Monthly Added'
@@ -147,6 +150,9 @@ export class ECommerceComponent {
   monthlyReviewData: any=[];
   monthlyViewedData: any;
   date:any;
+  json:any[]=[];
+  looped: boolean=false;
+  openedWindow: any;
 
   constructor(private apiService:ApiService,public datepipe: DatePipe){
     const self = this;
@@ -173,9 +179,74 @@ export class ECommerceComponent {
     this.getLatestAddedItems();
     this.getmonthlyItems();
     this.getweeklyItems();
+    this.getMapItems()
     this.date=new Date();
     let latest_date =this.datepipe.transform(this.date, 'EEEE');
     // console.log(latest_date)
+  }
+
+  isInfoWindowOpen(hospitalName) {
+    return this.openedWindow == hospitalName; // alternative: check if id is in array
+  }
+
+  onMouseOver(infoWindow, $event: MouseEvent) {
+    infoWindow.open();
+  }
+
+  onMouseOut(infoWindow, $event: MouseEvent) {
+      infoWindow.close();
+  }
+
+  openWindow(id) {
+    this.openedWindow = id; // alternative: push to array of numbers
+  }
+
+  getMapItems() {
+    //throw new Error("Method not implemented.");
+    this.apiService.getAllMapsNeeds().subscribe(res=>{
+      console.log(res);
+      this.json=res['data'];
+      let self = this;
+      if(this.json.length){
+        this.json.forEach(element=>{
+          var arr = [];
+          arr.push(+element.latitude);
+          arr.push(+element.longitude);
+          arr.push('Need for '+element.item_name);
+          arr.push(+element.urgency_value);
+          arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.urgency_icuneed+'</td><tr></table></div>');
+          //self.geoChart.dataTable.push(arr);
+          if(element.urgency_icuneed == "Low Risk"){
+            element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Medium Risk"){
+            element.iconUrl = {url:'./assets/images/circle-07.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "High Risk"){
+            element.iconUrl = {url:'./assets/images/circle-06.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Critical"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Urgent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+          if(element.urgency_icuneed == "Emergent"){
+            element.iconUrl = {url:'./assets/images/circle-05.png',"scaledSize": {"height": 10, "width": 10}}
+          }
+        });
+        this.looped=true;
+      }else{
+      //  this.geoChart.dataTable.length = 1;
+        this.looped=false;
+        //this.noResult=true;
+      }
+      
+      //console.log(this.json)
+      //console.log(this.geoChart.dataTable)
+      
+     
+    })
   }
 
   getLatestAddedItems(){

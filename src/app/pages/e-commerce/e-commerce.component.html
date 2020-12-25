@@ -20,13 +20,22 @@
                             <thead>
                                 <tr>
                                     <td>Device Name</td>
-                                    <td>Create Date</td>
+                                    <td>Device Category</td>
+                                    <td>Added By</td>
+                                    <td>Date</td>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of deviceListing">
                                     <td (click)="openDetail(item)" scope="row">
                                         {{item.device_name}}
+                                    </td>
+                                    <td (click)="openDetail(item)">
+                                        {{item.category_name}}
+                                    </td>
+                                    <td (click)="openDetail(item)">
+                                        {{item.user_name}}
                                     </td>
                                     <td (click)="openDetail(item)" scope="row">
                                         {{item.device_created_date}}
@@ -43,13 +52,21 @@
                             <thead>
                                 <tr>
                                     <td>Device Name</td>
-                                    <td>Create Date</td>
+                                    <td>Device Category</td>
+                                    <td>Added By</td>
+                                    <td>Date</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of topViewedListing">
                                     <td (click)="openDetail(item)">
                                         {{item.device_name}}
+                                    </td>
+                                    <td (click)="openDetail(item)">
+                                        {{item.category_name}}
+                                    </td>
+                                    <td (click)="openDetail(item)">
+                                        {{item.user_name}}
                                     </td>
                                     <td (click)="openDetail(item)">
                                         {{item.device_created_date}}
@@ -163,6 +180,28 @@
                     </div>
                 </div>
             </div>
+            <div class="row magic-row">
+                <div class="col-lg-12 pt-5">
+                <div class="section-title">
+                    <h2>ICU Needs Location Tracker</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-12 pt-4">
+                <div *ngIf="looped" class="shodows">
+                <agm-map style="height:700px" [zoom]="zoom" [latitude]='lat' [longitude]='long' >
+                        <!-- <agm-marker *ngFor="let item of json" [latitude]="item.latitude"
+                        [longitude]="item.longitude"  [iconUrl]="item.iconUrl" (mouseOver)="onMouseOver(infoWindow, $event)" 
+                        (mouseOut)="onMouseOut(infoWindow, $event)">
+                        <agm-info-window #infoWindow ><p style="padding: 10px; background-color: #13bfb3; color: #fff; font-size: 12px; margin-bottom: 10px;">{{item.hospital_name}}</p><p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Requirement: {{item.urgency_icuneed}}</p>
+                        <p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Need For: {{item.item_name}}</p>
+                        </agm-info-window>
+                        </agm-marker>                 -->
+                </agm-map>
+                </div>
+                
+            </div>
+   </div>
         </div>
     </div>
 </div>
