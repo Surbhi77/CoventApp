@@ -32,7 +32,7 @@
                             <a *ngIf="item.user_status==0" (click)="unblock(item,i)" class="UV-btn">Unblock</a>
                             <a (click)="verifyhospitaldoc(item.id,i,1)" class="UV-btn" *ngIf="item.admin_verify_status==0 && item.document && item.document!=''"> Accept</a>
                             <a (click)="verifyhospitaldoc(item.id,i,1)" class="UV-btn" *ngIf="item.admin_verify_status==2 && item.document && item.document!=''"> Accept</a>
-                            <a (click)="verifyhospitaldoc(item.id,i,0)" class="UV-btn" *ngIf="item.admin_verify_status==1 && item.document && item.document!=''"> Reject</a>
+                            <!-- <a (click)="verifyhospitaldoc(item.id,i,0)" class="UV-btn" *ngIf="item.admin_verify_status==1 && item.document && item.document!=''"> Reject</a> -->
                             <a (click)="verifyhospitaldoc(item.id,i,0)" class="UV-btn" *ngIf="item.admin_verify_status==0 && item.document && item.document!=''"> Reject</a>
                         </td>
                     </tr>
