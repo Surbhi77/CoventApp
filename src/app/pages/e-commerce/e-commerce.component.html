@@ -12,7 +12,90 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="home" class="tab-pane active">
-            <div class="row">
+
+            <div class="row pt-5">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs nav-pills">
+                        <li class="nav-item navbg">
+                            <a class="nav-link active" data-toggle="tab" href="#latest-add_d">Latest Added Devices</a>
+                        </li>
+                        <li class="nav-item navbg">
+                            <a class="nav-link" data-toggle="tab" href="#topvidewdeivs">Top Viewed Devices</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="latest-add_d" class="tab-pane active">
+                            <div class="">
+                                <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
+                                    <div class="inner_chart">
+                                        <h4>Latest Added Devices</h4>
+                                        <table class="table  table-hover" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Device Name</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of deviceListing">
+                                                    <td (click)="openDetail(item)" scope="row">
+                                                        {{item.device_name}}
+                                                    </td>
+                                                    <td (click)="openDetail(item)" scope="row">
+                                                        {{item.device_created_date}}
+                                                    </td>
+                                                    <td>02-204-200</td>
+                                                    <td>02-204-200</td>
+                                                    <td>02-204-200</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="topvidewdeivs" class="tab-pane">
+                            <div class="">
+                                <div class=" shadow p-3 mb-3 bg-white chart">
+                                    <div class="inner_chart">
+                                        <h4>Top Viewed Devices</h4>
+                                        <table class="table table-hover ">
+                                            <thead>
+                                                <tr>
+                                                    <td>Device Name</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                    <td>Create Date</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of topViewedListing">
+                                                    <td (click)="openDetail(item)">
+                                                        {{item.device_name}}
+                                                    </td>
+                                                    <td (click)="openDetail(item)">
+                                                        {{item.device_created_date}}
+                                                    </td>
+                                                    <td>021-21360</td>
+                                                    <td>021-21360</td>
+                                                    <td>021-21360</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="row">
                 <div class="col-sm-6">
                     <div class="table-responsive shadow p-3 mb-3 bg-white clTable">
                         <p class="text-muted p-2">Latest Added Devices</p>
@@ -76,7 +159,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row pt-5">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs nav-pills">
