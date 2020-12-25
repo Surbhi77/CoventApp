@@ -173,8 +173,7 @@ export class ECommerceComponent {
     this.getStarRatings();
     this.questionsRecieved();
     this.weeklyReview();
-    this.weeklyView()
-
+    this.weeklyView();
     this.getHospitalsDashboardCount();
     this.getHospitalsDashboardGraphData();
   }

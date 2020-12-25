@@ -122,6 +122,18 @@ export class ApiService {
     return this.http.get(this.baseAPi+'/innovator-detail/'+id)
   }
 
+  public getViewsbyInnovation(id){
+    return this.http.get(this.baseAPi+'/innovation-view-counts/'+id)
+  }
+
+  public getReviewsbyInnovation(id){
+    return this.http.get(this.baseAPi+'/innovation-review-counts/'+id)
+  }
+
+  public getQuestionbyInnovation(id){
+    return this.http.get(this.baseAPi+'innovation-question-counts/'+id)
+  }
+
   public getUserDetails(obj){
     return this.http.post(this.baseAPi+'/user-profile',obj)
   }

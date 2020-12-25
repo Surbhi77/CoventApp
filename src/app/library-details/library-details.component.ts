@@ -32,6 +32,8 @@ export class LibraryDetailsComponent implements OnInit {
   submitted: boolean=false;
   isLoggedIn:boolean=false;
   userDetails:any;
+  safeHtml: any;
+  userLoggedIn: boolean =false;
   
   constructor(private toastr: ToastrService,
      private fb:FormBuilder,
@@ -93,8 +95,19 @@ export class LibraryDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("userData")){
-      this.userDetails = JSON.parse(localStorage.getItem("userData"))
+      this.userDetails = JSON.parse(localStorage.getItem("userData"));
+      this.userLoggedIn=true
+    }else{
+      this.userLoggedIn=false
     }
+    this.apiService.userLoggedOutorIn$.subscribe(res=>{
+      if(res == 0){
+        this.userLoggedIn=false
+      }else{
+        this.userLoggedIn=true;
+        this.userDetails = JSON.parse(localStorage.getItem("userData"))
+      }
+    })
     this.form = this.fb.group({
       review: new FormControl('',[Validators.required]),
       title: new FormControl('',[Validators.required])
@@ -151,6 +164,7 @@ export class LibraryDetailsComponent implements OnInit {
       if(res['success']){
         this.deviceDetails =  res['data'][0];
         this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.deviceDetails.device_videos);
+        this.safeHtml = this._sanitizer.bypassSecurityTrustHtml(this.deviceDetails.device_videos)
       }
     })
   }
@@ -166,6 +180,8 @@ export class LibraryDetailsComponent implements OnInit {
   }
 
   open(content) {
+    this.form.reset();
+    this.reviewStars=0;
     if(localStorage.getItem("userData")){
       console.log(content)
       this.modalService.open(content).result.then((result) => {
@@ -183,7 +199,8 @@ export class LibraryDetailsComponent implements OnInit {
           }
           this.apiService.addReview(obj).subscribe(res=>{
             console.log(res);
-            this.getReviewListing()
+            this.getReviewListing();
+            this.toastr.success("Review submitted successfully")
           })
         }
       }, (reason) => {
@@ -191,12 +208,13 @@ export class LibraryDetailsComponent implements OnInit {
       });
     }else{
       this.showModal=true;
-      this.toastr.error('Please login to continue')
+     // this.toastr.error('Please login to continue')
     }
     
   }
 
   openQuestion(content) {
+    this.quesForm.reset();
     if(localStorage.getItem("userData")){
       console.log(content)
       this.modalService.open(content).result.then((result) => {
@@ -212,14 +230,15 @@ export class LibraryDetailsComponent implements OnInit {
           }
           this.apiService.addQuestion(obj).subscribe(res=>{
             console.log(res);
-            this.getQuestionListing()
+            this.getQuestionListing();
+            this.toastr.success("Question submitted successfully")
           })
         }
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }else{
-      this.toastr.error("Please login to continue");
+     // this.toastr.error("Please login to continue");
       this.showModal=true
     }
     

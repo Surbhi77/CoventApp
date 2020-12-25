@@ -55,6 +55,7 @@ import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-
 import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
 import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { ViewDetailsComponent } from './view-details/view-details.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -115,6 +116,7 @@ const materialModules = [
     HospitalIcuNeedFormComponent,
     HospitalIcuNeedListComponent,
     HospitalUserVerificationComponent,
+    ViewDetailsComponent,
   ],
 })
 export class PagesModule {

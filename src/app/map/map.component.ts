@@ -94,8 +94,8 @@ export class MapComponent implements OnInit {
   longitude: any;
   selectedAddress: boolean;
   items:any[]=[];
-  risk:any;
-  item:any;
+  risk:any=0;
+  item:any=0;
   noResult: boolean=false;
   location:any='';
 
@@ -142,9 +142,9 @@ export class MapComponent implements OnInit {
           var arr = [];
           arr.push(+element.latitude);
           arr.push(+element.longitude);
-          arr.push(element.hospital_name);
+          arr.push('Need for '+element.item_name);
           arr.push(+element.urgency_value);
-          arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.urgency_icuneed+'</td><tr><tr><td>Need for</td><td>'+element.item_name+'</td><tr></table></div>');
+          arr.push('<div class="tooltipa"><div></div><table class="table" style="font-size: 12px; padding:0 !important;"><tr><td>Requirement</td><td>'+element.urgency_icuneed+'</td><tr></table></div>');
           self.geoChart.dataTable.push(arr);
           if(element.urgency_icuneed == "Low Risk"){
             element.iconUrl = {url:'./assets/images/circle-10.png',"scaledSize": {"height": 10, "width": 10}}
@@ -271,8 +271,8 @@ export class MapComponent implements OnInit {
   }
 
   clearFilters(){
-    this.risk='';
-    this.item='';
+    this.risk=0;
+    this.item=0;
     this.latitude='';
     this.longitude='';
     this.location=''

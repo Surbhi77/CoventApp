@@ -26,6 +26,7 @@ import { HospitalIcuNeedFormComponent } from './hospital-icu-need-form/hospital-
 import { HospitalIcuNeedListComponent } from './hospital-icu-need-list/hospital-icu-need-list.component';
 import { HospitalUserVerificationComponent } from './hospital-user-verification/hospital-user-verification.component';
 import { AuthguardGuard } from '../guard/authguard.guard';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 const routes: Routes = [{
   path: '',
@@ -46,6 +47,10 @@ const routes: Routes = [{
     {
       path: 'device-listing/:innovator_id',
       component:DeviceListingComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'view-detail/:innovator_id',
+      component:ViewDetailsComponent,canActivate:[AuthguardGuard]
     },
     {
       path: 'review-listing/:innovator_id', 

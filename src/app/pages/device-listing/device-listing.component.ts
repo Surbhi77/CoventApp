@@ -44,6 +44,7 @@ export class DeviceListingComponent implements OnInit {
   selectedCompliance:any=[];
   selectedCharacteristics:any=[];
   editDeviceDetails:any;
+  showLoader:boolean=false;
 
   constructor(private toastr: ToastrService,
               private fb:FormBuilder,
@@ -378,7 +379,7 @@ export class DeviceListingComponent implements OnInit {
       if(!this.fifthForm.valid){
         this.fifthForm.markAllAsTouched();
       }else{
-        
+        this.showLoader=true;
         let formdata = new FormData();
         formdata.append('device_user_id',userDetails.id);
         formdata.append('device_name',this.firstForm.value.device_name);
@@ -414,21 +415,25 @@ export class DeviceListingComponent implements OnInit {
         formdata.append("device_usage_instruction",this.instructionFile[0]);
   
         this.apiService.addInnovatorData(formdata).subscribe(res=>{
-          this.toastr.success("Device data added successfully");
+          
           this.firstForm.reset();
           this.secondForm.reset();
           this.thirdForm.reset();
           this.fourthForm.reset();
           this.fifthForm.reset();
+          this.showLoader=false;
+          this.toastr.success("Device data added successfully");
+          this.router.navigateByUrl('/pages/data-listing')
         },error=>{
           this.toastr.error("Please try after some time")
+          this.showLoader=false;
         })
       }
     }else{
       if(!this.fifthForm.valid){
         this.fifthForm.markAllAsTouched();
       }else{
-        
+        this.showLoader=true;
         let formdata = new FormData();
         formdata.append('device_user_id',userDetails.id);
         formdata.append('device_name',this.firstForm.value.device_name);
@@ -474,7 +479,9 @@ export class DeviceListingComponent implements OnInit {
        
   
         this.apiService.updateInnovatorData(formdata,this.deviceId).subscribe(res=>{
+
           this.toastr.success("Device data added successfully");
+          this.showLoader=false
           this.router.navigateByUrl('/pages/data-listing')
           // this.firstForm.reset();
           // this.secondForm.reset();

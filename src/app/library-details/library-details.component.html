@@ -33,9 +33,17 @@
                     <div class="py-3 fonts_p"> 
                       <p *ngIf="deviceDetails && deviceDetails.device_description" [innerHtml]="deviceDetails.device_description"></p>
                     </div>
+                    
+                    <ng-container *ngIf="!userLoggedIn">
+                      <a class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
+                      <a class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                    </ng-container>
 
-                    <a class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
-                    <a  class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                    <ng-container *ngIf="userLoggedIn && userDetails && userDetails.id != deviceDetails.device_user_id">
+                      <a class="categotes mr-4" data-toggle="modal" (click)="open(mymodal)">Add a Review <i class="far fa-edit"></i></a>
+                      <a class="categotes" (click)="openQuestion(quesModal)" data-toggle="modal" data-target="#myModal">Add a Questions <i class="far fa-question-circle"></i></a>
+                    </ng-container>
+                    
                 </div>
             </div>  
         </div>
@@ -91,7 +99,7 @@
                   </tr>
                   <tr *ngIf="deviceDetails&&deviceDetails.device_training_document">
                     <td>Device Training Document</td>
-                    <td><a [href]="deviceDetails.device_training_document">{{deviceDetails.device_training_document}}</a></td>
+                    <td><a target="_blank" [href]="deviceDetails.device_training_document">{{deviceDetails.device_training_document}}</a></td>
                   </tr>
                 </table>
             </div>
@@ -135,11 +143,11 @@
                   </tr>
                   <tr *ngIf="deviceDetails&&deviceDetails.device_test_data">
                     <td>Device Test Data</td>
-                    <td><a [href]="deviceDetails.device_test_data">{{deviceDetails.device_test_data}}</a></td>
+                    <td><a target="_blank" [href]="deviceDetails.device_test_data">{{deviceDetails.device_test_data}}</a></td>
                   </tr>
                   <tr *ngIf="deviceDetails&&deviceDetails.device_usage_instruction">
                     <td>Device Usage Instruction</td>
-                    <td><a [href]="assetBaseUrl+deviceDetails.device_usage_instruction">View</a></td>
+                    <td><a target="_blank" [href]="assetBaseUrl+deviceDetails.device_usage_instruction">View</a></td>
                   </tr>
 
                 </table>
@@ -149,7 +157,8 @@
           <div class="col-sm-12">
             <ng-container *ngIf="deviceDetails&&deviceDetails.device_videos">
               <h3 class="py-3">Device Videos : </h3>
-              <iframe width="100%" height="400" [src]="safeURL" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div [innerHtml]="safeHtml"></div>
+              <!-- <iframe width="100%" height="400" [src]="safeURL" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </ng-container>
           </div>
         </div>
@@ -189,7 +198,11 @@
                         </div>
                   
                       </div>                         
-                    </div>  
+                    </div>
+                    
+                    <div *ngIf="reviewList && reviewList.length ==  0" class="d-flex blockquote review-item">
+                      <p>No Reviews Yet</p>
+                    </div>
 
                     <!-- <div class="d-flex blockquote review-item">
                         <div class="col-md-2 text-center">
@@ -243,13 +256,15 @@
 						  </h5>
 							</div>
 
-							<div [id]="'collapse'+i" [ngClass]="(i==0)?'collapse show fade':'collapse fade'"  [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
+							<div [id]="'collapse'+i" [ngClass]="(i==0)?'collapse show ':'collapse'"  [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
 								<div class="card-body">
 									{{(item.answer && item.answer!='')?item.answer:'Awaiting answer from innovator'}}
 								</div>
 							</div>
 						</div>
-						
+						<div *ngIf="quesList && quesList.length == 0">
+             <p>No Questions Yet</p>
+            </div>
 					</div>
 				</div>	
 			</div>
@@ -340,9 +355,9 @@
                     </div>
                   </div>
               <div class="form-group form-check">
-                <label class="form-check-label">
+                <!-- <label class="form-check-label">
                   <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                </label>
+                </label> -->
               </div>
               <div class="form-group">
                 <p>New member ? <a routerLink="/auth/register"> Register Here</a></p>
