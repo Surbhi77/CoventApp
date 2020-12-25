@@ -190,3 +190,17 @@ span.carousel-control-prev-icon {
 .main_logo {
   width: 180px;
 }
+nav.fixed {
+  padding: 0 !important;
+}
+nb-layout-header {
+  background: #fff !important;
+}
+a{
+  cursor: pointer;
+}
+
+.color_user .user-name.ng-star-inserted {
+  color: #000 !important;
+  text-transform: capitalize;
+}

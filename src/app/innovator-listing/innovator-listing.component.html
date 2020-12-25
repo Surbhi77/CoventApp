@@ -12,8 +12,9 @@
 <section class="pt-4">
     <div class="container">
         <div class="row">
-            <div class="d-flex back_cover">
-            <div class="col-lg-4">
+            <div class="col-sm-12">
+                <div class="d-flex back_cover">
+            <div class="col-lg-6">
                 <div class="input-group input-group-lg m-0">
                     <input type="text" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" class="form-control" placeholder="Search">
                     <div class="input-group-append">
@@ -22,7 +23,7 @@
                   </div>
             </div>
             
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group input-group-lg m-0">
                     <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
                       <option value=0>All</option>
@@ -36,32 +37,37 @@
         </div>
     </div>
     </div>
+    </div>
 </section>
 <section class="pb-5">
    <div class="container">
 
       <div class="row pt-4">
         <div *ngFor="let innovator of innovatorListing" class="col-lg-3 col-md-3 col-12 mb-4">
-          <div class="service-img-box">
-             <a class="service-link-box">
-                <div class="service-box-overlay"></div>
-                <!-- <img [src]="imageBasePath+innovator.data_path" class="service-img img-fluid" alt="slide"> -->
-                <img [src]="imageBasePath+innovator.data_path" (error)="onImgError($event)" class="service-img img-fluid" alt="slide">
 
-                <div class="LibCard-Btn service-box-icon">
-                 <a (click)="openDetails(innovator)" href="javascript:void(0);">Info<img src="./assets/images/view.svg"></a>
-                
-              </div>
-                <!-- <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide"> -->
-                <h5>{{innovator.device_name}}</h5>
-             </a>
-          </div>
+            <div class="inner_services">
+                <div class="img-wrap ratio-4-3">
+                    <div class="img-content">
+                        <img [src]="imageBasePath+innovator.data_path" (error)="onImgError($event)" class="service-img img-fluid" alt="slide">
+                    </div>
+                </div>
+                <div class="ino_title">
+                    <h5>{{innovator.device_name}}</h5>
+                </div>
+                <div class="infos">
+                 <a (click)="openDetails(innovator)" href="javascript:void(0);" class="infoss_a"><p>Info</p><img src="./assets/images/view.svg"></a>
+                </div>
+            </div>
+         
        </div>
-       <div class="col-lg-3 col-md-3 col-12 mb-4">
+       <div class="col-sm-12">
         <div *ngIf="innovatorListing.length == 0" class="service-img-box">
-          No Listing Found
+            <div class="not_found_n">
+                <h3 class="m-0">No Listing Found</h3>
+            </div>
         </div>
-       </div>
+        </div>
+       
 
       </div>
 

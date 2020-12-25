@@ -18,8 +18,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
 
 import {
-  FooterComponent,
   HeaderComponent,
+  FooterComponent,
   SearchInputComponent,
   TinyMCEComponent,
 } from './components';
@@ -58,8 +58,8 @@ const NB_MODULES = [
   NbEvaIconsModule,
 ];
 const COMPONENTS = [
-  HeaderComponent,
   FooterComponent,
+  HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
   OneColumnLayoutComponent,
