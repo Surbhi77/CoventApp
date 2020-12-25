@@ -1,6 +1,6 @@
 .p-4.table_sidj tr td {
-    border-color: #dee2e6;
-    border: none !important;
+    border-color: #fefefe;
+    /* border: none !important; */
     padding-bottom: 15px;
     padding-top: 15px;
 }
@@ -15,8 +15,12 @@
 }
 .p-4.table_sidj tr th {
     border: none !important;
+    border: 1px solid #f2f2f2 !important;
     border-bottom: 1px solid #f2f2f2 !important;
     padding: 8px !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
 }
 div#DataTables_Table_0_info {
     padding-top: 40px;
@@ -37,4 +41,12 @@ div#DataTables_Table_0_paginate {
     background-color: #13bfb3 !important;
     background: #13bfb3 !important;
     border-radius: 60px !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid #dee2e6 !important;
 }

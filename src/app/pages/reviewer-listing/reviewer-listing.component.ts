@@ -61,7 +61,7 @@ export class ReviewerListingComponent {
 
   constructor(private service: SmartTableData) {
     const data = this.service.getData();
-   // console.log(data)
+    console.log(data)
     this.source.load(data);
   }
 

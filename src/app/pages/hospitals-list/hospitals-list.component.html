@@ -4,22 +4,23 @@
     </nb-card-header>
     <div class="p-3">
         <nb-card-body>
+            <div class="table-responsive">
             <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
       </ng2-smart-table>  -->
             <table *ngIf="hospitalsListing && hospitalsListing.length>0" class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions" datatable>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>S.No.</th>
                         <th>Hospital Name</th>
-                        <th>Locations</th>
+                        <th style="width: 150px;">Locations</th>
                         <th>User Name</th>
                         <th>Date</th>
-                        <th>Action Buttons</th>
+                        <th style="width: 160px;">Action Buttons</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of hospitalsListing;let i=index">
-                        <td>{{item.id}}</td>
+                        <td>{{i+1}}</td>
                         <td>{{item.healthcare_facility_name}}</td>
                         <td>{{item.facility_location}}</td>
                         <td>{{item.user_name}}</td>
@@ -30,6 +31,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </nb-card-body>
     </div>
 </nb-card>

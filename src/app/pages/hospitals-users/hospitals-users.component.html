@@ -9,7 +9,7 @@
             <table *ngIf="userListing && userListing.length>0" class="table  table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions" datatable>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>S.No.</th>
                         <th>User Name</th>
                         <th>User Email</th>
                         <th>Document</th>
@@ -23,7 +23,7 @@
                         <td>{{item.user_name}}</td>
                         <td>{{item.user_email}}</td>
                         <td><a [href]="baseAPi+item.document" target="_blank" *ngIf="item.document && item.document!=''" class="UV-btn viewDoc">View Document</a></td>
-                        <td><span *ngIf="item.admin_verify_status==1">Accept</span>
+                        <td><span *ngIf="item.admin_verify_status==1">Accepted</span>
                             <span *ngIf="item.admin_verify_status==2">Reject</span>
                             <span *ngIf="item.admin_verify_status==0">Pending</span>
                         </td>

@@ -25,6 +25,7 @@ import { HospitalDetailComponent } from './hospital-detail/hospital-detail.compo
 import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device-innovator-detail.component';
 import { AuthguardGuard } from 'app/guard/authguard.guard';
 import { IcuneedListComponent } from './icuneed-list/icuneed-list.component';
+import { MapSettingComponent } from './map-setting/map-setting.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -120,6 +121,10 @@ const routes: Routes = [{
     {
       path: 'icu-need-List',
       component: IcuneedListComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'map-setting',
+      component: MapSettingComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'forms',

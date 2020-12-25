@@ -24,7 +24,7 @@
         
         .hospital-data ul li {
             margin: 0;
-            width: 120px;
+            // width: 120px;
         }
         
         .hospital-data ul li a {
@@ -42,8 +42,13 @@
         }
         
         .hospital-data .tab-content {
-            padding: 20px;
-            background: #ebebeb;
+            // padding: 20px;
+            // background: #ebebeb;
+            padding: 20px 0;
         }
         
         // Hospital history
+        .hospital-data {
+            padding: 20px;
+            background: #ebebeb;
+        }

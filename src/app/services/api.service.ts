@@ -162,6 +162,14 @@ export class ApiService {
   public getIcuNeedHospitalslist(){
     return this.http.get(this.secureApi+'admin-icuneed-hospital-dashboard')
   }
+
+  public updateMapSetting(formvalue){
+    return this.http.post(this.secureApi+'admin-map-settingupdate',formvalue)
+  }
+  public getMapSetting(){
+    return this.http.get(this.secureApi+'admin-map-setting/map_setting')
+  }
+
   /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);
