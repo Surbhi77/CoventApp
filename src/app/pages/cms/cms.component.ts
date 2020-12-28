@@ -43,19 +43,20 @@ export class CmsComponent {
     })
   }
 
-  onDeleteConfirm(event): void {
+  onDeleteConfirm(event,i): void {
     console.log(event)
     if(window.confirm('Are you sure you want to delete')) {
-      this.apiService.deleteDevice(event.data.device_data_id).subscribe(res=>{
+      this.apiService.deleteDevice(event.device_data_id).subscribe(res=>{
         if(res['success']){
 
           var newArr = this.deviceListing
           newArr.forEach((currentValue, index) => {
             currentValue.id = index+1
           });
+          this.deviceListing.splice(i,1)
         // this.source.update(this.deviceListing,newArr)
-          this.source.refresh()
-          event.confirm.resolve();
+          //this.source.refresh()
+          //event.confirm.resolve();
         }
       })
     }

@@ -63,10 +63,10 @@
                         Device Detail
                     </div>
                     <div class="bbtn_nm">
-                        <a  class="conm_bns view_review"><i class="fas fa-eye"></i> Reviews</a>
-                        <a  class="conm_bns view_question"><i class="fas fa-eye"></i> Questions</a>
-                        <a  class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a>
-                        <a  class="conm_bns delete_n"><i class="far fa-trash-alt"></i> Delete</a> 
+                        <a [routerLink]="'/pages/review-listing/'+innovationId"  class="conm_bns view_review"><i class="fas fa-eye"></i> Reviews</a>
+                        <a [routerLink]="'/pages/question-listing/'+innovationId" class="conm_bns view_question"><i class="fas fa-eye"></i> Questions</a>
+                        <a [routerLink]="'/pages/device-listing/'+innovationId"   class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a>
+                        <a (click)="onDeleteConfirm()" class="conm_bns delete_n"><i class="far fa-trash-alt"></i> Delete</a> 
                     </div>
                 </nb-card-header>
                 <nb-card-body class="p-3">

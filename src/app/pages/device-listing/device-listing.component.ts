@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, Form, FormArray} from '@angular/forms';
 import {ApiService} from  './../../services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,6 +16,15 @@ interface Food {
   styleUrls: ['./device-listing.component.scss']
 })
 export class DeviceListingComponent implements OnInit {
+  items: FormArray;
+
+  createItem(): FormGroup {
+    return this.fb.group({
+      name: new FormControl('',[Validators.required]),
+      location: new FormControl('',[Validators.required]),
+      project_role: new FormControl('',[Validators.required])
+    });
+  }
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
@@ -93,8 +102,10 @@ export class DeviceListingComponent implements OnInit {
 
     this.fifthForm = fb.group({ 
       innovator_type:new FormControl('',[Validators.required]),
-      use_instructions:new FormControl('',[Validators.required])
+      use_instructions:new FormControl('',[Validators.required]),
+      team:this.fb.array([])
     });
+    this.addItem();
 
     this.route.params.subscribe(params =>{
       console.log(params);
@@ -112,6 +123,11 @@ export class DeviceListingComponent implements OnInit {
       // this.getOrderDetails()
     })
 
+  }
+
+  addItem(): void {
+    this.items = this.fifthForm.get('team') as FormArray;
+    this.items.push(this.createItem());
   }
 
   getDetails(){
@@ -373,6 +389,7 @@ export class DeviceListingComponent implements OnInit {
   }
 
   onFifthSubmit(){
+    console.log(JSON.stringify(this.fifthForm.getRawValue().team));
     console.log(localStorage.getItem("userData"));
     let userDetails = JSON.parse(localStorage.getItem("userData"));
     if(!this.isEditScreen){
@@ -380,6 +397,7 @@ export class DeviceListingComponent implements OnInit {
         this.fifthForm.markAllAsTouched();
       }else{
         this.showLoader=true;
+        
         let formdata = new FormData();
         formdata.append('device_user_id',userDetails.id);
         formdata.append('device_name',this.firstForm.value.device_name);
@@ -413,7 +431,7 @@ export class DeviceListingComponent implements OnInit {
         formdata.append("device_standard_compilance",this.fifthForm.value.standard_compliances);
         formdata.append("device_innovator_type",this.fifthForm.value.innovator_type);
         formdata.append("device_usage_instruction",this.instructionFile[0]);
-  
+        formdata.append("team",JSON.stringify(this.fifthForm.getRawValue().team))
         this.apiService.addInnovatorData(formdata).subscribe(res=>{
           
           this.firstForm.reset();
@@ -464,7 +482,7 @@ export class DeviceListingComponent implements OnInit {
         formdata.append("device_characterstics",this.fourthForm.value.device_characteristics);
         formdata.append("device_standard_compilance",this.fifthForm.value.standard_compliances);
         formdata.append("device_innovator_type",this.fifthForm.value.innovator_type);
-        
+        formdata.append("team",JSON.stringify(this.fifthForm.getRawValue().team))
         if(this.materialFile && this.materialFile.length){
           formdata.append("device_materials", this.materialFile[0]);
         }
@@ -494,6 +512,11 @@ export class DeviceListingComponent implements OnInit {
       }
     }
    
+  }
+
+  employees(): FormArray {
+    console.log(this.fifthForm.get("team") as FormArray)
+    return this.fifthForm.get("team") as FormArray
   }
 
   deviceChange($event){

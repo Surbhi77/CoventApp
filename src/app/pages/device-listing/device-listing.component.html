@@ -524,8 +524,17 @@
                       </ng-container>
                     </mat-form-field> -->
 
-                            <label class="add_tens">Team <span><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
-                            <input type="text" nbInput fullWidth placeholder="Add multiple innovator team members">
+                            <label class="add_tens">Team <span><i (click)="addItem()" class="fa fa-plus-circle" aria-hidden="true"></i> Add Teams </span></label>
+
+                            <div formArrayName="team"
+                            *ngFor="let item of employees().controls; let i = index;">
+                            <div class="team_mem_div" [formGroupName]="i">
+                                <input class="team_mem" nbInput formControlName="name" placeholder="Team Member Name">
+                                <input class="team_mem" nbInput formControlName="location" placeholder="Location">
+                                <input class="team_mem" nbInput formControlName="project_role" placeholder="Role">
+                            </div>
+                            </div>
+                            
 
                         </div>
                     </div>

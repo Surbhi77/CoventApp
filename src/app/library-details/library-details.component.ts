@@ -163,6 +163,7 @@ export class LibraryDetailsComponent implements OnInit {
       console.log(res)
       if(res['success']){
         this.deviceDetails =  res['data'][0];
+        this.deviceDetails.team_member = JSON.parse(res['data'][0].team_member);
         this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.deviceDetails.device_videos);
         this.safeHtml = this._sanitizer.bypassSecurityTrustHtml(this.deviceDetails.device_videos)
       }

@@ -162,6 +162,16 @@
             </ng-container>
           </div>
         </div>
+        <div *ngIf="deviceDetails&&deviceDetails.team_member" class="row">
+          <div>
+            <h3 class="py-3">Team Details:</h3>
+            <div *ngFor="let item of deviceDetails.team_member">
+              <p>Name: {{item.name}}</p>
+              <p>Role In Team: {{item.project_role}}</p>
+              <p>Location: {{item.location}}</p>
+            </div>
+          </div>
+        </div>
     </div>
 </section>
 

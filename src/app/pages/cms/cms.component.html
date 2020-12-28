@@ -16,7 +16,7 @@
             <th>Device Category</th>
             <th>Device Type</th>
             <th>Create Date</th>
-            <th>Action Buttons</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody >
@@ -26,11 +26,11 @@
                <td>{{item.category_name}}</td>
                <td>{{item.subcategory_name}}</td>
                <td>{{item.device_created_date}}</td>
-               <td style="width: 400px;">
-                <a [routerLink]="'/pages/review-listing/'+item.device_data_id" class="conm_bns view_review"><i class="fas fa-eye"></i> Reviews</a>
-                <a [routerLink]="'/pages/question-listing/'+item.device_data_id" class="conm_bns view_question"><i class="fas fa-eye"></i> Questions</a>
-                <a [routerLink]="'/pages/device-listing/'+item.device_data_id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a>
-                <a (click)="deleteCompliance(item,i)" class="conm_bns delete_n"><i class="far fa-trash-alt"></i> Delete</a>
+               <td >
+                <!-- <a [routerLink]="'/pages/review-listing/'+item.device_data_id" class="conm_bns view_review"><i class="fas fa-eye"></i> Reviews</a> -->
+                <a  [routerLink]="'/pages/view-detail/'+item.device_data_id" class="conm_bns view_question"><i class="fas fa-eye"></i> Analytics</a>
+                <!-- <a [routerLink]="'/pages/device-listing/'+item.device_data_id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a>
+                <a (click)="onDeleteConfirm(item,i)" class="conm_bns delete_n"><i class="far fa-trash-alt"></i> Delete</a> -->
               </td>
            </tr>
         </tbody>

@@ -9,7 +9,7 @@ import {environment} from 'environments/environment'
   styleUrls: ['./view-details.component.scss']
 })
 export class ViewDetailsComponent implements OnInit {
-  private innovationId:any;
+  innovationId:any;
   device_data: any;
   assetsbasepath:any=environment.imageUrl;
   views: any=0;
@@ -85,6 +85,21 @@ export class ViewDetailsComponent implements OnInit {
         console.log(this.device_data);
       }
     });
+  }
+
+  onDeleteConfirm(): void {
+    console.log(event)
+    if(window.confirm('Are you sure you want to delete')) {
+      this.apiService.deleteDevice(this.innovationId).subscribe(res=>{
+        if(res['success']){
+
+         this.router.navigateByUrl('/pages/data-listing')
+        // this.source.update(this.deviceListing,newArr)
+          //this.source.refresh()
+          //event.confirm.resolve();
+        }
+      })
+    }
   }
 
 }
