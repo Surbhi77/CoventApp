@@ -1,14 +1,32 @@
-<nb-card >
- 
+<nb-card>
   <nb-card-header>
-   Slider Listing
-
-    <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/add-sliders"> Add Sliders</button>
+      Slider Listing
+      <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/add-sliders"> Add </button>
   </nb-card-header>
 
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table> 
+  <nb-card-body class="p-3">
+      <table *ngIf="sliderListing && sliderListing.length>0" class="table  table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions" datatable>
+          <thead>
+              <tr>
+                  <th>S.No</th>
+                  <th>Heading</th>
+                  <th>Description</th>
+                  <th style="width: 120px;">Button Text</th>
+                  <th style="width: 150px;">Action Buttons</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of sliderListing;let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.heading}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{item.button_text}}</td>
+                  <td>
+                    <a [routerLink]="'/pages/edit-slider/'+item.id" class="conm_bns tab_edit" style="margin-right: 10px;"><i class="far fa-edit"></i> Edit </a> 
+                    <a (click)="onDeleteConfirm(item.id,i)" class="conm_bns delete_n delbtn text-white"> <i class="far fa-trash-alt"></i> Delete</a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
   </nb-card-body>
-
 </nb-card>

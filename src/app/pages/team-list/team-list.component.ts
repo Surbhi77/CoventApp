@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from  './../../services/api.service';
+import {environment} from 'environments/environment';
 
 @Component({
-  selector: 'ngx-slider-management',
-  templateUrl: './slider-management.component.html',
-  styleUrls: ['./slider-management.component.scss']
+  selector: 'ngx-team-list',
+  templateUrl: './team-list.component.html',
+  styleUrls: ['./team-list.component.scss']
 })
-export class SliderManagementComponent{
-  dtOptions:DataTables.Settings = {};
-  sliderListing:any=[];
+export class TeamListComponent implements OnInit {
 
+  dtOptions:DataTables.Settings = {};
+  teamListing:any=[];
+  assetBasePath:any=environment.imageUrl
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
@@ -19,11 +21,10 @@ export class SliderManagementComponent{
       lengthMenu : [5, 10, 25],
       processing: true
     }
-    this.apiService.sliderList().subscribe(res=>{
-      this.sliderListing = res['data']
-      console.log(this.sliderListing);
+    this.apiService.teamList().subscribe(res=>{
+      this.teamListing = res['data']
+      console.log(this.teamListing);
     })
-
   }
 
  
@@ -31,12 +32,13 @@ export class SliderManagementComponent{
   onDeleteConfirm(item_id,i): void {
     if (window.confirm('Are you sure you want to delete?')) {
     
-      this.apiService.sliderDelete(item_id).subscribe(res=>{
+      this.apiService.teamDelete(item_id).subscribe(res=>{
         if(res['success']){
-          this.sliderListing.splice(i,1);
+          this.teamListing.splice(i,1);
          // this.dtTrigger.next()
         }
       })
     }
   }
+
 }

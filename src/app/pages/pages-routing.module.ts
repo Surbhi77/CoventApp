@@ -26,6 +26,11 @@ import { DeviceInnovatorDetailComponent } from './device-innovator-detail/device
 import { AuthguardGuard } from 'app/guard/authguard.guard';
 import { IcuneedListComponent } from './icuneed-list/icuneed-list.component';
 import { MapSettingComponent } from './map-setting/map-setting.component';
+import { EditSliderComponent } from './edit-slider/edit-slider.component';
+import { AddTeamComponent } from './add-team/add-team.component';
+import { TeamListComponent } from './team-list/team-list.component';
+import { TeamUpdateComponent } from './team-update/team-update.component';
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -99,8 +104,24 @@ const routes: Routes = [{
       component: AddSlidersComponent,canActivate:[AuthguardGuard],
     },
     {
+      path: 'edit-slider/:id',
+      component: EditSliderComponent,canActivate:[AuthguardGuard],
+    },
+    {
       path: 'slider-management',
       component: SliderManagementComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'add-team',
+      component: AddTeamComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'edit-team/:id',
+      component: TeamUpdateComponent,canActivate:[AuthguardGuard],
+    },
+    {
+      path: 'team-list',
+      component: TeamListComponent,canActivate:[AuthguardGuard],
     },
     {
       path: 'device-innovators-listing',

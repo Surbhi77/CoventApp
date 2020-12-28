@@ -33,6 +33,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/slider-management',
       },
       {
+        title: 'Team Management',
+        link: '/pages/team-list',
+      },
+      {
         title: 'Other Settings',
         link: '/pages/layout/infinite-list',
       },

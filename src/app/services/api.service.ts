@@ -185,6 +185,39 @@ export class ApiService {
     return this.http.get(this.baseAPi+'innovation-question-counts/'+id)
   }
 
+  public addSliderData(formvalue){
+    return this.http.post(this.secureApi+'add-slider/',formvalue)
+  }
+  public sliderList(){
+    return this.http.get(this.secureApi+'slider-list/')
+  }
+  public sliderDelete(id){
+    return this.http.get(this.secureApi+'slider-delete/'+id)
+  }
+  
+  public sliderDetailData(id){
+    return this.http.get(this.secureApi+'slider-detail/'+id)
+  }
+  public updateSliderData(formdata){
+    return this.http.post(this.secureApi+'slider-update/',formdata)
+  }
+
+  public addTeamData(formvalue){
+    return this.http.post(this.secureApi+'add-team/',formvalue)
+  }
+  public teamList(){
+    return this.http.get(this.secureApi+'team-list/')
+  }
+  public teamDelete(id){
+    return this.http.get(this.secureApi+'team-delete/'+id)
+  }
+  
+  public teamDetailData(id){
+    return this.http.get(this.secureApi+'team-detail/'+id)
+  }
+  public updateTeamData(formdata){
+    return this.http.post(this.secureApi+'team-update/',formdata)
+  }
   /********/
   // public addInnovatorData(obj){
   //   return this.http.post(this.baseAPi+'add-innovator-data',obj);

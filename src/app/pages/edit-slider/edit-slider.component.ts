@@ -5,13 +5,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'ngx-add-sliders',
-  templateUrl: './add-sliders.component.html',
-  styleUrls: ['./add-sliders.component.scss']
+  selector: 'ngx-edit-slider',
+  templateUrl: './edit-slider.component.html',
+  styleUrls: ['./edit-slider.component.scss']
 })
-export class AddSlidersComponent implements OnInit {
-
-  successform:any;
+export class EditSliderComponent implements OnInit {
+  slider_id:any;
   constructor(private toastr: ToastrService,
     private fb:FormBuilder,
     private router: Router,
@@ -25,7 +24,28 @@ export class AddSlidersComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    
+    this.route.params.subscribe(params =>{
+      if(params && params.id){
+        console.log(params.id)
+        // this.isEditScreen=true
+
+        this.slider_id= params.id;
+        console.log('icu',this.slider_id)
+        this.apiService.sliderDetailData(this.slider_id).subscribe(res=>{
+          if(res['success']){
+            let item_data = res['data'][0]
+            console.log(item_data);
+            
+            this.icuform.patchValue({
+              "heading":item_data.heading,
+              "description": item_data.description,
+              "button_text": item_data.button_text
+            });
+            this.icuform.updateValueAndValidity();
+          }
+        });
+      }
+    })
   }
 
   get f(){
@@ -40,15 +60,16 @@ export class AddSlidersComponent implements OnInit {
       // formvalue.hospital_required_items=this.hospitalItems
       // formvalue.user_id=this.userDetails.id
       
-      // formvalue.hospital_id=this.hospital_id.id
+      formvalue.id=this.slider_id
       console.log(formvalue);
     
-      this.apiService.addSliderData(formvalue).subscribe(res=>{
+      this.apiService.updateSliderData(formvalue).subscribe(res=>{
         console.log(res['data'])
         // this.successform = 'Successfully Updated';
         this.router.navigateByUrl('/pages/slider-management')
+        console.log('success');
       })
-      console.log('asdvalid');
+      
 
     }else{
       this.icuform.markAllAsTouched();
