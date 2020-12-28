@@ -251,6 +251,14 @@ export class ApiService {
   public hospitalDashboardCountGraphData(formvalue){
     return this.http.post(this.baseAPi+'/hospitaluser-dashboardgraph',formvalue)
   }
+
+  public sliderlistData(){
+    return this.http.get(this.baseAPi+'/slider-list')
+  }
+
+  public teamlistData(){
+    return this.http.get(this.baseAPi+'/team-list')
+  }
   /*****by #as end **/
 
   public getAllMapsNeeds(){

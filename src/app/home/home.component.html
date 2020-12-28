@@ -1,45 +1,21 @@
  <!--slide start-->
 <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+    <div class="carousel-inner" *ngIf="sliderContent && sliderContent.length>0">
+      <div class="carousel-item " [ngClass]="(i==0)?'active':''" *ngFor="let slide of sliderContent;let i=index">
         <div class="mask flex-center">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-md-7 col-12 order-md-1 order-2">
-                <h4>Open Source <br> Medical Supplies</h4>
-                <p>Empowering people around the world with reliable information <br> to keep their communities healthy and safe </p>
-                <a href="#">Read COVID-19 Guides</a> </div>
+                <h4>{{slide.heading}}</h4>
+                <p>{{slide.description}}</p>
+                <a href="#">{{slide.button_text}}</a> </div>
               <!-- <div class="col-md-5 col-12 order-md-2 order-1"><img src="./assets/images/medical-stretcher.svg" class="mx-auto img-fluid" alt="slide"></div> -->
             </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <div class="mask flex-center"> 
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-md-7 col-12 order-md-1 order-2">
-                <h4>Open Source <br> Medical Supplies</h4>
-                <p>Empowering people around the world with reliable information <br> to keep their communities healthy and safe </p>
-                <a href="#">Read COVID-19 Guides</a> </div>
-              <!-- <div class="col-md-5 col-12 order-md-2 order-1"><img src="./assets/images/mask.svg" class="mx-auto img-fluid" alt="slide"></div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="mask flex-center">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-md-7 col-12 order-md-1 order-2">
-                <h4>Open Source <br> Medical Supplies</h4>
-                <p>Empowering people around the world with reliable information <br> to keep their communities healthy and safe </p>
-                <a href="#">Read COVID-19 Guides</a> </div>
-              <!-- <div class="col-md-5 col-12 order-md-2 order-1"><img src="./assets/images/first-aid-kit.svg" class="mx-auto img-fluid" alt="slide"></div> -->
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      
     </div>
 
     <!-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>  -->
@@ -235,39 +211,29 @@
   </section>
   <section class="team pb-5">
     <div class="container">
-      <div class="row">
+      <div class="row" *ngIf="teamContent && teamContent.length>0">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let team of teamContent;let i=index">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" [src]="assetUrl+team.image">
+              
+            </div>
+            <div class="team-content">
+              <h3 class="name">{{team.name}}</h3>
+              <h4 class="title">{{team.description}}</h4>
+            </div>
+          </div>
+        </div>
+        <!--
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="our-team">
             <div class="picture">
               <img class="img-fluid" src="./assets/images/001-01.png">
             </div>
             <div class="team-content">
-              <h3 class="name">Richard Boyer, MD, PhD</h3>
-              <h4 class="title">Principal Investigator, Anesthesiologist and Van Poznak Research Scholar Weill Cornell Medical College</h4>
-            </div>
-            <!-- <ul class="social">
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-            </ul> -->
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="our-team">
-            <div class="picture">
-              <img class="img-fluid" src="./assets/images/001-02.png">
-            </div>
-            <div class="team-content">
               <h3 class="name">Emily Blatter Boyer</h3>
               <h4 class="title">President and CEO CoVent Challenge Corp</h4>
             </div>
-            <!-- <ul class="social">
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-            </ul> -->
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -279,12 +245,6 @@
               <h3 class="name">Diana Barragan Bradford, MD</h3>
               <h4 class="title">Co-Investigator, Anesthesiologist and Critical Care Fellow Massachusetts General Hospital</h4>
             </div>
-            <!-- <ul class="social">
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-            </ul> -->
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -296,14 +256,9 @@
               <h3 class="name">Jonathan Nelson</h3>
               <h4 class="title">Chief Advisor, Venture Capitalist, Humanitarian and Emergency Medicine Nurse</h4>
             </div>
-            <!-- <ul class="social">
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-            </ul> -->
           </div>
         </div>
+        -->
       </div>
     </div>
   </section>

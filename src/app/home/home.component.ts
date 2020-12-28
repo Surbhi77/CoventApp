@@ -14,6 +14,8 @@ import {
 export class HomeComponent implements OnInit {
   featuredInnovatorListing:any=[];
   featuredCategories:any=[];
+  teamContent:any=[];
+  sliderContent:any=[];
   assetUrl:any=environment.imageUrl;
   json= [{
     "latitude":43.8766588,
@@ -65,6 +67,7 @@ export class HomeComponent implements OnInit {
  looped:boolean=false;
 
   public geoChart: GoogleChartInterface = {
+    
     chartType: 'GeoChart',
     dataTable: [
       ['Latitude', 'Longitude', 'Label','Value',{type:'string', role:'tooltip', 'p': {'html': true}}]
@@ -97,6 +100,8 @@ export class HomeComponent implements OnInit {
         body.classList.remove("nb-theme-material-light");
     this.getAllFeaturedData();
     this.getAllFeaturedCategories();
+    this.getSlider()
+    this.getTeam();
   }
 
   getAllFeaturedData() {
@@ -110,6 +115,22 @@ export class HomeComponent implements OnInit {
     this.apiService.getFeaturedCategories().subscribe(res=>{
       console.log(res);
       this.featuredCategories =res['data']
+    })
+  }
+
+  getSlider(){
+    this.apiService.sliderlistData().subscribe(res=>{
+      console.log(res);
+      this.sliderContent =res['data']
+      console.log(this.sliderContent.length)
+    })
+  }
+  
+  getTeam(){
+    this.apiService.teamlistData().subscribe(res=>{
+      console.log(res);
+      this.teamContent =res['data']
+      console.log(this.teamContent.length)
     })
   }
 
