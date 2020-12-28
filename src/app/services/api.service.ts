@@ -51,7 +51,9 @@ export class ApiService {
     return this.http.get(this.secureApi+'user-innovator-list')
   }
 
-  
+  public getAllMapsNeeds(){
+    return this.http.get(this.baseAPi+'/hospital-list-onmap')
+  } 
 
   public getReviewerList(){
     return this.http.get(this.secureApi+'reviewer-list')
@@ -166,8 +168,21 @@ export class ApiService {
   public updateMapSetting(formvalue){
     return this.http.post(this.secureApi+'admin-map-settingupdate',formvalue)
   }
+
   public getMapSetting(){
     return this.http.get(this.secureApi+'admin-map-setting/map_setting')
+  }
+
+  public getViewsbyInnovation(id){
+    return this.http.get(this.baseAPi+'/innovation-view-counts/'+id)
+  }
+
+  public getReviewsbyInnovation(id){
+    return this.http.get(this.baseAPi+'/innovation-review-counts/'+id)
+  }
+
+  public getQuestionbyInnovation(id){
+    return this.http.get(this.baseAPi+'innovation-question-counts/'+id)
   }
 
   /********/

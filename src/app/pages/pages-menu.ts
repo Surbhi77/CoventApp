@@ -57,11 +57,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Reviewer Listing',
-    icon: 'keypad-outline',
-    link: '/pages/reviewer-user-listing'
-  },
-  {
     title:'Device Innovator Listing',
     icon: 'keypad-outline',
     link: '/pages/website-user-listing'
@@ -80,5 +75,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title:'ICU Needs Listing',
     icon: 'keypad-outline',
     link: '/pages/icu-need-List'
+  },
+  {
+    title: 'Reviewer Listing',
+    icon: 'keypad-outline',
+    link: '/pages/reviewer-user-listing'
   },
   ];

@@ -1,3 +1,41 @@
+.gm-style .gm-style-iw p{
+    /* padding: 10px !important; */
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  .tooltipa{
+    padding: 0 !important;
+  }
+  .tooltipa tr{
+    padding: 0px !important;
+  }
+  .tooltipa td{
+    padding: 5px 0px !important;
+  }
+  .shodows {
+    display: inline-block;
+    width: 100%;
+    box-shadow: 0 0 10px #ccc;
+  }
+  .google-visualization-tooltip { width:300px }
+  
+  .gm-style-iw button {display: none !important;}
+  .gm-style-iw div {display: none !important;}
+  /*style the annoying little arrow at the bottom*/
+  .gm-style div div div div div div div div {
+    background-color: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0;
+    color: #000;
+    font-size: 16px;
+    max-width: 200px !important;
+    width: 200px;
+    display: inline-block !important;
+    overflow: hidden !important;
+  }
+  
 .p-4.table_sidj tr td {
     border-color: #fefefe;
     /* border: none !important; */

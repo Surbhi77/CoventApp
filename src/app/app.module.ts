@@ -26,7 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
 import { ChartModule } from 'angular2-chartjs';
 import { AuthguardGuard } from './guard/authguard.guard';
-
+import {AgmCoreModule} from '@agm/core';
 
 
 @NgModule({
@@ -34,6 +34,8 @@ import { AuthguardGuard } from './guard/authguard.guard';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'}),
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,

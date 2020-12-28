@@ -17,10 +17,10 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs nav-pills">
                         <li class="nav-item navbg">
-                            <a class="nav-link active" data-toggle="tab" href="#latest-add_d">Latest Added Devices</a>
+                            <a class="nav-link active" data-toggle="tab" href="#latest-add_d">Top Viewed Devices</a>
                         </li>
                         <li class="nav-item navbg">
-                            <a class="nav-link" data-toggle="tab" href="#topvidewdeivs">Top Viewed Devices</a>
+                            <a class="nav-link" data-toggle="tab" href="#topvidewdeivs">Latest Added Devices</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -28,28 +28,30 @@
                             <div class="">
                                 <div class=" shadow p-3 mb-3 bg-white line-height-base chart">
                                     <div class="inner_chart">
-                                        <h4>Latest Added Devices</h4>
+                                        <h4>Top Viewed Devices</h4>
                                         <table class="table  table-hover" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <td>Device Name</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
+                                                    <td>Device Category</td>
+                                                    <td>Added By</td>
+                                                    <td>Date</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let item of deviceListing">
-                                                    <td (click)="openDetail(item)" scope="row">
+                                                <tr *ngFor="let item of topViewedListing">
+                                                    <td (click)="openDetail(item)">
                                                         {{item.device_name}}
                                                     </td>
-                                                    <td (click)="openDetail(item)" scope="row">
+                                                    <td (click)="openDetail(item)">
+                                                        {{item.category_name}}
+                                                    </td>
+                                                    <td (click)="openDetail(item)">
+                                                        {{item.user_name}}
+                                                    </td>
+                                                    <td (click)="openDetail(item)">
                                                         {{item.device_created_date}}
                                                     </td>
-                                                    <td>02-204-200</td>
-                                                    <td>02-204-200</td>
-                                                    <td>02-204-200</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -61,15 +63,14 @@
                             <div class="">
                                 <div class=" shadow p-3 mb-3 bg-white chart">
                                     <div class="inner_chart">
-                                        <h4>Top Viewed Devices</h4>
+                                        <h4>Latest Added Devices</h4>
                                         <table class="table table-hover ">
                                             <thead>
                                                 <tr>
                                                     <td>Device Name</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
-                                                    <td>Create Date</td>
+                                                    <td>Device Category</td>
+                                                    <td>Added By</td>
+                                                    <td>Date</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -78,11 +79,11 @@
                                                         {{item.device_name}}
                                                     </td>
                                                     <td (click)="openDetail(item)">
-                                                        {{item.device_created_date}}
+                                                        {{item.category_name}}
                                                     </td>
-                                                    <td>021-21360</td>
-                                                    <td>021-21360</td>
-                                                    <td>021-21360</td>
+                                                    <td (click)="openDetail(item)"> {{item.user_name}}</td>
+                                                    <td (click)="openDetail(item)"> {{item.device_created_date}}</td>
+                                                    
                                                 </tr>
                                             </tbody>
                                         </table>
