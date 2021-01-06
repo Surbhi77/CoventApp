@@ -1,5 +1,5 @@
 <ng-container *ngIf="!showHeader">
-  <!-- <section class="top_centions">
+    <!-- <section class="top_centions">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-12">
@@ -21,37 +21,37 @@
         </div>
     </div>
 </section> -->
-<header class="main_heraders">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container"> 
-            <div class="row w-100">
-              <div class="col-sm-12">
-                <div class="justify-content-center align-items-center w-100 d-flex">
-                <a class="navbar-brand  mr-auto" routerLink="/"><img class="img-fuild main_logo" src="./assets/images/logo-color.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-5" id="had_navs">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <!-- <li class="nav-item active">
+    <header class="main_heraders">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="row w-100">
+                    <div class="col-sm-12">
+                        <div class="justify-content-center align-items-center w-100 d-flex">
+                            <a class="navbar-brand  mr-auto" routerLink="/"><img class="img-fuild main_logo" src="./assets/images/logo-color.png"></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                           <span class="navbar-toggler-icon"></span>
+                           </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav ml-5" id="had_navs">
+                                    <li class="nav-item active">
+                                        <a class="nav-link " href="#">Home<span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <!-- <li class="nav-item active">
               <a class="nav-link" href="#">About</a>
             </li> -->
-            <!-- <li class="nav-item">
+                                    <!-- <li class="nav-item">
               <a class="nav-link" href="#">Open-icu.org</a>
             </li> -->
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/library">Device Innovations</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/map">ICU Need Tracker</a>
-            </li>
-            <!-- <li class="nav-item">
+                                    <li class="nav-item">
+                                        <a class="nav-link" routerLink="/library">Device Innovations</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" routerLink="/map">ICU Need Tracker</a>
+                                    </li>
+                                    <!-- <li class="nav-item">
               <a class="nav-link" href="#">Tracker</a>
             </li> -->
-            <!-- <li class="nav-item dropdown">
+                                    <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 LOCAL RESPONSE
               </a>
@@ -61,7 +61,7 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li> -->
-            <!-- <li class="nav-item dropdown">
+                                    <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     GLOBAL IMPACT
                 </a>
@@ -71,20 +71,20 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li> -->
-          </ul>
+                                </ul>
 
-          <ul class="navbar-nav ml-auto" >
-            <li class="nav-item">
-              <a *ngIf="!userLoggedIn" class="nav-link login_links" routerLink="/auth/login">Login/Register</a>
-              <a *ngIf="userLoggedIn" class="nav-link login_links" routerLink="/pages/dashboard">Dashboard</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      </div>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a *ngIf="!userLoggedIn" class="nav-link login_links" routerLink="/auth/login">Login/Register</a>
+                                        <a *ngIf="userLoggedIn" class="nav-link login_links" routerLink="/pages/dashboard">Dashboard</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-      </nav>
-</header>
+
+        </nav>
+    </header>
 </ng-container>
