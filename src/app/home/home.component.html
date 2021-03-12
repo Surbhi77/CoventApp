@@ -1,7 +1,6 @@
 <style>
 
-    
-  </style>
+</style>
 <!--slide start-->
 <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" style="display: none;">
     <div class="carousel-inner" *ngIf="sliderContent && sliderContent.length>0">
@@ -37,26 +36,25 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-2">
                 <div *ngIf="recentlyIcuNeed">
                     <h5 *ngIf="totalcount && totalcount>0" class="mapsection-theme-heading">Total <span class="text-red">
                         {{totalcount}}
                     </span></h5>
-                    
+
                     <div class="mapsection-theme">
                         <h5 class="mapsection-theme-heading">Device by Country</h5>
                         <ul class="recentlyDevice">
                             <li *ngFor="let icuneedvalue of itemIcuNeedonmap">
-                                <span class="text-red">{{icuneedvalue.device_need_perday}}</span>
-                                {{icuneedvalue.country}}
+                                <span class="text-red">{{icuneedvalue.device_need_perday}}</span> {{icuneedvalue.country}}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-6">
                 <div class="map_deuvs">
                     <!-- <h2 class="text-center feature_title_main">Map  </h2> -->
@@ -64,14 +62,14 @@
                     <!-- <div id="chartdiv"></div> -->
                     <div id="container_mapcategory" class="containermap">
                     </div>
-                    
+
 
                     <!-- <div id="container_mapcategory" #myDOMElement class="containermap" *ngIf="category_data">
                         new map
                     </div> -->
                     <!-- <div id="ac_style_ui--samples-anychart.ui.zoom.decorate" style="display:none;">
                     </div> -->
-                    
+
                     <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
                 </div>
             </div>
@@ -98,9 +96,7 @@
                     <h5 class="mapsection-theme-heading">Recently Added</h5>
                     <ul class="recentlyDevice">
                         <li *ngFor="let recentValue of recentlyIcuNeed">
-                            {{recentValue.device_need_perday}}
-                            {{recentValue.itemcat_name}}
-                            in {{recentValue.country}}
+                            {{recentValue.device_need_perday}} {{recentValue.itemcat_name}} in {{recentValue.country}}
                         </li>
                     </ul>
                 </div>
@@ -127,12 +123,24 @@
 <section class="guides py-5">
     <div class="container">
         <div class="row pb-4">
-            
+
             <div class="col-sm-12">
                 <div class="content-wrapper">
-                    <h2 class="text-center feature_title_main">About Our Lab  </h2>
+
                     <!-- <div id="chartdiv"></div> -->
                     <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            <h1 class="text-center abouttxt">about<br> our lab </h1>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>designing and scaling life <br> saving resources for all</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, voluptatum quas quia harum repudiandae necessitatibus. Totam, quaerat deserunt aut iusto autem esse vero, aspernatur facilis dolores sunt laudantium quae adipisci.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate explicabo aliquid modi, expedita dignissimos nam ratione nobis, vitae enim sit molestiae, iusto dolores libero unde. Quas, totam. Repudiandae, ad.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit eveniet laborum ullam dolores? Eum placeat expedita obcaecati reiciendis sunt nihil quisquam rem? Accusamus, repellat itaque. Eos cumque vitae neque incidunt?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -142,12 +150,12 @@
 <section class="guides py-5">
     <div class="container">
         <div class="row pb-4">
-            
+
             <div class="col-sm-12">
                 <div class="content-wrapper">
-                    <h4 class="text-center feature_title_main"> Theory of Change  </h4>
+                    <h4 class="text-center feature_title_main">Our theory of Change </h4>
                     <!-- <div id="chartdiv"></div> -->
-                    <h2 class="text-center feature_description mt-5" >engineers, designers, physicians and humanitarians working together to create economical and validated critical care technology</h2> 
+                    <h3 class="text-center feature_description  mt-5">engineers, designers, physicians and <br> humanitarians working together <br> to create economical and validated <br>critical care technology</h3>
 
                 </div>
             </div>
@@ -157,67 +165,83 @@
 <section class="guides py-5">
     <div class="container">
         <div class="row pb-4">
-            <div class="card card1" >
-                
+            <div class="card card1">
+
                 <div class="card-body">
                     <h4 class="card-title">1 - </h4>
-                  <h4 class="card-title">Open Innovation</h4>
-                  <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
-                  
+                    <h4 class="card-title">Open <br> Innovation</h4>
+                    <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
+
                 </div>
-              </div>
-              <div class="card card2">
-               
+            </div>
+            <div class="card card2">
+
                 <div class="card-body">
                     <h4 class="card-title">2 - </h4>
-                  <h4 class="card-title">Local Supply Chains</h4>
-                  <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
-                  
+                    <h4 class="card-title">Local Supply<br> Chains</h4>
+                    <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
+
                 </div>
-              </div>
-              <div class="card card3">
-                
+            </div>
+            <div class="card card3">
+
                 <div class="card-body">
                     <h4 class="card-title">3 - </h4>
-                  <h4 class="card-title">Shared Knowledge</h4>
-                  <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
-                  
+                    <h4 class="card-title">Shared <br> Knowledge</h4>
+                    <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
+
                 </div>
-              </div>
+            </div>
         </div>
     </div>
-    
-    
+
+
 </section>
 
 <section class="guides py-5">
     <div class="container">
         <div class="row pb-4">
-            
+
             <div class="col-sm-12">
                 <div class="content-wrapper">
-                    <h2 class="text-center feature_title_main">Device Innovations Listing  </h2>
+                    <h2 class="text-center feature_title_main">Device Innovations Listing </h2>
 
                     <!-- <div id="chartdiv"></div> -->
                     <div class="row pt-4">
-                        <div *ngFor="let item of featuredInnovatorListing" class="col-lg-3 col-md-3 col-12">
-                           <div class="service-img-box">
-                              <a (click)="navigateToDetail(item)" class="service-link-box">
-                                 <div class="service-box-overlay"></div>
-                                 <img [src]="assetUrl+item.data_path" class="service-img img-fluid" alt="slide">
-                                 <img src="./assets/images/right-arrow.svg" class="service-box-icon img-fluid" alt="slide">
-                                 <h5>{{item.device_name}}</h5>
-                              </a>
-                           </div>
+                        <div *ngFor="let item of featuredInnovatorListing" class="col-lg-4 col-md-4 col-12">
+                            <div class="InnovationsList-Info">
+                                <a (click)="navigateToDetail(item)" class="InnovationsList-box">
+                                    <div class="SInnovationsList-img-block">
+                                        <img [src]="assetUrl+item.data_path" class="img-fluid" alt="slide">
+                                    </div>
+
+                                    <div class="InnovationsList-details">
+                                        <h6>{{item.device_name}}</h6>
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star-half" aria-hidden="true"></i></li>
+                                        </ul>
+                                        <a class="mec-btn">MECHANICAL VENTILATION</a>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium sapiente voluptates quidem earum,</p>
+                                        <div class="QR-btn-block">
+                                            <a class="device-button">Add A REVIEW</a>
+                                            <a class="device-button">ADD A QUESTION</a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
                 </div>
             </div>
 
-            
-            
+
+
         </div>
 
         <!-- <div class="row pt-4">
@@ -243,6 +267,40 @@
 
     </div>
 </section>
+<!-- <section class=" py-5">
+    <div class="container device-loc">
+        <div class="row">
+
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section> -->
+
 
 
 <section class="makefind py-5" style="display: none;">
