@@ -5,6 +5,9 @@
  */
 export const environment = {
   production: true,
-  apiUrl:'http://localhost:9700/',
-  imageUrl:'http://localhost:9700/'
+  apiUrl:'http://134.209.68.96:9700/',
+  imageUrl:'http://134.209.68.96:9700/'
 };
+
+
+// http://134.209.68.96/

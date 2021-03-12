@@ -4,6 +4,49 @@
   <meta charset="utf-8">
   <title>Application</title>
 
+  <!--
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+  -->
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js" type="text/javascript"></script>
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-map.min.js" type="text/javascript"></script>
+<script src="https://cdn.anychart.com/releases/8.9.0/geodata/custom/world/world.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-exports.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-ui.min.js"></script>
+
+<script>
+  (function(){
+  function ac_add_to_head(el){
+      var head = document.getElementsByTagName('head')[0];
+      head.insertBefore(el,head.firstChild);
+  }
+  function ac_add_link(url){
+      var el = document.createElement('link');
+      el.rel='stylesheet';el.type='text/css';el.media='all';el.href=url;
+      ac_add_to_head(el);
+  }
+  function ac_add_style(css){
+      var ac_style = document.createElement('style');
+      if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
+      else ac_style.appendChild(document.createTextNode(css));
+      ac_add_to_head(ac_style);
+  }
+  ac_add_link('https://cdn.anychart.com/releases/8.9.0/fonts/css/anychart-font.css');
+  // ac_add_link('https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css');
+  // ac_add_style(document.getElementById("ac_style_ui--samples-anychart.ui.zoom.decorate").innerHTML);
+  ac_add_style(".anychart-embed-ui--samples-anychart.ui.zoom.decorate{width:600px;height:450px;}");
+  })();
+  </script>
+
+
+
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,5 +69,7 @@
     <div class="blob blob-5"></div>
   </div>
 
+
 </body>
+
 </html>

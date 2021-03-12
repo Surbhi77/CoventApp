@@ -122,7 +122,8 @@ export class HospitalIcuneedEditComponent implements OnInit {
       // formvalue.hospital_required_items=this.hospitalItems
       formvalue.user_id=this.userDetails.id
       
-      formvalue.id=this.icu_id
+      formvalue.id=this.icu_id;
+      formvalue.hospital_id=this.hospital_id.id
       console.log(formvalue);
     
       this.apiService.hospitalItemUpdate(formvalue).subscribe(res=>{

@@ -31,6 +31,7 @@ export class HospitalItemEditComponent implements OnInit {
 
   latitude: number;
   longitude: number;
+  country: string;
   selectedAddress: boolean=false;
   hospitaladdress:any;
 
@@ -143,8 +144,15 @@ export class HospitalItemEditComponent implements OnInit {
     console.log(address.geometry.location.lat(),address.geometry.location.lng());
     this.latitude = address.geometry.location.lat();
     this.longitude = address.geometry.location.lng();
+    // this.country = address.geometry.location.lng();
     this.hospitaladdress = address.formatted_address
     this.selectedAddress = true;
+    for (var i = 0; i < address.address_components.length; i++){
+      if(address.address_components[i].types[0] == "country") {
+      //this is the object you are looking for
+        this.country = address.address_components[i].long_name
+      }
+    }
   }
 
   checkIfSelectCategory(value){
@@ -235,6 +243,7 @@ export class HospitalItemEditComponent implements OnInit {
       formvalue.user_id=this.userDetails.id
       formvalue.hospital_id=this.hospital_id
       formvalue.latitude =this.latitude
+      formvalue.country =this.country
       formvalue.longitude=this.longitude
       formvalue.facility_location = this.hospitaladdress
       console.log(formvalue);

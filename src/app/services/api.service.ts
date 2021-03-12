@@ -272,6 +272,21 @@ export class ApiService {
   public searchListing(obj){
     return this.http.post(this.baseAPi+'/hospital-map-filter',obj)
   }
+
+  public getRecentlyIcuNeedService(){
+    return this.http.get(this.baseAPi+'/recentlyadd-item-list')
+  }
+  public getIcuNeedDataonmap(catid){
+    return this.http.get(this.baseAPi+'/item-icu-onmap/'+catid)
+  }
+
+  public getDataOnmap(){
+    return this.http.get(this.baseAPi+'/all-hospitaldata-onmap')
+  }
+
+  public getdatabycatonmap(catid){
+    return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
+  }
  
 
 }

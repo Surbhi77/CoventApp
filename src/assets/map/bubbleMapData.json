@@ -1,0 +1,473 @@
+[
+  
+  {
+    "state": "INN",
+    "lat": 28.72434, 
+    "long": 77.17477,
+    "name": "India",
+    "device_need_perday": 30,
+    "winner": "Hospital",
+    "votepercent": 505.1
+  },
+   
+
+  {
+    "state": "AK",
+    "lat": 63.588753,
+    "long": -154.493062,
+    "name": "Alaska",
+    "device_need_perday": 3,
+    "winner": "Republicans",
+    "votepercent": 53.1
+  },
+  {
+    "state": "AL",
+    "lat": 32.318231,
+    "long": -86.902298,
+    "name": "Alabama",
+    "device_need_perday": 9,
+    "winner": "Republicans",
+    "votepercent": 62.2
+  },
+  {
+    "state": "AR",
+    "lat": 35.20105,
+    "long": -91.831833,
+    "name": "Arkansas",
+    "device_need_perday": 6,
+    "winner": "Republicans",
+    "votepercent": 62.4
+  },
+  {
+    "state": "AZ",
+    "lat": 34.048928,
+    "long": -111.093731,
+    "name": "Arizona",
+    "device_need_perday": 11,
+    "winner": "Democrats",
+    "votepercent": 49.4
+  },
+  {
+    "state": "CA",
+    "lat": 36.778261,
+    "long": -119.417932,
+    "name": "California",
+    "device_need_perday": 55,
+    "winner": "Democrats",
+    "votepercent": 63.5
+  },
+  {
+    "state": "CO",
+    "lat": 39.550051,
+    "long": -105.782067,
+    "name": "Colorado",
+    "device_need_perday": 9,
+    "winner": "Democrats",
+    "votepercent": 55.4
+  },
+  {
+    "state": "CT",
+    "lat": 41.603221,
+    "long": -73.087749,
+    "name": "Connecticut",
+    "device_need_perday": 7,
+    "winner": "Democrats",
+    "votepercent": 59.3
+  },
+  {
+    "state": "DC",
+    "lat": 38.905985,
+    "long": -77.033418,
+    "name": "District of Columbia",
+    "device_need_perday": 3,
+    "winner": "Democrats",
+    "votepercent": 93
+  },
+  {
+    "state": "DE",
+    "lat": 38.910832,
+    "long": -75.52767,
+    "name": "Delaware",
+    "device_need_perday": 3,
+    "winner": "Democrats",
+    "votepercent": 58.8
+  },
+  {
+    "state": "FL",
+    "lat": 27.664827,
+    "long": -81.515754,
+    "name": "Florida",
+    "device_need_perday": 29,
+    "winner": "Republicans",
+    "votepercent": 51.2
+  },
+  {
+    "state": "GA",
+    "lat": 32.157435,
+    "long": -82.907123,
+    "name": "Georgia",
+    "device_need_perday": 16,
+    "winner": "Republicans",
+    "votepercent": 49.5
+  },
+  {
+    "state": "HI",
+    "lat": 19.898682,
+    "long": -155.665857,
+    "name": "Hawaii",
+    "device_need_perday": 4,
+    "winner": "Democrats",
+    "votepercent": 63.7
+  },
+  {
+    "state": "IA",
+    "lat": 41.878003,
+    "long": -93.097702,
+    "name": "Iowa",
+    "device_need_perday": 6,
+    "winner": "Republicans",
+    "votepercent": 53.2
+  },
+  {
+    "state": "ID",
+    "lat": 44.068202,
+    "long": -114.742041,
+    "name": "Idaho",
+    "device_need_perday": 4,
+    "winner": "Republicans",
+    "votepercent": 63.9
+  },
+  {
+    "state": "IL",
+    "lat": 40.633125,
+    "long": -89.398528,
+    "name": "Illinois",
+    "device_need_perday": 20,
+    "winner": "Democrats",
+    "votepercent": 57.5
+  },
+  {
+    "state": "IN",
+    "lat": 40.551217,
+    "long": -85.602364,
+    "name": "Indiana",
+    "device_need_perday": 11,
+    "winner": "Republicans",
+    "votepercent": 57.1
+  },
+  {
+    "state": "KS",
+    "lat": 39.011902,
+    "long": -98.484246,
+    "name": "Kansas",
+    "device_need_perday": 6,
+    "winner": "Republicans",
+    "votepercent": 56.2
+  },
+  {
+    "state": "KY",
+    "lat": 37.839333,
+    "long": -84.270018,
+    "name": "Kentucky",
+    "device_need_perday": 8,
+    "winner": "Republicans",
+    "votepercent": 62.1
+  },
+  {
+    "state": "LA",
+    "lat": 31.244823,
+    "long": -92.145024,
+    "name": "Louisiana",
+    "device_need_perday": 8,
+    "winner": "Republicans",
+    "votepercent": 58.5
+  },
+  {
+    "state": "MA",
+    "lat": 42.407211,
+    "long": -71.382437,
+    "name": "Massachusetts",
+    "device_need_perday": 11,
+    "winner": "Democrats",
+    "votepercent": 65.9
+  },
+  {
+    "state": "MD",
+    "lat": 39.045755,
+    "long": -76.641271,
+    "name": "Maryland",
+    "device_need_perday": 10,
+    "winner": "Democrats",
+    "votepercent": 65.8
+  },
+  {
+    "state": "ME",
+    "lat": 45.253783,
+    "long": -69.445469,
+    "name": "Maine",
+    "device_need_perday": 4,
+    "winner": "Democrats",
+    "votepercent": 53.1
+  },
+  {
+    "state": "MI",
+    "lat": 44.314844,
+    "long": -85.602364,
+    "name": "Michigan",
+    "device_need_perday": 16,
+    "winner": "Democrats",
+    "votepercent": 50.6
+  },
+  {
+    "state": "MN",
+    "lat": 46.729553,
+    "long": -94.6859,
+    "name": "Minnesota",
+    "device_need_perday": 10,
+    "winner": "Democrats",
+    "votepercent": 52.6
+  },
+  {
+    "state": "MO",
+    "lat": 37.964253,
+    "long": -91.831833,
+    "name": "Missouri",
+    "device_need_perday": 10,
+    "winner": "Republicans",
+    "votepercent": 56.8
+  },
+  {
+    "state": "MS",
+    "lat": 32.354668,
+    "long": -89.398528,
+    "name": "Mississippi",
+    "device_need_perday": 6,
+    "winner": "Republicans",
+    "votepercent": 57.6
+  },
+  {
+    "state": "MT",
+    "lat": 46.879682,
+    "long": -110.362566,
+    "name": "Montana",
+    "device_need_perday": 3,
+    "winner": "Republicans",
+    "votepercent": 56.9
+  },
+  {
+    "state": "NC",
+    "lat": 35.759573,
+    "long": -79.0193,
+    "name": "North Carolina",
+    "device_need_perday": 15,
+    "winner": "Republicans",
+    "votepercent": 50.1
+  },
+  {
+    "state": "ND",
+    "lat": 47.551493,
+    "long": -101.002012,
+    "name": "North Dakota",
+    "device_need_perday": 3,
+    "winner": "Republicans",
+    "votepercent": 65.5
+  },
+  {
+    "state": "NE",
+    "lat": 41.492537,
+    "long": -99.901813,
+    "name": "Nebraska",
+    "device_need_perday": 5,
+    "winner": "Democrats",
+    "votepercent": 58.5
+  },
+  {
+    "state": "NH",
+    "lat": 43.193852,
+    "long": -71.572395,
+    "name": "New Hampshire",
+    "device_need_perday": 4,
+    "winner": "Democrats",
+    "votepercent": 52.9
+  },
+  {
+    "state": "NJ",
+    "lat": 40.058324,
+    "long": -74.405661,
+    "name": "New Jersey",
+    "device_need_perday": 14,
+    "winner": "Democrats",
+    "votepercent": 57.3
+  },
+  {
+    "state": "NM",
+    "lat": 34.97273,
+    "long": -105.032363,
+    "name": "New Mexico",
+    "device_need_perday": 5,
+    "winner": "Democrats",
+    "votepercent": 54.3
+  },
+  {
+    "state": "NV",
+    "lat": 38.80261,
+    "long": -116.419389,
+    "name": "Nevada",
+    "device_need_perday": 6,
+    "winner": "Democrats",
+    "votepercent": 50.1
+  },
+  {
+    "state": "NY",
+    "lat": 43.299428,
+    "long": -74.217933,
+    "name": "New York",
+    "device_need_perday": 29,
+    "winner": "Democrats",
+    "votepercent": 60.9
+  },
+  {
+    "state": "OH",
+    "lat": 40.417287,
+    "long": -82.907123,
+    "name": "Ohio",
+    "device_need_perday": 18,
+    "winner": "Republicans",
+    "votepercent": 53.3
+  },
+  {
+    "state": "OK",
+    "lat": 35.007752,
+    "long": -97.092877,
+    "name": "Oklahoma",
+    "device_need_perday": 7,
+    "winner": "Republicans",
+    "votepercent": 65.4
+  },
+  {
+    "state": "OR",
+    "lat": 43.804133,
+    "long": -120.554201,
+    "name": "Oregon",
+    "device_need_perday": 7,
+    "winner": "Democrats",
+    "votepercent": 56.9
+  },
+  {
+    "state": "PA",
+    "lat": 41.203322,
+    "long": -77.194525,
+    "name": "Pennsylvania",
+    "device_need_perday": 20,
+    "winner": "Democrats",
+    "votepercent": 50
+  },
+  {
+    "state": "RI",
+    "lat": 41.580095,
+    "long": -71.477429,
+    "name": "Rhode Island",
+    "device_need_perday": 4,
+    "winner": "Democrats",
+    "votepercent": 59.7
+  },
+  {
+    "state": "SC",
+    "lat": 33.836081,
+    "long": -81.163725,
+    "name": "South Carolina",
+    "device_need_perday": 9,
+    "winner": "Republicans",
+    "votepercent": 55.1
+  },
+  {
+    "state": "SD",
+    "lat": 43.969515,
+    "long": -99.901813,
+    "name": "South Dakota",
+    "device_need_perday": 3,
+    "winner": "Republicans",
+    "votepercent": 61.8
+  },
+  {
+    "state": "TN",
+    "lat": 35.517491,
+    "long": -86.580447,
+    "name": "Tennessee",
+    "device_need_perday": 11,
+    "winner": "Republicans",
+    "votepercent": 60.7
+  },
+  {
+    "state": "TX",
+    "lat": 31.968599,
+    "long": -99.901813,
+    "name": "Texas",
+    "device_need_perday": 38,
+    "winner": "Republicans",
+    "votepercent": 52.1
+  },
+  {
+    "state": "UT",
+    "lat": 39.32098,
+    "long": -111.093731,
+    "name": "Utah",
+    "device_need_perday": 6,
+    "winner": "Republicans",
+    "votepercent": 58.2
+  },
+  {
+    "state": "VA",
+    "lat": 37.431573,
+    "long": -78.656894,
+    "name": "Virginia",
+    "device_need_perday": 13,
+    "winner": "Democrats",
+    "votepercent": 54.4
+  },
+  {
+    "state": "VT",
+    "lat": 44.558803,
+    "long": -72.577841,
+    "name": "Vermont",
+    "device_need_perday": 3,
+    "winner": "Democrats",
+    "votepercent": 66.4
+  },
+  {
+    "state": "WA",
+    "lat": 47.751074,
+    "long": -120.740139,
+    "name": "Washington",
+    "device_need_perday": 12,
+    "winner": "Democrats",
+    "votepercent": 58.4
+  },
+  {
+    "state": "WI",
+    "lat": 43.78444,
+    "long": -88.787868,
+    "name": "Wisconsin",
+    "device_need_perday": 10,
+    "winner": "Democrats",
+    "votepercent": 49.6
+  },
+  {
+    "state": "WV",
+    "lat": 38.597626,
+    "long": -80.454903,
+    "name": "West Virginia",
+    "device_need_perday": 5,
+    "winner": "Republicans",
+    "votepercent": 68.6
+  },
+  {
+    "state": "WY",
+    "lat": 43.075968,
+    "long": -107.290284,
+    "name": "Wyoming",
+    "device_need_perday": 3,
+    "winner": "Republicans",
+    "votepercent": 70.4
+  }
+]

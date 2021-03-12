@@ -270,7 +270,7 @@ img.mx-auto.img-fluid {
 }
 
 .feature_title_main {
-    font-size: 34px !important;
+   // font-size: 34px !important;
     font-weight: 300 !important;
     line-height: 1.2em !important;
     margin-bottom: .8rem;
@@ -887,4 +887,125 @@ button.btn_all.btn {
 
 .view_all_btns {
     text-align: center;
+}
+
+
+/*********************************/
+.containermap {
+    width: 100%;
+    height: 520px;
+    margin: 0;
+    padding: 0;
+    /*background-color:#212327;*/
+}
+.anychart-zoom{
+    position: absolute;
+    left: 10px;
+    top: 45px !important;
+}
+
+ul.recentlyDevice{
+    padding: 0;
+}
+ul.recentlyDevice li{
+    list-style: none;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+ul.recentlyDevice li a{
+    color: #333;
+}
+ul.recentlyDevice li:last-child{
+    border-bottom: none;
+}
+ul.recentlyDevice{
+    height: 495px;
+    overflow: auto;
+    padding: 10px;
+}
+h5{
+    font-size: 1.05rem;
+}
+
+ul.recentlyDevice li.active{
+    background: #13BFB3;
+}
+ul.recentlyDevice li.active a{
+    color: #ffffff;
+}
+
+.mapsection-theme{
+    background: #f3f3f3;
+    color: #333;
+    border: 1px solid #00c4ce;
+}
+
+.mapsection-theme-heading{
+    background: #00c4ce;
+    text-align: center;
+    padding: 10px;
+    color: #ffffff;
+    font-weight: normal;
+}
+.text-red{
+    color: #0088cc;
+    font-weight: bold;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .card{
+      width: 33%;
+      color: white;
+     // height: 50%  !important;
+      border-radius: 0%;
+      text-decoration: none;
+
+
+  }
+  .card-body{
+    padding: 2.25rem !important;
+  }
+  .card-title{
+    line-height: inherit;
+  }
+  .card1{
+    background: gray;
+  }
+  .card2{
+      background-color:#a9a9a952;
+      color:black
+  }
+  .card3{
+    background-color: black;
+  }
+  .title_bars h2 {
+    margin: 0 !important;
+}
+.title_bars {
+    background: #00c4ce;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+}
+h2.cobid_test {
+    color: #fff;
+    font-size: 20px;
 }
