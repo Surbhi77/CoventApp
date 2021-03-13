@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {ApiService} from './../services/api.service'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
 import {
   GoogleChartInterface,
@@ -95,9 +95,12 @@ export class HomeComponent implements OnInit {
       }
     }
   };
-  constructor(private apiService:ApiService,private router:Router) { }
-
+  deviceDetails: any=[];
+  categoryId: any;
+  constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
+  
   ngOnInit(): void {
+    this.getDeviceDetails()
    var self=this;
     this.json.forEach(element => {
       var arr=[];
@@ -132,7 +135,22 @@ export class HomeComponent implements OnInit {
      this.featuredInnovatorListing=res['data']
    }) 
   }
-
+  getDeviceDetails(){
+    let obj={
+      category_id:this.categoryId
+    }
+    this.categoryId = this.route.snapshot.params['id']
+    console.log(this.categoryId)
+    this.apiService.getInnovatorDetail(this.categoryId).subscribe(res=>{
+      console.log("jhjygyhg",res)
+      if(res['success']){
+        this.deviceDetails =  res['data'][0];
+        this.deviceDetails.team_member = JSON.parse(res['data'][0].team_member);
+        // this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.deviceDetails.device_videos);
+        // this.safeHtml = this._sanitizer.bypassSecurityTrustHtml(this.deviceDetails.device_videos)
+      }
+    })
+  }
   getAllFeaturedCategories(){
     this.apiService.getFeaturedCategories().subscribe(res=>{
       console.log(res);
@@ -144,17 +162,17 @@ export class HomeComponent implements OnInit {
     this.apiService.getRecentlyIcuNeedService().subscribe(res=>{
       console.log(res);
       let index = 0;
-      let recentarr = [];
-      for (let valuearr of res['data']) {
-        for (let val of valuearr) {
+      // let recentarr = [];
+      // for (let valuearr of res['data']) {
+      //   for (let val of valuearr) {
 
-        console.log('val',val);
-        recentarr[index] = val;
-        index++
-        }
-      }
-      console.log('recentarr',recentarr);
-      this.recentlyIcuNeed = recentarr
+      //   console.log('val',val);
+      //   recentarr[index] = val;
+      //   index++
+      //   }
+      // }
+      // console.log('recentarr',recentarr);
+      this.recentlyIcuNeed = res['data']
       //res['data'];
 
     })
