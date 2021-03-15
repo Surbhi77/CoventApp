@@ -1258,3 +1258,154 @@
         .donation-font h3 {
             color: #fff;
         }
+        /*contact us design*/
+        
+        .contact-details {
+            // right: 57px;
+            height: 100%;
+            // position: absolute;
+            //width: 333px;
+            // left: -105px;
+            justify-content: center;
+            // top: 50px;
+            background-color: #00c4ce;
+            color: white;
+            padding: 27px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 3px 10px #0003;
+            font-size: 18px;
+        }
+        
+        .contact-info {
+            background-color: #ddd;
+            padding: 50px 0;
+            position: relative;
+        }
+        
+        .contact-info:after {
+            content: '';
+            position: absolute;
+            width: 170px;
+            height: 100%;
+            background: #fff;
+            top: 0;
+            left: 0;
+        }
+        
+        .contact-head {
+            padding: 50px;
+            position: relative;
+        }
+        
+        .contact-info form {
+            padding: 30px 60px;
+            //height: 440px;
+            margin-top: 17px;
+            font-size: 18px;
+        }
+        
+        .contact-info form button {
+            border-radius: 0;
+            width: 150px;
+            height: 59px;
+            border: 0;
+            background-color: #00c4ce;
+            color: #fff;
+        }
+        
+        .contact-body {
+            // background-image: url('../../assets/images/anna-shvets.jpg');
+            //  background-repeat: no-repeat;
+            // background-position: center;
+            // background-size: cover;
+            align-items: center;
+            background: #fff;
+        }
+        
+        .social-links {
+            position: absolute;
+            bottom: 29px;
+            font-size: 26px;
+            padding: 20px;
+        }
+        
+        .contact-info form input {
+            outline: 0;
+            border-width: 0 0 2px;
+            border-color: black;
+            background: transparent;
+            border-radius: 0;
+        }
+        
+        .contact-info form textarea {
+            outline: 0;
+            border-width: 0 0 2px;
+            border-color: black;
+            background: transparent;
+            border-radius: 0;
+        }
+        
+        .contact-info form input:focus,
+        textarea:focus {
+            outline: none;
+            background: transparent;
+            // border: 0;
+            outline: 0;
+            box-shadow: none;
+        }
+        /*About*/
+        
+        .sidebar {
+            // background-image: url('../../assets/images/BANNER--01.png');
+            // background-repeat: no-repeat;
+            // background-position: center;
+            // background-size: cover;
+            // box-shadow: 0 3px 10px #0003;
+        }
+        
+        .about {
+            //  box-shadow: 0 3px 10px #0003;
+            padding: 40px;
+        }
+        
+        .image_innsddsdds img {
+            width: 100%;
+            box-shadow: 15px 15px 3px #00c4ce;
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        // .image_innsddsdds {
+        //     background-image: url('../../assets/images/vector-shape1.png');
+        // }
+        .about p {
+            padding-bottom: 10px;
+            padding-top: 10px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .about h5 {
+            font-size: 27px;
+            font-weight: 700;
+            color: #5d5d5d;
+        }
+        
+        .about h3 {
+            color: #222;
+            font-weight: 800;
+        }
+        
+        .note_heres i {
+            margin-right: 18px;
+            color: #00c4ce;
+            font-size: 35px;
+        }
+        
+        .note_heres {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
