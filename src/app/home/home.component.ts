@@ -117,11 +117,11 @@ export class HomeComponent implements OnInit {
     this.getTeam(); // this by #as becouze table not found
     // this.bubblemap();
     this.datafilterbycat(0);
-    // this.newbubblemap()
     this.getRecentlyIcuNeed();
     this.getDeviceCategoryList();
     this.getIcuNeedDataonmap(0);
     this.getMapJson();
+    // this.newbubblemap()
 
     console.log('baseAPi',this.baseAPi);
   }
@@ -145,16 +145,25 @@ export class HomeComponent implements OnInit {
       console.log(res);
       let index = 0;
       let recentarr = [];
-      for (let valuearr of res['data']) {
+      console.log('resresres',res['data']);
+      // for (let valuearr = 0; valuearr < res['data'].length; valuearr++) {
+      //   console.log('valuearr',res['data'][valuearr]);
+        
+      // }
+      // res['data'].forEach(function(valuearr){
+      //   valuearr.forEach(function(val){
+      //   recentarr[index] = val;
+      //   index++
+      //   });
+      // });
+      /*for (let valuearr of res['data']) {
         for (let val of valuearr) {
 
-        console.log('val',val);
-        recentarr[index] = val;
-        index++
+          console.log('val',val);
         }
-      }
-      console.log('recentarr',recentarr);
-      this.recentlyIcuNeed = recentarr
+      }*/
+      // console.log('recentarr',recentarr);
+      this.recentlyIcuNeed = res['data']
       //res['data'];
 
     })

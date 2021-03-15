@@ -98,7 +98,7 @@
                     <h5 class="mapsection-theme-heading">Recently Added</h5>
                     <ul class="recentlyDevice">
                         <li *ngFor="let recentValue of recentlyIcuNeed">
-                            {{recentValue.device_need_perday}}
+                            <span class="text-red">{{recentValue.device_need_perday}}</span>
                             {{recentValue.itemcat_name}}
                             in {{recentValue.country}}
                         </li>
