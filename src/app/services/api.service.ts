@@ -287,6 +287,9 @@ export class ApiService {
   public getdatabycatonmap(catid){
     return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
   }
+  public getInnovation(limit){
+    return this.http.get(this.baseAPi+'all-innovation-data/'+limit)
+  }
  
 
 }

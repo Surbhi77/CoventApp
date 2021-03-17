@@ -97,6 +97,8 @@ export class HomeComponent implements OnInit {
   };
   deviceDetails: any=[];
   categoryId: any;
+  innovationData: any=[];
+  currentRate: any;
   constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
   
   ngOnInit(): void {
@@ -125,6 +127,7 @@ export class HomeComponent implements OnInit {
     this.getDeviceCategoryList();
     this.getIcuNeedDataonmap(0);
     this.getMapJson();
+    this.getInnovationAll()
 
     console.log('baseAPi',this.baseAPi);
   }
@@ -150,6 +153,16 @@ export class HomeComponent implements OnInit {
         // this.safeHtml = this._sanitizer.bypassSecurityTrustHtml(this.deviceDetails.device_videos)
       }
     })
+  }
+  getInnovationAll(){
+    this.apiService.getInnovation(6).subscribe((res:any)=>{
+      this.innovationData = res.data;
+    console.log("Innovation data............",this.innovationData)
+    })
+    this.innovationData.forEach(element => {
+      element.ratings = this.currentRate 
+      
+    });
   }
   getAllFeaturedCategories(){
     this.apiService.getFeaturedCategories().subscribe(res=>{

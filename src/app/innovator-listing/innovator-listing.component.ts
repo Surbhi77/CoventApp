@@ -14,6 +14,10 @@ export class InnovatorListingComponent implements OnInit {
   getSubCategory: any=[];
   searchString:any='';
   subCategory:any=0;
+  innovationData: any=[];
+  currentRate: any;
+  assetUrl:any=environment.imageUrl;
+  notfound: boolean=false;
 
   constructor(private router:Router,
     private apiService:ApiService, 
@@ -24,7 +28,7 @@ export class InnovatorListingComponent implements OnInit {
       console.log(this.categoryId);
       this.getCategoryListing();
       this.getSubcategoryListing();
-
+ this.getInnovationAll();
       let body = document.getElementsByTagName('body')[0];
       body.classList.add("absolute-header");
     }
@@ -79,10 +83,35 @@ export class InnovatorListingComponent implements OnInit {
         }
       })
     }
-    
+    getInnovationAll(){
+      this.apiService.getInnovation(16).subscribe((res:any)=>{
+        this.innovationData = res.data;
+        
+      console.log("Innovation data............",this.innovationData)
+      })
+      // if(this.searchString!=this.innovationData.device_name && this.innovationData.device_name==''){
+      //   this.notfound = true
+      // }
+      // else{
+      //   this.notfound = false
+      // }
+      // this.innovationData.forEach(element => {
+      //   element.ratings = this.currentRate 
+      //   if(this.searchString!=element.device_name){
+      //     this.notfound = true
+      //   }
+      //   else{
+      //     this.notfound = false
+      //   }
+        
+      //});
+    }
     openDetails(item){
       this.router.navigateByUrl('/library-details/'+item.device_data_id);
       return false;
+    }
+    navigateToDetail(item){
+      this.router.navigateByUrl('/library-details/'+item.device_data_id)
     }
 
     ngOnDestroy(){

@@ -44,6 +44,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { DataTablesModule } from 'angular-datatables';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 const MyGoogleChartsSettings: GoogleChartsSettings = {
   mapsApiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'
@@ -68,6 +69,7 @@ const MyGoogleChartsSettings: GoogleChartsSettings = {
     BrowserModule,
     BrowserAnimationsModule,
     Ng2GoogleChartsModule,
+    Ng2SearchPipeModule ,
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyA8KcJJZ6LmfcZS7orRbfkO_bhpQBPhqbk'}),
     //AgmCoreModule.forRoot({apiKey:'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY'}),

@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row magic-row">
             <div class="col-lg-12 mb-4">
-            <div class="section-title">
-                <h2>Innovator Listing</h2>
-            </div>
+                <div class="section-title">
+                    <h2>Innovator Listing</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -14,62 +14,108 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="d-flex back_cover">
-            <div class="col-lg-6">
-                <div class="input-group input-group-lg m-0">
-                    <input type="text" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" class="form-control" placeholder="Search">
-                    <div class="input-group-append">
-                        <button (click)="searchChanged()" class="btn btn-success btn_searchs" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg m-0">
+                            <i class="fa fa-search search" aria-hidden="true"></i> <input type="text" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <button (click)="searchChanged()" class="btn btn-success btn_searchs" type="submit">Search</button>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-            </div>
-            
-            <div class="col-sm-6">
-                <div class="form-group input-group-lg m-0">
-                    <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
+                    <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+
+                    <!-- <div class="col-sm-6">
+                        <div class="form-group input-group-lg m-0">
+                            <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
                       <option value=0>All</option>
                       <option *ngFor="let item of getSubCategory" [value]="item.sub_category_id">{{item.subcategory_name}}</option>
                     </select>
-                  </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-sm-1">
+                        <button class="btn btn-success btn_searchs" type="submit">Search</button>
+                    </div> -->
+                </div>
             </div>
-            <!-- <div class="col-sm-1">
-                <button class="btn btn-success btn_searchs" type="submit">Search</button>
-            </div> -->
         </div>
-    </div>
-    </div>
     </div>
 </section>
-<section class="pb-5">
-   <div class="container">
+<!-- <section class="pb-5">
+    <div class="container">
 
-      <div class="row pt-4">
-        <div *ngFor="let innovator of innovatorListing" class="col-lg-3 col-md-3 col-12 mb-4">
+        <div class="row pt-4">
+            <div *ngFor="let innovator of innovatorListing" class="col-lg-3 col-md-3 col-12 mb-4">
 
-            <div class="inner_services">
-                <div class="img-wrap ratio-4-3">
-                    <div class="img-content">
-                        <img [src]="imageBasePath+innovator.data_path" (error)="onImgError($event)" class="service-img img-fluid" alt="slide">
+                <div class="inner_services">
+                    <div class="img-wrap ratio-4-3">
+                        <div class="img-content">
+                            <img [src]="imageBasePath+innovator.data_path" (error)="onImgError($event)" class="service-img img-fluid" alt="slide">
+                        </div>
+                    </div>
+                    <div class="ino_title">
+                        <h5>{{innovator.device_name}}</h5>
+                    </div>
+                    <div class="infos">
+                        <a (click)="openDetails(innovator)" href="javascript:void(0);" class="infoss_a">
+                            <p>Info</p><img src="./assets/images/view.svg"></a>
                     </div>
                 </div>
-                <div class="ino_title">
-                    <h5>{{innovator.device_name}}</h5>
-                </div>
-                <div class="infos">
-                 <a (click)="openDetails(innovator)" href="javascript:void(0);" class="infoss_a"><p>Info</p><img src="./assets/images/view.svg"></a>
+
+            </div>
+            <div class="col-sm-12">
+                <div *ngIf="innovatorListing.length == 0" class="service-img-box">
+                    <div class="not_found_n">
+                        <h3 class="m-0">No Listing Found</h3>
+                    </div>
                 </div>
             </div>
-         
-       </div>
-       <div class="col-sm-12">
-        <div *ngIf="innovatorListing.length == 0" class="service-img-box">
-            <div class="not_found_n">
-                <h3 class="m-0">No Listing Found</h3>
+
+
+        </div>
+
+    </div>
+</section> -->
+<section class="pt-5 pb-5">
+    <div class="container">
+        <!-- <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="Heading-title Heading-title-center">
+                    <h2>Device Innovations <span>Listing</span></h2>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="row mt-4">
+            <div *ngFor="let item of innovationData | filter:searchString" class="col-lg-4 col-md-4 col-12">
+                <div class="InnovationsList-Info">
+                    <a (click)="navigateToDetail(item)" class="InnovationsList-box">
+                        <div class="SInnovationsList-img-block">
+                            <img [src]="assetUrl+item.deviceimage[0]" class="img-fluid" alt="slide">
+                        </div>
+                        <div class="InnovationsList-details">
+                            <h6>{{item.device_name}}</h6>
+                            <ngb-rating [max]="5" [value]="item.ratings" [(rate)]="item.ratings" [readonly]="false"></ngb-rating>
+                            <!-- <ul class="rating">
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            </ul> -->
+                            <a class="mec-btn">{{item.category}}</a>
+                            <p>{{item.device_description}}</p>
+                            <div class="QR-btn-block">
+                                <a class="device-button">Add A REVIEW <i class="far fa-edit"></i></a>
+                                <a class="device-button">ADD A QUESTION <i class="far fa-question-circle"></i></a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <h3 *ngIf="notfound">Data Not Found</h3>
+                </div>
             </div>
         </div>
-        </div>
-       
-
-      </div>
-
-   </div>
+    </div>
 </section>
