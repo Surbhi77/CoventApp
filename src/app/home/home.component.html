@@ -193,11 +193,12 @@
 
 
         <div class="row mt-4">
+
             <div *ngFor="let item of innovationData" class="col-lg-4 col-md-4 col-12">
                 <div class="InnovationsList-Info">
                     <a (click)="navigateToDetail(item)" class="InnovationsList-box">
                         <div class="SInnovationsList-img-block">
-                            <img [src]="assetUrl+item.deviceimage[0]" class="img-fluid" alt="slide">
+                            <img [src]="assetUrl+item.deviceimage" class="img-fluid" alt="slide">
                         </div>
                         <div class="InnovationsList-details">
                             <h6>{{item.device_name}}</h6>
@@ -219,6 +220,7 @@
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

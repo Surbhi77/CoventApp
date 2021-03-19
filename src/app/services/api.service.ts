@@ -288,8 +288,10 @@ export class ApiService {
     return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
   }
   public getInnovation(limit){
-    return this.http.get(this.baseAPi+'all-innovation-data/'+limit)
+    return this.http.post(this.baseAPi + `all-innovation-data/`,limit)
+   
   }
- 
+  
+  
 
 }

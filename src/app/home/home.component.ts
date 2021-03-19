@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {ApiService} from './../services/api.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   GoogleChartInterface,
 
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
   featuredCategories:any=[];
   teamContent:any=[];
   sliderContent:any=[];
+  form: FormGroup;
   assetUrl:any=environment.imageUrl;
   json= [{
     "latitude":43.8766588,
@@ -102,6 +104,12 @@ export class HomeComponent implements OnInit {
   constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
   
   ngOnInit(): void {
+    this.form =  new FormGroup({
+      ordertype :new FormControl(''),
+      search:new FormControl(''),
+      orderby:new FormControl(''),
+      limit:new FormControl('')
+    })
     this.getDeviceDetails()
    var self=this;
     this.json.forEach(element => {
@@ -155,7 +163,10 @@ export class HomeComponent implements OnInit {
     })
   }
   getInnovationAll(){
-    this.apiService.getInnovation(6).subscribe((res:any)=>{
+    let obj:any = {}
+      obj.limit=6
+   // this.apiService.getInnovation(6,1,2,2).subscribe((res:any)=>{
+    this.apiService.getInnovation(obj).subscribe((res:any)=>{
       this.innovationData = res.data;
     console.log("Innovation data............",this.innovationData)
     })
