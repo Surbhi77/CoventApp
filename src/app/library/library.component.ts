@@ -20,6 +20,7 @@ export class LibraryComponent implements OnInit {
     this.apiService.getDeviceListing().subscribe(res=>{
       if(res['success']){
         this.categories=res['data']
+        console.log(this.categories)
       }
     })
   }
