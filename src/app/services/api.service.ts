@@ -287,8 +287,13 @@ export class ApiService {
   public getdatabycatonmap(catid){
     return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
   }
-  public getInnovation(limit){
-    return this.http.post(this.baseAPi + `all-innovation-data/`,limit)
+  public getInnovation(postdata){
+    return this.http.post(this.baseAPi + 'all-innovation-data/',postdata)
+   
+  }
+
+  public get_history(){
+    return this.http.post('http://swadeshisetu.in/truck/api/order-history/',42)
    
   }
   

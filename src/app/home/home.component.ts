@@ -183,21 +183,22 @@ export class HomeComponent implements OnInit {
   }
 
   getRecentlyIcuNeed(){
+    console.log('getRecentlyIcuNeed');
     this.apiService.getRecentlyIcuNeedService().subscribe(res=>{
       console.log(res);
       let index = 0;
       let recentarr = [];
-      console.log('resresres',res['data']);
+      // console.log('resresres',res['data']);
       // for (let valuearr = 0; valuearr < res['data'].length; valuearr++) {
       //   console.log('valuearr',res['data'][valuearr]);
         
       // }
-      // res['data'].forEach(function(valuearr){
-      //   valuearr.forEach(function(val){
-      //   recentarr[index] = val;
-      //   index++
-      //   });
-      // });
+      res['data'].forEach(function(valuearr){
+        valuearr.forEach(function(val){
+        recentarr[index] = val;
+        index++
+        });
+      });
       /*for (let valuearr of res['data']) {
         for (let val of valuearr) {
 
@@ -214,7 +215,7 @@ export class HomeComponent implements OnInit {
       //   }
       // }
       // console.log('recentarr',recentarr);
-      this.recentlyIcuNeed = res['data']
+      this.recentlyIcuNeed = recentarr;//res['data']
       //res['data'];
 
     })
@@ -372,7 +373,7 @@ export class HomeComponent implements OnInit {
               // Tooltip
               series
                 .tooltip(true)
-                .stroke('1976d2')
+                .stroke('#1976d2')
                 .fill('#1976d2')
                 .selectionMode('none');
     
@@ -382,7 +383,7 @@ export class HomeComponent implements OnInit {
                 .enabled(true)
                 .anchor('left-center')
                 .position('right')
-                .fontSize(11)
+                .fontSize(15)
                 .offsetX(5);
     
               document.getElementById('container_mapcategory').innerHTML = '';

@@ -24,39 +24,56 @@
                     </div>
                     <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
 
-                    <!-- <div class="col-sm-6">
-                        <div class="form-group input-group-lg m-0">
-                            <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
-                      <option value=0>All</option>
-                      <option *ngFor="let item of getSubCategory" [value]="item.sub_category_id">{{item.subcategory_name}}</option>
-                    </select>
-                        </div>
-                    </div> -->
+                    
                     <!-- <div class="col-sm-1">
                         <button class="btn btn-success btn_searchs" type="submit">Search</button>
                     </div> -->
 
                 </div>
-                <div>
-                    <h6>Sort By:</h6>
-                    <select>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <p>Show total number:- </p>
+            </div>
+            <div class="col-sm-4">
+            
+                <h6>Sort By:</h6>
+                <div class="form-group input-group-lg m-0">
+                    <select class="form-control">
                         <option>top rating</option>
                         <option>Most Popular</option>
                         <option>New</option>
                         <option>Old</option>
-                        </select>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h6>Filter:</h6>
+                <div class="form-group input-group-lg m-0">
+                    <select [(ngModel)]="subCategory" (ngModelChange)="modelChanged($event)" class="form-control" id="sel1">
+                    <option value=0>All</option>
+                    <option *ngFor="let item of getSubCategory" [value]="item.sub_category_id">{{item.subcategory_name}}</option>
+                    </select>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div>
 
+
+<!-- <div>
     <a (click)="filterData()">filter:</a>
     <div *ngFor="let item of innovationData">
         <h6 (click)="filterclick(item.category)">{{item.category}}</h6>
     </div>
-</div>
+</div> -->
 
 
 <!-- <section class="pb-5">

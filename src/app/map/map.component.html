@@ -7,16 +7,98 @@
          </div>
       </div>
    </div>
-   
+   <!-- new map code start -->
+    <section class="about-section section_padds py-5 black_sertions">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="title_bars">
+                      <h2 class="cobid_test">COVID-19 ESSENTIAL SUPPLIES DASHBOARD</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-2">
+                  <div *ngIf="recentlyIcuNeed">
+                      <h5 *ngIf="totalcount && totalcount>0" class="mapsection-theme-heading">Total <span class="text-red">
+                    {{totalcount}}
+                    </span>
+                      </h5>
+                      <div class="mapsection-theme">
+                          <h5 class="mapsection-theme-heading">Device by Country</h5>
+                          <ul class="recentlyDevice">
+                              <li *ngFor="let icuneedvalue of itemIcuNeedonmap">
+                                  <span class="text-red">{{icuneedvalue.device_need_perday}}</span> {{icuneedvalue.country}}
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="map_deuvs">
+                      <!-- <h2 class="text-center feature_title_main">Map  </h2> -->
+                      <!-- <div id="chartdiv"></div> -->
+                      <div id="container_mapcategory" class="containermap">
+                      </div>
+                      <!-- <div id="container_mapcategory" #myDOMElement class="containermap" *ngIf="category_data">
+                    new map
+                    </div> -->
+                      <!-- <div id="ac_style_ui--samples-anychart.ui.zoom.decorate" style="display:none;">
+                    </div> -->
+                      <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
+                  </div>
+              </div>
+              <div class="col-sm-2">
+                  <div *ngIf="getDeviceCategoryListData" class="mapsection-theme">
+                      <h5 class="mapsection-theme-heading">Show by Category</h5>
+                      <ul class="recentlyDevice">
+                          <li>
+                              <a href="javascript:;" (click)="datafilterbycat(0)">
+                      All
+                      </a>
+                          </li>
+                          <li *ngFor="let catValue of getDeviceCategoryListData">
+                              <a href="javascript:;" (click)="datafilterbycat(catValue.category_id)">
+                      {{catValue.category_name}}
+                      </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-sm-2">
+                <div *ngIf="recentlyIcuNeed" class="mapsection-theme">
+                    <h5 class="mapsection-theme-heading">Recently Added</h5>
+                    <ul class="recentlyDevice">
+                        <li *ngFor="let recentValue of recentlyIcuNeed">
+                            <span class="text-red">{{recentValue.device_need_perday}}</span> {{recentValue.itemcat_name}} in {{recentValue.country}}
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <!-- <div class="col-sm-6">
+              <img src="./assets/images/image-1.png" class="rounded img-fluid" alt="slide">
+              </div>
+              <div class="col-sm-6">
+              <div class="feature_content">
+                  <h2 class="feature_title">Fostering community-led <br> responses to global crises.</h2>
+                  <p class="feature_description">OSMS provides a curated open-source design library, and guidance to <br> support local groups in effectively organizing fabrication and distribution <br> efforts to meet the local demand for COVID-19 supplies.</p>
+                  <p class="feature_description">Our Clinic has grown to provide a world class facility for the treatment of tooth loss, dental cosmetics and bore advanced restorative dentistry. <br> We are among the most qualified implant providers in the AUS with over 30 years
+                      of uality training and experience.</p>
+                  <div class="button-container">
+                      <a class="size-normal" href="/local-response"><span class="button-inner">Learn More</span></a>
+                  </div>
+              </div>
+              </div> -->
+          </div>
+      </div>
+    </section>
+   <!-- new map code end -->
 
+  <!-- by #s on 22-mar-2021 new map code --
     <div class="row">
       <div class="col-sm-4">
         <div class="outer_boxs">
-          <!-- <div class="col-sm-12">
-            <div class="filter_hedings pb-3">
-              <h3>Filters</h3>
-            </div>
-          </div> -->
+          
           <div class="col-sm-12">
             <div class="input-group mb-3 ">
               <input #placesRef="ngx-places" [(ngModel)]="location" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" type="text" [options]="{address_component:'geometry'}" (onAddressChange)="handleAddressChange($event)" class="form-control" placeholder="Search Location">
@@ -24,9 +106,6 @@
                 <button class="btn btn-success test_searchs" type="submit"><i class="fas fa-search"></i></button>
               </div>
             </div>
-            <!-- <div class="form-group mb-3">
-              <input type="search" class="form-control" placeholder="Search">
-            </div> -->
           </div>
           <div class="col-sm-12">
             <div class="form-group mb-3">
@@ -38,55 +117,6 @@
           </div>
           <div class="col-sm-12">
             
-              <!-- <select class="form-control">
-                <option>Category </option>
-                <option>2</option>
-                <option>3</option> 
-                <option>4</option>
-              </select> -->
-              <!-- <mat-form-field>
-                <mat-chip-list aria-label="Fish selection">
-                  <mat-chip>One fish</mat-chip>
-                  <mat-chip>Two fish</mat-chip>
-                  <mat-chip color="primary" selected>Primary fish</mat-chip>
-                  <mat-chip color="accent" selected>Accent fish</mat-chip>
-                </mat-chip-list>
-              </mat-form-field> -->
-              
-              <!-- <h4 class="titles_hm py-2">Category</h4>
-              <div class="uls_filters py-1">
-                <ul>
-                  <li><a href="#">Hygiene</a></li>
-                  <li><a href="#">PPE</a></li> 
-                  <li><a href="#">Diagnostics </a></li>
-                  <li><a href="#">Monitoring</a></li>
-                  <li><a href="#">Oxygen therapy</a></li>
-                  <li><a href="#">Airway Management & Intubation</a></li>
-                  <li><a href="#">Mechanical Ventilation</a></li>
-                  <li><a href="#">Non-Invasive Ventilation</a></li>
-                  <li><a href="#">IV Infusion</a></li>
-                  <li><a href="#">Blood Chemistry</a></li>
-                  <li><a href="#">Imaging</a></li>
-                  <li><a href="#">ICU</a></li>
-                  <li><a href="#">More +</a></li>
-                </ul>
-            </div> -->
-          </div>
-          <div class="col-sm-12">
-            <!-- <h4 class="titles_hm py-2">Item</h4> -->
-
-            <!-- <div class="uls_filters py-1">
-              <ul>
-                <li><a href="#">Chlorine, HTH 70%</a></li>
-                <li><a href="#">Alcohol-based hand rub</a></li> 
-                <li><a href="#">Liquid soap </a></li>
-                <li><a href="#">Bio-hazardous bag</a></li>
-                <li><a href="#">Gown, protective</a></li>
-                <li><a href="#">Scrubs, tops</a></li>
-                <li><a href="#">Scrubs, pants</a></li>
-                <li><a href="#">More +</a></li>
-              </ul>
-          </div> -->
             <div class="form-group mb-3">
               <select (change)="search()" [(ngModel)]="risk" class="form-control">
                 <option value="0">Severity</option>
@@ -99,45 +129,20 @@
               </select>
             </div>
           </div>
-          <!-- <div class="btn_nhs col-sm-12">
-            <button (click)="search()" class="btn_subs">Submit</button>
-          </div> -->
+          
          
         </div>
       </div>
-    <div class="col-sm-8">
-      <div *ngIf="looped" class="shodows">
-        <google-chart #mychart [data]="geoChart" ></google-chart>
-      </div>
-      <div *ngIf="!looped && noResult" class="not_found">
-        <p>No data found for your search <a class="clear_filter" (click)="clearFilters()" href="javascript:void(0);"> Clear Filters </a></p>
-       </div>
-    </div>
-    
-    
-    </div>
-
-    <!-- <div class="row magic-row">
-      <div class="col-lg-12 pt-5">
-         <div class="section-title">
-            <h2>ICU Needs Location Tracker</h2>
-         </div>
-      </div>
-
-      <div class="col-sm-12 pt-4">
+      <div class="col-sm-8">
         <div *ngIf="looped" class="shodows">
-          <agm-map style="height:700px" [zoom]="zoom" [latitude]='lat' [longitude]='long' >
-                  <agm-marker *ngFor="let item of json" [latitude]="item.latitude"
-                  [longitude]="item.longitude"  [iconUrl]="item.iconUrl" (mouseOver)="onMouseOver(infoWindow, $event)" 
-                  (mouseOut)="onMouseOut(infoWindow, $event)">
-                  <agm-info-window #infoWindow ><p style="padding: 10px; background-color: #13bfb3; color: #fff; font-size: 12px; margin-bottom: 10px;">{{item.hospital_name}}</p><p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Requirement: {{item.urgency_icuneed}}</p>
-                  <p style="border-bottom: 1px solid #13bfb3; font-size: 12px;">Need For: {{item.item_name}}</p>
-                  </agm-info-window>
-                </agm-marker>                
-          </agm-map>
+          <google-chart #mychart [data]="geoChart" ></google-chart>
         </div>
-          
+        <div *ngIf="!looped && noResult" class="not_found">
+          <p>No data found for your search <a class="clear_filter" (click)="clearFilters()" href="javascript:void(0);"> Clear Filters </a></p>
+        </div>
       </div>
-   </div> -->
+    </div>
+------>
+    
   </div>
 </section>

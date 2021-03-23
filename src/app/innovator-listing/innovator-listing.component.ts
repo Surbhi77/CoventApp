@@ -37,9 +37,17 @@ export class InnovatorListingComponent implements OnInit {
       console.log(this.categoryId);
       this.getCategoryListing();
       this.getSubcategoryListing();
- this.getInnovationAll();
+      this.getInnovationAll();
       let body = document.getElementsByTagName('body')[0];
       body.classList.add("absolute-header");
+
+
+      // this.apiService.get_history().subscribe((res:any)=>{
+      //   // this.innovationData = res.data;
+      //   console.log("get_history API",res)
+      // })
+
+
     }
 
     onImgError($event){
@@ -92,11 +100,14 @@ export class InnovatorListingComponent implements OnInit {
         }
       })
     }
+
+
     getInnovationAll(){
       let obj:any = {}
       obj.orderby=this.form.value.orderby
       obj.ordertype=this.form.value.ordertype
       obj.search=this.searchString
+      obj.categoryId=this.categoryId
       obj.limit=this.form.value.limit
       console.log("object .....",obj)
       this.apiService.getInnovation(obj).subscribe((res:any)=>{
@@ -104,23 +115,10 @@ export class InnovatorListingComponent implements OnInit {
         
       console.log("Innovation data............API",this.innovationData)
       })
-      // if(this.searchString!=this.innovationData.device_name && this.innovationData.device_name==''){
-      //   this.notfound = true
-      // }
-      // else{
-      //   this.notfound = false
-      // }
-      // this.innovationData.forEach(element => {
-      //   element.ratings = this.currentRate 
-      //   if(this.searchString!=element.device_name){
-      //     this.notfound = true
-      //   }
-      //   else{
-      //     this.notfound = false
-      //   }
-        
-      //});
+      
     }
+
+
     openDetails(item){
       this.router.navigateByUrl('/library-details/'+item.device_data_id);
       return false;
