@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {ApiService} from './../services/api.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 import {
   GoogleChartInterface,
 
@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   teamContent:any=[];
   sliderContent:any=[];
   form: FormGroup;
+  fourthForm: FormGroup;
+
   assetUrl:any=environment.imageUrl;
   json= [{
     "latitude":43.8766588,
@@ -173,8 +175,8 @@ export class HomeComponent implements OnInit {
     console.log("Innovation data............",this.innovationData)
     })
     this.innovationData.forEach(element => {
-      element.ratings = this.currentRate 
-      
+      element.ratings = this.currentRate
+
     });
   }
   getAllFeaturedCategories(){
@@ -193,7 +195,7 @@ export class HomeComponent implements OnInit {
       // console.log('resresres',res['data']);
       // for (let valuearr = 0; valuearr < res['data'].length; valuearr++) {
       //   console.log('valuearr',res['data'][valuearr]);
-        
+
       // }
       res['data'].forEach(function(valuearr){
         valuearr.forEach(function(val){
@@ -530,7 +532,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /*this.fourthForm = fb.group({
+    fname:new FormControl('',[Validators.required])
+  });*/
 
+  onSubmit(f){
+    console.log('form',f.value);
+
+  }
   newbubblemap(){
     anychart.onDocumentReady(function () {
       // The data used in this sample can be obtained from the CDN

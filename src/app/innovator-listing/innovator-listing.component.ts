@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import {ApiService} from './../services/api.service';
 import { FormControl, FormGroup } from '@angular/forms';
+
 import {environment} from 'environments/environment'
 @Component({
   selector: 'ngx-innovator-listing',
@@ -25,6 +26,7 @@ export class InnovatorListingComponent implements OnInit {
   total_result_count:any=0;
   shorting_value:any=[];
   orderby_value:any=[];
+  shortByFilter:any='';
 
   constructor(private router:Router,
     private apiService:ApiService,
@@ -93,6 +95,13 @@ export class InnovatorListingComponent implements OnInit {
         console.log(res);
         this.getSubCategory=res['data']
       })
+    }
+
+    searchkeywords(){
+      if(this.searchString==''){
+        this.getInnovationAll()
+      }
+      // console.log('searchStringsearchString',this.searchString);
     }
 
     getCategoryListing(){
