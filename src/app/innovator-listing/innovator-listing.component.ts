@@ -45,11 +45,11 @@ export class InnovatorListingComponent implements OnInit {
       let body = document.getElementsByTagName('body')[0];
       body.classList.add("absolute-header");
 
+
       this.shorting_value = [{"val":"ratings desc","name":"Top Rated"},{"val":"device_data_id desc","name":"New"},{"val":"device_data_id asc","name":"Old"}];
+
+
       // this.apiService.get_history().subscribe((res:any)=>{
-      //   // this.innovationData = res.data;
-      //   console.log("get_history API",res)
-      // })
 
 
     }
@@ -131,25 +131,25 @@ export class InnovatorListingComponent implements OnInit {
       console.log("object .....",obj)
       this.apiService.getInnovation(obj).subscribe((res:any)=>{
         this.innovationData = res.data;
+
         this.total_result_count = res.data.length
       console.log("Innovation data............API",this.innovationData.length)
       })
 
+
     }
 
-
+/*
     openDetails(item){
-      this.router.navigateByUrl('/library-details/'+item.device_data_id);
-      return false;
-    }
-    navigateToDetail(item){
-      this.router.navigateByUrl('/library-details/'+item.device_data_id)
-    }
 
-    ngOnDestroy(){
-      let body = document.getElementsByTagName('body')[0];
-      body.classList.remove("absolute-header");
+      ngOnDestroy(){
+        let body = document.getElementsByTagName('body')[0];
+        body.classList.remove("absolute-header");
+      }
     }
+    */
+
+
 
     /*filterData(){
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef,ViewChild } from '@angular/core';
 import {ApiService} from './../services/api.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   GoogleChartInterface,
 
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
   featuredCategories:any=[];
   teamContent:any=[];
   sliderContent:any=[];
+  form: FormGroup;
   assetUrl:any=environment.imageUrl;
   json= [{
     "latitude":43.8766588,
@@ -97,9 +99,17 @@ export class HomeComponent implements OnInit {
   };
   deviceDetails: any=[];
   categoryId: any;
+  innovationData: any=[];
+  currentRate: any;
   constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.form =  new FormGroup({
+      ordertype :new FormControl(''),
+      search:new FormControl(''),
+      orderby:new FormControl(''),
+      limit:new FormControl('')
+    })
     this.getDeviceDetails()
    var self=this;
     this.json.forEach(element => {
@@ -120,11 +130,12 @@ export class HomeComponent implements OnInit {
     this.getTeam(); // this by #as becouze table not found
     // this.bubblemap();
     this.datafilterbycat(0);
-    // this.newbubblemap()
     this.getRecentlyIcuNeed();
     this.getDeviceCategoryList();
     this.getIcuNeedDataonmap(0);
     this.getMapJson();
+    // this.newbubblemap()
+    this.getInnovationAll()
 
     console.log('baseAPi',this.baseAPi);
   }
@@ -153,6 +164,19 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  getInnovationAll(){
+    let obj:any = {}
+      obj.limit=6
+   // this.apiService.getInnovation(6,1,2,2).subscribe((res:any)=>{
+    this.apiService.getInnovation(obj).subscribe((res:any)=>{
+      this.innovationData = res.data;
+    console.log("Innovation data............",this.innovationData)
+    })
+    this.innovationData.forEach(element => {
+      element.ratings = this.currentRate 
+      
+    });
+  }
   getAllFeaturedCategories(){
     this.apiService.getFeaturedCategories().subscribe(res=>{
       console.log(res);
@@ -161,9 +185,28 @@ export class HomeComponent implements OnInit {
   }
 
   getRecentlyIcuNeed(){
+    console.log('getRecentlyIcuNeed');
     this.apiService.getRecentlyIcuNeedService().subscribe(res=>{
       console.log(res);
       let index = 0;
+      let recentarr = [];
+      // console.log('resresres',res['data']);
+      // for (let valuearr = 0; valuearr < res['data'].length; valuearr++) {
+      //   console.log('valuearr',res['data'][valuearr]);
+        
+      // }
+      res['data'].forEach(function(valuearr){
+        valuearr.forEach(function(val){
+        recentarr[index] = val;
+        index++
+        });
+      });
+      /*for (let valuearr of res['data']) {
+        for (let val of valuearr) {
+
+          console.log('val',val);
+        }
+      }*/
       // let recentarr = [];
       // for (let valuearr of res['data']) {
       //   for (let val of valuearr) {
@@ -174,7 +217,7 @@ export class HomeComponent implements OnInit {
       //   }
       // }
       // console.log('recentarr',recentarr);
-      this.recentlyIcuNeed = res['data']
+      this.recentlyIcuNeed = recentarr;//res['data']
       //res['data'];
 
     })
@@ -332,7 +375,7 @@ export class HomeComponent implements OnInit {
               // Tooltip
               series
                 .tooltip(true)
-                .stroke('1976d2')
+                .stroke('#1976d2')
                 .fill('#1976d2')
                 .selectionMode('none');
 
@@ -342,7 +385,7 @@ export class HomeComponent implements OnInit {
                 .enabled(true)
                 .anchor('left-center')
                 .position('right')
-                .fontSize(11)
+                .fontSize(15)
                 .offsetX(5);
 
               document.getElementById('container_mapcategory').innerHTML = '';

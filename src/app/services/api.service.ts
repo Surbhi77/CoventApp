@@ -288,6 +288,14 @@ export class ApiService {
     return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
   }
 
+
+  public get_history(){
+    return this.http.post('http://swadeshisetu.in/truck/api/order-history/',42)
+
+  }
+
+
+
   public getInnovation(postdata){
     return this.http.post(this.baseAPi + 'all-innovation-data/',postdata)
 

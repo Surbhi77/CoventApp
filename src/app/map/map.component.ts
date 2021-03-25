@@ -226,7 +226,6 @@ export class MapComponent implements OnInit {
     this.apiService.getIcuNeedDataonmap(catid).subscribe(res=>{
       console.log(res);
       this.totalcount = 0;
-
       this.itemIcuNeedonmap =res['data'];
       for (var val of res['data']) {
         this.totalcount +=parseInt(val.device_need_perday)
@@ -251,12 +250,10 @@ export class MapComponent implements OnInit {
       this.recentlyIcuNeed = recentarr;
       // this.recentlyIcuNeed = res['data']
 
-
     })
   }
 
   getDeviceCategoryList(){
-
     // this.apiService.getDeviceListing().subscribe(res=>{
     this.apiService.hospitalCategoryListing().subscribe(res=>{
       console.log('hospitalCategoryListing',res);
@@ -313,7 +310,6 @@ export class MapComponent implements OnInit {
             // '/assets/map/worldmap.json',
             jsonfileurl,
             function (data) {
-
               // Creates map chart
               var map = anychart.map();
               map.background().fill("#fff");
@@ -352,7 +348,6 @@ export class MapComponent implements OnInit {
                   d.fill = "#C00808";
                 }
               });
-
               map
                 .tooltip()
                 .useHtml(true)
@@ -369,19 +364,16 @@ export class MapComponent implements OnInit {
                     // ' '
                   );
                 });
-
               //Charting the bubbles
               var series = map.bubble(
                 anychart.data.set(data).mapAs({ size: 'device_need_perday' })
               );
-
               // Tooltip
               series
                 .tooltip(true)
                 .stroke('1976d2')
                 .fill('#1976d2')
                 .selectionMode('none');
-
               // Labels
               series
                 .labels()
@@ -390,7 +382,6 @@ export class MapComponent implements OnInit {
                 .position('right')
                 .fontSize(11)
                 .offsetX(5);
-
               document.getElementById('container_mapcategory').innerHTML = '';
               // Set container id for the chart
               map.container('container_mapcategory');
@@ -442,7 +433,6 @@ export class MapComponent implements OnInit {
             .fill('#2A2A28')
             .stroke('#5D5269');
 
-
           // Set geodata using the script added
           map.geoData(anychart.maps['world']);
 
@@ -452,7 +442,6 @@ export class MapComponent implements OnInit {
           // var dataSet = anychart.data.set(data);
           // var densityData = dataSet.mapAs({ size: 'population' });
           // var series = map.bubble(densityData);
-
           var zoom = anychart.ui.zoom();
           zoom.target(map);
           // Set Chart Title
