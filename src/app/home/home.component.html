@@ -124,7 +124,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="about">
+                <div class="about pl-0">
                     <h3>About our lab </h3>
                     <h5>Designing and scaling life saving resources for all</h5>
 
@@ -165,17 +165,17 @@
         <div class="row pb-4">
 
             <div class="col-sm-12">
-                <div class="content-wrapper">
-                    <h4 class="text-center feature_title_main">Our theory of Change </h4>
+                <div class="our_thros">
+                    <h4 class="feature_title_main">Our theory of Change </h4>
                     <!-- <div id="chartdiv"></div> -->
-                    <h3 class="text-center feature_description  mt-5">engineers, designers, physicians and <br> humanitarians working together <br> to create economical and validated <br>critical care technology</h3>
+                    <h4 class="feature_description mt-2"> Engineers, designers, physicians and humanitarians working together <br> to create economical and validated critical care technology</h4>
 
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="guides py-5">
+<section class="guides pb-5">
     <div class="container">
         <div class="row pb-4">
             <div class="card card1">
@@ -221,6 +221,7 @@
 
                     <!-- <div id="chartdiv"></div> -->
                     <div class="row pt-4">
+
                         <div *ngFor="let item of featuredInnovatorListing" class="col-lg-4 col-md-4 col-12">
                             <div class="InnovationsList-Info">
                                 <a (click)="navigateToDetail(item)" class="InnovationsList-box">

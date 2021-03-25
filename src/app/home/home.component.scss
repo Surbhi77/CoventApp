@@ -270,12 +270,11 @@
         }
 
         .feature_title_main {
-            // font-size: 34px !important;
-            font-weight: 300 !important;
-            line-height: 1.2em !important;
-            margin-bottom: .8rem;
-            font-size: 16px;
-            //font-size: 47px;
+          font-weight: 800 !important;
+          line-height: 1.2em !important;
+          margin-bottom: 0.8rem;
+          font-size: 1.75rem;
+          color: #222;
         }
 
         .description {
@@ -283,6 +282,11 @@
             max-width: 756px;
             margin: auto;
         }
+        h4.feature_description {
+          font-size: 27px;
+          font-weight: 700;
+          color: #5d5d5d;
+      }
 
         .abouttxt {
             font-size: 47px;

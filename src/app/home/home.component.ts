@@ -14,7 +14,7 @@ declare const anychart: any;
 })
 export class HomeComponent implements OnInit {
   @ViewChild('div') div: ElementRef;
-  
+
   public baseAPi = environment.apiUrl;
   totalcount  = 0;
   selectedcategory_id:0;
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     "value":1,
     "need":"masks",
     "iconUrl":{url:"/assets/images/circle-05.png","scaledSize": {"height": 10, "width": 10}}
-    
+
    },
    {
      "latitude":24.4749673,
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
  looped:boolean=false;
 
   public geoChart: GoogleChartInterface = {
-    
+
     chartType: 'GeoChart',
     dataTable: [
       ['Latitude', 'Longitude', 'Label','Value',{type:'string', role:'tooltip', 'p': {'html': true}}]
@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
   deviceDetails: any=[];
   categoryId: any;
   constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
-  
+
   ngOnInit(): void {
     this.getDeviceDetails()
    var self=this;
@@ -133,8 +133,10 @@ export class HomeComponent implements OnInit {
    this.apiService.getFeaturedInnovationListing().subscribe(res=>{
      console.log('featuredInnovatorListing',res);
      this.featuredInnovatorListing=res['data']
-   }) 
+   })
   }
+
+
   getDeviceDetails(){
     let obj={
       category_id:this.categoryId
@@ -182,7 +184,7 @@ export class HomeComponent implements OnInit {
     this.apiService.getIcuNeedDataonmap(catid).subscribe(res=>{
       console.log(res);
       this.totalcount = 0;
-      
+
       this.itemIcuNeedonmap =res['data'];
       for (var val of res['data']) {
         this.totalcount +=parseInt(val.device_need_perday)
@@ -195,7 +197,7 @@ export class HomeComponent implements OnInit {
 
 
   getDeviceCategoryList(){
-    
+
     // this.apiService.getDeviceListing().subscribe(res=>{
     this.apiService.hospitalCategoryListing().subscribe(res=>{
       console.log('hospitalCategoryListing',res);
@@ -215,7 +217,7 @@ export class HomeComponent implements OnInit {
       console.log(this.sliderContent.length)
     })
   }
-  
+
   getTeam(){
     this.apiService.teamlistData().subscribe(res=>{
       console.log(res);
@@ -241,7 +243,7 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/library-details/'+item.device_data_id)
   }
 
-  
+
   datafilterbycat(eventid){
     console.log('eventid',eventid);
     this.getIcuNeedDataonmap(eventid)
@@ -265,7 +267,7 @@ export class HomeComponent implements OnInit {
             // '/assets/map/worldmap.json',
             jsonfileurl,
             function (data) {
-    
+
               // Creates map chart
               var map = anychart.map();
               map.background().fill("#fff");
@@ -275,27 +277,27 @@ export class HomeComponent implements OnInit {
                 .enabled(true)
                 .fill('#00c4ce')
                 .stroke('#5D5269');
-    
-                
+
+
               // Set geodata using the script added
               map.geoData(anychart.maps['world']);
-    
+
               map.interactivity().selectionMode('none');
               map.padding(0);
-    
+
               // var dataSet = anychart.data.set(data);
               // var densityData = dataSet.mapAs({ size: 'population' });
               // var series = map.bubble(densityData);
-              
+
               var zoom = anychart.ui.zoom();
               zoom.target(map);
               // Set Chart Title
               map
                 .title('COVID-19 ESSENTIAL SUPPLIES DASHBOARD');
-    
+
               // Set bubble min/max size settings
               map.minBubbleSize('0.5%').maxBubbleSize('2%');
-    
+
               // Fill color based on the winner
               data.forEach(function(d){
                 if(d.winner == "Democrats"){
@@ -304,7 +306,7 @@ export class HomeComponent implements OnInit {
                   d.fill = "#C00808";
                 }
               });
-    
+
               map
                 .tooltip()
                 .useHtml(true)
@@ -315,25 +317,25 @@ export class HomeComponent implements OnInit {
                     // '  <br/>' +
                     '<span style="color: #d9d9d9">Required</span>: ' +
                     parseInt(this.getData('device_need_perday')).toLocaleString() +
-                    '<br/>' 
+                    '<br/>'
                     // '<span style="color: #d9d9d9">Required</span>: ' +
                     // parseInt(this.getData('area')).toLocaleString() +
                     // ' '
                   );
                 });
-    
+
               //Charting the bubbles
               var series = map.bubble(
                 anychart.data.set(data).mapAs({ size: 'device_need_perday' })
               );
-    
+
               // Tooltip
               series
                 .tooltip(true)
                 .stroke('1976d2')
                 .fill('#1976d2')
                 .selectionMode('none');
-    
+
               // Labels
               series
                 .labels()
@@ -342,7 +344,7 @@ export class HomeComponent implements OnInit {
                 .position('right')
                 .fontSize(11)
                 .offsetX(5);
-    
+
               document.getElementById('container_mapcategory').innerHTML = '';
               // Set container id for the chart
               map.container('container_mapcategory');
@@ -350,32 +352,32 @@ export class HomeComponent implements OnInit {
               // map.remove();
               map.draw();
               // map.baseLayer().redraw();
-    
+
               var controllerContainercat = document.createElement('div');
               //controllerContainer.style.cssText = 'background-color: #FFECB3; padding: 5px;';
               controllerContainercat.setAttribute('id', 'controller_container');
-              
-              
+
+
               document.getElementById('container_mapcategory').appendChild(controllerContainercat);
-    
+
               // const p: HTMLParagraphElement = this.renderer.createElement('p');
               // p.innerHTML = "add new"
               // this.renderer.appendChild(controllerContainer)
-              
+
               // Renders the zoom controller into container.
               zoom.decorate(controllerContainercat);
-              
+
           });
         });
         // this.mapContent =res['data']
         // console.log(this.teamContent.length)
       })
-    
+
   }
 
 
   bubblemap(){
-    
+
     this.category_data=false;
     this.allitemdata=true;
     this.getIcuNeedDataonmap(0)
@@ -395,7 +397,7 @@ export class HomeComponent implements OnInit {
             .fill('#2A2A28')
             .stroke('#5D5269');
 
-            
+
           // Set geodata using the script added
           map.geoData(anychart.maps['world']);
 
@@ -405,7 +407,7 @@ export class HomeComponent implements OnInit {
           // var dataSet = anychart.data.set(data);
           // var densityData = dataSet.mapAs({ size: 'population' });
           // var series = map.bubble(densityData);
-          
+
           var zoom = anychart.ui.zoom();
           zoom.target(map);
           // Set Chart Title
@@ -434,7 +436,7 @@ export class HomeComponent implements OnInit {
                 // '  <br/>' +
                 '<span style="color: #d9d9d9">Required</span>: ' +
                 parseInt(this.getData('device_need_perday')).toLocaleString() +
-                '<br/>' 
+                '<br/>'
                 // '<span style="color: #d9d9d9">Required</span>: ' +
                 // parseInt(this.getData('area')).toLocaleString() +
                 // ' '
@@ -477,10 +479,10 @@ export class HomeComponent implements OnInit {
           // const p: HTMLParagraphElement = this.renderer.createElement('p');
           // p.innerHTML = "add new"
           // this.renderer.appendChild(controllerContainer)
-          
+
           // Renders the zoom controller into container.
           zoom.decorate(controllerContainer);
-          
+
       });
     });
   }

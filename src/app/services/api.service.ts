@@ -30,11 +30,11 @@ export class ApiService {
     return this.http.post(this.baseAPi+'update-newpassword',obj)
   }
 
-  
+
   public login(obj){
     return this.http.post(this.baseAPi+'login',obj);
   }
-  
+
   public register(obj){
     return this.http.post(this.baseAPi+'signup',obj);
   }
@@ -85,11 +85,11 @@ export class ApiService {
 
   public getQuestionDetail(obj){
     return this.http.get(this.baseAPi+'questiondetail/'+obj)
-  } 
+  }
   public updateQuestionAnswer(obj,body){
     return this.http.put(this.baseAPi+'innovator-questionupdate/'+obj,body)
-  } 
-  
+  }
+
   public deleteQuestion(obj){
     return this.http.get(this.baseAPi+'questiondelete/'+obj)
   }
@@ -247,7 +247,7 @@ export class ApiService {
     return this.http.post(this.baseAPi+'/hospitaluser-dashboardcount',formvalue)
   }
 
-  
+
   public hospitalDashboardCountGraphData(formvalue){
     return this.http.post(this.baseAPi+'/hospitaluser-dashboardgraph',formvalue)
   }
@@ -287,6 +287,11 @@ export class ApiService {
   public getdatabycatonmap(catid){
     return this.http.get(this.baseAPi+'hospitalmapby-category/'+catid)
   }
- 
+
+  public getInnovation(postdata){
+    return this.http.post(this.baseAPi + 'all-innovation-data/',postdata)
+
+  }
+
 
 }
