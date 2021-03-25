@@ -140,62 +140,56 @@
     </div>
 </section>
 
-<section class="pt-5 pb-5 bg-light">
-    <div class="container">
-        <div class="row pb-4">
 
-            <div class="col-sm-12">
-                <div class="our_thros">
-                    <h4 class="feature_title_main">Our theory of Change </h4>
-                    <!-- <div id="chartdiv"></div> -->
-                    <h4 class="feature_description mt-2"> Engineers, designers, physicians and humanitarians working together <br> to create economical and validated critical care technology</h4>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="guides pb-5">
     <div class="container">
-        <div class="row pb-4">
-            <div class="card card1">
+      <div class="row pb-4">
+        <div class="col-sm-12">
+          <div class="our_thros">
+              <h4 class="feature_title_main">Our theory of Change </h4>
+              <!-- <div id="chartdiv"></div> -->
+              <h4 class="feature_description mt-2"> Engineers, designers, physicians and humanitarians working together <br> to create economical and validated critical care technology</h4>
 
-                <div class="card-body">
-                    <h4 class="card-title">1 - </h4>
-                    <h4 class="card-title">Open <br> Innovation</h4>
-                    <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
-
-        <div class="row mt-4">
-            <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                <div class="theory-box box-color-1">
-                    <div class="card-body">
-                        <h4 class="card-title">1 - </h4>
-                        <h4 class="card-subtitle">Open Innovation</h4>
-                        <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                <div class="theory-box box-color-2">
-                    <div class="card-body">
-                        <h4 class="card-title">2 - </h4>
-                        <h4 class="card-subtitle">Local Supply Chains</h4>
-                        <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                <div class="theory-box box-color-3">
-                    <div class="card-body">
-                        <h4 class="card-title">3 - </h4>
-                        <h4 class="card-subtitle">Shared Knowledge</h4>
-                        <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="card card1">
+          <div class="card-body">
+
+
+            <div class="row mt-4">
+              <div class="col-lg-4 col-md-4 col-12 p-md-0">
+                <div class="theory-box box-color-1">
+                  <div class="card-body">
+                    <h4 class="card-title">1 - </h4>
+                    <h4 class="card-subtitle">Open Innovation</h4>
+                    <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4 col-12 p-md-0">
+                  <div class="theory-box box-color-2">
+                      <div class="card-body">
+                          <h4 class="card-title">2 - </h4>
+                          <h4 class="card-subtitle">Local Supply Chains</h4>
+                          <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4 col-12 p-md-0">
+                  <div class="theory-box box-color-3">
+                      <div class="card-body">
+                          <h4 class="card-title">3 - </h4>
+                          <h4 class="card-subtitle">Shared Knowledge</h4>
+                          <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </section>
 
@@ -208,35 +202,7 @@
                     <h2 class="text-center ">Device Innovations Listing </h2>
 
                     <!-- <div id="chartdiv"></div> -->
-                    <div class="row pt-4">
 
-                        <div *ngFor="let item of featuredInnovatorListing" class="col-lg-4 col-md-4 col-12">
-                            <div class="InnovationsList-Info">
-                                <a (click)="navigateToDetail(item)" class="InnovationsList-box">
-                                    <div class="SInnovationsList-img-block">
-                                        <img [src]="assetUrl+item.data_path" class="img-fluid" alt="slide">
-                                    </div>
-
-                                    <div class="InnovationsList-details">
-                                        <h6>{{item.device_name}}</h6>
-                                        <ul class="rating">
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        </ul>
-                                        <a class="mec-btn">MECHANICAL VENTILATION</a>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium sapiente voluptates quidem earum,</p>
-                                        <div class="QR-btn-block">
-                                            <a class="device-button">Add A REVIEW <i class="far fa-edit"></i></a>
-                                            <a class="device-button">ADD A QUESTION <i class="far fa-question-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
                 </div>

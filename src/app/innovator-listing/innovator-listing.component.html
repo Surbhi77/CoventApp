@@ -17,7 +17,7 @@
                   <div class="col-lg-12">
                       <div class="input-group input-group-lg m-0">
                           <i class="fa fa-search search" aria-hidden="true"></i>
-                          <input type="text" (keyup)="getInnovationAll()" [(ngModel)]="searchString" name="searchString"  class="form-control" placeholder="Search">
+                          <input type="text" (keyup)="searchkeywords()" [(ngModel)]="searchString" (keyup.enter)="searchChanged()" name="searchString"  class="form-control" placeholder="Search">
                           <div class="input-group-append">
                               <button (click)="searchChanged()" class="btn btn-success btn_searchs" type="submit">Search</button>
                           </div>
@@ -48,7 +48,7 @@
 
               <h6>Sort By:</h6>
               <div class="form-group input-group-lg m-0">
-                  <select class="form-control" [(ngModel)]="shorting" (ngModelChange)="shortBy($event)">
+                  <select class="form-control" [(ngModel)]="shortByFilter" (ngModelChange)="shortBy($event)">
 
                     <option *ngFor="let s_item of shorting_value" [value]="s_item.val">{{s_item.name}}</option>
 
