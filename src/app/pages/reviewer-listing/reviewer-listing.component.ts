@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ShepherdService } from 'angular-shepherd';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../@core/data/smart-table';
 
@@ -59,11 +61,12 @@ export class ReviewerListingComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableData, private shepherdService: ShepherdService,private router:Router) {
     const data = this.service.getData();
    // console.log(data)
     this.source.load(data);
   }
+ 
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {

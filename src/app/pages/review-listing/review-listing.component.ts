@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../@core/data/smart-table';
 import {ApiService} from  './../../services/api.service';
 import { Router, NavigationEnd,ActivatedRoute } from '@angular/router';
+import { ShepherdService } from 'angular-shepherd';
 
 @Component({
   selector: 'ngx-review-listing',
@@ -67,7 +68,7 @@ export class ReviewListingComponent implements OnInit {
   deviceListing: any;
   innovator_Id:any;
 
-  constructor(private apiService:ApiService,private service: SmartTableData,private route: ActivatedRoute) { }
+  constructor(private apiService:ApiService,private shepherdService: ShepherdService,private router:Router,private service: SmartTableData,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
@@ -101,6 +102,10 @@ export class ReviewListingComponent implements OnInit {
     })
     
     console.log("success")
+  }
+  ngAfterViewInit(){
+    
+    
   }
 
 }
