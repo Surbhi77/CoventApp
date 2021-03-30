@@ -2,6 +2,7 @@
 
 </style>
 <!--slide start-->
+
 <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" style="display: none;">
     <div class="carousel-inner" *ngIf="sliderContent && sliderContent.length>0">
         <div class="carousel-item " [ngClass]="(i==0)?'active':''" *ngFor="let slide of sliderContent;let i=index">
@@ -128,12 +129,8 @@
             </div>
 
             <div class="col-lg-6 col-md-6 col-12 p-0">
-                <!-- <div class="about-img-block">
-                <img src="./assets/images/chokniti-khongchum.jpg" /> -->
-                <div class="col-lg-6 col-md-6 col-12 p-0">
-                    <div class="about-img-block">
-                        <img src="/assets/images/chokniti-khongchum.jpg" />
-                    </div>
+                <div class="about-img-block">
+                    <img src="./assets/images/chokniti-khongchum.jpg" />
                 </div>
             </div>
         </div>
@@ -141,73 +138,60 @@
 </section>
 
 
-<section class="guides pb-5">
-    <div class="container">
-      <div class="row pb-4">
-        <div class="col-sm-12">
-          <div class="our_thros">
-              <h4 class="feature_title_main">Our theory of Change </h4>
-              <!-- <div id="chartdiv"></div> -->
-              <h4 class="feature_description mt-2"> Engineers, designers, physicians and humanitarians working together <br> to create economical and validated critical care technology</h4>
-
-          </div>
+<section class="pt-5 pb-5 bg-light">
+  <div class="container">
+     <div class="row justify-content-center">
+        <div class="col-lg-9">
+           <div class="Heading-title Heading-title-center">
+              <h2>Our <span>Theory</span> of Change</h2>
+              <h5>engineers, designers, physicians and humanitarians working together to create economical and validated critical care technology</h5>
+           </div>
         </div>
-        <div class="card card1">
-          <div class="card-body">
+     </div>
 
-
-            <div class="row mt-4">
-              <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                <div class="theory-box box-color-1">
-                  <div class="card-body">
-                    <h4 class="card-title">1 - </h4>
-                    <h4 class="card-subtitle">Open Innovation</h4>
-                    <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
-                  </div>
-                </div>
+     <div class="row mt-4">
+        <div class="col-lg-4 col-md-4 col-12 p-md-0">
+           <div class="theory-box box-color-1">
+              <div class="card-body">
+                 <h4 class="card-title">1 - </h4>
+                 <h4 class="card-subtitle">Open Innovation</h4>
+                 <p class="card-text">Open innovation leverages global intellectual capital and cross-industry collabration to invent the most cost-effective and powerful medical technologies.</p>
               </div>
-
-              <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                  <div class="theory-box box-color-2">
-                      <div class="card-body">
-                          <h4 class="card-title">2 - </h4>
-                          <h4 class="card-subtitle">Local Supply Chains</h4>
-                          <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-4 col-12 p-md-0">
-                  <div class="theory-box box-color-3">
-                      <div class="card-body">
-                          <h4 class="card-title">3 - </h4>
-                          <h4 class="card-subtitle">Shared Knowledge</h4>
-                          <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
+           </div>
         </div>
-      </div>
-    </div>
+
+        <div class="col-lg-4 col-md-4 col-12 p-md-0">
+           <div class="theory-box box-color-2">
+              <div class="card-body">
+                 <h4 class="card-title">2 - </h4>
+                 <h4 class="card-subtitle">Local Supply Chains</h4>
+                 <p class="card-text">Empowering local supply chains to manyfacture, deploy and service critical medical equipment is essential for sustainable solution.</p>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12 p-md-0">
+           <div class="theory-box box-color-3">
+              <div class="card-body">
+                 <h4 class="card-title">3 - </h4>
+                 <h4 class="card-subtitle">Shared Knowledge</h4>
+                 <p class="card-text">Sharing best practices and lessons learned is even more powerful when you work with a common set of tools.</p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
 </section>
 
 <section class="pt-5 pb-5">
     <div class="container">
-        <div class="row pb-4">
-
-            <div class="col-sm-12">
-                <div class="content-wrapper">
-                    <h2 class="text-center ">Device Innovations Listing </h2>
-
-                    <!-- <div id="chartdiv"></div> -->
-
-
-                    <!-- <p class="text-center feature_description" style="font-size:18px">Quickly access the information you need during COVID-19.</p> -->
-                </div>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+           <div class="Heading-title Heading-title-center">
+              <h2>Device Innovations <span>Listing</span></h2>
+           </div>
         </div>
+     </div>
 
 
         <div class="row mt-4">
@@ -509,7 +493,9 @@
             </div>
             <div class="col-lg-12">
                 <div class="Contact-input-block">
-                    <form>
+
+
+                    <form [formGroup]="contactForm">
                         <div class="Contact-inputs">
                             <div class="Heading-title">
                                 <h2>Send a<span> Message</span></h2>
@@ -518,28 +504,51 @@
                             <div class="row">
                                 <div class='form-group col-md-6'>
                                     <label for='fname'>First Name</label>
-                                    <input type='text' name='fname' class='form-control' />
+                                    <input type='text' formControlName="fname" name='fname' class='form-control' />
+                                    <span  *ngIf="g.fname.touched && g.fname.invalid" class="text-danger">
+                                        <span *ngIf="g.fname.errors.required" >First Name field is required</span>
+                                    </span>
                                 </div>
+
                                 <div class='form-group col-md-6'>
                                     <label for='lname'>Last Name</label>
-                                    <input type='text' name='lname' class='form-control' />
+                                    <input type='text' formControlName="lname" name='lname' class='form-control' />
+                                    <span *ngIf="g.lname.touched && g.lname.invalid" class="text-danger">
+                                        <span *ngIf="g.lname.errors.required">Last Name field is required</span>
+                                    </span>
                                 </div>
+
                                 <div class='form-group col-md-6'>
                                     <label for='email'>Email</label>
-                                    <input type='text' name='email' class='form-control' />
+                                    <input type='email' formControlName="email" name='email' class='form-control' />
+                                    <span *ngIf="g.email.touched && g.email.invalid" class="text-danger">
+                                        <span *ngIf="g.email.errors.required" >Email field is required</span>
+                                        <span *ngIf="g.email.errors.pattern" >Email Id not Valid</span>
+                                    </span>
                                 </div>
+
                                 <div class='form-group col-md-6'>
                                     <label for='mobile'>Mobile Number</label>
-                                    <input type='text' name='Mobile' class='form-control' />
+
+                                    <input type='text' formControlName="Mobile" name='Mobile' class='form-control' />
+                                    <span *ngIf="g.Mobile.touched && g.Mobile.invalid" class="text-danger">
+                                        <span *ngIf="g.Mobile.errors.required" >Mobile Number field is required</span>
+                                        <span *ngIf="g.Mobile.errors.pattern">Please, Enter 10 digit Mobile Number.</span>
+                                    </span>
                                 </div>
+
 
                                 <div class='form-group col-md-12'>
                                     <label for='message'>Message</label>
-                                    <textarea class='form-control' name='message' rows='3'></textarea>
+                                    <textarea class='form-control' formControlName="message" name='message' rows='3'></textarea>
+                                    <span *ngIf="g.message.touched && g.message.invalid" class="text-danger">
+                                        <span *ngIf="g.message.errors.required" >Message field is required</span>
+                                    </span>
                                 </div>
 
+
                                 <div class='col-md-12'>
-                                    <button type="submit" class="send-btn">Send</button>
+                                    <button type="submit" class="send-btn" (click)="send()">Send</button>
                                 </div>
                             </div>
                         </div>

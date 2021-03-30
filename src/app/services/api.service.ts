@@ -294,11 +294,12 @@ export class ApiService {
 
   }
 
-
-
   public getInnovation(postdata){
     return this.http.post(this.baseAPi + 'all-innovation-data/',postdata)
 
+  }
+  public contactUs(params){
+    return this.http.post(this.baseAPi+'contact-us-form/',params)
   }
 
 

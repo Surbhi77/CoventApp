@@ -3,10 +3,13 @@ import {ApiService} from './../services/api.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
+// import {introJs} from 'intro.js/intro.js';
+import { ToastrService } from 'ngx-toastr';
 import {
   GoogleChartInterface,
 
 } from 'ng2-google-charts';
+import { AnyAaaaRecord } from 'dns';
 declare const anychart: any;
 @Component({
   selector: 'ngx-home',
@@ -17,6 +20,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('div') div: ElementRef;
 
   public baseAPi = environment.apiUrl;
+  // introJS = introJs();
+
   totalcount  = 0;
   selectedcategory_id:0;
   category_data:boolean=false;
@@ -32,6 +37,8 @@ export class HomeComponent implements OnInit {
   sliderContent:any=[];
   form: FormGroup;
   fourthForm: FormGroup;
+  contactForm:FormGroup;
+
 
   assetUrl:any=environment.imageUrl;
   json= [{
@@ -103,9 +110,20 @@ export class HomeComponent implements OnInit {
   categoryId: any;
   innovationData: any=[];
   currentRate: any;
-  constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
+
+    // this.introJS.start();
+
+    this.contactForm = new FormGroup({
+      fname:new FormControl('',[Validators.required]),
+      lname:new FormControl('',[Validators.required]),
+      email:new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$$")]),
+      Mobile:new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      message:new FormControl('',[Validators.required])
+    })
+
     this.form =  new FormGroup({
       ordertype :new FormControl(''),
       search:new FormControl(''),
@@ -140,6 +158,34 @@ export class HomeComponent implements OnInit {
     this.getInnovationAll()
 
     console.log('baseAPi',this.baseAPi);
+  }
+
+
+
+  get g() {
+    return this.contactForm.controls;
+  }
+  send(){
+    console.log('asdasdasdasd');
+    if(this.contactForm.valid){
+
+      let obj:any = {}
+      obj.fname = this.contactForm.value.fname;
+      obj.lname = this.contactForm.value.lname;
+      obj.phone = this.contactForm.value.Mobile;
+      obj.email = this.contactForm.value.email;
+      obj.message = this.contactForm.value.message
+      console.log("contactform",obj)
+      this.apiService.contactUs(obj).subscribe(res=>{
+        console.log(res)
+        this.contactForm.reset()
+        this.toastr.success("Send Message Successfully.")
+      })
+    }else{
+      this.toastr.error("Please fill all field.")
+      this.contactForm.markAllAsTouched();
+    }
+
   }
 
   getAllFeaturedData() {
@@ -341,14 +387,14 @@ export class HomeComponent implements OnInit {
                 .title('COVID-19 ESSENTIAL SUPPLIES DASHBOARD');
 
               // Set bubble min/max size settings
-              map.minBubbleSize('0.5%').maxBubbleSize('2%');
+              map.minBubbleSize('0.3%').maxBubbleSize('1.5%');
 
               // Fill color based on the winner
               data.forEach(function(d){
                 if(d.winner == "Democrats"){
-                  d.fill = "#C00808";
+                  d.fill = "#000";
                 }else{
-                  d.fill = "#C00808";
+                  d.fill = "#000";
                 }
               });
 
@@ -362,10 +408,9 @@ export class HomeComponent implements OnInit {
                     // '  <br/>' +
                     '<span style="color: #d9d9d9">Required</span>: ' +
                     parseInt(this.getData('device_need_perday')).toLocaleString() +
-                    '<br/>'
-                    // '<span style="color: #d9d9d9">Required</span>: ' +
-                    // parseInt(this.getData('area')).toLocaleString() +
-                    // ' '
+                    '<br/>'+
+                    '<span style="color: #d9d9d9">Country</span>: ' +
+                    (this.getData('country'))
                   );
                 });
 
@@ -377,8 +422,8 @@ export class HomeComponent implements OnInit {
               // Tooltip
               series
                 .tooltip(true)
-                .stroke('#1976d2')
-                .fill('#1976d2')
+                .stroke('#333')
+                .fill('#333')
                 .selectionMode('none');
 
               // Labels
@@ -388,7 +433,9 @@ export class HomeComponent implements OnInit {
                 .anchor('left-center')
                 .position('right')
                 .fontSize(15)
-                .offsetX(5);
+                .fontWeight(500)
+                .fontColor('#222')
+                .offsetX(6);
 
               document.getElementById('container_mapcategory').innerHTML = '';
               // Set container id for the chart

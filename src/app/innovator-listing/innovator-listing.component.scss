@@ -500,3 +500,40 @@ ngb-rating {
   font-size: 26px;
   color: #13bfb3;
 }
+
+.form-group.customs img {
+  width: 20px;
+  margin-right: 10px;
+  position: absolute;
+  left: 7px;
+  top: 5px;
+}
+.form-group.customs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+.short_bys {
+  border: none;
+    height: 25px;
+    color: #000;
+    width: 150px;
+    padding-left: 30px;
+}
+
+.resul h6 {
+  margin: 0;
+  margin-right: 15px;
+}
+.resul {
+  display: flex;
+  align-items: center;
+}
+.shofs {
+  border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 5px;
+    justify-content: center;
+    position: relative;
+}

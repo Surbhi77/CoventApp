@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
 
+
 @Component({
   selector: 'ngx-app',
   template: '<ngx-app-header></ngx-app-header><ngx-no-column-layout><router-outlet></router-outlet></ngx-no-column-layout><ngx-app-footer></ngx-app-footer>',
