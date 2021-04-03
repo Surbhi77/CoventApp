@@ -42,6 +42,7 @@
                             "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
                             "node_modules/leaflet/dist/leaflet.css",
                             "src/app/@theme/styles/styles.scss",
+                            "node_modules/intro.js/introjs.css",
                             "node_modules/shepherd.js/dist/css/shepherd.css"
                         ],
                         "scripts": [
@@ -57,7 +58,9 @@
                             "node_modules/tinymce/plugins/table/plugin.min.js",
                             "node_modules/echarts/dist/echarts.min.js",
                             "node_modules/echarts/dist/extension/bmap.min.js",
-                            "node_modules/chart.js/dist/Chart.min.js"
+                            "node_modules/chart.js/dist/Chart.min.js",
+                            "node_modules/shepherd.js/dist/js/shepherd.js",
+                            "node_modules/intro.js/intro.js"
                         ],
                         "allowedCommonJsDependencies": [
                             "angular2-chartjs",

@@ -3,7 +3,7 @@ import {ApiService} from './../services/api.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {environment} from 'environments/environment';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
-// import {introJs} from 'intro.js/intro.js';
+import { ShepherdService } from 'angular-shepherd';
 import { ToastrService } from 'ngx-toastr';
 import {
   GoogleChartInterface,
@@ -20,8 +20,6 @@ export class HomeComponent implements OnInit {
   @ViewChild('div') div: ElementRef;
 
   public baseAPi = environment.apiUrl;
-  // introJS = introJs();
-
   totalcount  = 0;
   selectedcategory_id:0;
   category_data:boolean=false;
@@ -110,11 +108,132 @@ export class HomeComponent implements OnInit {
   categoryId: any;
   innovationData: any=[];
   currentRate: any;
-  constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute,private toastr: ToastrService) { }
+  constructor(private apiService:ApiService,private router:Router,private route:ActivatedRoute,private toastr: ToastrService,private shepherdService: ShepherdService) { }
 
   ngOnInit(): void {
 
-    // this.introJS.start();
+
+/* working code only uncomment
+    this.shepherdService.defaultStepOptions = {
+
+      scrollTo: { behavior: 'smooth', block: 'center' },
+      cancelIcon: {
+        enabled: true
+      },
+      classes: 'shadow-md bg-purple-dark',
+      useModalOverlay:true,
+      keyboardNavigation:true,
+      modalContainer :true,
+      arrow: true,
+    };
+    let selffun=this;
+
+
+
+    this.shepherdService.addSteps([
+      {
+        id: 'editform',
+        title: 'Map Section',
+        text: `Map Section Description`,
+        attachTo: {
+          element: '.editform',
+          on: 'bottom'
+        },
+        buttons: [
+          // {
+          //   action: this.shepherdService.back,
+          //   classes: 'shepherd-button-secondary',
+          //   text: 'Back'
+          // },
+          {
+            action() {
+              return this.next();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Next'
+          }
+        ],
+
+      },
+      {
+        id:"editform-2",
+        title: 'About Section',
+        text: `About Section Description`,
+        attachTo: {
+          element: '.editform-2',
+          on: 'bottom'
+        },
+        buttons: [
+          {
+            action: this.shepherdService.back,
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action() {
+              return this.next();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Next'
+          }
+        ],
+      },
+      {
+        id:"editform-3",
+        title: 'Theory Section',
+        text: `Theory Section Description`,
+        attachTo: {
+          element: '.editform-3',
+          on: 'bottom'
+        },
+        buttons: [
+          {
+            action() {
+              return this.back();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action() {
+              return this.next();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Next'
+          }
+        ],
+      },
+      {
+        id:"editform-4",
+        title: 'evice Section',
+        text: `Theory Section Description`,
+        attachTo: {
+          element: '.editform-4',
+          on: 'bottom'
+        },
+        buttons: [
+          {
+            action() {
+              return this.back();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action() {
+              return this.next();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Next'
+          }
+        ],
+      }
+    ]);
+
+    this.shepherdService.start();
+    /**/
+
+
 
     this.contactForm = new FormGroup({
       fname:new FormControl('',[Validators.required]),

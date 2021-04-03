@@ -21,7 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-ui.min.js"></script>
-
+    <script src="https://shepherdjs.dev/dist/js/shepherd.js"></script>
+    <link href="https://shepherdjs.dev/dist/css/shepherd.css"/>
     <script>
         (function() {
             function ac_add_to_head(el) {
@@ -75,7 +76,7 @@
                 transform: rotate(360deg)
             }
         }
-        
+
         @-moz-keyframes spin {
             0% {
                 -moz-transform: rotate(0)
@@ -84,7 +85,7 @@
                 -moz-transform: rotate(360deg)
             }
         }
-        
+
         @keyframes spin {
             0% {
                 transform: rotate(0)
@@ -93,7 +94,7 @@
                 transform: rotate(360deg)
             }
         }
-        
+
         .spinner {
             position: fixed;
             top: 0;
@@ -104,7 +105,7 @@
             background: #fff;
             overflow: hidden
         }
-        
+
         .spinner div:first-child {
             display: block;
             position: relative;
@@ -118,14 +119,14 @@
             transform: translate3d(0, 0, 0);
             animation: spin 2s linear infinite
         }
-        
+
         .spinner div:first-child:after,
         .spinner div:first-child:before {
             content: '';
             position: absolute;
             border-radius: 50%
         }
-        
+
         .spinner div:first-child:before {
             top: 5px;
             left: 5px;
@@ -135,7 +136,7 @@
             -webkit-animation: spin 3s linear infinite;
             animation: spin 3s linear infinite
         }
-        
+
         .spinner div:first-child:after {
             top: 15px;
             left: 15px;

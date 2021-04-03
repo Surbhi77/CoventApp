@@ -33,7 +33,7 @@ export class FormInputsComponent implements OnInit {
               private route: ActivatedRoute,
               private apiService:ApiService,
               private readonly themeService: NbThemeService,
-              private shepherdService: ShepherdService) 
+              private shepherdService: ShepherdService)
   {
     this.userDetails = JSON.parse(localStorage.getItem("userData"));
     this.form = fb.group({
@@ -43,28 +43,28 @@ export class FormInputsComponent implements OnInit {
      "profile_image": new FormControl(''),
      "user_email": new FormControl('',[Validators.required,Validators.email])
     });
-    
+
     this.changePassword = fb.group({
       "old_password":new FormControl('',[Validators.required]),
       "new_password":new FormControl('',[Validators.required]),
       "confirm_password":new FormControl('',[Validators.required])
-    }, { 
+    }, {
       validator: ConfirmedValidator('new_password', 'confirm_password')
     })
   }
 
-  
+
 
   ngOnInit() {
     this.getUserDetails()
-    
+
     this.materialTheme$ = this.themeService.onThemeChange()
     .pipe(tap(theme => {
       const themeName: string = theme?.name || '';
       this.showMaterialInputs = themeName.startsWith('material');
     }));
     this.shepherdService.defaultStepOptions = {
-   
+
       scrollTo: true,
       cancelIcon: {
         enabled: true
@@ -78,10 +78,10 @@ export class FormInputsComponent implements OnInit {
         id: 'custom_form',
         classes: 'shadow-md bg-purple-dark',
         arrow: true,
-        attachTo: { 
-          element: '.editform', 
+        attachTo: {
+          element: '.editform',
           on: 'bottom'
-          
+
         },
         beforeShowPromise: function() {
           return new Promise<void>(function(resolve) {
@@ -93,9 +93,12 @@ export class FormInputsComponent implements OnInit {
         },
         buttons: [
           {
-            classes: 'shepherd-button-secondary',
-            text: 'Exit',
-            type: 'cancel'
+            action() {
+              self.testupdate();
+              return this.complete();
+            },
+            classes: 'shepherd-button-secondary defult-secondary-btn',
+            text: 'Exit'
           },
           {
             classes: 'shepherd-button-primary',
@@ -104,15 +107,16 @@ export class FormInputsComponent implements OnInit {
           },
           {
             action(){
-              
-              self.router.navigateByUrl('/pages/review-list');
+              if(self.userDetails.user_type==3){
+                self.router.navigateByUrl('/pages/hospital-verification');
+              }else{
+                self.router.navigateByUrl('/pages/review-list');
+              }
               return this.complete();
-             
+
             },
             classes: 'shepherd-button-primary',
             text: 'Next',
-           
-            
           }
         ],
         cancelIcon: {
@@ -132,7 +136,11 @@ export class FormInputsComponent implements OnInit {
         }
       }
     ])
-      this.shepherdService.start()
+    console.log('tourguide_status',this.userDetails.user_type);
+    if(this.userDetails.tourguide_status==0){
+    this.shepherdService.start();
+    }
+    // this.shepherdService.start()
   }
   //number validation
   get f(){
@@ -140,11 +148,11 @@ export class FormInputsComponent implements OnInit {
   }
 
   // onFileChange($event){
-  //   for (var i = 0; i < $event.target.files.length; i++) { 
+  //   for (var i = 0; i < $event.target.files.length; i++) {
   //     this.profileImage.push($event.target.files[i]);
   //   }
   // }
-  
+
   // image preview
    onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
@@ -159,6 +167,28 @@ export class FormInputsComponent implements OnInit {
      }
    }
 
+  testupdate(){
+    let user_id = this.userDetails.id
+    let formdata = new FormData();
+    formdata.append("tourguide_status","1");
+    this.apiService.updateUserDetails(formdata,user_id).subscribe(res=>{
+      console.log('success',res);
+      if(res['success']){
+        let obj ={
+          "user_id":this.userDetails.id
+        }
+        console.log('obj',obj);
+        this.apiService.getUserDetails(obj).subscribe(res=>{
+          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+
+
+          let userDataNew = JSON.parse(localStorage.getItem("userData"));
+          console.log('userDetails',userDataNew);
+        })
+      }
+    })
+    console.log('testupdate');
+  }
   updateProfile(){
     if(this.form.valid){
       let formdata = new FormData();
@@ -185,7 +215,7 @@ export class FormInputsComponent implements OnInit {
     }else{
       this.toastr.error("Please fill all mandatory fields.")
     }
-    
+
   }
   updatePassword(){
     if(this.changePassword.valid){
@@ -201,7 +231,7 @@ export class FormInputsComponent implements OnInit {
         }else{
           this.toastr.error(res['data']['message'])
         }
-       
+
       })
     }else{
       this.changePassword.markAllAsTouched()

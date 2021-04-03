@@ -2,8 +2,8 @@
 
   <header class="main_heraders w-100">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid"> 
-            <div class="row w-100"> 
+        <div class="container-fluid">
+            <div class="row w-100">
               <div class="col-sm-12">
                 <div class="justify-content-center align-items-center w-100 d-flex">
                 <a class="navbar-brand  mr-auto" routerLink="/"><img class="img-fuild main_logo" src="./assets/images/logo-color.png"></a>
@@ -22,10 +22,10 @@
               <a class="nav-link" href="#">Open-icu.org</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" routerLink="/library">Device Innovations</a>
+              <a class="nav-link" href="/library"><img class="img-fuild mr-1" height='20px' src="./assets/images/deviceinnovations.png"><span>Device Innovations </span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/map">ICU Need Tracker</a>
+              <a class="nav-link" href="/map"><img class="img-fuild mr-1" height='20px' src="./assets/images/icu need.png"><span>ICU Need Tracker </span></a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Tracker</a>
@@ -60,7 +60,7 @@
           </ul>
           <nb-actions size="small">
 
-    
+
             <nb-action
               class="user-action color_user"
               *nbIsGranted="['view', 'user']"
@@ -80,7 +80,7 @@
       </div>
             </div>
         </div>
-        
+
       </nav>
 </header>
 
@@ -88,7 +88,7 @@
     <a
       href="#"
       class="sidebar-toggle"
-      matRipple 
+      matRipple
       [matRippleUnbounded]="true"
       [matRippleCentered]="true"
       (click)="toggleSidebar()"
@@ -117,7 +117,7 @@
 
   <nb-actions size="small">
 
-    
+
     <nb-action
       class="user-action"
       *nbIsGranted="['view', 'user']"

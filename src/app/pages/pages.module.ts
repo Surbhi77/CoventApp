@@ -59,6 +59,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { MyreviewEditComponent } from './myreview-edit/myreview-edit.component';
 import { DataTablesModule } from 'angular-datatables';
 import { HospitalIcuneedEditComponent } from './hospital-icuneed-edit/hospital-icuneed-edit.component';
+import { StartTourComponent } from './start-tour/start-tour.component';
 const materialModules = [
   MatFormFieldModule,
   MatInputModule,
@@ -123,6 +124,7 @@ const materialModules = [
     ViewDetailsComponent,
     MyreviewEditComponent,
     HospitalIcuneedEditComponent,
+    StartTourComponent,
   ],
 })
 export class PagesModule {

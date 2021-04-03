@@ -1,7 +1,7 @@
-<div class="col-md-12 col-lg-12 col-xxxl-12 ">
+<div class="col-md-12 col-lg-12 col-xxxl-12 reviewlist" id="reviewlist">
 <nb-card>
   <nb-card-header class="text-white" style="background-color:rgb(19 191 179)">Review Listing</nb-card-header>
-    <nb-card-body class="review" id="Review">
+    <nb-card-body >
         <table *ngIf="reviewListing && reviewListing.length>0" class="table table-bordered custom_tabls" [dtOptions]="dtOptions"  datatable >
             <thead>
                 <tr>
@@ -21,7 +21,7 @@
                     <td>{{item.desccription}}</td>
                     <td>{{item.ratings}}</td>
                     <td>
-                      <a [routerLink]="'/pages/review-edit/'+item.id" class="conm_bns tab_edit"><i class="far fa-edit"></i> Edit</a></td>
+                      <a [routerLink]="'/pages/review-edit/'+item.id" class="conm_bns tab_edit reviewlist-2" id="reviewlist-2"><i class="far fa-edit"></i> Edit</a></td>
                   </tr>
               </tbody>
         </table>

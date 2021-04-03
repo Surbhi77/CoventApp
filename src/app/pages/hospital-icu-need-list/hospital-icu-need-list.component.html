@@ -1,5 +1,5 @@
-<nb-card class="shadow">
-    <nb-card-header class="header">
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12 pt-4 shadow bgChange hospital-icu-need-list" id="hospital-icu-need-list">
+    <nb-card-header>
         Hospital ICU Need Listing
 
         <button nbButton matRipple hero class="size-medium status-primary" routerLink="/pages/hospital-ICU-need"> Add </button>
@@ -38,7 +38,7 @@
                     <td>{{item.date}}</td>
                     <td>
 
-                        <a [routerLink]="'/pages/edit-ICU-need/'+item.id" class="conm_bns tab_edit" style="margin-right: 10px;"><i class="far fa-edit"></i> Edit </a> 
+                        <a [routerLink]="'/pages/edit-ICU-need/'+item.id" class="conm_bns tab_edit" style="margin-right: 10px;"><i class="far fa-edit"></i> Edit </a>
                         <a (click)="deleteHospitalsItemList(item.id,i)" class="conm_bns delete_n delbtn text-white"> <i class="far fa-trash-alt"></i> Delete</a>
                     </td>
                 </tr>

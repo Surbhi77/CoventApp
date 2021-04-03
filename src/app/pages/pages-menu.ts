@@ -46,7 +46,7 @@ export const ADMIN_ITEMS: NbMenuItem[]=[
     icon: 'lock-outline',
     link: '/pages/hospital-verification'
   },
-  
+
   //  {
   //   title:"Add Hospitals",
   //    icon: 'lock-outline',
@@ -71,8 +71,13 @@ export const ADMIN_ITEMS: NbMenuItem[]=[
     title:"Change Password",
     icon: 'lock-outline',
     link: '/pages/change-password'
+  },
+  {
+    title: 'Start Tour',
+    icon: 'edit-2-outline',
+    link: '/pages/start-tour',
   }
- 
+
 ]
 
 export const REVIEWER_ITEMS: NbMenuItem[]=[
@@ -97,5 +102,10 @@ export const REVIEWER_ITEMS: NbMenuItem[]=[
     icon: 'edit-2-outline',
     link: '/pages/change-password',
   },
+  {
+    title: 'Start Tour',
+    icon: 'edit-2-outline',
+    link: '/pages/start-tour',
+  }
 
 ];

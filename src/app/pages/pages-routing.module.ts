@@ -30,6 +30,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 
 import { MyreviewEditComponent } from './myreview-edit/myreview-edit.component';
 import { HospitalIcuneedEditComponent } from './hospital-icuneed-edit/hospital-icuneed-edit.component';
+import { StartTourComponent } from './start-tour/start-tour.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,canActivate:[AuthguardGuard],
@@ -43,7 +44,7 @@ const routes: Routes = [{
       component: ECommerceComponent,canActivate:[AuthguardGuard],
     },
     {
-      path: 'device-listing', 
+      path: 'device-listing',
       component: DeviceListingComponent,canActivate:[AuthguardGuard],
     },
     {
@@ -55,19 +56,19 @@ const routes: Routes = [{
       component:ViewDetailsComponent,canActivate:[AuthguardGuard]
     },
     {
-      path: 'review-listing/:innovator_id', 
+      path: 'review-listing/:innovator_id',
       component: ReviewListingComponent,canActivate:[AuthguardGuard],
     },
     {
-      path: 'question-listing/:innovator_id', 
+      path: 'question-listing/:innovator_id',
       component: QuestionListingComponent,canActivate:[AuthguardGuard],
     },
     {
-      path: 'edit-question/:question_id', 
+      path: 'edit-question/:question_id',
       component: EditQuestionComponent,canActivate:[AuthguardGuard],
     },
     {
-      path: 'newsletter', 
+      path: 'newsletter',
       component: NewsletterComponent,canActivate:[AuthguardGuard],
     },
     {
@@ -130,7 +131,7 @@ const routes: Routes = [{
       path: 'edit-ICU-need/:id',
       component: HospitalIcuneedEditComponent
     },
-    
+
     {
       path: 'hospital-ICU-need-list',
       component: HospitalIcuNeedListComponent
@@ -139,7 +140,11 @@ const routes: Routes = [{
       path: 'hospital-verification',
       component: HospitalUserVerificationComponent
     },
-    
+    {
+      path: 'start-tour',
+      component: StartTourComponent
+    },
+
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

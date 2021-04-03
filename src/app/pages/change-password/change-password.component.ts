@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NbThemeService } from '@nebular/theme';
+import { ShepherdService } from 'angular-shepherd';
 
 @Component({
   selector: 'ngx-change-password',
@@ -30,7 +31,8 @@ export class ChangePasswordComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private apiService:ApiService,
-              private readonly themeService: NbThemeService) 
+              private readonly themeService: NbThemeService,
+              private shepherdService: ShepherdService,)
   {
     this.userDetails = JSON.parse(localStorage.getItem("userData"));
     this.form = fb.group({
@@ -44,14 +46,72 @@ export class ChangePasswordComponent implements OnInit {
       "old_password":new FormControl('',[Validators.required]),
       "new_password":new FormControl('',[Validators.required]),
       "confirm_password":new FormControl('',[Validators.required])
-    }, { 
+    }, {
       validator: ConfirmedValidator('new_password', 'confirm_password')
     })
   }
 
-  
+
 
   ngOnInit() {
+
+    // localStorage.setItem("userData.tourguide_status","1");
+    // this.userDetails_new = JSON.parse(localStorage.getItem("userData"));
+    // console.log('userDetails_new',this.userDetails_new);
+    /************************************/
+    this.shepherdService.defaultStepOptions = {
+
+      scrollTo: { behavior: 'smooth', block: 'center' },
+      cancelIcon: {
+        enabled: true
+      },
+      classes: 'shadow-md bg-purple-dark',
+      useModalOverlay:true,
+      keyboardNavigation:true,
+      modalContainer :true,
+      arrow: true,
+    };
+    let selffun=this;
+
+
+
+    this.shepherdService.addSteps([
+      {
+        id: 'change-password',
+        title: 'Change Password',
+        text: `change your password`,
+        classes: 'shadow-md bg-purple-dark',
+        attachTo: {
+          element: '.change-password',
+          on: 'bottom'
+        },
+        buttons: [
+          // {
+          //   action() {
+          //     selffun.testupdate();
+          //   },
+          //   classes: 'shepherd-button-secondary',
+          //   text: 'Back'
+          // },
+          {
+            action() {
+              selffun.testupdate();
+              return this.complete();
+            },
+            classes: 'shepherd-button-secondary defult-secondary-btn',
+            text: 'Exit'
+          }
+        ],
+
+      }
+    ]);
+
+    console.log('tourguide_status',this.userDetails.tourguide_status);
+    // if(this.userDetails.tourguide_status==0){
+    this.shepherdService.start();
+    // }
+    /************************************/
+
   //   this.getUserDetails()
   //   //this.materialTheme$ = this.themeService.onThemeChange()
   //  // .pipe(tap(theme => {
@@ -61,11 +121,33 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onFileChange($event){
-    for (var i = 0; i < $event.target.files.length; i++) { 
+    for (var i = 0; i < $event.target.files.length; i++) {
       this.profileImage.push($event.target.files[i]);
     }
   }
 
+  testupdate(){
+    let user_id = this.userDetails.id
+    let formdata = new FormData();
+    formdata.append("tourguide_status","1");
+    this.apiService.updateUserDetails(formdata,user_id).subscribe(res=>{
+      console.log('success',res);
+      if(res['success']){
+        let obj ={
+          "user_id":this.userDetails.id
+        }
+        console.log('obj',obj);
+        this.apiService.getUserDetails(obj).subscribe(res=>{
+          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+
+
+          let userDataNew = JSON.parse(localStorage.getItem("userData"));
+          console.log('userDetails',userDataNew);
+        })
+      }
+    })
+    console.log('testupdate');
+  }
   updateProfile(){
     if(this.form.valid){
       let formdata = new FormData();
@@ -86,7 +168,7 @@ export class ChangePasswordComponent implements OnInit {
     }else{
       this.toastr.error("Please fill all mandatory fields.")
     }
-    
+
   }
   updatePassword(){
     if(this.changePassword.valid){
@@ -102,7 +184,7 @@ export class ChangePasswordComponent implements OnInit {
         }else{
           this.toastr.error(res['data']['message'])
         }
-       
+
       })
     }else{
       this.changePassword.markAllAsTouched()

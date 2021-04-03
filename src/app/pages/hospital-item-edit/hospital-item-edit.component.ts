@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { ShepherdService } from 'angular-shepherd';
 
 @Component({
   selector: 'ngx-hospital-item-edit',
@@ -61,9 +62,91 @@ export class HospitalItemEditComponent implements OnInit {
     private fb:FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private apiService:ApiService) { }
+    private apiService:ApiService,private shepherdService:ShepherdService) {this.userDetails = JSON.parse(localStorage.getItem("userData")); }
 
   ngOnInit(): void {
+
+    /*********************/
+      this.shepherdService.defaultStepOptions = {
+
+        scrollTo: true,
+        cancelIcon: {
+          enabled: true
+        },
+        useModalOverlay : true,
+        classes: 'shepherd-theme-custom'
+      };
+      let self=this;
+      this.shepherdService.addSteps([
+        {
+          id: 'hospital-update-detail',
+          classes: 'shadow-md bg-purple-dark',
+          arrow: true,
+          attachTo: {
+            element: '.hospital-update-detail',
+            on: 'bottom'
+
+          },
+          beforeShowPromise: function() {
+            return new Promise<void>(function(resolve) {
+              setTimeout(function() {
+                window.scrollTo(0, 0);
+                resolve();
+              }, 500);
+            });
+          },
+          buttons: [
+            {
+              action() {
+                self.testupdate();
+                return this.complete();
+              },
+              classes: 'shepherd-button-secondary defult-secondary-btn',
+              text: 'Exit'
+            },
+            {
+              action(){
+                self.router.navigateByUrl('/pages/hospital-verification');
+                return this.complete();
+              },
+              classes: 'shepherd-button-primary',
+              text: 'Back'
+            },
+            {
+              action(){
+
+                self.router.navigateByUrl('/pages/hospital-ICU-need');
+
+                return this.complete();
+
+              },
+              classes: 'shepherd-button-primary',
+              text: 'Next',
+            }
+          ],
+          cancelIcon: {
+            enabled: true
+          },
+          highlightClass: 'highlight',
+          scrollTo: true,
+          title: 'Update Hospital Detail',
+          text: ['Update your hospital detail.'],
+          when: {
+            show: () => {
+              console.log('show step');
+            },
+            hide: () => {
+              console.log('hide step');
+            }
+          }
+        }
+      ])
+      console.log('tourguide_status',this.userDetails.user_type);
+      if(this.userDetails.tourguide_status==0){
+      this.shepherdService.start();
+      }
+      // this.shepherdService.start()
+    /*********************/
     this.route.params.subscribe(params =>{
       console.log(params);
       if(params && params.id){
@@ -71,7 +154,7 @@ export class HospitalItemEditComponent implements OnInit {
         // this.isEditScreen=true
 
         this.hospital_id= params.id;
-        
+
         this.apiService.getHospitalDetail(this.hospital_id).subscribe(res=>{
           if(res['success']){
             let hospital_data = res['data'][0]
@@ -115,12 +198,12 @@ export class HospitalItemEditComponent implements OnInit {
             this.form.updateValueAndValidity();
           }
         });
-        
-        
+
+
       }
     })
 
-    
+
     this.userDetails = JSON.parse(localStorage.getItem("userData"));
     // console.log(userDetails.id);
     this.typeOfFacility = ["Academic medical center", "Tertiary hospital", "Community hospital", "Field hospital","Outpatient clinic"]
@@ -137,6 +220,29 @@ export class HospitalItemEditComponent implements OnInit {
 
   get f(){
     return this.form.controls;
+  }
+
+  testupdate(){
+    let user_id = this.userDetails.id
+    let formdata = new FormData();
+    formdata.append("tourguide_status","1");
+    this.apiService.updateUserDetails(formdata,user_id).subscribe(res=>{
+      console.log('success',res);
+      if(res['success']){
+        let obj ={
+          "user_id":this.userDetails.id
+        }
+        console.log('obj',obj);
+        this.apiService.getUserDetails(obj).subscribe(res=>{
+          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+
+
+          let userDataNew = JSON.parse(localStorage.getItem("userData"));
+          console.log('userDetails',userDataNew);
+        })
+      }
+    })
+    console.log('testupdate');
   }
 
   public handleAddressChange(address: Address) {
@@ -190,7 +296,7 @@ export class HospitalItemEditComponent implements OnInit {
     }else{
       let index = this.categoryArr.indexOf(catid);
       this.categoryArr.splice(index,1);
-      
+
       if(this.categoryArr.length == 0){
         this.hospitalItemCatId = '';
       }else{
@@ -219,7 +325,7 @@ export class HospitalItemEditComponent implements OnInit {
     }else{
       let index = this.itemArr.indexOf(itemId);
       this.itemArr.splice(index,1);
-      
+
       if(this.itemArr.length == 0){
         this.hospitalItems = '';
       }else{
@@ -228,14 +334,14 @@ export class HospitalItemEditComponent implements OnInit {
     }
     // console.log(this.hospitalItems);
     // console.log(this.itemArr);
-    
+
   }
 
   getElectricityValue(event){
     console.log(event)
   }
   onSubmit(){
-    
+
     if(this.form.valid){
       var formvalue = this.form.getRawValue()
       // formvalue.hospital_item_cat_id=this.hospitalItemCatId
@@ -247,7 +353,7 @@ export class HospitalItemEditComponent implements OnInit {
       formvalue.longitude=this.longitude
       formvalue.facility_location = this.hospitaladdress
       console.log(formvalue);
-    
+
       this.apiService.updateHospitalData(formvalue).subscribe(res=>{
         console.log(res['data'])
         this.successform = 'Successfully Updated';
@@ -257,7 +363,7 @@ export class HospitalItemEditComponent implements OnInit {
       console.log('else');
       this.form.markAllAsTouched();
     }
-    
+
   }
 
-} 
+}

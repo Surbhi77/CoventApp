@@ -1,8 +1,8 @@
 
-  <div class="col-md-12 col-lg-12 col-xxxl-12 ">
+  <div class="col-md-12 col-lg-12 col-xxxl-12 editform" id="custom_form">
     <nb-card>
       <nb-card-header class="text-white" style="background-color:rgb(19 191 179)">Edit Profile</nb-card-header>
-      <nb-card-body id="custom_form" class="editform">
+      <nb-card-body>
         <form [formGroup]="form" class="py-5">
           <mat-form-field class="example-full-width col-lg-8">
             <mat-label>User name</mat-label>
@@ -42,17 +42,17 @@
           </div> -->
           <!-- Image Preview -->
            <div class="col-lg-8">
-         
+
           <input type='file'   accept="image/*" id="file" (change)="onFileChange($event)">
           <label for="file" >Choose file</label>
           <img [src]="url" height="200" class="p-3"> <br/>
          </div>
-       
+
           <br />
           <div class="col-lg-8">
             <button (click)="updateProfile()" class="cutom_btn_all"> Update </button>
           </div>
-          
+
 
         </form>
 
@@ -62,8 +62,8 @@
 
   <!-- <div class="col-lg-6">
 
-   
-   
+
+
     <nb-card>
       <nb-card-header>Change Password</nb-card-header>
       <nb-card-body>
@@ -84,7 +84,7 @@
             Update
           </button>
         </form>
-        
+
       </nb-card-body>
     </nb-card>
   </div> -->

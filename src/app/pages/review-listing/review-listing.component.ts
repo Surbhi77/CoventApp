@@ -74,10 +74,10 @@ export class ReviewListingComponent implements OnInit {
     this.route.params.subscribe(params =>{
       console.log(params);
       if(params && params.innovator_id){
-        
+
         this.innovator_Id= params.innovator_id;
       }
-      
+
       // this.orderId = params.id;
       // this.getOrderDetails()
     })
@@ -86,8 +86,8 @@ export class ReviewListingComponent implements OnInit {
     let obj={
       "user_id":userDetails.id
     }
-    
-    
+
+
     this.apiService.getReviewListingByInnovator(this.innovator_Id).subscribe(res=>{
       if(res["success"]){
         this.deviceListing = res['data'];
@@ -100,12 +100,13 @@ export class ReviewListingComponent implements OnInit {
         this.deviceListing = [];
       }
     })
-    
-    console.log("success")
+
+    console.log("success");
+
   }
   ngAfterViewInit(){
-    
-    
+
+
   }
 
 }

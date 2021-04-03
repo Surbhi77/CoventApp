@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShepherdService } from 'angular-shepherd';
 import {ApiService} from  './../../services/api.service';
-
 @Component({
   selector: 'ngx-my-reviews',
   templateUrl: './my-reviews.component.html',
@@ -11,8 +10,9 @@ import {ApiService} from  './../../services/api.service';
 export class MyReviewsComponent implements OnInit {
   dtOptions: any={}
   reviewListing:any=[];
+  userDetails:any;
 
-  constructor(private apiService:ApiService,private shepherdService: ShepherdService,private router:Router) { }
+  constructor(private apiService:ApiService,private shepherdService: ShepherdService,private router:Router) {this.userDetails = JSON.parse(localStorage.getItem("userData")); }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -26,76 +26,122 @@ export class MyReviewsComponent implements OnInit {
       console.log(res);
       this.reviewListing = res['data']
     })
+
+    /************************************/
     this.shepherdService.defaultStepOptions = {
-   
-      scrollTo: true,
+
+      scrollTo: { behavior: 'smooth', block: 'center' },
       cancelIcon: {
         enabled: true
       },
-      useModalOverlay : true,
-      classes: 'shepherd-theme-custom'
+      classes: 'shadow-md bg-purple-dark',
+      useModalOverlay:true,
+      keyboardNavigation:true,
+      modalContainer :true,
+      arrow: true,
     };
-    let self=this;
+    let selffun=this;
+
+
+
     this.shepherdService.addSteps([
       {
-        id: 'Review',
+        id: 'reviewlist',
+        title: 'Review Section',
+        text: `Review List`,
         classes: 'shadow-md bg-purple-dark',
-        arrow: true,
-        attachTo: { 
-          element: '.review', 
+        attachTo: {
+          element: '.reviewlist',
           on: 'bottom'
-          
         },
-        beforeShowPromise: function() {
-          return new Promise<void>(function(resolve) {
-            setTimeout(function() {
-              window.scrollTo(0, 0);
-              resolve();
-            }, 500);
-          });
+        buttons: [
+
+          {
+            action(){
+              selffun.router.navigateByUrl('/pages/forms/inputs');
+              return this.complete();
+            },
+            classes: 'shepherd-button-primary',
+            text: 'Back'
+          },
+          {
+            action() {
+              return this.next();
+            },
+            classes: 'shepherd-button-primary',
+            text: 'Next'
+          }
+        ],
+
+      },
+      {
+        id:"reviewlist-2",
+        title: 'Edit Review',
+        text: `click here to edit review`,
+        classes: 'shadow-md bg-purple-dark',
+        attachTo: {
+          element: '.reviewlist-2',
+          on: 'bottom'
         },
         buttons: [
           {
-            classes: 'shepherd-button-secondary',
-            text: 'Exit',
-            type: 'cancel'
-          },
-          {
-            classes: 'shepherd-button-primary',
-            text: 'Back',
-            type: 'back'
-          },
-          {
-            action(){
-              
-              self.router.navigateByUrl('/pages/review-list');
+            action() {
+              selffun.testupdate();
               return this.complete();
-             
+            },
+            classes: 'shepherd-button-secondary defult-secondary-btn',
+            text: 'Exit'
+          },
+          {
+            action() {
+              return this.back();
             },
             classes: 'shepherd-button-primary',
-            text: 'Next',
-           
-            
+            text: 'Back'
+          },
+          {
+            action() {
+              selffun.router.navigateByUrl('/pages/change-password');
+              return this.complete();
+            },
+            classes: 'shepherd-button-primary',
+            text: 'Next'
           }
         ],
-        cancelIcon: {
-          enabled: true
-        },
-        highlightClass: 'highlight',
-        scrollTo: true,
-        title: 'Welcome',
-        text: ['Angular-Shepherd is a JavaScript library for guiding users through your Angular app.'],
-        when: {
-          show: () => {
-            console.log('show step');
-          },
-          hide: () => {
-            console.log('hide step');
-          }
-        }
       }
-    ])
-    
+    ]);
+
+    // this.shepherdService.start();
+    console.log('tourguide_status',this.userDetails.tourguide_status);
+    if(this.userDetails.tourguide_status==0){
+    this.shepherdService.start();
+    }
+    /************************************/
+
+  }
+
+
+  testupdate(){
+    let user_id = this.userDetails.id
+    let formdata = new FormData();
+    formdata.append("tourguide_status","1");
+    this.apiService.updateUserDetails(formdata,user_id).subscribe(res=>{
+      console.log('success',res);
+      if(res['success']){
+        let obj ={
+          "user_id":this.userDetails.id
+        }
+        console.log('obj',obj);
+        this.apiService.getUserDetails(obj).subscribe(res=>{
+          localStorage.setItem("userData",JSON.stringify(res['data'][0]));
+
+          // this.toastr.success("Tour Complete")
+          let userDataNew = JSON.parse(localStorage.getItem("userData"));
+          console.log('userDetails',userDataNew);
+        })
+      }
+    })
+    console.log('testupdate');
   }
 
 }
